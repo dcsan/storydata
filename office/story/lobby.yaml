@@ -1,0 +1,15 @@
+rooms:
+  - name: lobby
+    states:
+      - name: default
+        long: You're in a shabby lobby. A door to the right leads to another office.
+        buttons:
+          - continue
+
+    actions:
+      - match: lights
+        always:
+          reply: you flick the lights on and off
+      - match: cont|.*
+        always:
+          goto: office

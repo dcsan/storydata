@@ -1,0 +1,100 @@
+rooms:
+  # -------- start --------------
+  - name: start
+    states:
+      - name: default
+        imageUrl: asylum/shots/title.jpg
+        long: "Welcome to 'Escape From Bell Hill (Asylum #6)'  \n
+        :ghost: Ready?"
+        buttons:
+          - continue|home
+    actions:
+      - match: ^(begin|home|cont|ok) # .* match anything
+        then:
+          goto: home
+
+  # -------- home --------------
+  - name: home
+    states:
+      - name: default
+        imageUrl: asylum/shots/fb-ad.jpg
+        long:
+          "You accept an invitation to playtest a new physical escape room. The setting of the game is a mental asylum called 'Bell Hill'.
+          Having signed the game’s standard NDA, you climb into bed early Friday night, full of anticipation.\n
+          After all, you _*love*_ escape rooms"
+        buttons:
+          - Get some Sleep|sleep
+    actions:
+      - match: ^(sleep|rest|tired|ok)$
+        then:
+          reply: You get a good night’s rest.
+          goto: entrance
+
+      - match: sleep
+        then:
+          reply: You get a good night’s rest.
+          goto: entrance
+
+  # -------- entrance --------------
+  - name: entrance
+    states:
+    - name: default
+      imageUrl: asylum/shots/ext-woman.jpg
+      long: Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat. After placing your belongings in a locker, you are led down a long hallway to a simple bedroom. In the game, you will play the role of a male inmate of Bell Hill. Your goal is to escape the asylum.
+      buttons:
+        - Continue | cont
+        - Ask host about the game | ask
+    actions:
+      # ask is a special command that gets converted to say
+      - match: ^(ask|say)
+        then:
+          reply: The host informs you the game will last one hour, followed by a short debrief. If you are ever stuck or want to leave, just say the safe word `macaroni`
+            She wishes you good luck and exits through the door by which you came. It closes seamlessly, becoming part of a blank wall of the room.
+          buttons:
+            - Continue | cont
+
+      - match: cont
+        then:
+          reply: You have just begun to examine your surroundings when the *real* door of the room opens, and two burly men dressed as what you take to be orderlies enter.
+          goto: orderlies
+
+      - match: macaroni
+        then:
+          reply: You haven't started yet!
+          buttons:
+            - Continue | cont
+
+  # -------- orderlies --------------
+  - name: orderlies
+    states:
+      - name: default
+        imageUrl: asylum/shots/orderlies.jpg
+        long: Before you can speak, one of the orderlies locks you in bear-like grip while the other strips your pants off your legs.
+          Your shirt is torn off next, leaving you only in your underwear and socks.
+        buttons:
+          - Continue | cont
+          - Tell them to stop | cont
+
+    actions:
+      # catch both inputs here anyway
+      - match: (tell|cont|stop)
+        then:
+          reply: "
+            \n_“Is this part of the game?!”_ you stammer angrily.
+
+            \n_“It’s all in the terms and conditions,”_ says the first orderly.
+
+            \n _“Looking forward to your escape attempts!”_ chuckles the other, following his partner out.
+
+            \n_“Geesh,”_ you think, _“That’s maybe a bit much…”_
+
+            \nThe door shuts with a resounding click.
+            "
+          buttons:
+            - look around | cell
+
+      - match: cell
+        then:
+          goto: cell
+
+

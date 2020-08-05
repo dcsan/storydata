@@ -1,0 +1,41 @@
+story:
+  title: "Escape From Bell Hill (Asylum #6)"
+  cname: asylum # internal reference
+  intro: This is the introduction
+  startRoom: start
+  # for debugging jump to this room on load
+  # startRoom: cell
+  # startRoom: epilogue
+
+  tasks:
+    - name: dress
+      hint: A voice crackles over a hidden speaker in the room. “To proceed to breakfast, please follow your morning routine. Remember, every good boy dresses sharply.”
+    - name: exercise
+      hint: The same voice crackles over the speaker. “That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”
+    - name: wash
+      hint: The invisible speaker crackles. “Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”
+
+  help:
+    basic: "
+      \n> `Look` to look around
+      \n> `look at [thing]` or `eXamine [thing]`
+      \n> `INVentory` what you're carrying
+      \n> `Say [something] to [person]`
+      \n> `use [thing] on/with [thing]` try combining items
+      \n> `hint` of what to do next
+      \n> (shortcuts are in CAPS)
+      \n> There are many other things you can say, but these are the basics!
+      "
+    debug: "
+      \n> `STatus` of the game
+      \n> `ReStart` the game
+      \n> `cheat` to see what actions you can do
+      \n> `gt [room]` go to a specific room (teleport)
+      \n> `log` to get a full chatlog - useful to debug later
+    "
+
+    more: Things also respond to special verbs like `eat fruit` or `open chest`.
+      Try different actions on things you find!
+      You can use the single letter versions like `L` for `Look`
+      You can `Look at note` to look at items
+      If you're stuck, try a `hint`!

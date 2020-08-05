@@ -1,0 +1,588 @@
+story:
+  title: "Escape From Bell Hill (Asylum #6)"
+  cname: asylum # internal reference
+  intro: This is the introduction
+  startRoom: cell # for debugging jump to this room on load
+
+  tasks:
+    - name: dress
+      hint: A voice crackles over a hidden speaker in the room. “To proceed to breakfast, please follow your morning routine. Remember, every good boy dresses sharply.”
+    - name: exercise
+      hint: The same voice crackles over the speaker. “That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”
+    - name: wash
+      hint: The invisible speaker crackles. “Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”
+
+  help:
+    basic: "
+      `Look` or `look at item`
+      `eXamine` `item`
+      `Inventory` what you're carrying
+      `Say` something
+      `hint` of what to do next
+      `restart` the game
+      `status`  of the game
+      "
+    more: Things also respond to special verbs like `eat fruit` or `open chest`.
+      Try different actions on things you find!
+      You can use the single letter versions like `L` for `Look`
+      You can `Look at note` to look at items
+      If you're stuck, try a `hint`!
+
+rooms:
+  # -------- start --------------
+  - name: start
+    states:
+      - name: default
+        imageUrl: https://cbg.rik.ai/cdn/asylum/shots/title.jpg
+        long: "Welcome to 'Escape From Bell Hill (Asylum #6)'  \n
+        :ghost: Ready?"
+        buttons:
+          - Begin|home
+
+    actions:
+      - match: ^begin|home|.* # .* match anything
+        then:
+          goto: home
+
+  # -------- home --------------
+  - name: home
+    states:
+      - name: default
+        imageUrl: https://cbg.rik.ai/cdn/asylum/shots/title.jpg
+        long: You accept an `invitation` to playtest a new physical escape room. The setting of the game is a mental asylum called "Bell Hill".
+          Having signed the game’s online terms & conditions and a standard NDA, you climb into bed early Friday night, full of anticipation. \n
+          After all, you **love** escape rooms
+        buttons:
+          - Get some Sleep | sleep
+
+    # hints:
+    #   - maybe time to get some rest
+    #   - some `sleep`?
+    actions:
+      - match: sleep|rest|tired
+        then:
+          reply: You get a good night’s rest.
+          goto: entrance
+
+  # -------- entrance --------------
+  - name: entrance
+    states:
+    - name: default
+      imageUrl: https://cbg.rik.ai/cdn/asylum/shots/entrance.jpg
+      long: Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat. After placing your belongings in a locker, you are led down a long hallway to a simple bedroom. In the game, you will play the role of a male inmate of Bell Hill. Your goal is to escape the asylum.
+      buttons:
+        - Continue | cont
+        - Ask host how to play | ask
+
+    actions:
+      - match: ask
+        then:
+          reply: The host informs you the game will last one hour, followed by a short debrief. If you are ever stuck or want to leave, just say the safe word `macaroni`
+            She wishes you good luck and exits through the door by which you came. It closes seamlessly, becoming part of a blank wall of the room.
+      - match: cont
+        then:
+          reply: You have just begun to examine your surroundings when the *real* door of the room opens, and two burly men dressed as what you take to be orderlies enter.
+          goto: orderlies
+
+  # -------- orderlies --------------
+  - name: orderlies
+    states:
+      - name: default
+        long: Before you can speak, one of the orderlies locks you in bear-like grip while the other strips your pants off your legs.
+          Your shirt is torn off next, leaving you only in your underwear and socks.
+        buttons:
+          - Continue|continue
+          - Tell them to stop | tell
+
+    actions:
+      - match: tell
+        then:
+          reply: “Is this part of the game?!” you stammer angrily.
+            “It’s all in the terms and conditions,” says the first orderly.
+
+            “Looking forward to your escape \n
+            attempts!” chuckles the other, following his partner out. \n
+
+            “Geesh,” you think, “That’s maybe a bit much…”
+
+            The door shuts with a resounding click.
+          goto: cell
+
+      - match: cont|.*
+        then:
+          goto: cell
+
+  #--------------- cell --------------------
+
+  - name: cell
+    state: cell-1
+    states:
+      - name: cell-1
+        short: You are in an inmate’s bedroom.
+        imageUrl: https://cbg.rik.ai/cdn/asylum/rooms/cell-1.jpg
+        buttons:
+          - door | x door
+          - sink | x sink
+          - posters | x wall
+          - lights | x lights
+          - wardrobe | x wardrobe
+
+    actions:
+
+      - match: get poster|take poster|examine poster
+        always:
+          reply:
+            "You take the poster off the wall. \n
+            You turn the poster over to see the following scrawled in black Sharpie: \n
+            \n> Four good boys in turns did *wash*
+            \n> First was [Hans](hands) the boy from Ansbach
+            \n> Next was Nick (neck) with ruddy skin
+            \n> While Piers (ears) did follow after him
+            \n> The last was Fez (face) a swarthy chum
+            \n> He did the deed then all were done."
+
+      - match: ^(wash|wash face)|(wash face with soap)$
+        then:
+          reply: Just your face? That doesn't seem to follow our procedure
+
+      - match: ^use soap$
+        if:
+          all:
+            - soap.has = true
+        then:
+          reply: Use soap to do what?
+        else:
+          reply: you don't have any soap
+
+      - match: wash hands neck ears face (with soap|)
+        then:
+          reply: That's right!
+          # calls:
+          #   - trigger
+          setProps:
+            - tasks.wash = done
+
+      - match: enter bed
+        then:
+          reply: You're not tired
+      - match: enter wardrobe
+        then:
+          reply: this is not a C.S. Lewis novel
+      - match: (enter|open|jump|climb) window
+        then:
+          reply: The bars prevent access to the window
+
+      # ------  task: dress ---------
+      - match: (open wardrobe|o wr)
+        if:
+          all:
+            - wardrobe.open = true
+        then:
+          reply: It's already open
+        else:
+          reply: You yank the wardrobe door open.
+          setProps:
+            - wardrobe.state = open
+            - wardrobe.open = true
+
+      # close and retain state based on if youer wearing clothes
+      - match: close wardrobe
+        always:
+          reply: The doors creak as you close them
+          setProps:
+            - wardrobe.state = closed
+        if:
+          all:
+            - clothes.has = true
+        then:
+          setProps:
+            - wardrobe.state = closedEmpty
+        else:
+          setProps:
+            - wardrobe.state = closedFull
+
+      - match: (wear|get|take) (clothes|robe|sandals)
+        if:
+          all:
+            - wardrobe.open = true
+        then:
+          reply: you put on the clothes
+          take:
+            - clothes
+          calls:
+            - trigger exercise
+          setProps:
+            - clothes.has = true
+            - wardrobe.state = openEmpty
+            - tasks.dress = done
+        else:
+          reply: the wardrobe is shut
+
+# TRIGER 1 - get dressed
+      - match: trigger dress|trig1
+        then:
+          reply:
+            Before you can do so, a voice crackles over a hidden speaker in the room. “To proceed to breakfast, please follow your morning routine. Remember, every good boy dresses sharply.”
+
+# TRIGER 2 - do exercise
+      - match: trigger exercise|trig2
+        then:
+          reply:
+            The top bulb in a column of four has come on, now glowing a bright green above the others.
+            The same voice crackles over the speaker. “That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”
+
+# TRIGGER #3 - get washed
+      - match: trigger wash|trig3
+        then:
+          reply:
+            The second in the column of five green lightbulbs lights up.
+            The invisible speaker crackles. “Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”
+
+# TRIGGER #4 - color puzzle
+      - match: trigger colors|trig4
+        then:
+          reply:
+            The third green light in the column above the sink turns on.
+            The voice is encouraging this time. “Jack, my boy, you’re a wonderful lad.
+            Limber and loose and clean as a goose. And dressed up so nicely to boot!
+          # imageUrl: xxx
+          buttons:
+          - Ask about my real clothes | realclothes
+
+      - match: (realclothes|my clothes)
+        then:
+          imageUrl: https://cbg.rik.ai/cdn/asylum/rooms/cell-4lights.jpg
+          reply:
+            Suddenly, there is a deep crack, and all the lights drop out in the facility.
+            All that remains is the artificial yellow glow from outside your window
+            and the three illuminated green lightbulbs above the sink
+          buttons:
+            - ask about terms and conditions | termsandconds
+
+      - match: termsandconds
+        then:
+          reply:
+            '\n
+            \n> "Jackkkk..."
+            \n
+            The voice is faint and eerie, like a record being played at the wrong speed.
+            \n
+            \n> “I’mmm envioussss of youuu Jackkk. Soooo envioussss of youuu. My envyyy is fillinggg thisss roooom. Fillll it with meee Jackkk… fill thisss roooom with envyyyyy.”
+            '
+
+
+# TRIGGER #5
+      - match: use (shoes|sandals) on window
+        then:
+          reply:
+            You remove the sandals and lift them to the window.
+            Immediately, their light blue color is transformed to green by the yellow light without.
+            The fourth and final green lightbulb above the sink blinks on, followed by a resounding crack.
+            The lights of the facility pulse as they come on once again.
+          buttons:
+            - wear sandals again
+
+      - match: wear sandals again
+        then:
+          reply:
+            You put the sandals on once again.
+            You hear a loud click from the bedroom door.
+
+# TRIGGER #6
+      - match: exit room
+        if:
+          all:
+            - clothes.has = true
+        then:
+          reply:
+            You step into the hallway, pleased with your accomplishment.
+          goto: epilogue
+
+  - name: epilogue
+    state: intro
+    states:
+      - name: intro
+        long:
+          '
+          At the far end you see a young woman hobbling toward you. 
+          She appears to be bleeding. 
+          “Don’t let them fool you,” she moans.
+          “Okay,” you think to yourself. “Maybe this is a bit much for a Saturday morning…”
+          The orderlies appear behind her.
+          '
+        buttons:
+          - ask woman about the game | askaboutgame
+
+    actions:
+      - match: ask (woman) (about) game
+        then:
+          reply:
+            “This isn’t a game…” she gurgles.
+            “Without a moment’s hesitation, one of the orderlies draws a handgun and fires three quick rounds. The deafening cracks of each roll and echo around the hallway sickeningly as you watch her collapse in a pool of… fake blood?
+            “Okay. You’ve had enough. This isn’t fun.
+
+      # door
+      - match: (say|shout) sesame
+        then:
+          reply: You shout "sesame" to the room.
+            Slowly, the door opens
+          setProps:
+            - door.state = open
+
+      # exit via door
+      - match: exit|leave|back
+        always:
+          reply: You try the door.
+        if:
+          all:
+            - door.state = locked
+        then:
+          reply: It's locked
+        else:
+          reply: It opens.
+          goto: other-room
+
+      # soap
+      - match: (get|take) soap
+        then:
+          reply: You take the soap
+          take:
+            - soap
+          setProps:
+            - pillow.state = noSoap
+            - soap.has = true
+
+      - match: drop|put soap
+        always:
+          setProps:
+            - pillow.state = hasSoap
+            - soap.has = false
+
+      - match: use soap
+        if:
+          all:
+            - soap.has = true
+        then:
+          reply: How do you want to use it?
+
+      - match: exercise
+        then:
+          reply: can you be more specific?
+      - match: jump|jumping jacks|jacks
+        then:
+          reply: You'll have to say how many...
+      - match: (do) 18 (jumping) jacks|18 jacks
+        then:
+          reply: You slip out of your blue sandals and perform 18 jumping jacks in your socks.
+            You can’t remember doing these since childhood. It’s rather fun, actually
+
+      # task triggers
+      - match: (wash|soap) hands neck ears face
+        always:
+          reply: You washed up all according to procedure!
+          setProps:
+            - tasks.wash = done
+      - match: ^(use soap|wash|wash up)$
+        always:
+          reply: Please use the right procedure for washing up!
+
+      - match: use handle on sink
+        if:
+          all:
+            - handle.has = true
+        then:
+          reply: you attach the handle to the broken faucet
+          setProps:
+            - sink.handle = true
+        else:
+          reply: you don't have a handle
+
+
+    items:
+      - name: door
+        state: locked
+        states:
+          - name: locked
+            short: The door is tightly locked
+          - name: open
+            short: The door has opened up, time to make a break for it.
+
+      - name: pillow
+        state: hasSoap
+        states:
+          - name: hasSoap
+            short: There is a bar of soap inside the pillowcase.
+              Was this room the location of a code red?
+          - name: noSoap
+            short: Just an ordinary, head-stained pillow.
+
+      # - name: toothbrush
+      #   canTake: true
+      #   states:
+      #   - name: default
+      #     short: a bit furry around the edges
+
+      - name: soap
+        called: soap|bar of soap|soapbar
+        canTake: true
+        unique: true
+        states:
+        - name: default
+          short: A soggy bar of soap.
+
+      #-------- wardrobe
+      - name: wardrobe
+        called: wardrobe|cupboard|closet|wr
+        state: closed
+        canTake: false
+        states:
+          - name: closed
+            imageUrl: https://cbg.rik.ai/cdn/asylum/items/wardrobe-shut.jpg
+            short: A free-standing wooden wardrobe is against one wall.
+            long: Cheaper than the one your remember from your college dorm.
+              It has two narrow doors with rounded handles that look like flower petals.
+
+          # fixme - depends on clothes.has which state to show
+          - name: open
+            imageUrl: https://cbg.rik.ai/cdn/asylum/items/wardrobe-full.jpg
+            short: You see a bathrobe and sandals inside the open wardrobe
+          - name: openEmpty
+            imageUrl: https://cbg.rik.ai/cdn/asylum/items/wardrobe-empty.jpg
+            short: The wardrobe is open but there's nothing inside
+          - name: openFull
+            imageUrl: https://cbg.rik.ai/cdn/asylum/items/wardrobe-full.jpg
+            short: You see a bathrobe and sandals inside the open wardrobe
+
+      - name: triggers
+        called: lights|light|bulb|switch|room
+        state: dress
+        states:
+          - name: dress
+            short:
+              "You go to look at the lights.
+              Before you can do so, a voice crackles over a hidden speaker in the room.\n
+              \n
+              \n> To proceed to breakfast, please follow your morning routine.
+              \n> Remember, every good boy dresses sharply.
+              \n
+              \n:bulb: _That sounds important enough to add to your `notes`_ "
+            buttons:
+              - ":notebook: notes | x notes"
+          - name: exercise
+            short:
+              "The top bulb in a column of four has come on, now glowing a bright green above the others.
+              The same voice crackles over the speaker.\n
+              \n
+              \n> That’s a good boy, Jack. Now remember, exercise makes the man.
+              \n> Just as many times as there are legs in the room."
+            buttons:
+              - notes | x notes
+
+          - name: wash
+            short:
+              "The second in the column of five green lightbulbs lights up.
+              \nThe invisible speaker crackles. \n
+              \n> Well done, young Jack. You’re fit as a fiddle.
+              \n> And now it’s time for all good boys to scrub away those mean, nasty germs.
+              \n Let’s not be careless, now. Follow proper procedure.
+              "
+            buttons:
+              - notes | x notes
+
+
+      - name: notes
+        called: notebook|note|book|memo
+        state: start
+        states:
+          - name: start
+            short: The notebook is blank. You can add notes here to remember things...
+          - name: dress
+            short:
+              “To proceed to breakfast, please follow your morning routine.
+              Remember, every good boy dresses sharply.”
+
+      - name: clothes
+        called: robe|bathrobe|gown|sandals|slippers|shoes
+        states:
+          - name: default
+            short: some clothes
+            buttons:
+              - bathrobe | x bathrobe
+              - plastic shoes | x shoes
+
+      - name: shoes
+        called: sandals|shoes
+        states:
+          - name: default
+            short: They are translucent blue, and made of rubber.
+
+      - name: bed
+        states:
+        - name: default
+          imageUrl: https://via.placeholder.com/500x200/444488/CCC.png?text=The+Bed
+          short: A narrow metal bed is here
+
+      - name: desk
+        states:
+        - name: default
+          imageUrl: https://via.placeholder.com/500x200/444488/CCC.png?text=The+Desk
+          short: A squat desk with chair sits beside the wardrobe
+
+      - name: sink
+        states:
+        - name: default
+          imageUrl: https://via.placeholder.com/500x200/444488/CCC.png?text=The+Sink
+          short: There is a sink built into the opposite wall
+
+      - name: lights
+        states:
+        - name: default
+          imageUrl: https://via.placeholder.com/500x200/444488/CCC.png?text=Lights
+          short: A vertical row of small lightbulbs is above the sink
+
+      - name: posters
+        called: posters|wall
+        states:
+        - name: default
+          short: Some posters are on the wall.
+          long: You see a drawing, a poster of an album cover and a photo.
+          imageUrl: https://cbg.rik.ai/cdn/asylum/shots/poster-wall.jpg
+
+      - name: drawing
+        called: man poster|vitruvian|davinci|da vinci|drawing|leonardo
+        states:
+        - name: default
+          imageUrl: https://cbg.rik.ai/cdn/asylum/shots/drawing.jpg
+          long: It’s a reproduction of DaVinci’s classic drawing, “Vitruvian Man,” except the figure looks a lot like you at the moment.
+
+      - name: photo
+        called: face photo|high-school|photo|school photo
+        states:
+        - name: default
+          imageUrl: https://cbg.rik.ai/cdn/asylum/shots/photo.jpg
+          long: It’s you, from your senior year in high school, complete with forehead acne and love goggles. How did they manage to make a copy of this? Unnerving.
+
+      - name: mjposter
+        called: jackson|high-school|photo|poster|album|album cover
+        canTake: true
+        states:
+        - name: default
+          imageUrl: https://cbg.rik.ai/cdn/asylum/items/album.jpg
+          long: You remember this album cover from childhood.
+            However, you don’t remember Michael holding a bar of soap in it.
+
+      - name: window
+        states:
+        - name: default
+          imageUrl: https://via.placeholder.com/500x200/444488/CCC.png?text=A+window
+          short: A rectangular window with bars is recessed into the far wall. A door leads out.
+          long: The window is frosted and protected by metal bars from your side.
+            Upon closer inspection, you notice that the unnatural yellow light from without is pulsing slightly, with the faint electrical buzz of artificial lighting.
+
+  #--------------- hallway --------------------
+
+  - name: hallway
+    states:
+      - name: default
+        short: You come out in the hallway
+        imageUrl: https://cbg.rik.ai/cdn/asylum/rooms/hallway.jpg

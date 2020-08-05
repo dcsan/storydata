@@ -1,0 +1,632 @@
+rooms:
+  #--------------- cell --------------------
+
+  - name: cell
+    state: default
+    states:
+      - name: default
+        short: "
+          Before you can move, a voice crackles over a hidden speaker in the room.
+          _“To proceed to breakfast, please follow your morning routine.
+          Remember, every good boy dresses sharply.”_"
+        imageUrl: asylum/rooms/cell.jpg
+        buttons:
+          - Look around | task1
+        # buttons:
+        # - door | x door
+        # - sink | x sink
+        # - desk | x desk
+        # - wall | x wall
+        # - notebook | x notes
+        # - wardrobe | x wardrobe
+      - name: task1
+        imageUrl: asylum/rooms/cell.jpg
+      - name: task2
+        imageUrl: asylum/rooms/cell-1.jpg
+      - name: task3
+        imageUrl: asylum/rooms/cell-2.jpg
+      - name: task4
+        imageUrl: asylum/rooms/cell-3.jpg
+      - name: task5
+        imageUrl: asylum/rooms/cell-dark.jpg
+
+    actions:
+      - match: take poster
+        always:
+          reply: "You turn the poster over to see the following scrawled in black Sharpie: \n
+            \n> Four good boys in turns did *wash*
+            \n> First was *Hans* the boy from Ansbach
+            \n> Next was *Nick* with ruddy skin
+            \n> While *Piers* did follow after him
+            \n> The last was *Fez* a swarthy chum
+            \n> He did the deed then all were done.
+            "
+
+      - match: ^(wash|wash face|wash face with soap|wash hands with soap)$
+        then:
+          after:
+            - washalert
+
+      - match: ^use soap$
+        if:
+          all:
+            - soap.has = yes
+        then:
+          reply: Use soap to do what?
+        else:
+          reply: you don't have any soap
+
+      - match: ^use soap on sink$
+        if:
+          all:
+            - soap.has = yes
+        then:
+          reply: You use the soap, but cleaning the sink doesn't do much.
+          after:
+            - task1
+
+      - match: ^(wash hands|wash ears|wash neck|wash face|wash up)$
+        then:
+          after:
+            - washalert
+
+      - match: washalert
+        then:
+          reply: "
+            The voice crackles out, _'Follow proper procedure, Jack. Michael has told you how.'_
+            "
+
+      - match: ^wash hands neck ears face (with soap|)$
+        if:
+          all:
+            - soap.has = yes
+        then:
+          reply: That's right!
+          setProps:
+            - tasks.wash = done
+            - sink.handle = yes
+          after:
+            - trig3
+        else:
+          reply: you need some soap!
+
+      - match: use sink
+        if:
+          all:
+            - sink.handle = yes
+        then:
+          reply: you use the new handle to run the water
+        else:
+          reply: the handle is broken
+
+      - match: ^use handle$
+        if:
+          all:
+            - handle.has = yes
+        then:
+          reply: Use the handle where?
+        else:
+          reply: You aren't holding a handle.
+
+      - match: ^use handle on sink$
+        if:
+          all:
+            - handle.has = yes
+        then:
+          imageUrl: asylum/shots/sink-handle.jpg
+          reply: you attach the handle to the broken faucet
+          setProps:
+            - sink.handle = yes
+        else:
+          reply: you don't have a handle
+
+      - match: enter bed
+        then:
+          reply: You're not tired
+      - match: enter wardrobe
+        then:
+          reply: this is not a C.S. Lewis novel
+
+      - match: open window
+        then:
+          reply: The bars prevent access to the window
+
+      - match: ^notes$
+        then:
+          before:
+            - x notes
+
+      - match: open desk
+        always:
+          reply: you look in the desk drawer
+          setProps:
+            - desk.state = open
+
+      - match: shut desk
+        always:
+          reply: you close the desk drawer
+          setProps:
+            - desk.state = shut
+          after:
+            - x desk
+
+      - match: search desk
+        always:
+          reply: You don't see anything interesting
+          setProps:
+            - desk.state = open
+          after:
+            - x desk
+
+      # ------  task: dress ---------
+      - match: open wardrobe
+        always:
+          reply: you open the wardrobe
+        if:
+          all:
+            - robe.has = yes
+        then:
+          setProps:
+            - wardrobe.state = openEmpty
+            - wardrobe.open = yes
+          after:
+            - x wardrobe
+        else:
+          setProps:
+            - wardrobe.open = yes
+            - wardrobe.state = openRobe
+          after:
+            - x wardrobe
+
+      # close and retain state based on if youer wearing clothes
+      - match: shut wardrobe
+        always:
+          reply: The doors creak as you close them
+          setProps:
+            - wardrobe.state = closed
+        if:
+          all:
+            - clothes.has = yes
+        then:
+          setProps:
+            - wardrobe.state = closedEmpty
+        else:
+          setProps:
+            - wardrobe.state = closedFull
+
+      - match: take robe
+        if:
+          all:
+            - wardrobe.open = yes
+        then:
+          reply: you put on the Robe
+          take:
+            - robe
+          setProps:
+            - robe.has = yes
+            - wardrobe.state = openEmpty
+          after:
+            - check-task1
+        else:
+          reply: the wardrobe is shut
+
+      - match: (take|wear) sandals
+        then:
+          reply: you put on the blue sandals
+          take:
+            - sandals
+          setProps:
+            - sandals.has = yes
+            - bed.state = nosandals
+          after:
+            - check-task1
+
+      - match: drop sandals
+        then:
+          reply: you put back the sandals
+          # drop:
+          #   - sandals
+          setProps:
+            - sandals.has = no
+            - bed.state = default
+          after:
+            - check-task1
+
+      - match: check-task1
+        if:
+          all:
+            - robe.has = yes
+            - sandals.has = yes
+        then:
+          reply: You're fully dressed!
+          after:
+            - task2
+        else:
+          reply: you aren't fully dressed yet.
+
+      # TRIGER 1 - get dressed
+      - match: task1
+        then:
+          reply: "
+            Before you can move, a voice crackles over a hidden speaker in the room.
+            _“To proceed to breakfast, please follow your morning routine.
+            Remember, every good boy dresses sharply.”_"
+          setProps:
+            - notes.state = task1
+            - room.state = task1
+
+      # TRIGER 2 - do exercise
+      - match: task2
+        then:
+          reply: The bottom bulb in a column of four has come on, now glowing a bright green above the others.
+            The same voice crackles over the speaker. _“That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”_
+          setProps:
+            - notes.state = task2
+            - room.state = task2
+
+      # TRIGGER #3 - get washed
+      - match: task3
+        then:
+          reply: "The second in the column of five green lightbulbs lights up.
+            The invisible speaker crackles.
+            \n> _“Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”_
+            "
+          setProps:
+            - notes.state = task3
+            - room.state = task3
+
+      # TRIGGER #4 - color puzzle
+      - match: task4
+        then:
+          reply: "The third green light in the column above the sink turns on.
+            The voice is encouraging this time.
+            \n> _“Jack, my boy, you’re a wonderful lad.
+            Limber and loose and clean as a goose. And dressed up so nicely to boot!”_"
+          # imageUrl: xxx
+          buttons:
+            - Ask about my real clothes | realclothes
+          setProps:
+            - notes.state = task4
+            - room.state = task4
+
+      - match: ask about my real clothes|real clothes|cracked|realclothes|ask about clothes|ask clothes
+        then:
+          imageUrl: asylum/rooms/cell-4lights.jpg
+          reply: Suddenly, there is a deep crack, and all the lights drop out in the facility.
+            All that remains is the artificial yellow glow from outside your window
+            and the three illuminated green lightbulbs above the sink
+          buttons:
+            - ask about terms and conditions | termsandconds
+
+      - match: termsandconds|ask about terms
+        then:
+          reply: "
+            \n_“Jackkkk…”_
+            The voice is faint and eerie, like a record being played at the wrong speed.
+            "
+          after:
+            - greenMessage
+
+      - match: greenMessage
+        then:
+          reply: "
+            \n
+            _“I’mmm envioussss of youuu Jackkk. Soooo envioussss of youuu. My envyyy is fillinggg thisss roooom. Fillll it with meee Jackkk… fill thisss roooom with envyyyyy.”_
+            "
+
+      # task 5 win
+      - match: use sandals on window|done4
+        if:
+          all:
+            - notes.state = task4
+        then:
+          reply: "
+            You remove the sandals and lift them to the window.
+            Immediately, their light blue color is transformed to green by the yellow light without.
+            The fourth and final green lightbulb above the sink blinks on, followed by a resounding crack.
+            The lights of the facility pulse as they come on once again.\n
+            As you put the sandals on once again, you hear a loud click from the bedroom door."
+          setProps:
+            - door.state = open
+        else:
+          reply: nothing special happens
+
+      # TRIGGER #6
+      - match: exit room|open door|use door
+        if:
+          all:
+            - robe.has = yes
+            - door.state = open
+        then:
+          reply: You step into the hallway, pleased with your accomplishment.
+          goto: epilogue
+        else:
+          reply: The door won't open.
+
+      # door
+      - match: (say|shout) sesame
+        then:
+          reply: You shout "sesame" to the room.
+            Slowly, the door opens
+          setProps:
+            - door.state = open
+
+      # exit via door
+      - match: exit|leave|back
+        always:
+          reply: You try the door.
+        if:
+          all:
+            - door.state = locked
+        then:
+          reply: It's locked
+        else:
+          reply: It opens.
+          goto: epilogue
+
+      # soap
+      - match: take soap
+        then:
+          reply: You take the soap
+          take:
+            - soap
+          setProps:
+            - pillow.state = noSoap
+            - soap.has = yes
+
+      - match: drop soap
+        always:
+          setProps:
+            - pillow.state = hasSoap
+            - soap.has = no
+
+      - match: exercise
+        then:
+          reply: What kind of exercise?
+
+      # has to come before next one since that matches just 'jacks'
+      - match: 18 jumping jacks|18 jacks|18 jumping jacks
+        if:
+          all:
+            - tasks.state = task2
+        then:
+          reply: You slip out of your blue sandals and perform 18 jumping jacks in your socks.
+            You can’t remember doing these since childhood. It’s rather fun, actually
+          after:
+            - task3
+        else:
+          reply: You need to get properly dressed before exercising
+
+      - match: ^(jump|jumping jacks|jacks)$
+        then:
+          reply: You'll have to say how many...
+
+      - match: use handle on sink|attach handle to sink|use handle with sink
+        if:
+          all:
+            - handle.has = yes
+        then:
+          setProps:
+            - sink.handle = yes
+            - sink.state = handle
+          reply: You attach the handle to the sink faucet, it seems to fit perfectly!
+        else:
+          reply: you don't have a handle
+
+      # task triggers
+      - match: ^(wash hands neck ears face|washx)$
+        then:
+          invoke: checkWashing
+
+      - match: look under the bed
+        if:
+          all:
+            - sandals.has = yes
+        then:
+          reply: You see some blue plastic sandals
+        else:
+          reply: A little dirty, but you don't see anything special under the bed
+
+      - match: turn handle|turn faucet|turn water on
+        if:
+          all:
+            - sink.handle = yes
+        then:
+          reply: water starts trickling out. Now would be a good time to wash up...
+
+      - match: use handle with sink
+        if:
+          all:
+            - handle.has = yes
+        then:
+          reply: you attach the handle to the broken faucet.
+          setProps:
+            - sink.handle = yes
+
+    items:
+      - name: door
+        state: locked
+        states:
+          - name: locked
+            short: The door is tightly locked
+          - name: open
+            short: The door has opened up, time to make a break for it.
+
+      - name: handle
+        state: attached
+        canTake: true
+        hidden: true
+        states:
+          - name: attached
+            short: That's an odd looking handle attached to the closet
+          - name: holding
+            short: one of the handles is missing from the closet
+
+      - name: pillow
+        state: hasSoap
+        hidden: true
+        states:
+          - name: hasSoap
+            short: There is a bar of soap inside the pillowcase.
+              Was this room the location of a code red?
+          - name: noSoap
+            short: Just an ordinary, head-stained pillow.
+
+      - name: soap
+        called: soap|bar of soap|soapbar
+        canTake: true
+        unique: true
+        hidden: true
+        states:
+          - name: default
+            short: A soggy bar of soap.
+
+      #-------- wardrobe
+      - name: wardrobe
+        called: wardrobe|cupboard|closet|wr
+        state: closed
+        canTake: false
+        states:
+          - name: closed
+            imageUrl: asylum/items/wardrobe-shut.jpg
+            short: A free-standing wooden wardrobe is against one wall.
+            long: Cheaper than the one your remember from your college dorm.
+              It has two narrow doors with rounded handles that look like flower petals.
+          # depends on clothes.has which state to show
+          - name: openRobe
+            imageUrl: asylum/items/wardrobe-robe.jpg
+            short: You see a bathrobe hanging inside.
+          - name: openEmpty
+            imageUrl: asylum/items/wardrobe-empty.jpg
+            short: The wardrobe is open but there's nothing inside
+
+      - name: robe
+        called: gown|robe|dressing gown|bathrobe
+        canTake: true
+        hidden: true
+        states:
+          - name: default
+            imageUrl: asylum/items/wardrobe-robe.jpg
+
+      - name: notebook
+        called: notebook|note|book|memo|tasks|nb|notes
+        canTake: true
+        state: start
+        states:
+          - name: start
+            short: The notebook is blank. You can add notes here to remember things...
+          - name: task1
+            short: The voice had said _“To proceed to breakfast, please follow your morning routine.
+              Remember, every good boy dresses sharply.”_
+          - name: task2
+            short: "The voice said
+              _“That’s a good boy, Jack. Now remember, exercise makes the man.
+              Just as many times as there are legs in the room”_
+              "
+          - name: task3
+            short: "The voice had said
+              _“And now it’s time for all good boys to scrub away those mean, nasty germs.”_"
+          - name: task5
+            short: "
+              _“I’mmm envioussss of youuu Jackkk. Soooo envioussss of youuu. My envyyy is fillinggg thisss roooom. Fillll it with meee Jackkk… fill thisss roooom with envyyyyy.”_
+              "
+
+      - name: sandals
+        called: sandals|shoes|slippers
+        hidden: true
+        states:
+          - name: default
+            short: They are translucent blue, and made of rubber.
+
+      - name: bed
+        called: under bed
+        states:
+          - name: default
+            imageUrl: asylum/shots/bed-slippers.jpg
+            short: A narrow metal bed is here. What's that poking out from underneath?
+          - name: nosandals
+            imageUrl: asylum/shots/bed.jpg
+            short: A narrow metal bed is here
+
+      - name: desk
+        called: drawer|desk|squat desk
+        states:
+          - name: default
+            imageUrl: asylum/shots/desk-shut.jpg
+            short: A squat desk with chair sits beside the wardrobe
+          - name: open
+            imageUrl: asylum/shots/desk-open.jpg
+            short: The desk drawer is open
+
+      - name: sink
+        called: faucet
+        states:
+          - name: default
+            imageUrl: asylum/shots/sink.jpg
+            short: The handle is missing.
+          - name: handle
+            imageUrl: asylum/shots/sink-handle.jpg
+            short: Now you can use the sink
+
+      - name: chair
+        hidden: true
+        states:
+          - name: default
+            imageUrl: asylum/shots/sink.jpg
+            short: An uncomfortable looking chair
+
+      - name: sit .* (chair|desk)
+        hidden: true
+        states:
+          - name: default
+            imageUrl: asylum/shots/sink.jpg
+            short: You sit on the uncomfortable chair. Nothing new.
+
+      - name: lights
+        called: wall lights
+        states:
+          - name: default
+            imageUrl: https://via.placeholder.com/500x200/444488/CCC.png?text=Lights
+            short: A vertical row of small lightbulbs is above the sink
+
+      - name: wall
+        called: wall
+        states:
+          - name: default
+            short: Some posters are on the wall.
+            long: You see a drawing, a poster of an album cover and a photo.
+            imageUrl: asylum/shots/poster-wall.jpg
+
+      - name: drawing
+        called: man poster|vitruvian|davinci|da vinci|drawing|leonardo
+        hidden: true
+        states:
+          - name: default
+            imageUrl: asylum/shots/drawing.jpg
+            long: It’s a reproduction of DaVinci’s classic drawing, “Vitruvian Man,” except the figure looks a lot like you at the moment.
+
+      - name: photo
+        called: face photo|high-school|photo|school photo
+        hidden: true
+        states:
+          - name: default
+            imageUrl: asylum/items/school-photo.jpg
+            long: It’s you, from your senior year in high school, complete with forehead acne and love goggles. How did they manage to make a copy of this? Unnerving.
+
+      - name: poster
+        called: jackson|high-school|photo|poster|album|album cover
+        hidden: true
+        canTake: true
+        states:
+          - name: default
+            imageUrl: asylum/items/album.jpg
+            long: You remember this album cover from childhood.
+              However, you don’t remember Michael holding a bar of soap in it.
+
+      - name: window
+        states:
+          - name: default
+            imageUrl: asylum/shots/window.jpg
+            short: A rectangular window with bars is recessed into the far wall. A door leads out.
+            long: The window is frosted and protected by metal bars from your side.
+              Upon closer inspection, you notice that the unnatural yellow light from without is pulsing slightly, with the faint electrical buzz of artificial lighting.

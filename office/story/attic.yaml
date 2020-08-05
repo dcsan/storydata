@@ -1,0 +1,5 @@
+rooms:
+  - name: attic
+    states:
+      - name: default
+        long: The attic is upstairs
