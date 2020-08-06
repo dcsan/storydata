@@ -206,11 +206,11 @@ rooms:
             - robe.has = yes
             - wardrobe.state = openEmpty
           after:
-            - check-task1
+            - checkTask1
         else:
           reply: the wardrobe is shut
 
-      - match: (take|wear) sandals
+      - match: take sandals
         then:
           reply: you put on the blue sandals
           take:
@@ -219,7 +219,7 @@ rooms:
             - sandals.has = yes
             - bed.state = nosandals
           after:
-            - check-task1
+            - checkTask1
 
       - match: drop sandals
         then:
@@ -230,9 +230,9 @@ rooms:
             - sandals.has = no
             - bed.state = default
           after:
-            - check-task1
+            - checkTask1
 
-      - match: check-task1
+      - match: checkTask1
         if:
           all:
             - robe.has = yes
@@ -534,6 +534,7 @@ rooms:
       - name: sandals
         called: sandals|shoes|slippers
         hidden: true
+        canTake: true
         states:
           - name: default
             short: They are translucent blue, and made of rubber.
