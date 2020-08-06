@@ -90,10 +90,11 @@ rooms:
 
             \nThe door shuts with a resounding click.
             "
-          buttons:
-            - look around | cell
+          goto: cell
+          # buttons:
+          #   - look around | cell
 
-      - match: cell
+      - match: cell|look|look around
         then:
           goto: cell
 
