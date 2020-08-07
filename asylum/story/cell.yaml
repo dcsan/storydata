@@ -179,7 +179,7 @@ rooms:
             - x wardrobe
 
       # close and retain state based on if youer wearing clothes
-      - match: shut wardrobe
+      - match: (shut|push|close) wardrobe
         always:
           reply: The doors creak as you close them
           setProps:

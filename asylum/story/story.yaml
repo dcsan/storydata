@@ -22,7 +22,8 @@ story:
       \n> `INVentory` what you're carrying
       \n> `Say [something] to [person]`
       \n> `use [thing] on/with [thing]` try combining items
-      \n> `hint` of what to do next
+      \n> `hint` for ideas what to do next
+      \n> put a ' or # in front of your message to just chat to other players
       \n> (shortcuts are in CAPS)
       \n> There are many other things you can say, but these are the basics!
       "
