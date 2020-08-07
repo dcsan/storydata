@@ -12,18 +12,19 @@ rooms:
         imageUrl: asylum/shots/girl-hallway.jpg
 
     actions:
-      - match: ask woman
+      - match: ask woman|askaboutgame
         then:
           imageUrl: asylum/shots/gunshot.jpg
           reply: "
             _“This isn’t a game…”_ she gurgles.
             \nWithout a moment’s hesitation, one of the orderlies draws a handgun and fires three quick rounds.
-            \nThe deafening cracks of each roll and echo around the hallway sickeningly as you watch her collapse in a pool of… fake blood?
+            \nThe deafening crack of each roll and echo around the hallway sickeningly as you watch her collapse in a pool of… fake blood?
             \nOkay. You’ve had enough. This isn’t fun.
             "
 
       - match: look
         then:
+          imageUrl: asylum/shots/girl-hallway.jpg
           reply: "How do you tell them you’ve had enough?
             You see the host in the lab coat who welcomed you taking furious notes on a clipboard at the end of the hallway.
             \n

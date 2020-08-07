@@ -34,11 +34,11 @@ rooms:
       - match: take poster
         always:
           reply: "You turn the poster over to see the following scrawled in black Sharpie: \n
-            \n> Four good boys in turns did *wash*
-            \n> First was *Hans* the boy from Ansbach
-            \n> Next was *Nick* with ruddy skin
-            \n> While *Piers* did follow after him
-            \n> The last was *Fez* a swarthy chum
+            \n> Four good boys in turns did wash
+            \n> First was Hans the boy from Ansbach
+            \n> Next was Nick with ruddy skin
+            \n> While Piers did follow after him
+            \n> The last was Fez a swarthy chum
             \n> He did the deed then all were done.
             "
 
@@ -385,7 +385,7 @@ rooms:
           reply: What kind of exercise?
 
       # has to come before next one since that matches just 'jacks'
-      - match: 18 jumping jacks|18 jacks|18 jumping jacks
+      - match: 18 jumping jacks|18 jacks|18 jumping jacks|jump 18 times|jump 18
         if:
           all:
             - tasks.state = task2
@@ -508,7 +508,7 @@ rooms:
           - name: default
             imageUrl: asylum/items/wardrobe-robe.jpg
 
-      - name: notebook
+      - name: notes
         called: notebook|note|book|memo|tasks|nb|notes
         canTake: true
         state: start
@@ -526,7 +526,7 @@ rooms:
           - name: task3
             short: "The voice had said
               _“And now it’s time for all good boys to scrub away those mean, nasty germs.”_"
-          - name: task5
+          - name: task4
             short: "
               _“I’mmm envioussss of youuu Jackkk. Soooo envioussss of youuu. My envyyy is fillinggg thisss roooom. Fillll it with meee Jackkk… fill thisss roooom with envyyyyy.”_
               "
@@ -544,7 +544,7 @@ rooms:
         states:
           - name: default
             imageUrl: asylum/shots/bed-slippers.jpg
-            short: A narrow metal bed is here. What's that poking out from underneath?
+            short: A narrow metal bed is here.
           - name: nosandals
             imageUrl: asylum/shots/bed.jpg
             short: A narrow metal bed is here
@@ -603,7 +603,7 @@ rooms:
         hidden: true
         states:
           - name: default
-            imageUrl: asylum/shots/drawing.jpg
+            imageUrl: asylum/items/drawing.jpg
             long: It’s a reproduction of DaVinci’s classic drawing, “Vitruvian Man,” except the figure looks a lot like you at the moment.
 
       - name: photo

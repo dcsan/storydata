@@ -42,8 +42,7 @@ rooms:
       imageUrl: asylum/shots/ext-woman.jpg
       long: Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat. After placing your belongings in a locker, you are led down a long hallway to a simple bedroom. In the game, you will play the role of a male inmate of Bell Hill. Your goal is to escape the asylum.
       buttons:
-        - Continue | cont
-        - Ask host about the game | ask
+        - Ask host about the | ask
     actions:
       # ask is a special command that gets converted to say
       - match: ^(ask|say)
