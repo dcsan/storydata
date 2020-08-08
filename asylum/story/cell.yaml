@@ -506,7 +506,7 @@ rooms:
         hidden: true
         states:
           - name: default
-            imageUrl: asylum/items/wardrobe-robe.jpg
+            short: It's a cheap, blue cotton bathrobe.
 
       - name: notes
         called: notebook|note|book|memo|tasks|nb|notes
