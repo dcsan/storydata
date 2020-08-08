@@ -186,17 +186,29 @@ rooms:
       - match: (shut|push|close) wardrobe
         always:
           reply: The doors creak as you close them.
-          setProps:
-            - wardrobe.state = closed
         if:
           all:
-            - robe.has = yes
+            - handle.has = yes
         then:
           setProps:
-            - wardrobe.state = closedEmpty
+            - wardrobe.state = closedOneHandle
         else:
           setProps:
-            - wardrobe.state = closedFull
+            - wardrobe.state = closed
+
+      - match: take handle
+        if:
+          all:
+            - handle.has = no
+        then:
+          reply: You remove the odd looking handle from the wardrobe.
+          take:
+            - handle
+          setProps:
+            - handle.has = yes
+            - wardrobe.state = closedOneHandle
+        else:
+          reply: You already have the handle
 
       # need to add code to alllow multiple ifs / branches
       - match: take robe
@@ -501,6 +513,9 @@ rooms:
             short: A free-standing wooden wardrobe is against one wall.
             long: The wardrobe is cheaper than the one you remember from your college dorm.
               It has two narrow doors with rounded handles that look like flower petals.
+          - name: closedOneHandle
+            imageUrl: asylum/items/wardrobe-onehandle.jpg
+            short: A free-standing wooden wardrobe is against one wall. One handle is missing
           # depends on clothes.has which state to show
           - name: openRobe
             imageUrl: asylum/items/wardrobe-robe.jpg

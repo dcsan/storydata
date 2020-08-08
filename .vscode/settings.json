@@ -1,0 +1,7 @@
+{
+  "yaml.schemas": {
+    "schema/story.schema.json": [
+      "**/**/*.yaml",
+    ]
+  }
+}
