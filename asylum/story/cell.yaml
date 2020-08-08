@@ -25,9 +25,9 @@ rooms:
       - name: task3
         imageUrl: asylum/rooms/cell-2.jpg
       - name: task4
-        imageUrl: asylum/rooms/cell-3.jpg
-      - name: task5
         imageUrl: asylum/rooms/cell-dark.jpg
+      - name: task5
+        imageUrl: asylum/rooms/cell-4.jpg
 
     actions:
       - match: take poster
@@ -313,7 +313,7 @@ rooms:
             _“I’mmm envioussss of youuu Jackkk. Can you matchhhhh the collllllor of my envyyyy, Jackkk?”_
             "
 
-      # task 5 win
+      # task 4 win
       - match: use sandals on window|done4
         if:
           all:
@@ -327,10 +327,11 @@ rooms:
             As you put the sandals on once again, you hear a loud click from the bedroom door."
           setProps:
             - door.state = open
+            - room.state = task5
         else:
           reply: Nothing special happens.
 
-      # TRIGGER #6
+      # TRIGGER #5
       - match: exit room|open door|use door
         if:
           all:
