@@ -9,7 +9,7 @@ rooms:
           <br> The orderlies appear behind her."
         buttons:
           - ask woman about game | askaboutgame
-        imageUrl: asylum/shots/girl-hallway.jpg
+        imageUrl: asylum/shots/hallway-girl.jpg
 
     actions:
       - match: ask woman|askaboutgame
@@ -24,20 +24,23 @@ rooms:
 
       - match: look
         then:
-          imageUrl: asylum/shots/girl-hallway.jpg
-          reply: "How do you tell them you’ve had enough?
+          imageUrl: asylum/shots/hallway-green.jpg
+          reply: "
+            How do you tell them you’ve had enough?
             You see the host in the lab coat who welcomed you taking furious notes on a clipboard at the end of the hallway.
             \n
-            Maybe she didn’t hear you."
+            Maybe she didn’t hear you.
+            "
 
       - match: macaroni
         then:
-          imageUrl: asylum/shots/orderlies.jpg
+          imageUrl: asylum/rooms/hallway.jpg
           reply: "
             The woman looks up at you wanly and motions to the orderlies.
-            _”This man is having delusions of being in an Italian restaurant,”_ she says.
-            _“He is clearly insane. Take him to *the tower*.”_
-            The men advance on you."
+            \n> _”This man is having delusions of being in an Italian restaurant,”_ she says.
+            \n> _“He is clearly insane. Take him to *the tower*.”_
+            The men advance on you.
+            "
 
       - match: use sandals on orderlies
         then:
