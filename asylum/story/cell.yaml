@@ -190,7 +190,7 @@ rooms:
             - wardrobe.state = closed
         if:
           all:
-            - clothes.has = yes
+            - robe.has = yes
         then:
           setProps:
             - wardrobe.state = closedEmpty
@@ -198,10 +198,12 @@ rooms:
           setProps:
             - wardrobe.state = closedFull
 
+      # need to add code to alllow multiple ifs / branches
       - match: take robe
         if:
           all:
             - wardrobe.open = yes
+            - robe.has = no
         then:
           reply: You've put on the blue robe.
           take:
@@ -212,7 +214,7 @@ rooms:
           after:
             - checkTask1
         else:
-          reply: The wardrobe is shut.
+          reply: You can't see a robe. # could be either shut/has
 
       - match: take sandals
         then:
@@ -466,7 +468,7 @@ rooms:
         hidden: true
         states:
           - name: attached
-            short: That's an odd looking handle attached to the wardrobe.
+            short: That's an odd looking wardrobe handle...
           - name: holding
             short: One of the handles is missing from the wardrobe door.
 
