@@ -6,7 +6,7 @@ rooms:
         imageUrl: asylum/shots/title.jpg
         long: "'ESCAPE FROM BELL HILL!' An interactive fiction thriller designed for Slack  \n
         Authored by John Knauss & David Collier \n
-        copyright 2020, all rights reserved \n
+        copyright 2020, all rights reserved \n"
         buttons:
           - BEGIN|home
     actions:
@@ -41,10 +41,14 @@ rooms:
     states:
     - name: default
       imageUrl: asylum/shots/ext-woman.jpg
-      long: Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat. After placing your belongings in a locker, you are led down a long hallway to a simple bedroom. In the game, you will play the role of a male inmate of Bell Hill. \n
-      Your goal is to escape the asylum.
+      long: "
+        Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat.
+        After placing your belongings in a locker, you are led down a long hallway to a simple bedroom.
+        In the game, you will play the role of a male inmate of Bell Hill. \n
+        Your goal is to escape the asylum."
       buttons:
         - ask host about game | ask
+
     actions:
       # ask is a special command that gets converted to say
       - match: ^(ask|say)
