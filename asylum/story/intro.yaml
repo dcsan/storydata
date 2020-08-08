@@ -4,12 +4,13 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/title.jpg
-        long: "Welcome to 'Escape From Bell Hill (Asylum #6)'  \n
-        :ghost: Ready?"
+        long: "'ESCAPE FROM BELL HILL!' An interactive fiction thriller designed for Slack  \n
+        Authored by John Knauss & David Collier \n
+        copyright 2020, all rights reserved \n
         buttons:
-          - continue|home
+          - BEGIN|home
     actions:
-      - match: ^(begin|home|cont|ok) # .* match anything
+      - match: ^(BEGIN|home|cont|ok) # .* match anything
         then:
           goto: home
 
@@ -20,10 +21,10 @@ rooms:
         imageUrl: asylum/shots/fb-ad.jpg
         long:
           "You accept an invitation to playtest a new physical escape room. The setting of the game is a mental asylum called 'Bell Hill'.
-          Having signed the game’s standard NDA, you climb into bed early Friday night, full of anticipation.\n
+          Having signed the game’s standard NDA, you climb into bed early Friday night, full of anticipation. \n
           After all, you _*love*_ escape rooms"
         buttons:
-          - Get some Sleep|sleep
+          - sleep|sleep
     actions:
       - match: ^(sleep|rest|tired|ok)$
         then:
