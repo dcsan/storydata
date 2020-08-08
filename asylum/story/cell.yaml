@@ -120,6 +120,10 @@ rooms:
         else:
           reply: You don't have a handle.
 
+      - match: sit .* (chair|desk)
+        then:
+          reply: You sit on the uncomfortable chair. Nothing happens aside from... discomfort.
+
       - match: enter bed
         then:
           reply: You're not tired.
@@ -436,7 +440,7 @@ rooms:
           all:
             - sink.handle = yes
         then:
-          reply: Water gebins trickling out. Now might be a good time to wash up...
+          reply: Water begins trickling out. Now might be a good time to wash up...
 
       - match: use handle with sink
         if:
@@ -553,7 +557,7 @@ rooms:
             short: A narrow metal bed is here.
 
       - name: desk
-        called: drawer|desk|squat desk
+        called: drawer|desk|squat desk|table
         states:
           - name: default
             imageUrl: asylum/shots/desk-shut.jpg
@@ -561,6 +565,11 @@ rooms:
           - name: open
             imageUrl: asylum/shots/desk-open.jpg
             short: The desk drawer is open.
+
+      - name: chair
+        states:
+          - name: default
+            short: It's an uncomfortable looking chair.
 
       - name: sink
         called: faucet
@@ -571,20 +580,6 @@ rooms:
           - name: handle
             imageUrl: asylum/shots/sink-handle.jpg
             short: Now you can use the sink.
-
-      - name: chair
-        hidden: true
-        states:
-          - name: default
-            imageUrl: asylum/shots/sink.jpg
-            short: It's an uncomfortable looking chair.
-
-      - name: sit .* (chair|desk)
-        hidden: true
-        states:
-          - name: default
-            imageUrl: asylum/shots/sink.jpg
-            short: You sit on the uncomfortable chair. Nothing happens aside from... discomfort.
 
       - name: lights
         called: wall lights
