@@ -4,11 +4,11 @@ rooms:
     states:
       - name: intro
         long: "\nAt the far end you see a young woman hobbling toward you. She appears to be bleeding.
-          \n_“Don’t let them fool you”_ she moans
-          \n _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_
-          \nThe orderlies appear behind her."
+          <br> _“Don’t let them fool you”_ she moans.
+          <br> _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_
+          <br> The orderlies appear behind her."
         buttons:
-          - ask woman about the game | askaboutgame
+          - ask woman about game | askaboutgame
         imageUrl: asylum/shots/girl-hallway.jpg
 
     actions:
