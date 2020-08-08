@@ -71,9 +71,10 @@ rooms:
 
       - match: washalert
         then:
-          reply: "The voice crackles out. 
-            \n> _"Follow proper procedure, Jack. Michael has told you how."_"
-            
+          reply: "
+            The voice crackles out.
+            \n> _'Follow proper procedure, Jack. Michael has told you how.'_
+            "
 
       - match: ^wash hands neck ears face (with soap|)$
         if:
@@ -242,7 +243,8 @@ rooms:
             - task2
         else:
           reply: "
-            \n> _"You're halfway there, Jack."_"
+            \n> _'You're halfway there, Jack.'_
+            "
 
       # TRIGER 1 - get dressed
       - match: task1
@@ -259,7 +261,7 @@ rooms:
       - match: task2
         then:
           reply: "The bottom bulb in a column of four has come on, now glowing a bright green above the others.
-            The same voice crackles over the speaker.  
+            The same voice crackles over the speaker.
             \n> _“That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”_"
           setProps:
             - notes.state = task2
@@ -394,7 +396,7 @@ rooms:
           after:
             - task3
         else:
-          reply:  "
+          reply: "
             \n>_“Let's not get ahead of ourselves, now, Jack. Follow instructions, lad.”_
             "
 
