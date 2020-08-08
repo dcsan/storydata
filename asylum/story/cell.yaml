@@ -20,8 +20,19 @@ rooms:
         # - wardrobe | x wardrobe
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
+        short: "
+          You are in what appears to be an inmate’s bedroom. \n
+          You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images.
+          \nNone of the lights are on.
+          "
       - name: task2
         imageUrl: asylum/rooms/cell-1.jpg
+        short: "
+          You are in what appears to be an inmate’s bedroom. \n
+          You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images.
+          \n
+          \nOne of the lights has come on.
+          "
       - name: task3
         imageUrl: asylum/rooms/cell-2.jpg
       - name: task4
