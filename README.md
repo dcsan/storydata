@@ -62,32 +62,76 @@ An item can have a number of states. When a user types `look ITEM` or `X item` t
             short: a lamp casting light on the room
 ```
 
-## Editing Files
-You can edit files right inside the githb interface, which is quick and dirty, but not that convenient for batch editing.
-Instead we suggest you use the full power of GitHub. It takes a bit of setting up, but is much better for local editing of files.
+## Editing files online
 
+You can edit files right inside the githb web interface, which is quick and dirty!
+
+
+## Editing Files offline using github
+
+For editing lots of stuff it's much better to edit files offline.
+We suggest you use the full power of GitHub. It takes a bit of setting up, but is much better for local editing of files.
+
+### get setup
+- If you don't have one, create a github account at https://github.com/
+- Let one of us know your github user ID and we'll add you to this project.
+- Download github desktop https://desktop.github.com/
 - Download VS Code here https://code.visualstudio.com/download \
 We strongly recommend the excellent and free VS Code editor for yaml script files.
 
-- If you don't have one, create a github account at https://github.com/
-- Let one of us know your github user ID and we'll add you to this project.
-
-- Download github desktop https://desktop.github.com/
+### Clone the github repository
 - make a clone of the "repository" onto your local machine \
   - The repo URL is `git@github.com:dcsan/storydata.git`
 
 - Make a personal branch \
 This keeps your work separate until you're ready to "merge" with everyone else's changes.
 
-- Edit and make changes locally
+### Make your edits
 
+- Edit and make changes locally \
 You can "open in VS code"
 
 - commit your changes \
 A short message helps people know what was changed
 
-- "push" your changes to the central repo
+- "push" your changes to the central repo \
+At this point your changes are in github.com but in your own personal branch.
+You can send a message to us to notify, but githb.com has a feature called a "Pull Request" (PR) for this.
 
-At this point your changes are in github.com but in your own personal branch. To let people know about your changes, we recommend sending a "Pull Request"
+### Make a "Pull Request" to notify people
+Go here:
+https://github.com/dcsan/storydata/pulls
 
+You should see your name highlighted at top, to make a new PR
+
+Or here if it doesn't show:
+https://github.com/dcsan/storydata/compare
+
+choose your branch \
+here you can see all the changes you made.
+
+Create the PR
+
+Ask for reviewers
+
+This should notify people of your new PR
+
+You can also click the `files changed` tab to review all your changes.
+
+If you're confident about all the changes you could just go ahead and "Merge Pull Request"
+
+[Learn more about pull requests here](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
+
+At this point someone will check your changes, and merge into the "master" branch and then we can publish a new version of the Bot!
+
+### VSCode Plugins
+
+VS code has a number of 'plugins' to make editing more convenient.
+Please install the redhat YAML plugin:
+
+https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
+
+Now editing `story.yaml` will show you errors when editing.
+
+<img src='https://raw.githubusercontent.com/redhat-developer/vscode-yaml/master/images/demo.gif' />
 
