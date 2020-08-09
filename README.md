@@ -97,8 +97,12 @@ We strongly recommend the excellent and free VS Code editor for yaml script file
 - make a clone of the "repository" onto your local machine \
   - The repo URL is `git@github.com:dcsan/storydata.git`
 
+![commit](https://cbg.rik.ai/cdn/storydata/docs/images/clone-repo.png)
+
 - Make a personal branch \
 This keeps your work separate until you're ready to "merge" with everyone else's changes.
+
+![commit](https://cbg.rik.ai/cdn/storydata/docs/images/name-branch.png)
 
 ## Make your edits
 
@@ -108,8 +112,11 @@ You can "open in VS code"
 - commit your changes \
 A short message helps people know what was changed
 
+![commit](https://cbg.rik.ai/cdn/storydata/docs/images/commit-msg.png)
+
 - "push" your changes to the central repo \
 At this point your changes are in github.com but in your own personal branch.
+
 
 ## Make a "Pull Request"
 You can send a message to us to notify, but githb.com has a feature called a "Pull Request" (PR) for this.
@@ -118,6 +125,8 @@ Go here:
 https://github.com/dcsan/storydata/pulls
 
 You should see your name highlighted at top, to make a new PR
+
+![make PR](https://cbg.rik.ai/cdn/storydata/docs/images/make-pr.png)
 
 Or here if it doesn't show:
 https://github.com/dcsan/storydata/compare
