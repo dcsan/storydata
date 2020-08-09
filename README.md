@@ -5,6 +5,13 @@ This is a repo to contain game scripts for the CoffeeBreakGames slack games publ
   - [Basic Authoring](#basic-authoring)
   - [Actions](#actions)
   - [Items](#items)
+  - [Editing files online](#editing-files-online)
+  - [Editing Files offline using github](#editing-files-offline-using-github)
+    - [get setup](#get-setup)
+    - [Clone the github repository](#clone-the-github-repository)
+    - [Make your edits](#make-your-edits)
+    - [Make a "Pull Request" to notify people](#make-a-pull-request-to-notify-people)
+    - [VSCode Plugins](#vscode-plugins)
 
 ## Basic Authoring
 
