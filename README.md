@@ -83,3 +83,11 @@ This keeps your work separate until you're ready to "merge" with everyone else's
 
 You can "open in VS code"
 
+- commit your changes \
+A short message helps people know what was changed
+
+- "push" your changes to the central repo
+
+At this point your changes are in github.com but in your own personal branch. To let people know about your changes, we recommend sending a "Pull Request"
+
+
