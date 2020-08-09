@@ -134,6 +134,9 @@ https://github.com/dcsan/storydata/compare
 - choose your branch \
 here you can see all the changes you made.
 
+![choose branch](https://cbg.rik.ai/cdn/storydata/docs/images/find-branch.png)
+
+
 - Create the PR
 - Ask for reviewers \
 This should notify people of your new PR
