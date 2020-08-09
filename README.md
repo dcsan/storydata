@@ -15,6 +15,7 @@ This is a repo to contain game scripts for the CoffeeBreakGames slack games publ
   - [Make your edits](#make-your-edits)
   - [Make a "Pull Request"](#make-a-pull-request)
     - [VSCode Plugins](#vscode-plugins)
+    - [VS Code and github](#vs-code-and-github)
 
 # Basic Authoring
 
@@ -136,6 +137,8 @@ If you're confident about all the changes you could just go ahead and "Merge Pul
 
 At this point someone will check your changes, and merge into the "master" branch and then we can publish a new version of the Bot!
 
+Another reason for doing PRs is to check for conflicts. If you're working on a story and both of you edit the same file at the same time, often Github can just "merge" these changes. But sometimes if you edit eg the exact same line, github will flag this as a conflict, so you have to manually fix this before merging. This is a whole topic to itself though.
+
 ### VSCode Plugins
 
 VS code has a number of 'plugins' to make editing more convenient.
@@ -147,3 +150,5 @@ Now editing `story.yaml` will show you errors when editing.
 
 <img src='https://raw.githubusercontent.com/redhat-developer/vscode-yaml/master/images/demo.gif' />
 
+### VS Code and github
+Microsoft owns both VSCode and Github, so there are excellent tools within VSCode for managing the github changes.
