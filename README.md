@@ -2,11 +2,22 @@
 
 This is a repo to contain game scripts for the CoffeeBreakGames slack games publishing platform.
 
-  - [Basic Authoring](#basic-authoring)
+
+- [Storydata](#storydata)
+- [Basic Authoring](#basic-authoring)
+  - [Rooms](#rooms)
   - [Actions](#actions)
   - [Items](#items)
+- [Editing files online](#editing-files-online)
+- [Editing Files offline using github](#editing-files-offline-using-github)
+  - [Create account](#create-account)
+  - [Clone the github repository](#clone-the-github-repository)
+  - [Make your edits](#make-your-edits)
+  - [Make a "Pull Request"](#make-a-pull-request)
+    - [VSCode Plugins](#vscode-plugins)
+    - [VS Code and github](#vs-code-and-github)
 
-## Basic Authoring
+# Basic Authoring
 
 - Each game sits in it's own folder. Let's take the 'office' game as an example
 
@@ -16,11 +27,13 @@ This is a repo to contain game scripts for the CoffeeBreakGames slack games publ
 
 This sets things like the overall intro to the story
 
+## Rooms
+
 Other files can have different rooms. eg for office we have [lobby](office/story/lobby.yaml), [attic](office/story/attic.yaml) and a room called [office](office/story/office.yaml)
 
 Inside the room files there are two main blocks
-- actions
-- items
+- [actions](#actions)
+- [items](#items)
 
 ## Actions
 When the user types something under the `match` \
@@ -62,31 +75,32 @@ An item can have a number of states. When a user types `look ITEM` or `X item` t
             short: a lamp casting light on the room
 ```
 
-## Editing files online
+# Editing files online
 
-You can edit files right inside the githb web interface, which is quick and dirty!
+You can edit files right inside the githb web interface.
+This is quick, but not that convenient if you're making a lot of changes.
 
 
-## Editing Files offline using github
+# Editing Files offline using github
 
 For editing lots of stuff it's much better to edit files offline.
 We suggest you use the full power of GitHub. It takes a bit of setting up, but is much better for local editing of files.
 
-### get setup
+## Create account
 - If you don't have one, create a github account at https://github.com/
 - Let one of us know your github user ID and we'll add you to this project.
 - Download github desktop https://desktop.github.com/
 - Download VS Code here https://code.visualstudio.com/download \
 We strongly recommend the excellent and free VS Code editor for yaml script files.
 
-### Clone the github repository
+## Clone the github repository
 - make a clone of the "repository" onto your local machine \
   - The repo URL is `git@github.com:dcsan/storydata.git`
 
 - Make a personal branch \
 This keeps your work separate until you're ready to "merge" with everyone else's changes.
 
-### Make your edits
+## Make your edits
 
 - Edit and make changes locally \
 You can "open in VS code"
@@ -96,9 +110,10 @@ A short message helps people know what was changed
 
 - "push" your changes to the central repo \
 At this point your changes are in github.com but in your own personal branch.
+
+## Make a "Pull Request"
 You can send a message to us to notify, but githb.com has a feature called a "Pull Request" (PR) for this.
 
-### Make a "Pull Request" to notify people
 Go here:
 https://github.com/dcsan/storydata/pulls
 
@@ -107,22 +122,22 @@ You should see your name highlighted at top, to make a new PR
 Or here if it doesn't show:
 https://github.com/dcsan/storydata/compare
 
-choose your branch \
+- choose your branch \
 here you can see all the changes you made.
 
-Create the PR
-
-Ask for reviewers
-
+- Create the PR
+- Ask for reviewers \
 This should notify people of your new PR
 
 You can also click the `files changed` tab to review all your changes.
 
-If you're confident about all the changes you could just go ahead and "Merge Pull Request"
+If you're confident about all the changes you could just go ahead and "Merge Pull Request", or wait for someone else to review.
 
 [Learn more about pull requests here](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
 
 At this point someone will check your changes, and merge into the "master" branch and then we can publish a new version of the Bot!
+
+Another reason for doing PRs is to check for conflicts. If you're working on a story and both of you edit the same file at the same time, often Github can just "merge" these changes. But sometimes if you edit eg the exact same line, github will flag this as a conflict, so you have to manually fix this before merging. This is a whole topic to itself though.
 
 ### VSCode Plugins
 
@@ -135,3 +150,5 @@ Now editing `story.yaml` will show you errors when editing.
 
 <img src='https://raw.githubusercontent.com/redhat-developer/vscode-yaml/master/images/demo.gif' />
 
+### VS Code and github
+Microsoft owns both VSCode and Github, so there are excellent tools within VSCode for managing the github changes.
