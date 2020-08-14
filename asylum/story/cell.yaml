@@ -24,7 +24,7 @@ rooms:
         imageUrl: asylum/rooms/cell.jpg
         short: "You are in what appears to be an inmate’s bedroom. \n
           You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images.
-          \nNone of the lights are on."
+          \nA strip of lights is on the wall, but none are on"
 
       # repeat room description
       - name: task2
@@ -150,11 +150,11 @@ rooms:
       - match: ^notes$
         then:
           before:
-            - x notes
+            - x notebook
 
       - match: open desk
         always:
-          reply: You look in the desk drawer.
+          reply: You look in the desk drawer and find a notebook.
           setProps:
             - desk.state = open
 
@@ -204,9 +204,14 @@ rooms:
         then:
           setProps:
             - wardrobe.state = closedOneHandle
+          after:
+            - x wardrobe
+
         else:
           setProps:
             - wardrobe.state = closed
+          after:
+            - x wardrobe
 
       - match: take handle
         if:
@@ -284,7 +289,7 @@ rooms:
             \n> _“To proceed to breakfast, please follow your morning routine.
             Remember, every good boy dresses sharply.”_"
           setProps:
-            - notes.state = task1
+            - notebook.state = task1
             - room.state = task1
 
       # TRIGGER 2 - do exercise
@@ -294,17 +299,17 @@ rooms:
             The same voice crackles over the speaker.
             \n> _“That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”_"
           setProps:
-            - notes.state = task2
+            - notebook.state = task2
             - room.state = task2
 
       # TRIGGER #3 - get washed
       - match: task3
         then:
-          reply: "The second in the column of five green lightbulbs lights up and theinvisible speaker crackles.
+          reply: "The second in the column of four green lightbulbs lights up and theinvisible speaker crackles.
             \n> _“Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”_
             "
           setProps:
-            - notes.state = task3
+            - notebook.state = task3
             - room.state = task3
 
       # TRIGGER #4 - color puzzle
@@ -317,12 +322,12 @@ rooms:
           buttons:
             - ask where my real clothes are | realclothes
           setProps:
-            - notes.state = task4
+            - notebook.state = task4
             - room.state = task4
 
-      - match: ask where my real clothes are|real clothes|cracked|realclothes|ask about clothes|ask clothes
+      - match: ask where my real clothes are|real clothes|cracked|realclothes|ask about clothes|ask clothes|ask where
         then:
-          imageUrl: asylum/rooms/cell-3lights.jpg
+          imageUrl: asylum/rooms/cell-dark.jpg
           reply: Suddenly, there is a deep crack, and all the lights drop out in the facility.
             All that remains is the artificial yellow glow from outside your window
             and the three illuminated green lightbulbs above the sink.
@@ -346,10 +351,10 @@ rooms:
             "
 
       # task 4 win
-      - match: use sandals on window|done4
+      - match: use sandals on window|use robe on window|done4
         if:
           all:
-            - notes.state = task4
+            - notebook.state = task4
         then:
           reply: "
             You remove the sandals and lift them to the window.
@@ -399,12 +404,10 @@ rooms:
       # soap
       - match: take soap
         then:
-          reply: You take the soap.
           take:
             - soap
           setProps:
             - pillow.state = noSoap
-            - soap.has = yes
 
       - match: drop soap
         always:
@@ -416,13 +419,17 @@ rooms:
         then:
           reply: What kind of exercise?
 
+      - match: jump (18|16|4)
+        then:
+          reply: I think there are more legs than that in this room. Better check with Leo.
+
       # has to come before next one since that matches just 'jacks'
-      - match: 18 jumping jacks|18 jacks|18 jumping jacks|jump 18 times|jump 18
+      - match: 22 jumping jacks|22 jacks|22 jumping jacks|jump 22 times|jump 22
         if:
           all:
             - tasks.state = task2
         then:
-          reply: You slip out of your blue sandals and perform 18 jumping jacks in your socks.
+          reply: You slip out of your blue sandals and perform 22 jumping jacks in your socks.
             You can’t remember doing these since childhood. It’s rather fun, actually.
           after:
             - task3
@@ -508,6 +515,7 @@ rooms:
       - name: soap
         called: soap|bar of soap|soapbar
         canTake: true
+        onTake: you pick up the squidgy soap
         unique: true
         hidden: true
         states:
@@ -539,13 +547,14 @@ rooms:
       - name: robe
         called: gown|robe|dressing gown|bathrobe
         canTake: true
+        onTake: you put on the robe
         hidden: true
         states:
           - name: default
             short: It's a cheap, blue cotton bathrobe.
 
-      - name: notes
-        called: notebook|note|book|memo|tasks|nb|notes
+      - name: notebook
+        called: notebook|note|book|memo|tasks|nb|notes|memo|notepad
         canTake: true
         state: start
         states:
@@ -558,10 +567,14 @@ rooms:
             short: "The voice said
               _“That’s a good boy, Jack. Now remember, exercise makes the man.
               Just as many times as there are legs in the room”_
+              \n\n
+              Remember what exercise is best, Jack? If you don’t know yourself, ask Leo
               "
           - name: task3
             short: "The voice had said
-              _“And now it’s time for all good boys to scrub away those mean, nasty germs.”_"
+              _“And now it’s time for all good boys to scrub away those mean, nasty germs.”_
+              \n\n
+              Are you dreaming about soap, Jack? Maybe a fairy can help you"
           - name: task4
             short: "
               _“I’mmm envioussss of youuu Jackkk. Can you matchhhhh the collllllor of my envyyyy, Jackkk?”_
@@ -569,6 +582,7 @@ rooms:
 
       - name: sandals
         called: sandals|shoes|slippers
+        onTake: You slip on the blue sandals
         hidden: true
         canTake: true
         states:
@@ -628,13 +642,15 @@ rooms:
       - name: drawing
         called: man poster|vitruvian|davinci|da vinci|drawing|leonardo
         hidden: true
+        canTake: true
         states:
           - name: default
             imageUrl: asylum/items/drawing.jpg
             long: It’s a reproduction of DaVinci’s classic drawing, “Vitruvian Man,” except the figure looks a lot like you at the moment.
 
       - name: photo
-        called: face photo|high-school|photo|school photo
+        called: face photo|high-school|photo|school photo|pic|picture
+        canTake: true
         hidden: true
         states:
           - name: default

@@ -2,7 +2,7 @@ rooms:
   - name: lobby
     states:
       - name: default
-        long: you're in a patient's cell
+        long: You're in the office lobby
 
     actions:
       - match: sesame
@@ -14,6 +14,8 @@ rooms:
             - door.state = open
 
       - match: open wardrobe
+        always:
+          reply: you open the wardrobe
         if:
           all:
             - clothes.wearing = true
@@ -29,7 +31,8 @@ rooms:
           setProps:
             - wardrobe.state = closed
 
-      - match: get clothes
+      # dont use 'get' as that doesn't get replaced
+      - match: take clothes
         if:
           all:
             - wardrobe.state = openFull
@@ -42,6 +45,17 @@ rooms:
         else:
           reply: You'll have to open the wardrobe first.
 
+      - match: take letter
+        if:
+          all:
+            - letter.has = yes
+        then:
+          reply: You've read the letter
+        else:
+          reply: You read the letter in shock...
+          take:
+            - letter
+
     items:
       # door
       - name: door
@@ -53,6 +67,7 @@ rooms:
             short: The door has opened up, time to make a break for it.
 
       - name: wardrobe
+        called: closet|wr
         state: closed
         canTake: false
         states:
@@ -63,13 +78,22 @@ rooms:
           - name: openFull
             short: You see some clothes inside the open wardrobe
 
-      - name: clothes
-        called: robe|gown
+      # item has other special 'get' handler
+      - name: letter
+        called: letter
+        canTake: true
         states:
           - name: default
-            short: An old dressing gown
+            short: A letter with something shocking.
+
+      - name: shirt
+        called: shirt|clothes|cotton shirt
+        canTake: true
+        states:
+          - name: default
+            short: A spare office shirt, for meetings
           - name: wearing
-            short: you're wearing them
+            short: you're wearing the nice shirt
 
       - name: soap
         called: soap|bar of soap

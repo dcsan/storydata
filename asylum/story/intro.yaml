@@ -59,6 +59,11 @@ rooms:
           buttons:
             - look room | cont
 
+      - match: look room
+        then:
+          reply: You have just begun to examine your surroundings when the *real* door of the room opens, and two burly men dressed as what you take to be orderlies enter.
+          goto: orderlies
+
       - match: cont
         then:
           reply: You have just begun to examine your surroundings when the *real* door of the room opens, and two burly men dressed as what you take to be orderlies enter.
@@ -82,7 +87,7 @@ rooms:
 
     actions:
       # catch both inputs here anyway
-      - match: (tell|cont|stop)
+      - match: (tell|cont|stop|ask)
         then:
           reply: "
             \n_“Is this part of the game?!”_ you stammer angrily.

@@ -2,6 +2,12 @@
 
 ## Story: ###############################
 
+- random content
+  - look under sheets
+  - pillow
+  - under bed
+  - look under pillow
+
 - broken steps in the game near end:
 - real clothes > dead button
 - use sandals|robe on window
@@ -10,6 +16,8 @@
 
 - look item - message even if in inv
 - app / icon
+
+- hints?
 
 - notebook “I’mmm envioussss of youuu Jackkk. Can you matchhhhh the collllllor of my envyyyy, Jackkk?”
 
@@ -51,9 +59,24 @@ I removed the image call for the robe when you "look robe" because you may actua
 itemCnames of undefined
 13|cbg     |       at /mnt/ext250/web-apps/cbg.rik.ai/dist/mup/models/GameObject.js:8:71
 
+- audio clues?
+- hint system
+
+- reset doesn’t reset room state, need to look into that
+
+
+- test write > log files?
+- 'xx joined channel' - handle it better - not as text
+- tannoy hints?
+- slash command for hints? or to echo into room?
+
+- handle image events
+
 - home page for the app? /about ?
 
 - after get item, set its 'hidden' to false
+- check inventory on playthrough
+- database backing?
 
 - /hint to send hints to another channel
 - lobby bot?

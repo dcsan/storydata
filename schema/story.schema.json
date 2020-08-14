@@ -221,6 +221,9 @@
                 "canTake": {
                   "type": "boolean"
                 },
+                "onTake": {
+                  "type": "string"
+                },
                 "hidden": {
                   "type": "boolean"
                 },

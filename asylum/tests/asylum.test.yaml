@@ -70,12 +70,16 @@
     - input: x pillow
       output: ordinary, head-stained pillow
 
-    - input: inv
-      output: ^Soap
-      lines: 2
+    # - input: inv
+    #   output: ^Soap
+    #   lines: 2
 
     - input: x wardrobe
       output: the wardrobe is empty
+      lines: 1
+
+    - input: x handle
+      output: That's an odd looking wardrobe handle...
       lines: 1
 
     - input: shut wardrobe
@@ -85,10 +89,6 @@
     - input: x handle
       output: That's an odd looking wardrobe handle
       lines: 1
-
-    # - input: inv
-    #   output: ^Handle ##### ------ failing inv?
-    #   lines: 2
 
     - input: use sink
       output: the handle is missing
@@ -102,6 +102,10 @@
       output: you remove the odd looking handle from the wardrobe
       lines: 1
 
+    - input: inv
+      output: ^Handle ##### ------ failing inv?
+      lines: 2
+
     - input: use handle on sink
       output: You attach the handle to the faucet
       lines: 2
@@ -109,6 +113,12 @@
     - input: wash up
       output: Follow proper procedure, Jack.
       lines: 2
+
+    - input: wash hands neck ears face
+      output: You don't have any soap
+
+    - input: get soap
+      output: You take the soap
 
     - input: wash hands neck ears face
       output: The third green light in the column
