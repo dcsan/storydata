@@ -1,0 +1,139 @@
+---
+- room: cell
+  tests:
+    - input: gt cell
+      output: ^You are in what appears
+    - input: look
+      output: ^You are in what
+    - input: task1
+      output: ^Before you can move
+    - input: x wardrobe
+      output: ^The wardrobe is cheaper than
+
+    #-------- task1 - getting dressed ------------------------
+    - input: x notes
+      output: every good boy dresses sharply
+
+    - input: open wardrobe
+      output: ^you see a bathrobe hanging inside
+      checks:
+        - robe.has = no
+
+    - input: get robe
+      output: You've put on the blue robe
+      checks:
+        - robe.has = yes
+
+    - input: look at bed
+      output: a narrow metal bed is here
+
+    - input: get sandals
+      output: you're fully dressed now
+      checks:
+        - sandals.has = yes
+        - robe.has = yes
+        - notes.state = task2
+
+    #-------- task 2 jumping ------------------------
+    - input: x notes
+      output: exercise makes the man
+
+    - input: get poster
+      output: You turn the poster over to see the following
+
+    - input: jump
+      output: you'll have to say how many
+      lines: 1
+
+    - input: jump 18 times
+      output: You slip out of your blue sandals and perform 18 jumping jacks
+
+    #-------- task 3 - wash up ------------------------
+    - input: x notes
+      output: scrub away those mean, nasty germs
+
+    - input: x bed
+      output: soiled old pillow
+
+    - input: x pillow
+      output: There's a bar of soap inside the pillowcase
+      checks:
+        - soap.has = no
+        # - soap.seen = yes      # TODO - implement events on X item
+
+    - input: get soap
+      output: you take the soap
+      lines: 1
+      checks:
+        - soap.has = yes
+
+    - input: x pillow
+      output: ordinary, head-stained pillow
+
+    - input: inv
+      output: ^Soap
+      lines: 2
+
+    - input: x wardrobe
+      output: the wardrobe is empty
+      lines: 1
+
+    - input: shut wardrobe
+      output: The doors creak as you close them
+      lines: 1
+
+    - input: x handle
+      output: That's an odd looking wardrobe handle
+      lines: 1
+
+    # - input: inv
+    #   output: ^Handle ##### ------ failing inv?
+    #   lines: 2
+
+    - input: use sink
+      output: the handle is missing
+      lines: 2
+
+    - input: use handle on sink
+      output: you don't have a handle
+      lines: 2
+
+    - input: get handle
+      output: you remove the odd looking handle from the wardrobe
+      lines: 1
+
+    - input: use handle on sink
+      output: You attach the handle to the faucet
+      lines: 2
+
+    - input: wash up
+      output: Follow proper procedure, Jack.
+      lines: 2
+
+    - input: wash hands neck ears face
+      output: The third green light in the column
+
+    #-------- task 4 - wash up ------------------------
+    - input: x notes
+      output: Can you matchhhhh the collllllor of my envyyyy
+
+    - input: realclothes # button
+      output: Suddenly, there is a deep crack
+
+    # different ways to say it
+    - input: termsandconds # button
+      output: Can you matchhhhh the collllllor of my envyyyy
+      lines: 1
+    - input: ask about terms
+      output: Can you matchhhhh the collllllor of my envyyyy
+      lines: 1
+    - input: ask about those terms and conditions
+      output: Can you matchhhhh the collllllor of my envyyyy
+      lines: 1
+      checks:
+        - notes.state = task4
+
+    #-------- task 4 - wash up ------------------------
+
+    - input: use sandals on window
+      output: You remove the sandals and lift them to the window

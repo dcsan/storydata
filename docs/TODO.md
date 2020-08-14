@@ -1,8 +1,17 @@
 # TODO:
 
-## Content
+## Story: ###############################
+
+- broken steps in the game near end:
+- real clothes > dead button
+- use sandals|robe on window
+- @DC. this still isn't working. If they can't solve the task, no ending.
+- the soap, handle, and sandals can be gotten without actually searching for them
 
 - look item - message even if in inv
+- app / icon
+
+- notebook “I’mmm envioussss of youuu Jackkk. Can you matchhhhh the collllllor of my envyyyy, Jackkk?”
 
 - "aren't fully dressed yet" check - change message?
 - add image on 'look' at end
@@ -38,16 +47,37 @@ currently:
 I removed the image call for the robe when you "look robe" because you may actually ave it in INV (as I did) at the time looking
 
 
-## TOP:
+## CODE:  ###############################
 itemCnames of undefined
 13|cbg     |       at /mnt/ext250/web-apps/cbg.rik.ai/dist/mup/models/GameObject.js:8:71
 
+- home page for the app? /about ?
+
+- after get item, set its 'hidden' to false
+
+- /hint to send hints to another channel
+- lobby bot?
+- sound effects
 - hint system
+- progress bar feeling / task bar?
+- post game survey?
+- notebook in inventory
+- notes get checked off / task list
+- icons for inv items
+- promo website?
+
+- cleanup yaml  props: &ref_0
+
+- tie bots/rooms to channels?
+- help/onboarding story/bot?
+
+- merge branch and stateInfo types
+  - allow branch/state more features? IFs?
+- images for inv items?
 
 - handled/not just return boolean
 - case statement? to allow multiple IFs
 - exits with buttons?
-- progress bar feeling
 - web puzzle?
 - udpate command? would pull from git
 
@@ -64,7 +94,6 @@ itemCnames of undefined
 - get XXX messages in parser / game level get passed to right object
 - ignore too long sentences
 - items shouldn't appear in room if you 'get' them
-- merge branch and stateInfo types
 - rotating hint footer system
 - test logic of 'drop' item
 

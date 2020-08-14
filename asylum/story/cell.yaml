@@ -4,13 +4,14 @@ rooms:
   - name: cell
     state: default
     states:
+      # actually same as task1
       - name: default
-        short: "
-          You are in what appears to be an inmate’s bedroom. \n
+        short: "You are in what appears to be an inmate’s bedroom. \n
           You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images."
         imageUrl: asylum/rooms/cell.jpg
         buttons:
           - look room | task1
+
         # buttons:
         # - door | x door
         # - sink | x sink
@@ -18,17 +19,17 @@ rooms:
         # - wall | x wall
         # - notebook | x notes
         # - wardrobe | x wardrobe
+      # intro to the room
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
-        short: "
-          You are in what appears to be an inmate’s bedroom. \n
+        short: "You are in what appears to be an inmate’s bedroom. \n
           You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images.
-          \nNone of the lights are on.
-          "
+          \nNone of the lights are on."
+
+      # repeat room description
       - name: task2
         imageUrl: asylum/rooms/cell-1.jpg
-        short: "
-          You are in what appears to be an inmate’s bedroom. \n
+        short: "You are in what appears to be an inmate’s bedroom. \n
           You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images.
           \n
           \nOne of the lights has come on.
@@ -275,7 +276,7 @@ rooms:
             \n> _'You're halfway there, Jack.'_
             "
 
-      # TRIGER 1 - get dressed
+      # TRIGGER 1 - get dressed
       - match: task1
         then:
           reply: "
@@ -286,7 +287,7 @@ rooms:
             - notes.state = task1
             - room.state = task1
 
-      # TRIGER 2 - do exercise
+      # TRIGGER 2 - do exercise
       - match: task2
         then:
           reply: "The bottom bulb in a column of four has come on, now glowing a bright green above the others.
@@ -328,7 +329,7 @@ rooms:
           buttons:
             - ask about those terms and conditions | termsandconds
 
-      - match: termsandconds|ask about terms
+      - match: termsandconds|ask about [.*|] terms|ask about terms
         then:
           reply: "
             \n>_“Jackkkk…”_
@@ -579,10 +580,10 @@ rooms:
         states:
           - name: default
             imageUrl: asylum/shots/bed-slippers.jpg
-            short: A narrow metal bed is here.
+            short: A narrow metal bed is here with a soiled old pillow.
           - name: nosandals
             imageUrl: asylum/shots/bed.jpg
-            short: A narrow metal bed is here.
+            short: A narrow metal bed is here with a soiled old pillow.
 
       - name: desk
         called: drawer|desk|squat desk|table
