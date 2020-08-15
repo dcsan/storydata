@@ -1,6 +1,24 @@
 # TODO:
 
 ## Story: ###############################
+Ask woman = hallway.goons
+
+. hallway-goons
+. hallway-three
+. hallway-green
+. Title
+Intro = . Hallway-goons
+
+
+
+. Look = it depends on if the woman has been shot or not yet
+5:38
+. Macaroni= hallway.three
+5:38
+. Use sandals=hallway.green
+5:39
+. Ending = title
+
 
 - random content
   - look under sheets
