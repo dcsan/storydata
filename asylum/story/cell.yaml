@@ -351,7 +351,7 @@ rooms:
             "
 
       # task 4 win
-      - match: use sandals on window|use robe on window|done4
+      - match: use sandals on window|use robe on window|use sandals with window|use robe with window|done4
         if:
           all:
             - notebook.state = task4
@@ -424,12 +424,12 @@ rooms:
           reply: I think there are more legs than that in this room. Better check with Leo.
 
       # has to come before next one since that matches just 'jacks'
-      - match: 22 jumping jacks|22 jacks|22 jumping jacks|jump 22 times|jump 22
+      - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24
         if:
           all:
             - tasks.state = task2
         then:
-          reply: You slip out of your blue sandals and perform 22 jumping jacks in your socks.
+          reply: You slip out of your blue sandals and perform 24 jumping jacks in your socks.
             You can’t remember doing these since childhood. It’s rather fun, actually.
           after:
             - task3

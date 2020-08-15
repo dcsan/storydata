@@ -4,9 +4,9 @@ rooms:
     states:
       - name: intro
         long: "\nAt the far end you see a young woman hobbling toward you. She appears to be bleeding.
-          <br> _“Don’t let them fool you”_ she moans.
-          <br> _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_
-          <br> The orderlies appear behind her."
+          \n _“Don’t let them fool you”_ she moans.
+          \n _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_
+          \n The orderlies appear behind her."
         buttons:
           - ask woman about game | askaboutgame
         imageUrl: asylum/shots/hallway-girl.jpg
@@ -24,13 +24,16 @@ rooms:
 
       - match: look
         then:
-          imageUrl: asylum/shots/hallway-green.jpg
+          imageUrl: asylum/shots/hallway-three.jpg
           reply: "
-            How do you tell them you’ve had enough?
-            You see the host in the lab coat who welcomed you taking furious notes on a clipboard at the end of the hallway.
+            \nYou see the host in the lab coat who welcomed you taking furious notes on a clipboard at the end of the hallway.
             \n
-            Maybe she didn’t hear you.
+            How do you tell them you’ve had enough?
             "
+
+      - match: hint
+        then:
+          reply: How do you tell them you’ve had enough?
 
       - match: macaroni
         then:
@@ -41,15 +44,24 @@ rooms:
             \n> _“He is clearly insane. Take him to *the tower*.”_
             The men advance on you.
             "
+          buttons:
+            - use sandals on orderlies | use sandals
 
-      - match: use sandals on orderlies
-        then:
+      - match: use sandals
+        always:
           reply: "
             The lights in the facility drop out with a heavy crack,
             and the hallway is bathed in sickly green light.
             The rough hands of the orderlies grab you and drag you in the opposite direction of the host.
-            As you disappear deeper into the asylum, you hear her call out. \n
-            _“You should have read the terms and conditions more carefully, Jack.”_
+            As you disappear deeper into the asylum, you hear her call out.
+            \n
+            \n_“You should have read the terms and conditions more carefully, Jack.”_
+            \n
+            \n_*Welcome to Bell Hill!*_"
+          after:
+            - ending
 
-            _*Welcome to Bell Hill!*_
-            "
+      - match: ending
+        always:
+          imageUrl: asylum/shots/title.jpg
+          reply: Thank you for playing the introduction to Escape From Bell Hill
