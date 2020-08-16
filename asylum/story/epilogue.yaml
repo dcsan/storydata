@@ -53,7 +53,7 @@ rooms:
 
       - match: use sandals
         then:
-          imageUrl: asylum/rooms/hallway-green.jpg
+          imageUrl: asylum/shots/hallway-green.jpg
         always:
           reply: "
             The hallway is bathed in sickly green light as
