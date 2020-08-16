@@ -1,5 +1,18 @@
 # TODO:
 
+## TOP ##########
+√ hint command
+- r / reply command? when bot doesn't understand?
+
+- synonyms? load at startup?
+- NLP inputs
+
+- web page puzzle
+- audio hints?
+
+- planning: website / marcom message
+
+
 ## Story: ###############################
 Ask woman = hallway.goons
 
@@ -78,10 +91,9 @@ itemCnames of undefined
 13|cbg     |       at /mnt/ext250/web-apps/cbg.rik.ai/dist/mup/models/GameObject.js:8:71
 
 - audio clues?
-- hint system
+- hint system - multiple hints?
 
-- reset doesn’t reset room state, need to look into that
-
+√ reset doesn’t reset room state, need to look into that
 
 - test write > log files?
 - 'xx joined channel' - handle it better - not as text
@@ -92,14 +104,13 @@ itemCnames of undefined
 
 - home page for the app? /about ?
 
-- after get item, set its 'hidden' to false
-- check inventory on playthrough
+√ after get item, set its 'hidden' to false
+√ check inventory on playthrough
 - database backing?
 
-- /hint to send hints to another channel
+√ /hint to send hints to another channel
 - lobby bot?
 - sound effects
-- hint system
 - progress bar feeling / task bar?
 - post game survey?
 - notebook in inventory

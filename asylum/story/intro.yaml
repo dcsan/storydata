@@ -21,8 +21,8 @@ rooms:
         imageUrl: asylum/shots/fb-ad.jpg
         long:
           "You accept an invitation to playtest a new physical escape room. The setting of the game is a mental asylum called 'Bell Hill'.
-          Having signed the game’s standard NDA, you climb into bed early Friday night, full of anticipation. 
-          
+          Having signed the game’s standard NDA, you climb into bed early Friday night, full of anticipation.
+
           \n After all, you _*love*_ escape rooms."
         buttons:
           - sleep|sleep
@@ -46,7 +46,7 @@ rooms:
         Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat.
         After placing your belongings in a locker, you are led down a long hallway to a simple bedroom.
         In the game, you will play the role of a male inmate of Bell Hill.
-        
+
         \n Your goal is to escape the asylum."
       buttons:
         - ask host about game | ask
