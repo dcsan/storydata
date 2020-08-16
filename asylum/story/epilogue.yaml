@@ -4,12 +4,15 @@ rooms:
     states:
       - name: intro
         long: "\nAt the far end you see a young woman hobbling toward you. She appears to be bleeding.
+          \n
           \n _“Don’t let them fool you”_ she moans.
+          \n
           \n _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_
+          \n
           \n The orderlies appear behind her."
         buttons:
           - ask woman about game | askaboutgame
-        imageUrl: asylum/shots/hallway-girl.jpg
+        imageUrl: asylum/shots/hallway_goons.jpg
 
     actions:
       - match: ask woman|askaboutgame
@@ -17,8 +20,11 @@ rooms:
           imageUrl: asylum/shots/gunshot.jpg
           reply: "
             _“This isn’t a game…”_ she gurgles.
+            \n
             \nWithout a moment’s hesitation, one of the orderlies draws a handgun and fires three quick rounds.
+            \n
             \nThe deafening crack of each roll and echo around the hallway sickeningly as you watch her collapse in a pool of… fake blood?
+            \n
             \nOkay. You’ve had enough. This isn’t fun.
             "
 
@@ -27,6 +33,7 @@ rooms:
           imageUrl: asylum/shots/hallway-three.jpg
           reply: "
             \nYou see the host in the lab coat who welcomed you taking furious notes on a clipboard at the end of the hallway.
+            
             \n
             How do you tell them you’ve had enough?
             "
@@ -37,23 +44,28 @@ rooms:
 
       - match: macaroni
         then:
-          imageUrl: asylum/rooms/hallway.jpg
+          imageUrl: asylum/rooms/hallway-three.jpg
           reply: "
             The woman looks up at you wanly and motions to the orderlies.
+            \n
             \n> _”This man is having delusions of being in an Italian restaurant,”_ she says.
+            \n
             \n> _“He is clearly insane. Take him to *the tower*.”_
-            The men advance on you.
+            \n
+            \nThe men advance on you.
             "
           buttons:
             - use sandals on orderlies | use sandals
 
       - match: use sandals
+        then:
+          imageUrl: asylum/rooms/hallway-green.jpg
         always:
           reply: "
-            The lights in the facility drop out with a heavy crack,
-            and the hallway is bathed in sickly green light.
-            The rough hands of the orderlies grab you and drag you in the opposite direction of the host.
-            As you disappear deeper into the asylum, you hear her call out.
+            The hallway is bathed in sickly green light as
+            the orderlies grab you and drag you in the opposite direction of the host.
+            \n
+            \nAs you disappear deeper into the asylum, you hear her call out.
             \n
             \n_“You should have read the terms and conditions more carefully, Jack.”_
             \n
