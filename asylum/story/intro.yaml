@@ -9,8 +9,9 @@ rooms:
         copyright 2020, all rights reserved \n"
         buttons:
           - BEGIN|home
+
     actions:
-      - match: ^(begin|home|cont|ok) # .* match anything
+      - match: ^(begin|home|ok) # .* match anything
         then:
           goto: home
 
@@ -53,7 +54,7 @@ rooms:
 
     actions:
       # ask is a special command that gets converted to say
-      - match: ^(ask|say)
+      - match: ask
         then:
           imageUrl: asylum/shots/cell-woman.jpg
           reply: The host informs you the game will last one hour, followed by a short debrief. If you are ever stuck or want to leave, just say the safe word `macaroni`.
@@ -66,7 +67,7 @@ rooms:
           reply: You have just begun to examine your surroundings when the *real* door of the room opens, and two burly men dressed as what you take to be orderlies enter.
           goto: orderlies
 
-      - match: cont
+      - match: look room|cont
         then:
           reply: You have just begun to examine your surroundings when the *real* door of the room opens, and two burly men dressed as what you take to be orderlies enter.
           goto: orderlies

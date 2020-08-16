@@ -44,7 +44,7 @@ rooms:
 
       - match: macaroni
         then:
-          imageUrl: asylum/rooms/hallway-three.jpg
+          imageUrl: asylum/shots/hallway-three.jpg
           reply: "
             The woman looks up at you wanly and motions to the orderlies.
             \n
