@@ -7,7 +7,7 @@ rooms:
           \n
           \n _“Don’t let them fool you”_ she moans, as two orderlies approach.
           \n
-          \n _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_
+          \n _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_"
         buttons:
           - ask woman about game | askaboutgame
         imageUrl: asylum/shots/hallway_goons.jpg
@@ -17,11 +17,9 @@ rooms:
         then:
           imageUrl: asylum/shots/gunshot.jpg
           reply: "
-            _“This isn’t a game…”_ she gurgles.
-            \n
-            \nWithout a moment’s hesitation, one of the orderlies draws a handgun and fires. The woman collapses in a pool of… fake blood?
-            \n
-            \nOkay. You’ve had enough. This isn’t fun.
+          “This isn’t a game…”_ she gurgles.
+          \n Without a moment’s hesitation, one of the orderlies draws a handgun and fires. The woman collapses in a pool of… fake blood?
+          \n Okay. You’ve had enough. This isn’t fun.
             "
 
       - match: look
