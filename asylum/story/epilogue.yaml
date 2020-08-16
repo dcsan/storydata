@@ -3,13 +3,11 @@ rooms:
     state: intro
     states:
       - name: intro
-        long: "\nAt the far end you see a young woman hobbling toward you. She appears to be bleeding.
+        long: "\nA young woman who appears to be bleeding hobbles toward you.
           \n
-          \n _“Don’t let them fool you”_ she moans.
+          \n _“Don’t let them fool you”_ she moans, as two orderlies approach.
           \n
           \n _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_
-          \n
-          \n The orderlies appear behind her."
         buttons:
           - ask woman about game | askaboutgame
         imageUrl: asylum/shots/hallway_goons.jpg
@@ -21,9 +19,7 @@ rooms:
           reply: "
             _“This isn’t a game…”_ she gurgles.
             \n
-            \nWithout a moment’s hesitation, one of the orderlies draws a handgun and fires three quick rounds.
-            \n
-            \nThe deafening crack of each roll and echo around the hallway sickeningly as you watch her collapse in a pool of… fake blood?
+            \nWithout a moment’s hesitation, one of the orderlies draws a handgun and fires. The woman collapses in a pool of… fake blood?
             \n
             \nOkay. You’ve had enough. This isn’t fun.
             "
@@ -48,9 +44,9 @@ rooms:
           reply: "
             The woman looks up at you wanly and motions to the orderlies.
             \n
-            \n> _”This man is having delusions of being in an Italian restaurant,”_ she says.
+            \n>”This man is having delusions of being in an Italian restaurant,” she says.
             \n
-            \n> _“He is clearly insane. Take him to *the tower*.”_
+            \n>“He is clearly insane. Take him to *the tower*.”
             \n
             \nThe men advance on you.
             "
@@ -63,9 +59,7 @@ rooms:
         always:
           reply: "
             The hallway is bathed in sickly green light as
-            the orderlies grab you and drag you in the opposite direction of the host.
-            \n
-            \nAs you disappear deeper into the asylum, you hear her call out.
+            the orderlies grab you and drag you in the opposite direction of the host. As you disappear deeper into the asylum, you hear the host call out.
             \n
             \n_“You should have read the terms and conditions more carefully, Jack.”_
             \n
@@ -76,4 +70,4 @@ rooms:
       - match: ending
         always:
           imageUrl: asylum/shots/title.jpg
-          reply: Thank you for playing the introduction to Escape From Bell Hill
+          reply: Thank you for playing the introduction to Escape From Bell Hill! *TO BE CONTINUED*
