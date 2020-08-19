@@ -5,8 +5,11 @@
       output: ^You are in what appears
     - input: look
       output: ^You are in what
+      checks:
+        - notes.state = start
     - input: task1
       output: ^Before you can move
+
     - input: x wardrobe
       output: ^The wardrobe is cheaper than
 
@@ -20,7 +23,7 @@
         - robe.has = no
 
     - input: get robe
-      output: You've put on the blue robe
+      output: You put on the robe
       checks:
         - robe.has = yes
 
@@ -28,7 +31,8 @@
       output: a narrow metal bed is here
 
     - input: get sandals
-      output: you're fully dressed now
+      output: You slip on the blue sandals
+      lines: 5
       checks:
         - sandals.has = yes
         - robe.has = yes

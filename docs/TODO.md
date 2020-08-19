@@ -2,16 +2,28 @@
 
 ## TOP ##########
 √ hint command
+
+- progress feedback
+- hint/say command fix / dont remove stops
+- hint system? using context
+- precommands / postcommands? so
+- synonyms? load at startup?
+
 - r / reply command? when bot doesn't understand?
 
-- synonyms? load at startup?
-- NLP inputs
+- NLP parser?
+
+- authoring tools?
+- way to port more content?
+- how to get to launch with 3 stories?
+- sketch out landing page / intro site
 
 - web page puzzle
 - audio hints?
 
 - planning: website / marcom message
-
+- setup for multi channel?
+- deploy to app store?
 
 ## Story: ###############################
 Ask woman = hallway.goons

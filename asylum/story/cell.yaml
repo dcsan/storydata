@@ -419,10 +419,6 @@ rooms:
         then:
           reply: What kind of exercise?
 
-      - match: jump (18|16|4)
-        then:
-          reply: I think there are more legs than that in this room. Better check with Leo.
-
       # has to come before next one since that matches just 'jacks'
       - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24
         if:
@@ -437,6 +433,10 @@ rooms:
           reply: "
             \n>_“Let's not get ahead of ourselves, now, Jack. Follow instructions, lad.”_
             "
+
+      - match: jump (18|16|4)
+        then:
+          reply: I think there are more legs than that in this room. Better check with Leo.
 
       - match: ^(jump|jumping jacks|jacks)$
         then:

@@ -1,0 +1,17 @@
+- base: examine
+  syns: [look, look at, look at the, inspect]
+
+- base: take
+  syns: [t, take, get, wear, grab]
+
+- base: goto
+  syns: [gt]
+
+- base: shut
+  syns: [close]
+
+- base: ask
+  syns: [say, say to, tell, speak, shout at]
+
+- base: with
+  syns: [on, against, into]
