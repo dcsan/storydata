@@ -1,14 +1,17 @@
 ---
 - room: cell
+
   tests:
     - input: gt cell
       output: ^You are in what appears
+
     - input: look
       output: ^You are in what
       checks:
         - notes.state = start
+
     - input: task1
-      output: ^Before you can move
+      output: Before you can move
 
     - input: x wardrobe
       output: ^The wardrobe is cheaper than
@@ -23,11 +26,17 @@
         - robe.has = no
 
     - input: get robe
-      output: You put on the robe
+      output: You've put on the blue robe
+
+    - input: inv
+      output: [Robe]
+
+    - input: look at bed
+      output: a narrow metal bed is here
       checks:
         - robe.has = yes
 
-    - input: look at bed
+    - input: examine bed
       output: a narrow metal bed is here
 
     - input: get sandals
@@ -50,33 +59,14 @@
       lines: 1
 
     - input: jump 18 times
-      output: You slip out of your blue sandals and perform 18 jumping jacks
+      output: I think there are more legs than that in this room
+
+    - input: jump 24 times
+      output: You slip out of your blue sandals and perform
 
     #-------- task 3 - wash up ------------------------
     - input: x notes
       output: scrub away those mean, nasty germs
-
-    - input: x bed
-      output: soiled old pillow
-
-    - input: x pillow
-      output: There's a bar of soap inside the pillowcase
-      checks:
-        - soap.has = no
-        # - soap.seen = yes      # TODO - implement events on X item
-
-    - input: get soap
-      output: you take the soap
-      lines: 1
-      checks:
-        - soap.has = yes
-
-    - input: x pillow
-      output: ordinary, head-stained pillow
-
-    # - input: inv
-    #   output: ^Soap
-    #   lines: 2
 
     - input: x wardrobe
       output: the wardrobe is empty
@@ -88,7 +78,7 @@
 
     - input: shut wardrobe
       output: The doors creak as you close them
-      lines: 1
+      lines: 4
 
     - input: x handle
       output: That's an odd looking wardrobe handle
@@ -107,23 +97,59 @@
       lines: 1
 
     - input: inv
-      output: ^Handle ##### ------ failing inv?
-      lines: 2
+      output: [Handle]
+      lines: 3
 
     - input: use handle on sink
       output: You attach the handle to the faucet
       lines: 2
+      checks:
+        - sink.handle = yes
+
+    - input: wash hands neck ears face
+      output: You don't have any soap
+      lines: 5
+
+    - input: x bed
+      output: soiled old pillow
+
+    # before seeing it
+    - input: get soap
+      output: what soap?
+      lines: 2
+      checks:
+        - soap.has = no
+        # - soap.seen = no    # not initialized
+
+    - input: x pillow
+      output: There's a bar of soap inside the pillowcase
+      checks:
+        - soap.has = no
+        - soap.seen = yes
+
+    - input: get soap
+      output: You take the soap out of the pillowcase
+      lines: 2
+      checks:
+        - soap.has = yes
+
+    - input: inv
+      output: [Soap]
+
+    - input: x pillow
+      output: A soiled pillow case. Nothing inside.
+      checks:
+        - soap.has = yes
 
     - input: wash up
       output: Follow proper procedure, Jack.
       lines: 2
 
-    - input: wash hands neck ears face
-      output: You don't have any soap
-
+      # fixme - cannot support because extra 'IF' logic is needed
     - input: get soap
-      output: You take the soap
+      output: what soap?
 
+      # output: You already have the soap
     - input: wash hands neck ears face
       output: The third green light in the column
 

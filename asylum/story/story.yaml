@@ -2,9 +2,9 @@ story:
   title: "'ESCAPE FROM BELL HILL!'"
   cname: asylum # internal reference
   intro: This is the introduction
-  startRoom: start
+  # startRoom: start
+  startRoom: cell
   # for debugging jump to this room on load
-  # startRoom: cell
   # startRoom: epilogue
 
   tasks:

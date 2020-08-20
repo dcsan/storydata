@@ -54,9 +54,14 @@ rooms:
             "
 
       - match: ^(wash|wash face|wash face with soap|wash hands with soap)$
+        if:
+          all:
+            - soap.has = yes
         then:
           after:
             - washalert
+        else:
+          reply: you don't have any soap
 
       - match: ^use soap$
         if:
@@ -73,8 +78,11 @@ rooms:
             - soap.has = yes
         then:
           reply: You use the soap, but cleaning the sink doesn't do much.
+
+      - match: wash (yourself) with soap|wash with soap|use soap to wash|wash with soap
+        then:
           after:
-            - task1
+            - washalert
 
       - match: ^(wash hands|wash ears|wash neck|wash face|wash up)$
         then:
@@ -87,20 +95,6 @@ rooms:
             The voice crackles out.
             \n> _'Follow proper procedure, Jack. Michael has told you how.'_
             "
-
-      - match: ^wash hands neck ears face (with soap|)$
-        if:
-          all:
-            - soap.has = yes
-        then:
-          reply: That's right!
-          setProps:
-            - tasks.wash = done
-            - sink.handle = yes
-          after:
-            - trig3
-        else:
-          reply: You need some soap!
 
       - match: use sink
         if:
@@ -120,7 +114,7 @@ rooms:
         else:
           reply: You aren't holding a handle.
 
-      - match: ^use handle on sink$
+      - match: use handle on sink
         if:
           all:
             - handle.has = yes
@@ -195,7 +189,7 @@ rooms:
             - x wardrobe
 
       # close and retain state based on if youer wearing clothes
-      - match: (shut|push|close) wardrobe
+      - match: shut wardrobe
         always:
           reply: The doors creak as you close them.
         if:
@@ -247,7 +241,7 @@ rooms:
 
       - match: take sandals
         then:
-          reply: You've put on the blue sandals.
+          reply: You slip on the blue sandals.
           take:
             - sandals
           setProps:
@@ -284,7 +278,7 @@ rooms:
       # TRIGGER 1 - get dressed
       - match: task1
         then:
-          reply: "
+          reply: "➖➖➖➖\n
             Before you can move, a voice crackles over a hidden speaker in the room.
             \n> _“To proceed to breakfast, please follow your morning routine.
             Remember, every good boy dresses sharply.”_"
@@ -295,7 +289,8 @@ rooms:
       # TRIGGER 2 - do exercise
       - match: task2
         then:
-          reply: "The bottom bulb in a column of four has come on, now glowing a bright green above the others.
+          reply: "💡➖➖➖\n
+          The bottom bulb in a column of four has come on, now glowing a bright green above the others.
             The same voice crackles over the speaker.
             \n> _“That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”_"
           setProps:
@@ -305,7 +300,8 @@ rooms:
       # TRIGGER #3 - get washed
       - match: task3
         then:
-          reply: "The second in the column of four green lightbulbs lights up and theinvisible speaker crackles.
+          reply: "💡💡➖➖\n
+          The second in the column of four green lightbulbs lights up and theinvisible speaker crackles.
             \n> _“Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”_
             "
           setProps:
@@ -315,7 +311,8 @@ rooms:
       # TRIGGER #4 - color puzzle
       - match: task4
         then:
-          reply: "The third green light in the column above the sink turns on and the voice is encouraging this time.
+          reply: "💡💡💡➖\n
+            The third green light in the column above the sink turns on and the voice is encouraging this time.
             \n> _“Jack, my boy, you’re a wonderful lad.
             Limber and loose and clean as a goose. And dressed up so nicely to boot!”_"
           # imageUrl: xxx
@@ -351,12 +348,12 @@ rooms:
             "
 
       # task 4 win
-      - match: use sandals on window|use robe on window|use sandals with window|use robe with window|done4
+      - match: use sandals on window|use robe on window|use sandals with window|use robe with window|task5
         if:
           all:
             - notebook.state = task4
         then:
-          reply: "
+          reply: "💡💡💡💡\n
             You remove the sandals and lift them to the window.
             Immediately, their light blue color is transformed to green by the yellow light without.
             The fourth and final green lightbulb above the sink blinks on, followed by a resounding crack.
@@ -381,7 +378,7 @@ rooms:
           reply: The door won't open.
 
       # door
-      - match: (say|shout) sesame
+      - match: open sesame
         then:
           reply: You shout "sesame" to the room.
             Slowly, the door opens.
@@ -400,20 +397,6 @@ rooms:
         else:
           reply: It opens.
           goto: epilogue
-
-      # soap
-      - match: take soap
-        then:
-          take:
-            - soap
-          setProps:
-            - pillow.state = noSoap
-
-      - match: drop soap
-        always:
-          setProps:
-            - pillow.state = hasSoap
-            - soap.has = no
 
       - match: exercise
         then:
@@ -454,12 +437,48 @@ rooms:
         else:
           reply: You don't have a handle.
 
-      # task triggers
-      - match: ^(wash hands neck ears face|washx)$
+      - match: look pillow
+        if:
+          all:
+            - soap.has = yes
         then:
-          invoke: checkWashing
+          reply: A soiled pillow case. Nothing inside.
+        else:
+          reply: there's a bar of soap inside the pillowcase
+          setProps:
+            - soap.seen = yes
 
-      - match: look under the bed
+      # soap
+      # still has the problem when you have the soap
+      # as we can't do multiple IFs/switch statement
+      - match: take soap
+        if:
+          all:
+            - soap.has = no
+            - soap.seen = yes
+        then:
+          reply: You take the soap out of the pillowcase
+          take:
+            - soap
+          setProps:
+            - pillow.state = noSoap
+        else:
+          reply: what soap?
+
+      - match: drop soap
+        always:
+          setProps:
+            - pillow.state = hasSoap
+            - soap.has = no
+          drop:
+            - soap
+
+      # right answer! moves to task4
+      - match: wash hands neck ears face
+        then:
+          callJS: checkWashing
+
+      - match: look under bed
         if:
           all:
             - sandals.has = yes
@@ -504,6 +523,7 @@ rooms:
             short: One of the handles is missing from the wardrobe door.
 
       - name: pillow
+        called: pillowcase|pillow case
         state: hasSoap
         hidden: true
         states:
@@ -515,9 +535,10 @@ rooms:
       - name: soap
         called: soap|bar of soap|soapbar
         canTake: true
-        onTake: you pick up the squidgy soap
         unique: true
         hidden: true
+        # props:
+        #   - seen: no
         states:
           - name: default
             short: It's an ordinary bar of soap.

@@ -1,5 +1,5 @@
-- base: examine
-  syns: [look, look at, look at the, inspect]
+- base: look
+  syns: [examine, x, look at, look at the, inspect, read]
 
 - base: take
   syns: [t, take, get, wear, grab]
@@ -14,4 +14,7 @@
   syns: [say, say to, tell, speak, shout at]
 
 - base: with
-  syns: [on, against, into]
+  syns: [on, against, into, to, above, into]
+
+- base: use
+  syns: [attach, add, open, put]
