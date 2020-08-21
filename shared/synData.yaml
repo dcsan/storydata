@@ -14,7 +14,7 @@
   syns: [say, say to, tell, speak, shout at]
 
 - base: with
-  syns: [on, against, into, to, above, into]
+  syns: [on, against, into, to, above, into, inside, onto]
 
 - base: use
-  syns: [attach, add, open, put]
+  syns: [use, attach, add, open, turn on, put, turn, push]

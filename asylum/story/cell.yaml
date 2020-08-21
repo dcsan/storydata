@@ -42,6 +42,45 @@ rooms:
         imageUrl: asylum/rooms/cell-4.jpg
 
     actions:
+
+      # general things
+      - match: sleep
+        then:
+          reply: You're not tired.
+
+      - match: make bed
+        then:
+          reply: You tidy up the bed. Little things matter.
+
+      - match: repair sink
+        then:
+          reply: You can't magically fix the missing faucet
+
+      - match: spit on soap
+        then:
+          reply: Better find way to turn the broken faucet
+
+      - match: move pillow
+        then:
+          reply: It feels a bit lumpy.
+
+      - match: eat soap
+        then:
+          reply: You take a bite but quickly decide better of it.
+
+      # get soap
+      - match: look mattress
+        then:
+          reply: There's nothing special about it, and nothing is hidden underneath.
+
+      - match: use lights|turn lights on|turn on lights
+        then:
+          reply: They seem to be controlled from outside the room.
+
+      - match: get dressed|get undressed
+        then:
+          reply: You'll need to find something else to wear.
+
       - match: take poster
         always:
           reply: "You turn the poster over to see the following scrawled in black Sharpie: \n
@@ -96,15 +135,6 @@ rooms:
             \n> _'Follow proper procedure, Jack. Michael has told you how.'_
             "
 
-      - match: use sink
-        if:
-          all:
-            - sink.handle = yes
-        then:
-          reply: You use the new handle to run the water.
-        else:
-          reply: The handle is missing.
-
       - match: ^use handle$
         if:
           all:
@@ -123,6 +153,7 @@ rooms:
           reply: You attach the handle to the faucet.
           setProps:
             - sink.handle = yes
+            - handle.state = sink
         else:
           reply: You don't have a handle.
 
@@ -137,7 +168,7 @@ rooms:
         then:
           reply: This is not a C.S. Lewis novel...
 
-      - match: open window
+      - match: open window|look out window
         then:
           reply: The bars prevent access to the window.
 
@@ -354,8 +385,7 @@ rooms:
             - notebook.state = task4
         then:
           reply: "💡💡💡💡\n
-            You remove the sandals and lift them to the window.
-            Immediately, their light blue color is transformed to green by the yellow light without.
+            You cover the window and the blue material is transformed to green by the yellow light.
             The fourth and final green lightbulb above the sink blinks on, followed by a resounding crack.
             The lights of the facility pulse as they come on once again.\n
             As you put the sandals on once again, you hear a loud click from the bedroom door."
@@ -366,7 +396,7 @@ rooms:
           reply: Nothing special happens.
 
       # TRIGGER #5
-      - match: exit room|open door|use door
+      - match: exit room|open door|use door|go out|go through door|exit|leave|back|run
         if:
           all:
             - robe.has = yes
@@ -385,22 +415,30 @@ rooms:
           setProps:
             - door.state = open
 
-      # exit via door
-      - match: exit|leave|back
-        always:
-          reply: You try the door.
-        if:
-          all:
-            - door.state = locked
+      - match: find soap
         then:
-          reply: It's locked.
-        else:
-          reply: It opens.
-          goto: epilogue
+          reply: Hmm, where did  you put the soap?
+
+      # # exit via door
+      # - match:
+      #   always:
+      #     reply: You try the door.
+      #   if:
+      #     all:
+      #       - door.state = locked
+      #   then:
+      #     reply: It's locked.
+      #   else:
+      #     reply: It opens.
+      #     goto: epilogue
 
       - match: exercise
         then:
-          reply: What kind of exercise?
+          reply: What kind of exercise? Maybe Leo would know.
+
+      - match: pushups|push ups|squat
+        then:
+          reply: That's not the kind of exercise we do here! Ask Leo.
 
       # has to come before next one since that matches just 'jacks'
       - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24
@@ -417,25 +455,17 @@ rooms:
             \n>_“Let's not get ahead of ourselves, now, Jack. Follow instructions, lad.”_
             "
 
-      - match: jump (18|16|4)
+      - match: "(jump|jumping|jumping jacks|jacks) \\d{2}"
         then:
-          reply: I think there are more legs than that in this room. Better check with Leo.
+          reply: Check how many legs are in the room. Did you check with Leo?
 
-      - match: ^(jump|jumping jacks|jacks)$
+      - match: "\\d{2} (jump|jumping|jumping jacks|jacks)"
         then:
-          reply: You'll have to say how many...
+          reply: Check how many legs are in the room. Did you check with Leo?
 
-      - match: use handle on sink|attach handle to sink|use handle with sink
-        if:
-          all:
-            - handle.has = yes
+      - match: jump|jumping jacks|jacks
         then:
-          setProps:
-            - sink.handle = yes
-            - sink.state = handle
-          reply: You attach the handle to the sink faucet. It seems to fit perfectly.
-        else:
-          reply: You don't have a handle.
+          reply: You'll have to say how many times
 
       - match: look pillow
         if:
@@ -483,25 +513,40 @@ rooms:
           all:
             - sandals.has = yes
         then:
-          reply: You see a pair of blue plastic sandals.
-        else:
           reply: It's a bit dirty down there, but you don't see anything particular interesting.
+        else:
+          reply: You see a pair of blue plastic sandals.
 
-      - match: turn handle|turn faucet|turn water on
+      - match: turn handle|turn faucet|turn water on|turn tap
         if:
           all:
             - sink.handle = yes
         then:
           reply: Water begins trickling out. Now might be a good time to wash up...
+        else:
+          reply: The handle looks out of place on the wardrobe.
 
-      - match: use handle with sink
+      - match: use handle on sink|attach handle to sink|use handle with sink
         if:
           all:
             - handle.has = yes
         then:
-          reply: You attach the handle to the faucet.
           setProps:
             - sink.handle = yes
+            - sink.state = handle
+            - handle.state = sink
+          reply: You attach the handle to the sink faucet. It seems to fit perfectly.
+        else:
+          reply: You don't have a handle.
+
+      - match: use sink|turn faucet|turn on sink|turn sink on|turn handle|use sink
+        if:
+          all:
+            - sink.handle = yes
+        then:
+          reply: You turn the handle and water starts running out. You could clean up here!
+        else:
+          reply: You can't turn the broken faucet.
 
     items:
       - name: door
@@ -513,14 +558,17 @@ rooms:
             short: The door has opened. Time to make your escape?
 
       - name: handle
-        state: attached
+        called: faucet|tap
+        state: wardrobe
         canTake: true
         hidden: true
         states:
-          - name: attached
+          - name: wardrobe
             short: That's an odd looking wardrobe handle...
           - name: holding
             short: One of the handles is missing from the wardrobe door.
+          - name: sink
+            short: The handle fits perfectly on the sink
 
       - name: pillow
         called: pillowcase|pillow case

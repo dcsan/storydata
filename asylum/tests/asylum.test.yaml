@@ -13,10 +13,20 @@
     - input: task1
       output: Before you can move
 
+    #-------- general tasks ------------------------
+    - input: look under the bed
+      output: You see a pair of blue plastic sandals
+
+    - input: use lights
+      output: They seem to be controlled from outside the room.
+
+    - input: get undressed
+      output: You'll need to find something else to wear
+
+    #-------- task1 - getting dressed ------------------------
     - input: x wardrobe
       output: ^The wardrobe is cheaper than
 
-    #-------- task1 - getting dressed ------------------------
     - input: x notes
       output: every good boy dresses sharply
 
@@ -54,14 +64,39 @@
     - input: get poster
       output: You turn the poster over to see the following
 
+    - input: Push ups
+      output: That's not the kind of exercise we do here!
+
+    - input: squats
+      output: That's not the kind of exercise we do here!
+
+    - input: squats
+      output: That's not the kind of exercise we do here!
+
     - input: jump
-      output: you'll have to say how many
+      output: You'll have to say how many times
       lines: 1
 
-    - input: jump 18 times
-      output: I think there are more legs than that in this room
+    - input: do 12 jumping jacks
+      output: Check how many legs
 
-    - input: jump 24 times
+    - input: perform 12 jumping jacks
+      output: Check how many legs
+
+    - input: jump 18
+      output: Check how many legs
+
+    - input: jump 12 times
+      output: Check how many legs
+
+    - input: jump 1
+      output: Check how many legs
+
+    # first one changes state
+    # - input: jump 24 times
+    #   output: You slip out of your blue sandals and perform
+
+    - input: do 24 jumping jacks
       output: You slip out of your blue sandals and perform
 
     #-------- task 3 - wash up ------------------------
@@ -78,14 +113,14 @@
 
     - input: shut wardrobe
       output: The doors creak as you close them
-      lines: 4
+      lines: 5
 
     - input: x handle
       output: That's an odd looking wardrobe handle
       lines: 1
 
     - input: use sink
-      output: the handle is missing
+      output: You can't turn the broken faucet
       lines: 2
 
     - input: use handle on sink
@@ -100,8 +135,8 @@
       output: [Handle]
       lines: 3
 
-    - input: use handle on sink
-      output: You attach the handle to the faucet
+    - input: use handle with sink
+      output: You attach the handle to the sink faucet
       lines: 2
       checks:
         - sink.handle = yes
@@ -135,6 +170,12 @@
 
     - input: inv
       output: [Soap]
+
+    - input: eat soap
+      output: You take a bite
+
+    - input: turn on the sink
+      output: water starts running out
 
     - input: x pillow
       output: A soiled pillow case. Nothing inside.
@@ -176,4 +217,7 @@
     #-------- task 4 - wash up ------------------------
 
     - input: use sandals on window
-      output: You remove the sandals and lift them to the window
+      output: You cover the window
+
+    - input: use robe on window
+      output: You cover the window
