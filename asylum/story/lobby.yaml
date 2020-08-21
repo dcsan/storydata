@@ -1,0 +1,72 @@
+rooms:
+  # -------- start --------------
+  - name: lobby
+    states:
+      - name: default
+        imageUrl: asylum/shots/title.jpg
+
+    actions:
+      - match: intro
+        always:
+          imageUrl: asylum/shots/title.jpg
+          reply: "_Thanks for helping test this game!_
+            \n
+            \n
+            Please jot down any notes about what you liked, what was confusing as you play!
+            \n
+            \n
+            Once we begin, you'll enter text commands to move the story along.
+            Whatever you type will be considered a command by the game.
+            To chat only with your group, type a period and a space before your message.
+            \n
+            `. Like this!`
+            \n
+            Also, any entry of 6 or more words will be ignored by the game.
+            Anyone can enter a command, so if it gets too hectic, you might want to select one person to do the inputting.
+
+            You can type `help` to learn the basic commands
+            _Enjoy!_
+            "
+
+      - match: drinks|bar|order drink
+        always:
+          goto: bar
+
+      - match: start
+        always:
+          goto: intro
+
+      - match: hi
+        always:
+          reply: Hello there!
+
+      - match: help
+        then:
+          reply: "When the game starts, these are the basic commands:
+      \n> `Look` to look around the room
+      \n> `look at [thing]` or `x [thing]` to examine an item
+      \n> `INVentory` for what you're carrying
+      \n> `Notes` to remember what to do next
+      \n> `Say [something] to [person]`
+      \n> `use [thing] with [thing]` try combining items
+      \n> `hint` for ideas what to do next
+      \n> put a `.` in front of a message to chat to other players
+      \n> (shortcuts above are in CAPS)
+      \n> There are many other things you can try, but these are the basics!
+      "
+
+      # ignore everything else
+      - match: .*
+
+  # -------- home --------------
+  - name: bar
+    states:
+      - name: default
+        long: The barman is polishing some glasses.
+        buttons:
+          - Ask for a drink|order
+
+    actions:
+      - match: order
+        then:
+          reply: sorry, we're out of drinks atm

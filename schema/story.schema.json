@@ -20,6 +20,14 @@
             "type": "string",
             "description": "full URL of an image"
           },
+          "webUrl": {
+            "type": "string",
+            "description": "web link"
+          },
+          "webLinkText": {
+            "type": "string",
+            "description": "visible text on link"
+          },
           "short": {
             "type": "string"
           },

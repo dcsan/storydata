@@ -2,7 +2,7 @@ story:
   title: "'ESCAPE FROM BELL HILL!'"
   cname: asylum # internal reference
   intro: This is the introduction
-  startRoom: start
+  startRoom: lobby
   # startRoom: cell
   # for debugging jump to this room on load
   # startRoom: epilogue
@@ -40,3 +40,4 @@ story:
       You can use the single letter versions like `L` for `Look`
       You can `Look at note` to look at items
       If you're stuck, try a `hint`!
+

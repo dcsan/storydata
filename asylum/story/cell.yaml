@@ -81,7 +81,18 @@ rooms:
         then:
           reply: You'll need to find something else to wear.
 
-      - match: take poster
+      # when you click button examine in web
+      - match: ":mag: view poster"
+        always:
+          reply: ":eyes:"
+          # reply: "$username looked :mag: at the poster"
+
+      - match: view poster
+        always:
+          reply: ":mag:"
+          # reply: $username looked at the poster
+
+      - match: (take|read|flip|turn over) poster
         always:
           reply: "You turn the poster over to see the following scrawled in black Sharpie: \n
             \n> Four good boys in turns did wash
@@ -727,12 +738,14 @@ rooms:
             long: It’s you, from your senior year in high school, complete with forehead acne and love goggles. How did they manage to make a copy of this? Unnerving.
 
       - name: poster
-        called: jackson|high-school|photo|poster|album|album cover
+        called: jackson|high-school|photo|poster|album|album cover|jackson photo
         hidden: true
         canTake: true
         states:
           - name: default
             imageUrl: asylum/items/album.jpg
+            webUrl: /items/album
+            webLinkText: ":mag: view poster"
             long: You remember this album cover from childhood.
               However, you don’t remember Michael holding a bar of soap in it.
 
