@@ -4,8 +4,8 @@
 - base: take
   syns: [t, take, get, wear, grab]
 
-- base: goto
-  syns: [gt]
+# - base: goto
+#   syns: [gt]
 
 - base: shut
   syns: [close]
@@ -17,4 +17,4 @@
   syns: [on, against, into, to, above, into, inside, onto]
 
 - base: use
-  syns: [use, attach, add, open, turn on, put, turn, push]
+  syns: [use, attach, add, turn on, put, turn, push]

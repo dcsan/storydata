@@ -4,9 +4,10 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/title.jpg
+        long: You're in the lobby!
 
     actions:
-      - match: intro
+      - match: ^intro$
         always:
           imageUrl: asylum/shots/title.jpg
           reply: "_Thanks for helping test this game!_
@@ -28,17 +29,21 @@ rooms:
             _Enjoy!_
             "
 
-      - match: drinks|bar|order drink
+      - match: ^drinks|bar|order drink$
         always:
           goto: bar
 
-      - match: start
-        always:
+      - match: ^start$
+        then:
           goto: intro
 
-      - match: hi
+      - match: ^hi$
         always:
           reply: Hello there!
+
+      - match: ^vers
+        always:
+          reply: v0.2.1
 
       - match: help
         then:
@@ -56,7 +61,7 @@ rooms:
       "
 
       # ignore everything else
-      - match: .*
+      # - match: .*
 
   # -------- home --------------
   - name: bar
@@ -70,3 +75,7 @@ rooms:
       - match: order
         then:
           reply: sorry, we're out of drinks atm
+
+      - match: ^start$
+        then:
+          goto: intro

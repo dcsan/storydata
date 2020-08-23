@@ -1,6 +1,6 @@
 rooms:
   # -------- start --------------
-  - name: start
+  - name: intro
     states:
       - name: default
         imageUrl: asylum/shots/title.jpg
