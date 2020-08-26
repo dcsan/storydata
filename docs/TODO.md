@@ -3,6 +3,21 @@
 ## TOP ##########
 √ hint command
 
+- check flow
+- progress / task3
+- hint system?
+  - just buttons on a single dialog?
+
+- score?
+- feedback on getting it right!
+
+- setup new slack? so we can use the voice channel
+- confirm final people
+
+- hidden object shoes
+- fix room reset?
+
+- flip to using command to send to bot, not chat?
 - progress feedback
 - hint/say command fix / dont remove stops
 - hint system? using context
@@ -26,39 +41,25 @@
 - deploy to app store?
 
 ## Story: ###############################
-Ask woman = hallway.goons
 
-. hallway-goons
-. hallway-three
-. hallway-green
-. Title
-Intro = . Hallway-goons
+- went out of sequence / task3
 
+task1 > dress
 
+task2 > exercise
 
-. Look = it depends on if the woman has been shot or not yet
-5:38
-. Macaroni= hallway.three
-5:38
-. Use sandals=hallway.green
-5:39
-. Ending = title
+  - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24
+    if:
+      all:
+        - tasks.state = task2
 
+task3 > wash
 
-- random content
-  - look under sheets
-  - pillow
-  - under bed
-  - look under pillow
+- webview / hidden object
 
-- broken steps in the game near end:
-- real clothes > dead button
-- use sandals|robe on window
-- @DC. this still isn't working. If they can't solve the task, no ending.
 - the soap, handle, and sandals can be gotten without actually searching for them
-
 - look item - message even if in inv
-- app / icon
+X app / icon
 
 - hints?
 

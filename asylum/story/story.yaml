@@ -2,8 +2,8 @@ story:
   title: "'ESCAPE FROM BELL HILL!'"
   cname: asylum # internal reference
   intro: This is the introduction
-  startRoom: lobby
-  # startRoom: cell
+  # startRoom: lobby
+  startRoom: cell
   # for debugging jump to this room on load
   # startRoom: epilogue
 
@@ -17,16 +17,19 @@ story:
 
   help:
     basic: "
-      \n> `Look` to look around
-      \n> `look at [thing]` or `eXamine [thing]`
-      \n> `INVentory` what you're carrying
-      \n> `Say [something] to [person]`
-      \n> `use [thing] on/with [thing]` try combining items
-      \n> `hint` for ideas what to do next
-      \n> put a ' or # in front of your message to just chat to other players
-      \n> (shortcuts are in CAPS)
-      \n> There are many other things you can say, but these are the basics!
+      \n`l` Look around
+      \n`x item` eXamine things in the room
+      \n`i` to see your inventory
+      \n`get item` to pick things up
+      \n`use thing1 on thing2` try combining items
+      \n`notes` for what to do next
+      \n`. ` in front of your message to chat to other players
+      \n_There are many other things you can say, but these are the basics!_
       "
+
+      # \n> `hint` for game hints if you're stuck!
+      # \n> `Say [something] to [person]`
+
     debug: "
       \n> `STatus` of the game
       \n> `ReStart` the game

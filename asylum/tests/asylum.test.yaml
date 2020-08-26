@@ -10,8 +10,8 @@
       checks:
         - notes.state = start
 
-    - input: task1
-      output: Before you can move
+    - input: look around
+      output: A voice crackles over a hidden speaker in the room
 
     #-------- general tasks ------------------------
     - input: look under the bed
@@ -36,7 +36,7 @@
         - robe.has = no
 
     - input: get robe
-      output: You've put on the blue robe
+      output: You put on the blue robe
 
     - input: inv
       output: [Robe]
@@ -49,9 +49,10 @@
     - input: examine bed
       output: a narrow metal bed is here
 
+    # this triggers the next task too so we need long history
     - input: get sandals
       output: You slip on the blue sandals
-      lines: 5
+      lines: 8
       checks:
         - sandals.has = yes
         - robe.has = yes
@@ -78,19 +79,19 @@
       lines: 1
 
     - input: do 12 jumping jacks
-      output: Check how many legs
+      output: how many legs
 
     - input: perform 12 jumping jacks
-      output: Check how many legs
+      output: how many legs
 
     - input: jump 18
-      output: Check how many legs
+      output: how many legs
 
     - input: jump 12 times
-      output: Check how many legs
+      output: how many legs
 
     - input: jump 1
-      output: Check how many legs
+      output: how many legs
 
     # first one changes state
     # - input: jump 24 times

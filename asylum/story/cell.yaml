@@ -2,46 +2,74 @@ rooms:
   #--------------- cell --------------------
 
   - name: cell
-    state: default
+    state: task1
     states:
-      # actually same as task1
+      # should enter as task1 state
       - name: default
-        short: "You are in what appears to be an inmate’s bedroom. \n
-          You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images."
+        short: "You are in what appears to be an inmate’s bedroom. \n"
         imageUrl: asylum/rooms/cell.jpg
         buttons:
-          - look room | task1
+          - look around | task1
 
-        # buttons:
-        # - door | x door
-        # - sink | x sink
-        # - desk | x desk
-        # - wall | x wall
-        # - notebook | x notes
-        # - wardrobe | x wardrobe
-      # intro to the room
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
         short: "You are in what appears to be an inmate’s bedroom. \n
-          You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images.
-          \nA strip of lights is on the wall, but none are on"
+          You see a bed, a wardrobe, a desk, a sink, a window, a door, and a wall covered with images.
+          "
+        buttons:
+          - look around | task1
 
       # repeat room description
       - name: task2
         imageUrl: asylum/rooms/cell-1.jpg
-        short: "You are in what appears to be an inmate’s bedroom. \n
+        short: "💡➖➖➖\n
+          You are in what appears to be an inmate’s bedroom. \n
           You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images.
           \n
           \nOne of the lights has come on.
           "
+        hint: ":information_source:  you can check `notes` for the last instructions"
+
       - name: task3
         imageUrl: asylum/rooms/cell-2.jpg
+        short: "💡💡➖➖\n
+          two of the lights are on"
+        hint: ":information_source:  you can check `notes` for the last instructions"
+
       - name: task4
         imageUrl: asylum/rooms/cell-dark.jpg
+        short: "💡💡💡➖\n
+          three of the lights are on"
+        hint: ":information_source:  you can check `notes` for the last instructions"
+
       - name: task5
         imageUrl: asylum/rooms/cell-4.jpg
+        short: "💡💡💡💡\n
+          all of the lights are on"
 
     actions:
+
+      # TODO - context sensitive hints
+      - match: hint
+        then:
+          reply: "
+            :information_source:  you can check `notes` for the last instructions \n
+            type `help` for other commands
+          "
+
+      # notebook responds to extra actions
+      - match: open notebook|read notebook
+        then:
+          after:
+            - x notebook
+
+      - match: ask Leo
+        then:
+          reply: Which Leo could they mean? You look around the cell...
+
+      - match: ask michael
+        then:
+          reply: Which Michael could they mean? You look around the cell...
 
       # general things
       - match: sleep
@@ -92,7 +120,7 @@ rooms:
           reply: ":mag:"
           # reply: $username looked at the poster
 
-      - match: (take|read|flip|turn over) poster
+      - match: get poster
         always:
           reply: "You turn the poster over to see the following scrawled in black Sharpie: \n
             \n> Four good boys in turns did wash
@@ -139,6 +167,12 @@ rooms:
           after:
             - washalert
 
+      # hands ears neck face shortcut
+      - match: ^henf$
+        then:
+          after:
+            - washalert
+
       - match: washalert
         then:
           reply: "
@@ -160,7 +194,7 @@ rooms:
           all:
             - handle.has = yes
         then:
-          imageUrl: asylum/shots/sink-handle.jpg
+          imageUrl: asylum/shots/320/sink-handle.jpg
           reply: You attach the handle to the faucet.
           setProps:
             - sink.handle = yes
@@ -194,7 +228,7 @@ rooms:
           setProps:
             - desk.state = open
 
-      - match: shut desk
+      - match: close desk
         always:
           reply: You close the desk drawer.
           setProps:
@@ -231,7 +265,7 @@ rooms:
             - x wardrobe
 
       # close and retain state based on if youer wearing clothes
-      - match: shut wardrobe
+      - match: close wardrobe
         always:
           reply: The doors creak as you close them.
         if:
@@ -242,19 +276,19 @@ rooms:
             - wardrobe.state = closedOneHandle
           after:
             - x wardrobe
-
         else:
           setProps:
             - wardrobe.state = closed
           after:
             - x wardrobe
 
-      - match: take handle
+      - match: get handle
         if:
           all:
             - handle.has = no
         then:
           reply: You remove the odd looking handle from the wardrobe.
+          imageUrl: shared/anims/blue-hand-50.gif
           take:
             - handle
           setProps:
@@ -264,13 +298,14 @@ rooms:
           reply: You already have the handle
 
       # need to add code to alllow multiple ifs / branches
-      - match: take robe
+      - match: get robe|wear robe
         if:
           all:
             - wardrobe.open = yes
             - robe.has = no
         then:
-          reply: You've put on the blue robe.
+          reply: ":star: You put on the blue robe."
+          # imageUrl: shared/anims/blue-hand-50.gif
           take:
             - robe
           setProps:
@@ -281,9 +316,9 @@ rooms:
         else:
           reply: You can't see a robe. # could be either shut/has
 
-      - match: take sandals
+      - match: get sandals|wear sandals
         then:
-          reply: You slip on the blue sandals.
+          reply: ":star: You slip on the blue sandals"
           take:
             - sandals
           setProps:
@@ -295,8 +330,9 @@ rooms:
       - match: drop sandals
         then:
           reply: You put the sandals back under the bed.
-          # drop:
-          #   - sandals
+          # not implemented in engine yet
+          drop:
+            - sandals
           setProps:
             - sandals.has = no
             - bed.state = default
@@ -310,59 +346,73 @@ rooms:
             - sandals.has = yes
         then:
           reply: You're fully dressed now.
+          imageUrl: shared/anims/blue-hand-50.gif
           after:
             - task2
         else:
-          reply: "
-            \n> _'You're halfway there, Jack.'_
+          reply: "The tannoy blurts out
+            \n>_'You're halfway there, Jack.'_
             "
 
-      # TRIGGER 1 - get dressed
-      - match: task1
+      # task 1 - get dressed
+      - match: ^(task1|look room|look around)$
+        if:
+          all:
+            - notebook.state = start
         then:
-          reply: "➖➖➖➖\n
-            Before you can move, a voice crackles over a hidden speaker in the room.
+          reply: "A voice crackles over a hidden speaker in the room.
+            \n
             \n> _“To proceed to breakfast, please follow your morning routine.
-            Remember, every good boy dresses sharply.”_"
+            > Remember, every good boy dresses sharply.”_
+            "
+          hint: ":information_source:  you can check `notes` for the last instructions"
           setProps:
             - notebook.state = task1
             - room.state = task1
+            - lights.state = task1
+        else:
+          reply: You're still in the cell
+          hint: ":information_source:  you can check `notes` for the last instructions or `hint` if you're stuck"
 
-      # TRIGGER 2 - do exercise
+      # task 2 - do exercise
       - match: task2
         then:
           reply: "💡➖➖➖\n
           The bottom bulb in a column of four has come on, now glowing a bright green above the others.
             The same voice crackles over the speaker.
             \n> _“That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”_"
+          hint: ":information_source:  you can check `notes` for the last instructions"
           setProps:
             - notebook.state = task2
             - room.state = task2
+            - lights.state = task2
 
-      # TRIGGER #3 - get washed
+      # task #3 - get washed
       - match: task3
         then:
           reply: "💡💡➖➖\n
           The second in the column of four green lightbulbs lights up and theinvisible speaker crackles.
             \n> _“Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”_
             "
+          hint: ":information_source:  you can check `notes` for the last instructions"
           setProps:
             - notebook.state = task3
             - room.state = task3
+            - lights.state = task3
 
-      # TRIGGER #4 - color puzzle
+      # task #4 - color puzzle
       - match: task4
         then:
           reply: "💡💡💡➖\n
             The third green light in the column above the sink turns on and the voice is encouraging this time.
             \n> _“Jack, my boy, you’re a wonderful lad.
             Limber and loose and clean as a goose. And dressed up so nicely to boot!”_"
-          # imageUrl: xxx
           buttons:
             - ask where my real clothes are | realclothes
           setProps:
             - notebook.state = task4
             - room.state = task4
+            - lights.state = task4
 
       - match: ask where my real clothes are|real clothes|cracked|realclothes|ask about clothes|ask clothes|ask where
         then:
@@ -400,13 +450,15 @@ rooms:
             The fourth and final green lightbulb above the sink blinks on, followed by a resounding crack.
             The lights of the facility pulse as they come on once again.\n
             As you put the sandals on once again, you hear a loud click from the bedroom door."
+          imageUrl: shared/anims/blue-hand-50.gif
           setProps:
             - door.state = open
             - room.state = task5
+            - notebook.state = task5
         else:
           reply: Nothing special happens.
 
-      # TRIGGER #5
+      # task #5
       - match: exit room|open door|use door|go out|go through door|exit|leave|back|run
         if:
           all:
@@ -457,6 +509,7 @@ rooms:
           all:
             - tasks.state = task2
         then:
+          imageUrl: shared/anims/blue-hand-50.gif
           reply: You slip out of your blue sandals and perform 24 jumping jacks in your socks.
             You can’t remember doing these since childhood. It’s rather fun, actually.
           after:
@@ -465,14 +518,15 @@ rooms:
           reply: "
             \n>_“Let's not get ahead of ourselves, now, Jack. Follow instructions, lad.”_
             "
+          hint: ":information_source: check your `notes` for what to do next"
 
       - match: "(jump|jumping|jumping jacks|jacks) \\d{2}"
         then:
-          reply: Check how many legs are in the room. Did you check with Leo?
+          reply: Jumping jacks are what we do. But how many legs are in the room? Did you check with Leo?
 
-      - match: "\\d{2} (jump|jumping|jumping jacks|jacks)"
+      - match: "\\d+ (jump|jumping|jumping jacks|jacks)"
         then:
-          reply: Check how many legs are in the room. Did you check with Leo?
+          reply: Jumping jacks are what we do. But how many legs are in the room? Did you check with Leo?
 
       - match: jump|jumping jacks|jacks
         then:
@@ -492,7 +546,7 @@ rooms:
       # soap
       # still has the problem when you have the soap
       # as we can't do multiple IFs/switch statement
-      - match: take soap
+      - match: get soap
         if:
           all:
             - soap.has = no
@@ -547,6 +601,7 @@ rooms:
             - sink.state = handle
             - handle.state = sink
           reply: You attach the handle to the sink faucet. It seems to fit perfectly.
+          imageUrl: shared/anims/blue-hand-50.gif
         else:
           reply: You don't have a handle.
 
@@ -609,19 +664,19 @@ rooms:
         canTake: false
         states:
           - name: closed
-            imageUrl: asylum/items/wardrobe-shut.jpg
+            imageUrl: asylum/items/slice/wardrobe-shut.jpg
             short: A free-standing wooden wardrobe is against one wall.
             long: The wardrobe is cheaper than the one you remember from your college dorm.
               It has two narrow doors with rounded handles that look like flower petals.
           - name: closedOneHandle
-            imageUrl: asylum/items/wardrobe-onehandle.jpg
+            imageUrl: asylum/items/slice/wardrobe-onehandle.jpg
             short: A free-standing wooden wardrobe is against one wall. One handle is missing
           # depends on clothes.has which state to show
           - name: openRobe
-            imageUrl: asylum/items/wardrobe-robe.jpg
+            imageUrl: asylum/items/slice/wardrobe-robe.jpg
             short: You see a bathrobe hanging inside.
           - name: openEmpty
-            imageUrl: asylum/items/wardrobe-empty.jpg
+            imageUrl: asylum/items/slice/wardrobe-empty.jpg
             short: The wardrobe is empty.
 
       - name: robe
@@ -639,26 +694,28 @@ rooms:
         state: start
         states:
           - name: start
-            short: The notebook is blank. You can add notes here to remember things.
+            short: The notebook is blank until you get some instructions. Have a look around!
           - name: task1
-            short: The voice had said _“To proceed to breakfast, please follow your morning routine.
-              Remember, every good boy dresses sharply.”_
+            short: "*[Task 1/4]* The voice had said _“To proceed to breakfast, please follow your morning routine.
+              Remember, every good boy dresses sharply.”_ "
           - name: task2
-            short: "The voice said
+            short: "*[Task 2/4]* The voice said
               _“That’s a good boy, Jack. Now remember, exercise makes the man.
               Just as many times as there are legs in the room”_
               \n\n
               Remember what exercise is best, Jack? If you don’t know yourself, ask Leo
               "
           - name: task3
-            short: "The voice had said
+            short: "*[Task 3/4]* The voice had said
               _“And now it’s time for all good boys to scrub away those mean, nasty germs.”_
               \n\n
               Are you dreaming about soap, Jack? Maybe a fairy can help you"
           - name: task4
-            short: "
+            short: "[Task 4/4]
               _“I’mmm envioussss of youuu Jackkk. Can you matchhhhh the collllllor of my envyyyy, Jackkk?”_
               "
+          - name: task5
+            short: "Now you just need to get out of here..."
 
       - name: sandals
         called: sandals|shoes|slippers
@@ -673,20 +730,20 @@ rooms:
         called: under bed
         states:
           - name: default
-            imageUrl: asylum/shots/bed-slippers.jpg
+            imageUrl: asylum/shots/slice/bed-slippers.jpg
             short: A narrow metal bed is here with a soiled old pillow.
           - name: nosandals
-            imageUrl: asylum/shots/bed.jpg
+            imageUrl: asylum/shots/320/bed.jpg
             short: A narrow metal bed is here with a soiled old pillow.
 
       - name: desk
         called: drawer|desk|squat desk|table
         states:
           - name: default
-            imageUrl: asylum/shots/desk-shut.jpg
+            imageUrl: asylum/shots/320/desk-shut.jpg
             short: A squat desk with chair sits beside the wardrobe.
           - name: open
-            imageUrl: asylum/shots/desk-open.jpg
+            imageUrl: asylum/shots/320/desk-open.jpg
             short: The desk drawer is open.
 
       - name: chair
@@ -698,18 +755,29 @@ rooms:
         called: faucet
         states:
           - name: default
-            imageUrl: asylum/shots/sink.jpg
+            imageUrl: asylum/shots/320/sink.jpg
             short: The handle is missing.
           - name: handle
-            imageUrl: asylum/shots/sink-handle.jpg
+            imageUrl: asylum/shots/320/sink-handle.jpg
             short: Now you can use the sink.
 
       - name: lights
         called: wall lights
         states:
           - name: default
-            imageUrl: https://via.placeholder.com/500x200/444488/CCC.png?text=Lights
-            short: A vertical row of small lightbulbs is built into the wall above the sink.
+            short: A vertical row of small lightbulbs is built into the wall above the sink
+          - name: task1
+            short: 💡➖➖➖
+              one of the lights has come on
+          - name: task2
+            short: 💡💡➖➖
+              two of the lights are lit up
+          - name: task3
+            short: 💡💡💡➖
+              three of the four lights are lit
+          - name: task4
+            short: 💡💡💡💡
+              all of the lights are lit up. It seems you've completed the steps required.
 
       - name: wall
         called: wall
@@ -717,7 +785,7 @@ rooms:
           - name: default
             short: Some posters are on the wall.
             long: You see a drawing, a poster of an album cover, and a photo.
-            imageUrl: asylum/shots/poster-wall.jpg
+            imageUrl: asylum/shots/320/poster-wall.jpg
 
       - name: drawing
         called: man poster|vitruvian|davinci|da vinci|drawing|leonardo
@@ -725,7 +793,7 @@ rooms:
         canTake: true
         states:
           - name: default
-            imageUrl: asylum/items/drawing.jpg
+            imageUrl: asylum/items/240/drawing.jpg
             long: It’s a reproduction of DaVinci’s classic drawing, “Vitruvian Man,” except the figure looks a lot like you at the moment.
 
       - name: photo
@@ -734,7 +802,7 @@ rooms:
         hidden: true
         states:
           - name: default
-            imageUrl: asylum/items/school-photo.jpg
+            imageUrl: asylum/items/240/school-photo.jpg
             long: It’s you, from your senior year in high school, complete with forehead acne and love goggles. How did they manage to make a copy of this? Unnerving.
 
       - name: poster
@@ -743,16 +811,16 @@ rooms:
         canTake: true
         states:
           - name: default
-            imageUrl: asylum/items/album.jpg
+            imageUrl: asylum/items/240/album.jpg
             webUrl: /items/album
-            webLinkText: ":mag: view poster"
+            webLinkText: ":mag:  view poster details... :earth_americas:"
             long: You remember this album cover from childhood.
               However, you don’t remember Michael holding a bar of soap in it.
 
       - name: window
         states:
           - name: default
-            imageUrl: asylum/shots/window.jpg
+            imageUrl: asylum/shots/320/window.jpg
             short: A rectangular window with bars is recessed into the far wall. A door leads out.
             long: The window is frosted and protected by metal bars from your side.
               Upon closer inspection, you notice that the unnatural yellow light from without is pulsing slightly, with the faint electrical buzz of artificial lighting.

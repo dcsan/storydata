@@ -31,6 +31,9 @@
           "short": {
             "type": "string"
           },
+          "hint": {
+            "type": "string"
+          },
           "long": {
             "type": "string"
           },
@@ -49,6 +52,9 @@
       "description": "always / then branch",
       "properties": {
         "reply": {
+          "type": "string"
+        },
+        "hint": {
           "type": "string"
         },
         "goto": {

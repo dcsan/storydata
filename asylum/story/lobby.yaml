@@ -28,6 +28,7 @@ rooms:
             You can type `help` to learn the basic commands
             _Enjoy!_
             "
+          hint: ":information_source: type `help` for a list of commands"
 
       - match: ^drinks|bar|order drink$
         always:
