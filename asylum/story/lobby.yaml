@@ -3,13 +3,13 @@ rooms:
   - name: lobby
     states:
       - name: default
-        imageUrl: asylum/shots/title.jpg
+        imageUrl: asylum/shots/640/title.jpg
         long: You're in the lobby!
 
     actions:
       - match: ^intro$
         always:
-          imageUrl: asylum/shots/title.jpg
+          imageUrl: asylum/shots/slice/title.jpg
           reply: "_Thanks for helping test this game!_
             \n
             \n

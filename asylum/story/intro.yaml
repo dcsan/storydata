@@ -3,7 +3,7 @@ rooms:
   - name: intro
     states:
       - name: default
-        imageUrl: asylum/shots/title.jpg
+        imageUrl: asylum/shots/slice/title.jpg
         long: "'ESCAPE FROM BELL HILL!' An interactive fiction thriller designed for Slack  \n
         Authored by John Knauss & David Collier \n
         copyright 2020, all rights reserved \n"
@@ -19,7 +19,7 @@ rooms:
   - name: home
     states:
       - name: default
-        imageUrl: asylum/shots/fb-ad.jpg
+        imageUrl: asylum/shots/slice/fb-ad.jpg
         long:
           "You accept an invitation to playtest a new physical escape room. The setting of the game is a mental asylum called 'Bell Hill'.
           Having signed the game’s standard NDA, you climb into bed early Friday night, full of anticipation.
@@ -42,7 +42,7 @@ rooms:
   - name: entrance
     states:
     - name: default
-      imageUrl: asylum/shots/ext-woman.jpg
+      imageUrl: asylum/shots/slice/ext-woman.jpg
       long: "
         Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat.
         After placing your belongings in a locker, you are led down a long hallway to a simple bedroom.
@@ -56,7 +56,7 @@ rooms:
       # ask is a special command that gets converted to say
       - match: ask
         then:
-          imageUrl: asylum/shots/cell-woman.jpg
+          imageUrl: asylum/shots/slice/cell-woman.jpg
           reply: The host informs you the game will last one hour, followed by a short debrief. If you are ever stuck or want to leave, just say the safe word `macaroni`.
             She wishes you good luck and exits through the door by which you came. It closes seamlessly, becoming part of a blank wall of the room.
           buttons:
@@ -82,7 +82,7 @@ rooms:
   - name: orderlies
     states:
       - name: default
-        imageUrl: asylum/shots/orderlies.jpg
+        imageUrl: asylum/shots/slice/orderlies.jpg
         long: Before you can speak, one of the orderlies locks you in bear-like grip while the other strips your pants off your legs.
           Your shirt is torn off next, leaving you only in your underwear and socks.
         buttons:

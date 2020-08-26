@@ -65,7 +65,7 @@ rooms:
 
       - match: ask Leo
         then:
-          reply: Which Leo could they mean? You look around the cell...
+          reply: Which Leo could they mean? You'd better take a `look` around the cell...
 
       - match: ask michael
         then:
@@ -366,6 +366,7 @@ rooms:
             > Remember, every good boy dresses sharply.”_
             "
           hint: ":information_source:  you can check `notes` for the last instructions"
+          imageUrl: asylum/items/120/tannoy.png
           setProps:
             - notebook.state = task1
             - room.state = task1
@@ -377,6 +378,7 @@ rooms:
       # task 2 - do exercise
       - match: task2
         then:
+          imageUrl: asylum/items/120/tannoy.png
           reply: "💡➖➖➖\n
           The bottom bulb in a column of four has come on, now glowing a bright green above the others.
             The same voice crackles over the speaker.
@@ -539,7 +541,7 @@ rooms:
         then:
           reply: A soiled pillow case. Nothing inside.
         else:
-          reply: there's a bar of soap inside the pillowcase
+          reply: ":star: there's a bar of soap inside the pillowcase"
           setProps:
             - soap.seen = yes
 
@@ -552,7 +554,7 @@ rooms:
             - soap.has = no
             - soap.seen = yes
         then:
-          reply: You take the soap out of the pillowcase
+          reply: ":star: You take the soap out of the pillowcase"
           take:
             - soap
           setProps:
@@ -600,8 +602,8 @@ rooms:
             - sink.handle = yes
             - sink.state = handle
             - handle.state = sink
-          reply: You attach the handle to the sink faucet. It seems to fit perfectly.
-          imageUrl: shared/anims/blue-hand-50.gif
+          reply: ":star: You attach the handle to the sink faucet. It seems to fit perfectly."
+          # imageUrl: shared/anims/blue-hand-50.gif
         else:
           reply: You don't have a handle.
 
@@ -633,6 +635,7 @@ rooms:
             short: That's an odd looking wardrobe handle...
           - name: holding
             short: One of the handles is missing from the wardrobe door.
+            imageUrl: asylum/items/120/handle.png
           - name: sink
             short: The handle fits perfectly on the sink
 
@@ -656,6 +659,7 @@ rooms:
         states:
           - name: default
             short: It's an ordinary bar of soap.
+            imageUrl: asylum/items/120/soap.png
 
       #-------- wardrobe
       - name: wardrobe

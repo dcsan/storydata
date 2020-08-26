@@ -8,6 +8,9 @@
 - hint system?
   - just buttons on a single dialog?
 
+- add 'buttonAction' to buttons and a backstop to catch it
+- audio files?
+
 - score?
 - feedback on getting it right!
 
