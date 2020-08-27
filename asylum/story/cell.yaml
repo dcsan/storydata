@@ -350,6 +350,7 @@ rooms:
           after:
             - task2
         else:
+          imageUrl: asylum/items/120/tannoy.png
           reply: "The tannoy blurts out
             \n>_'You're halfway there, Jack.'_
             "
@@ -360,13 +361,13 @@ rooms:
           all:
             - notebook.state = start
         then:
+          imageUrl: asylum/items/120/tannoy.png
           reply: "A voice crackles over a hidden speaker in the room.
             \n
             \n> _“To proceed to breakfast, please follow your morning routine.
             > Remember, every good boy dresses sharply.”_
             "
           hint: ":information_source:  you can check `notes` for the last instructions"
-          imageUrl: asylum/items/120/tannoy.png
           setProps:
             - notebook.state = task1
             - room.state = task1
@@ -378,7 +379,6 @@ rooms:
       # task 2 - do exercise
       - match: task2
         then:
-          imageUrl: asylum/items/120/tannoy.png
           reply: "💡➖➖➖\n
           The bottom bulb in a column of four has come on, now glowing a bright green above the others.
             The same voice crackles over the speaker.
