@@ -23,10 +23,10 @@ story:
       \n`get item` to pick things up
       \n`use thing1 on thing2` try combining items
       \n`notes` for what to do next
-      \n`. ` in front of your message to chat to other players
       \n_There are many other things you can say, but these are the basics!_
       "
 
+      # \n`. ` in front of your message to chat to other players
       # \n> `hint` for game hints if you're stuck!
       # \n> `Say [something] to [person]`
 
