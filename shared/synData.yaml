@@ -4,8 +4,8 @@
 - base: take
   syns: [t, take, get, wear, grab]
 
-# - base: goto
-#   syns: [gt]
+- base: goto
+  syns: [gt]
 
 - base: shut
   syns: [close]

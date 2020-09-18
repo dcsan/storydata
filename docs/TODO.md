@@ -3,6 +3,12 @@
 ## TOP ##########
 √ hint command
 
+- puzzle on door
+- ending changes
+- desk/notebook
+
+
+
 - check flow
 - progress / task3
 - hint system?

@@ -28,19 +28,19 @@ rooms:
           \n
           \nOne of the lights has come on.
           "
-        hint: ":information_source:  you can check `notes` for the last instructions"
+        hint: ":information_source:  you can check `tasks` for the last instructions"
 
       - name: task3
         imageUrl: asylum/rooms/cell-2.jpg
         short: "💡💡➖➖\n
           two of the lights are on"
-        hint: ":information_source:  you can check `notes` for the last instructions"
+        hint: ":information_source:  you can check `tasks` for the last instructions"
 
       - name: task4
         imageUrl: asylum/rooms/cell-dark.jpg
         short: "💡💡💡➖\n
           three of the lights are on"
-        hint: ":information_source:  you can check `notes` for the last instructions"
+        hint: ":information_source:  you can check `tasks` for the last instructions"
 
       - name: task5
         imageUrl: asylum/rooms/cell-4.jpg
@@ -50,18 +50,18 @@ rooms:
     actions:
 
       # TODO - context sensitive hints
-      - match: hint
-        then:
-          reply: "
-            :information_source:  you can check `notes` for the last instructions \n
-            type `help` for other commands
-          "
+      # - match: hint
+      #   then:
+      #     reply: "
+      #       :information_source:  you can check `tasks` for the last instructions \n
+      #       type `help` for other commands
+      #     "
 
-      # notebook responds to extra actions
-      - match: open notebook|read notebook
-        then:
-          after:
-            - x notebook
+      # hint system handles this now
+      # - match: open notebook|read notebook
+      #   then:
+      #     after:
+      #       - x notebook
 
       - match: ask Leo
         then:
@@ -195,12 +195,17 @@ rooms:
             - handle.has = yes
         then:
           imageUrl: asylum/shots/320/sink-handle.jpg
-          reply: You attach the handle to the faucet.
+          reply: ":star: You attach the handle to the faucet.
+            \nThe Tannoy blasts out:
+            \n> We always wash the same four parts of our body, Jack.
+            \n> And Michael knows the order.
+            \n>(Type wash _____, _____, _____, _____ in the correct order)"
           setProps:
             - sink.handle = yes
             - handle.state = sink
         else:
           reply: You don't have a handle.
+
 
       - match: sit .* (chair|desk)
         then:
@@ -217,16 +222,26 @@ rooms:
         then:
           reply: The bars prevent access to the window.
 
-      - match: ^notes$
+      - match: ^tasks$
         then:
           before:
             - x notebook
 
       - match: open desk
         always:
-          reply: You look in the desk drawer and find a notebook.
+          reply: the drawer is locked.
+          # reply: You look in the desk drawer and find a tasklist.
+          # setProps:
+          #   - desk.state = open
+
+      - match: get note|read note
+        then:
+          reply: ":star: You pick up the note"
+          imageUrl: asylum/shots/320/note-detail.jpg
+          take:
+            - note
           setProps:
-            - desk.state = open
+            - desk.state = shut_none
 
       - match: close desk
         always:
@@ -359,7 +374,7 @@ rooms:
       - match: ^(task1|look room|look around)$
         if:
           all:
-            - notebook.state = start
+            - tasklist.state = start
         then:
           imageUrl: asylum/items/120/tannoy.png
           reply: "A voice crackles over a hidden speaker in the room.
@@ -367,14 +382,14 @@ rooms:
             \n> _“To proceed to breakfast, please follow your morning routine.
             > Remember, every good boy dresses sharply.”_
             "
-          hint: ":information_source:  you can check `notes` for the last instructions"
+          hint: ":information_source:  you can check `tasks` for the last instructions"
           setProps:
-            - notebook.state = task1
+            - tasklist.state = task1
             - room.state = task1
             - lights.state = task1
         else:
           reply: You're still in the cell
-          hint: ":information_source:  you can check `notes` for the last instructions or `hint` if you're stuck"
+          hint: ":information_source:  you can check `tasks` for the last instructions or `hint` if you're stuck"
 
       # task 2 - do exercise
       - match: task2
@@ -383,9 +398,9 @@ rooms:
           The bottom bulb in a column of four has come on, now glowing a bright green above the others.
             The same voice crackles over the speaker.
             \n> _“That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”_"
-          hint: ":information_source:  you can check `notes` for the last instructions"
+          hint: ":information_source:  you can check `tasks` for the last instructions"
           setProps:
-            - notebook.state = task2
+            - tasklist.state = task2
             - room.state = task2
             - lights.state = task2
 
@@ -396,9 +411,9 @@ rooms:
           The second in the column of four green lightbulbs lights up and theinvisible speaker crackles.
             \n> _“Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”_
             "
-          hint: ":information_source:  you can check `notes` for the last instructions"
+          hint: ":information_source:  you can check `tasks` for the last instructions"
           setProps:
-            - notebook.state = task3
+            - tasklist.state = task3
             - room.state = task3
             - lights.state = task3
 
@@ -412,7 +427,7 @@ rooms:
           buttons:
             - ask where my real clothes are | realclothes
           setProps:
-            - notebook.state = task4
+            - tasklist.state = task4
             - room.state = task4
             - lights.state = task4
 
@@ -442,23 +457,31 @@ rooms:
             "
 
       # task 4 win
-      - match: use sandals on window|use robe on window|use sandals with window|use robe with window|task5
+      - match: task5|use sandals on window|use robe on window|use sandals with window|use robe with window
         if:
           all:
-            - notebook.state = task4
+            - tasklist.state = task4
         then:
           reply: "💡💡💡💡\n
             You cover the window and the blue material is transformed to green by the yellow light.
             The fourth and final green lightbulb above the sink blinks on, followed by a resounding crack.
             The lights of the facility pulse as they come on once again.\n
-            As you put the sandals on once again, you hear a loud click from the bedroom door."
+            As you put the sandals on once again, you hear a loud click from the bedroom door.
+            A panel slides open on the door revealing a combination lock."
           imageUrl: shared/anims/blue-hand-50.gif
           setProps:
-            - door.state = open
+            - panel.state = open
             - room.state = task5
-            - notebook.state = task5
+            - tasklist.state = task5
         else:
           reply: Nothing special happens.
+
+      - match: task6|COMBO 3162|3162|3 1 6 2
+        then:
+          reply: You dial in the numbers 3,1,6,2 on the panel combination lock
+          imageUrl: asylum/shots/panel-code.jpg
+          setProps:
+            - panel.state = open
 
       # task #5
       - match: exit room|open door|use door|go out|go through door|exit|leave|back|run
@@ -520,7 +543,7 @@ rooms:
           reply: "
             \n>_“Let's not get ahead of ourselves, now, Jack. Follow instructions, lad.”_
             "
-          hint: ":information_source: check your `notes` for what to do next"
+          hint: ":information_source: check your `tasks` for what to do next"
 
       - match: "(jump|jumping|jumping jacks|jacks) \\d{2}"
         then:
@@ -621,9 +644,63 @@ rooms:
         state: locked
         states:
           - name: locked
-            short: The door is tightly locked.
+            short: The door is locked. There is a small window facing out with a metal panel below it.
+            imageUrl: asylum/shots/320/celldoor-no-panel.jpg
+          - name: panel
+            short: The panel on the door has slid open revealing a combination lock
+            imageUrl: asylum/shots/320/celldoor-panel.jpg
           - name: open
             short: The door has opened. Time to make your escape?
+
+      - name: panel
+        called: door panel
+        canTake: true
+        states:
+          - name: default
+            short: It looks like the panel may be covering something. There are no ways to open it that you can see.
+          - name: open
+            short: "The panel has slid open revealing a combination lock.
+              A message says:
+              \n> ENTER COMBO _ _ _ _"
+            imageUrl: asylum/shots/320/panel-zeros.jpg
+
+      - name: note
+        called: memo
+        canTake: true
+        onTake: You read the note
+        hidden: false
+        states:
+          - name: default
+            short: Instructions with a cryptic message
+            imageUrl: asylum/shots/640/note-detail.jpg
+
+      - name: clock
+        canTake: false
+        states:
+          - name: default
+            short: A clock without hands... I guess it’s not meant to tell time.
+            imageUrl: asylum/shots/320/clock.png
+
+      - name: desk
+        called: drawer|desk|squat desk|table
+        states:
+          - name: default
+            imageUrl: asylum/shots/320/desk-shut-note.jpg
+            short: There's a note on the desk
+          - name: shut_note
+            imageUrl: asylum/shots/320/desk-shut-note.jpg
+            short: There's a note
+          - name: shut_none
+            imageUrl: asylum/shots/320/desk-shut-none.jpg
+            short: An old squat desk
+          - name: open_note
+            imageUrl: asylum/shots/320/desk-open-note.jpg
+            short: An old squat desk
+
+      - name: chair
+        states:
+          - name: default
+            short: It's an uncomfortable looking chair.
 
       - name: handle
         called: faucet|tap
@@ -692,8 +769,8 @@ rooms:
           - name: default
             short: It's a cheap, blue cotton bathrobe.
 
-      - name: notebook
-        called: notebook|note|book|memo|tasks|nb|notes|memo|notepad
+      - name: tasklist
+        called: book|tasks
         canTake: true
         state: start
         states:
@@ -739,21 +816,6 @@ rooms:
           - name: nosandals
             imageUrl: asylum/shots/320/bed.jpg
             short: A narrow metal bed is here with a soiled old pillow.
-
-      - name: desk
-        called: drawer|desk|squat desk|table
-        states:
-          - name: default
-            imageUrl: asylum/shots/320/desk-shut.jpg
-            short: A squat desk with chair sits beside the wardrobe.
-          - name: open
-            imageUrl: asylum/shots/320/desk-open.jpg
-            short: The desk drawer is open.
-
-      - name: chair
-        states:
-          - name: default
-            short: It's an uncomfortable looking chair.
 
       - name: sink
         called: faucet
