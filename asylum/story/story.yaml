@@ -5,8 +5,8 @@ story:
 
   # for debugging jump to this room on load
   # startRoom: lobby
-  startRoom: cell
-  # startRoom: epilogue
+  # startRoom: cell
+  startRoom: epilogue1
 
   tasks:
     - name: dress

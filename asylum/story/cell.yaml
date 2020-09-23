@@ -14,8 +14,8 @@ rooms:
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
         short: "You are in what appears to be an inmate’s bedroom. \n
-          You see a bed, a wardrobe, a desk, a sink, a window, a door, and a wall covered with images.
-          "
+          You see a desk and some furniture. \n
+          The door slams shut behind you. "
         buttons:
           - look around | task1
 
@@ -24,7 +24,7 @@ rooms:
         imageUrl: asylum/rooms/cell-1.jpg
         short: "💡➖➖➖\n
           You are in what appears to be an inmate’s bedroom. \n
-          You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images.
+          You see a a desk, a sink, a window, a door, lights, and a wall covered with images.
           \n
           \nOne of the lights has come on.
           "
@@ -39,7 +39,7 @@ rooms:
       - name: task4
         imageUrl: asylum/rooms/cell-dark.jpg
         short: "💡💡💡➖\n
-          three of the lights are on"
+          three of the lights are on, and a yellow light is coming in through the window."
         hint: ":information_source:  you can check `tasks` for the last instructions"
 
       - name: task5
@@ -431,6 +431,26 @@ rooms:
             - room.state = task4
             - lights.state = task4
 
+      # task #4 - color puzzle
+      - match: task5
+        then:
+          reply: "A panel slides open on the door revealing a combination lock."
+          setProps:
+            - panel.state = open
+            - lock.state = locked
+            - room.state = task5
+            - tasklist.state = task5
+
+      - match: task6
+        then:
+          reply: "The door is open!"
+          setProps:
+            - panel.state = unlocked
+            - lock.state = unlocked
+            - door.state = unlocked
+            - room.state = task6
+            - tasklist.state = task5
+
       - match: ask where my real clothes are|real clothes|cracked|realclothes|ask about clothes|ask clothes|ask where
         then:
           imageUrl: asylum/rooms/cell-dark.jpg
@@ -457,41 +477,36 @@ rooms:
             "
 
       # task 4 win
-      - match: task5|use sandals on window|use robe on window|use sandals with window|use robe with window
+      - match: use sandals on window|use robe on window|use sandals with window|use robe with window
         if:
           all:
             - tasklist.state = task4
         then:
           reply: "💡💡💡💡\n
             You cover the window and the blue material is transformed to green by the yellow light.
-            The fourth and final green lightbulb above the sink blinks on, followed by a resounding crack.
-            The lights of the facility pulse as they come on once again.\n
-            As you put the sandals on once again, you hear a loud click from the bedroom door.
-            A panel slides open on the door revealing a combination lock."
+            The fourth and final green lightbulb above the sink blinks on."
           imageUrl: shared/anims/blue-hand-50.gif
-          setProps:
-            - panel.state = open
-            - room.state = task5
-            - tasklist.state = task5
+          after:
+            - task5
         else:
           reply: Nothing special happens.
 
-      - match: task6|COMBO 3162|3162|3 1 6 2
+      - match: COMBO 3162|3162|3 1 6 2
         then:
-          reply: You dial in the numbers 3,1,6,2 on the panel combination lock
-          imageUrl: asylum/shots/panel-code.jpg
-          setProps:
-            - panel.state = open
+          reply: "You dial in the numbers 3,1,6,2 on the panel combination lock. \n
+            You input the code correctly and hear the lock open"
+          imageUrl: asylum/shots/320/panel-code.jpg
+          after:
+            - task6
 
       # task #5
       - match: exit room|open door|use door|go out|go through door|exit|leave|back|run
         if:
           all:
-            - robe.has = yes
-            - door.state = open
+            - door.state = unlocked
         then:
-          reply: You step into the hallway, pleased with your accomplishment.
-          goto: epilogue
+          reply: You step from your cell and into a dark hallway.
+          goto: epilogue1
         else:
           reply: The door won't open.
 
@@ -649,20 +664,21 @@ rooms:
           - name: panel
             short: The panel on the door has slid open revealing a combination lock
             imageUrl: asylum/shots/320/celldoor-panel.jpg
-          - name: open
-            short: The door has opened. Time to make your escape?
+          - name: unlocked
+            short: The door is unlocked. Time to make your escape?
 
       - name: panel
-        called: door panel
+        called: door panel|lock
         canTake: true
         states:
           - name: default
             short: It looks like the panel may be covering something. There are no ways to open it that you can see.
-          - name: open
-            short: "The panel has slid open revealing a combination lock.
-              A message says:
-              \n> ENTER COMBO _ _ _ _"
+          - name: locked
+            short: "The panel has slid open revealing a combination lock. A message says: \n
+              `ENTER COMBO _ _ _ _`"
             imageUrl: asylum/shots/320/panel-zeros.jpg
+          - name: unlocked
+            short: The lock has been opened
 
       - name: note
         called: memo
@@ -678,7 +694,8 @@ rooms:
         canTake: false
         states:
           - name: default
-            short: A clock without hands... I guess it’s not meant to tell time.
+            # short: A clock without hands... I guess it’s not meant to tell time.
+            short: A roman numeral clock... how old fashioned.
             imageUrl: asylum/shots/320/clock.png
 
       - name: desk
@@ -777,26 +794,26 @@ rooms:
           - name: start
             short: The notebook is blank until you get some instructions. Have a look around!
           - name: task1
-            short: "*[Task 1/4]* The voice had said _“To proceed to breakfast, please follow your morning routine.
+            short: "*[Task 1/5]* The voice had said _“To proceed to breakfast, please follow your morning routine.
               Remember, every good boy dresses sharply.”_ "
           - name: task2
-            short: "*[Task 2/4]* The voice said
+            short: "*[Task 2/5]* The voice said
               _“That’s a good boy, Jack. Now remember, exercise makes the man.
               Just as many times as there are legs in the room”_
               \n\n
               Remember what exercise is best, Jack? If you don’t know yourself, ask Leo
               "
           - name: task3
-            short: "*[Task 3/4]* The voice had said
+            short: "*[Task 3/5]* The voice had said
               _“And now it’s time for all good boys to scrub away those mean, nasty germs.”_
               \n\n
               Are you dreaming about soap, Jack? Maybe a fairy can help you"
           - name: task4
-            short: "[Task 4/4]
+            short: "[Task 4/5]
               _“I’mmm envioussss of youuu Jackkk. Can you matchhhhh the collllllor of my envyyyy, Jackkk?”_
               "
           - name: task5
-            short: "Now you just need to get out of here..."
+            short: "The combination lock on the door leads out of here."
 
       - name: sandals
         called: sandals|shoes|slippers

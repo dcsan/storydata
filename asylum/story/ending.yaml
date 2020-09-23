@@ -1,0 +1,13 @@
+rooms:
+  - name: ending
+    state: intro
+    states:
+      - name: intro
+        # imageUrl: asylum/shots/slice/title.jpg
+
+        long: "
+          \n As you struggle, you hear the host call out:
+          \n> _You should have read those terms and conditions more carefully, Jack._
+          \n
+          \nThank you for playing the introduction to Escape From Bell Hill!
+          \n*TO BE CONTINUED* "

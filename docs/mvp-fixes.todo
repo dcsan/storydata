@@ -22,22 +22,6 @@ if they get handle, add to sink can be done - before dress or exercise...
 3. Also in a note on the desk, or in the notebook will be an indication that in order to be released, you must prove your sanity through both following instructions + solving puzzles. A healthy society requires obedience and logic.
 Here are the images for the notebook and a paper on the desk in their different states. The paper includes the symbolic substitution cypher to use on the locked door combo lock
 
-
-DC   PM
-image.png
-image.png
-
-ok sweet. how do you solve the puzzle? or you still have to do that?
-Dr. J   AM
-I updated that paper— use this one
-Image from iOS
-Image from iOS
-
-2 files
-Image from iOS
-
-Image from iOS
-
 Here are the images of the door before the combo lock slides open and after (when completing the color puzzle)
 Close up of lock before and after solving
 2 files
@@ -49,14 +33,8 @@ Image from iOS
 ✔ If we really think someone in our western audience doesn’t know what Roman numerals are, we can add a clock on the wall @done(20-09-18 00:09)
 
 Also remember these icons I made for the inventory
-Image from iOS
-Image from iOS
 
 And I think we just drop the woman and the shooting at the end and instead just have the goons grab you
-2 files
-Image from iOS
-
-Image from iOS
 
 You input the code correctly and hear the door lock click open.
 > exit room
@@ -71,13 +49,6 @@ You step from your cell and into a dark hallway. The host stands at the far end,
 The host scribbles more notes. "Subject is suffering from delusions of being in an Italian restaurant. Electroshock therapy in the tower is recommended."
 Then orderlies drag you away, further into the depths of the asylum. As you struggle, you hear the host call out. (edited)
 "You should have read those terms and conditions more carefully, Jack. Welcome to Bell Hill!"
-DC   AM
-Good stuff, I'll work it in shortly
-Dr. J   AM
-2 files
-Image from iOS
-
-Image from iOS
 
 > LOOK CLOCK
 ☐ A clock without hands... I guess it’s not meant to tell time.
@@ -105,3 +76,16 @@ ENTER COMBO 3,1,6,2
 something like that'
 DC   AM
 i can parse multiple answers so we can accept variations
+
+
+Features:
+☐ trigger events from look / status so we can set `task1` after entering.
+☐ tutorial to show how to use the buttons
+
+
+Questions > John:
+- > LOOK CLOCK
+☐ A clock without hands... I guess it’s not meant to tell time.
+but The clock does have hands?
+
+
