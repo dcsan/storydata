@@ -4,9 +4,9 @@ story:
   intro: This is the introduction
 
   # for debugging jump to this room on load
-  # startRoom: lobby
+  startRoom: lobby
   # startRoom: cell
-  startRoom: epilogue1
+  # startRoom: epilogue1
 
   tasks:
     - name: dress
