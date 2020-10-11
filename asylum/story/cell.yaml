@@ -133,7 +133,7 @@ rooms:
           reply: ":mag:"
           # reply: $username looked at the poster
 
-      - match: get poster|turn poster over|look at back of poster
+      - match: get poster|turn poster over|look at back of poster|flip poster over
         always:
           reply: "You turn the poster over to see the following scrawled in black Sharpie: \n
             \n> Four good boys in turns did wash
@@ -274,6 +274,7 @@ rooms:
             \n(Type wash _____, _____, _____, _____ in the correct order)"
           setProps:
             - sink.handle = yes
+            - sink.state = handle
             - handle.state = sink
         else:
           reply: You don't have a handle.
@@ -366,7 +367,7 @@ rooms:
           after:
             - x wardrobe
 
-      - match: (get|take) handle from (wardrobe|closet|dresser)|(get|take) wardrobe handle
+      - match: (get|take) handle from (wardrobe|closet|dresser)|(get|take) wardrobe handle|(get|take) handle wardrobe
         if:
           all:
             - handle.has = no
@@ -522,7 +523,7 @@ rooms:
 
       - match: task6
         then:
-          reply: "The door is open!"
+          reply: The door is open! Time to make your escape?
           setProps:
             - panel.state = unlocked
             - lock.state = unlocked
@@ -764,7 +765,7 @@ rooms:
           reply: The desk is too heavy. But maybe you can look at it
 
       # task #5
-      - match: ^(exit room|open door|escape|use door|go out|go through door|exit|leave|run)$
+      - match: ^(exit room|walk out|open door|escape|use door|go out|go through door|exit|leave|run)$
         if:
           all:
             - door.state = unlocked
@@ -776,7 +777,11 @@ rooms:
 
       - match: use yellow
         then:
-          reply: use the yellow what?
+          reply: you don't have anything yellow. you might have some blue things though?
+
+      - match: use .* on light
+        then:
+          reply: The lights are green. This doesn't affec the color in the room very much.
 
       - match: put on robe
         then:
@@ -789,6 +794,14 @@ rooms:
       - match: "\\d{4}"
         then:
           reply: It seems to be the wrong combination
+
+      - match: break window
+        then:
+          reply: You crash against the glass but the metal bars stop you from doing any damage.
+
+      - match: macaroni
+        then:
+          reply: You say the 'safe word' but noone is around to hear.
 
     items:
       - name: door
@@ -998,7 +1011,7 @@ rooms:
             short: The handle is missing.
           - name: handle
             imageUrl: asylum/shots/320/sink-handle.jpg
-            short: Now you can use the sink.
+            short: The sink looks better with that handle you found.
 
       - name: lights
         called: wall lights|lightbulbs|lamps
@@ -1063,3 +1076,8 @@ rooms:
             short: A rectangular window with bars is recessed into the far wall. A door leads out.
             long: The window is frosted and protected by metal bars from your side.
               Upon closer inspection, you notice that the unnatural yellow light from without is pulsing slightly, with the faint electrical buzz of artificial lighting.
+
+      - name: floor
+        states:
+          - name: default
+            short: The floor is hard and cold. If you dripped blood on it they could clean it up before anyone noticed.

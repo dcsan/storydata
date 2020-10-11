@@ -1,16 +1,21 @@
 # Storydata
 
-This is a repo to contain game scripts for the CoffeeBreakGames slack games publishing platform.
+This is a repo to contain game scripts for the TEN ganebot scripting engine.
 
 
 - [Storydata](#storydata)
 - [Basic Authoring](#basic-authoring)
   - [Rooms](#rooms)
-  - [Actions](#actions)
   - [Items](#items)
+  - [Actions](#actions)
+  - [Conditions](#conditions)
+  - [Match Syntax](#match-syntax)
+    - [Called](#called)
+    - [RegEx](#regex)
+    - [NLP](#nlp)
 - [Editing files online](#editing-files-online)
 - [Editing Files offline using github](#editing-files-offline-using-github)
-  - [Create account](#create-account)
+  - [Create free Github account](#create-free-github-account)
   - [Clone the github repository](#clone-the-github-repository)
   - [Make your edits](#make-your-edits)
   - [Make a "Pull Request"](#make-a-pull-request)
@@ -25,55 +30,136 @@ This is a repo to contain game scripts for the CoffeeBreakGames slack games publ
 
 - A top level file called [story.yaml](office/story/story.yaml)
 
-This sets things like the overall intro to the story
+This sets things like the overall intro to the story, custom help
 
 ## Rooms
-
-Other files can have different rooms. eg for office we have [lobby](office/story/lobby.yaml), [attic](office/story/attic.yaml) and a room called [office](office/story/office.yaml)
+A story is broken up into rooms.
+eg for office story we have [lobby](office/story/lobby.yaml), [attic](office/story/attic.yaml) and a room called [office](office/story/office.yaml)
 
 Inside the room files there are two main blocks
 - [actions](#actions)
 - [items](#items)
 
-## Actions
-When the user types something under the `match` \
-then do the things underneath.
+And some other engine features:
+- [conditions](#conditions)
 
-Comments are prefixed with `#`
-
-```yaml
-      # user says this
-      # check ALL these conditions
-      # does user has matches?
-      - match: use matches (on|with) lamp
-        if:
-          all:
-            - matches.has = true
-        # if true then do this
-        # reply and set property on the 'lamp' object
-        then:
-          reply: You light the lamp with the matches
-          setProps:
-            - lamp.lit = true
-        # otherwise if NOT matches.has say this:
-        else:
-          reply: you don't have any matches
-```
 
 ## Items
 An item can have a number of states. When a user types `look ITEM` or `X item` then the corresponding state is show.
 
 ```yaml
+    items:
       - name: lamp
-        called: light|lamp
-        state: default
-        canTake: true
+        state: off
+        canTake: true  # you can pick this up
         states:
-          - name: default
+          - name: off
             short: a basic light. It's off.
           - name: lit
             short: a lamp casting light on the room
 ```
+
+You can change the state inside other actions so you could have a switch action in the room to set: `lamp.state = lit`
+
+When the `canTake` flag allows a user to `get` something they can pick it up and add to inventory.
+
+## Actions
+Are how you interact with things in the room.
+When the user types something under the `match` then do the things underneath. Check the
+
+Comments are prefixed with `#`
+
+
+```yaml
+      # user says this
+      - match: use matches (on|with) lamp
+        then:
+          # reply and set property on the 'lamp' object
+          reply: You light the lamp with the matches
+          setProps:
+            - lamp.state = lit
+```
+
+We could also show an image here, or make other ways to say the command using the full power of RegEx syntax.
+
+## Conditions
+Allow you to check for variables before doing things.
+
+So a simple key/lock type syntax around getting matches to light up
+
+```yaml
+    items:
+      - name: matches
+        canTake: true
+```
+
+this will set the `matches.has` to `yes` when a user picks something up.
+(note that we don't use booleans `True|False` since everything in this engine is currently a string)
+
+Then we can check if the user has matches when they try to light a lamp:
+
+```yaml
+      # user says this
+      - match: use matches (on|with) lamp
+        # check ALL these conditions
+        # does user has matches?
+        if:
+          all:
+            - matches.has = yes
+        # if true then do this
+        then:
+          # reply and set property on the 'lamp' object
+          reply: You light the lamp with the matches
+          setProps:
+            - lamp.state = lit
+        # otherwise if NOT matches.has say this:
+        else:
+          reply: you don't have any matches
+```
+
+Then later you could check if the light is on:
+
+```yaml
+      # user says this
+      - match: search room|look around|look for .*
+        if:
+          all:
+            - lamp.state = lit
+        then:
+          reply: You look around then room...
+        else:
+          reply: It's too dark... if only there was a light to see?
+```
+
+
+## Match Syntax
+
+### Called
+
+We also do replacements using the `called` section for objects.
+
+```
+      - name: lamp
+        called: light|lamp|torch|flashlight
+```
+So anywhere the user types in `torch` it would replace with `lamp`
+so you don't have to put all the options into your `match` phrases.
+
+
+### RegEx
+All match commands are using [RegEx syntax](http://marvin.cs.uidaho.edu/Handouts/regex.html), so you can have options in brackets like:
+
+```yaml
+- match: (use matches on lamp|light lamp|turn the lamp on)
+```
+
+and much more!
+
+
+Then later `use lamp` and `use light` should both work.
+
+### NLP
+This engine is also actually connected to an NLP parser using word vectors for approximation of semantic meaning, and also we do spelling correction. So `turn light on` should match `turn lamp on` with ~70% confidence. That's a little outside this basic tutorial though.
 
 # Editing files online
 
@@ -86,7 +172,7 @@ This is quick, but not that convenient if you're making a lot of changes.
 For editing lots of stuff it's much better to edit files offline.
 We suggest you use the full power of GitHub. It takes a bit of setting up, but is much better for local editing of files.
 
-## Create account
+## Create free Github account
 - If you don't have one, create a github account at https://github.com/
 - Let one of us know your github user ID and we'll add you to this project.
 - Download github desktop https://desktop.github.com/
@@ -94,6 +180,8 @@ We suggest you use the full power of GitHub. It takes a bit of setting up, but i
 We strongly recommend the excellent and free VS Code editor for yaml script files.
 
 ## Clone the github repository
+Here I'm using the github desktop app
+
 - make a clone of the "repository" onto your local machine \
   - The repo URL is `git@github.com:dcsan/storydata.git`
 

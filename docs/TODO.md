@@ -1,6 +1,10 @@
 ## TOP
 - [ ] hint system
 - [ ] scoring?
+- [ ] install permissions
+- [ ] new banner image
+- [ ] splash page
+- [ ] web editor?
 
 ## MarCom
 - [ ] admin only tasks - gt etc.
@@ -18,7 +22,6 @@
 - [ ] order of dressing
 - [ ] fairy
 - [ ] leo
-
 - [ ] add survey at end
 
 ## TODO:
@@ -31,13 +34,22 @@
 - [ ] save/restore game state to DB?
 - [ ] switch / elif
 
+
 ## corridor
 - [ ] 'run' in corridor!
 - [ ] had enough etc. replies
 - [ ] use yellow window on blue sandals
 - [ ] use window on blue sandals
 
-## joining
+## scripting
+- [ ] ping escape host on finishing
+- [ ] lights don't match up
+- [ ] door opens - animation?
+- [ ] star splash
+- [ ] ah thats why that message kept showing up - combination - check tasks first
+
+
+## On boarding
 - [ ] team roles add automatically
 - [ ] countdown time to join
 - [ ] new games on request
