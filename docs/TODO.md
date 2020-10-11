@@ -1,15 +1,118 @@
-# TODO:
+## TOP
+- [ ] hint system
+- [ ] scoring?
 
-## TOP ##########
-√ hint command
+## MarCom
+- [ ] admin only tasks - gt etc.
+- [ ] simple site / page for bot
+- [ ] add bot to various bot sites
+- [ ] make GIF anims
+- [ ] spam some other admins
 
-- puzzle on door
-- ending changes
-- desk/notebook
+- [ ] get item response
+- [ ] add navbar on help
+
+- [ ] check jump 12 and jump 3 match: "(jump|jumping|jumping jacks|jacks) \\d{1} .*"
+- [ ] prevent examine soap before has it
+- [ ] wash vs. washing
+- [ ] order of dressing
+- [ ] fairy
+- [ ] leo
+
+- [ ] add survey at end
+
+## TODO:
+- [x] prevent wash before clothes
+- [x] lock handle on closet until seen
+- [x] panel unlock
+- [ ] hanz, fez, nick etc. hint
+- [ ] washing - check handle before order
+- [ ] look back of poster cmd
+- [ ] save/restore game state to DB?
+- [ ] switch / elif
+
+## corridor
+- [ ] 'run' in corridor!
+- [ ] had enough etc. replies
+- [ ] use yellow window on blue sandals
+- [ ] use window on blue sandals
+
+## joining
+- [ ] team roles add automatically
+- [ ] countdown time to join
+- [ ] new games on request
+
+## tutorial
+- [ ] walk people through intiial commands
+- [ ] lobby tutorial? type 'look' or 'inv' etc.
+
+## scoring
+- [ ] hints / counter > scoring
+- [ ] timer? count up or count down?
+- [ ] with warnings as you're running out of time...
+- [ ] score per player?
+- [ ] hints / reaction emoji on "closer"?
+- [x] look wall / picture...
+- [ ] wrong number of jacks > suggest to count
+- [ ] hint system?
+- [ ] show completed tasks?
+- [ ] L item didn't work...
+- [ ] image to X robe
+- [ ] (Type wash , , ,  in the correct order)
+- [ ] check getting dressed order works both ways
+- [ ] read back of poster?
+- [ ] click poster on web -> send events?
+
+# NEXT
+- [ ] marketing and test players!
+- [x] abstract builder out to improve buttons
+- [x] button bar: look|item|task|help   with emoji
+- [ ] help in a text file?
+
+# Later
+- [ ] about / info / server link
+- [ ] server animated icon?
+- [ ] initial message on room.ready
+- [ ] channel.name abstraction in Pal
+- [x] voice channel command
+- [x] how to play section
+- [ ] reactions for not understood messages - react with ??
+- [ ] emoji field on messages in markup
+- [ ] scoring per player
+- [ ] timer for whole game (+score)
+- [ ] desk/notebook replace image
+- [ ] look of inventory
+- [ ] remove 'created with react app' from webapp
+
+## Story/Scripting
 
 
+## New Stuff!
+- [ ] sound effects in voice channel
+- [ ] test with Slack!
+- [ ] shared code / include
+- [ ] auto assign roles to open different rooms
+- [ ] map
+- [ ] NPCs you can chat to
 
-- check flow
+- [x] install command
+- [x] lobby bot / locked by channel name at startup?
+- [x] hint command
+- [x] puzzle on door
+- [x] ending changes
+
+## resetting stuff
+
+reset game
+- [ ] new game - pal: load data, set current room
+- [ ] event -> evt: find game, checkReset, could enter room, describe items
+
+find game - needs a game to find
+sceneEvent includes game instance
+
+
+- [ ] stt
+
 - progress / task3
 - hint system?
   - just buttons on a single dialog?
@@ -213,3 +316,12 @@ X handle
 
 cbg2APP  6:33 PM
 That's an odd looking handle attached to the closet
+
+
+
+- [x] onboard flow / reacts + roles
+- [x] load story per channel
+- [x] playthrough / ending
+- [x] devbot setup with new ID?
+- [x] dev bot and deployment
+- [x] test slack

@@ -31,6 +31,10 @@
           "short": {
             "type": "string"
           },
+          "navbar": {
+            "type": "string",
+            "description": "show the basic buttons bar with look|item|task|help"
+          },
           "hint": {
             "type": "string"
           },
@@ -55,6 +59,9 @@
           "type": "string"
         },
         "hint": {
+          "type": "string"
+        },
+        "navbar": {
           "type": "string"
         },
         "goto": {
@@ -128,9 +135,23 @@
           "type": "string",
           "description": "canonical computer readable name"
         },
-        "startRoom": {
+        "startRoomDefault": {
           "type": "string",
-          "description": "canonical computer readable name"
+          "description": "If a specific start room is not found"
+        },
+        "startRooms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "channels": {
+                "type": "string"
+              },
+              "room": {
+                "type": "string"
+              }
+            }
+          }
         },
         "tasks": {
           "type": "array",

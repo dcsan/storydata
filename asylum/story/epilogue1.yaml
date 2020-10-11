@@ -6,7 +6,7 @@ rooms:
         long: The host stands at the far end, scribbling notes
         imageUrl: asylum/shots/640/hall-host.jpg
         buttons:
-          - ask woman about game | askaboutgame
+          - ask woman about game | askaboutgame|👩🏼‍⚕️
 
     #   - name: intro
     #     long: "\nA young woman who appears to be bleeding hobbles toward you.
@@ -17,11 +17,14 @@ rooms:
     #
 
     actions:
-      - match: ask|.*
+      - match: ask|.*|👩🏼‍⚕️
         then:
           imageUrl: asylum/shots/640/hall-goons.jpg
-          reply: "> _Take him to the tower_ \n
-            the host says, motioning to the orderlies. They advance on you. \n
-            \n> _We’re not finished collecting our data on you yet_ \n
-            says the host, as the orderlies grab hold of you once again. \n "
+          reply: "
+            > _\"Take him to the tower\"_
+            \nthe woman says, motioning to the orderlies.
+            \nThey advance on you.
+            \n> _\"We’re not finished collecting our data on you yet\"_
+            \n she says, as the orderlies grab hold of you once again.
+          "
           goto: epilogue2

@@ -1,0 +1,43 @@
+rooms:
+  # -------- start --------------
+  - name: how-to
+    states:
+      - name: default
+        long: You can learn about the game here.
+
+    actions:
+
+    - match: help
+      then:
+        reply: "
+          \n` L ` Look around
+          \n` i ` to see your inventory
+          \n` tasks ` for what to do next
+          \n` X (itemname)` eXamine that item
+          \n` get (itemname)` to pick things up
+          \n` use item1 on item2 ` to combine items
+          \n_There are many other things you can say, but these are the basics!_"
+        navbar: full
+
+      # \n`. ` in front of your message to chat to other players
+      # \n> `hint` for game hints if you're stuck!
+      # \n> `Say [something] to [person]`
+
+    - match: debug
+      then:
+        reply: "
+          \n> `STatus` of the game
+          \n> `ReStart` the game
+          \n> `cheat` to see what actions you can do
+          \n> `gt [room]` go to a specific room (teleport)
+          \n> `log` to get a full chatlog - useful to debug later
+        "
+
+    - match: more
+      then:
+        reply:
+          Things also respond to special verbs like `eat fruit` or `open chest`.
+          Try different actions on things you find!
+          You can use the single letter versions like `L` for `Look`
+          You can `Look at note` to look at items
+          If you're stuck, try a `hint`!

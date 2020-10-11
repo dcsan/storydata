@@ -20,5 +20,6 @@ rooms:
           reply: "
             The host scribbles more notes. \n
             \n> _Subject is suffering from delusions of being in an Italian restaurant. Electroshock therapy in the tower is recommended._
-            \n Then orderlies drag you away, further into the depths of the asylum."
+            \n
+            \n The orderlies drag you away, further into the depths of the asylum.\n"
           goto: ending

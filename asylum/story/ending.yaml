@@ -7,7 +7,9 @@ rooms:
 
         long: "
           \n As you struggle, you hear the host call out:
-          \n> _You should have read those terms and conditions more carefully, Jack._
+          \n> \"_You should have read those terms and conditions more carefully, Jack._\"
           \n
-          \nThank you for playing the introduction to Escape From Bell Hill!
-          \n*TO BE CONTINUED* "
+          \n*TO BE CONTINUED*
+          \n
+          \nThank you for playing The introduction to **Escape From Bell Hill!**
+          "

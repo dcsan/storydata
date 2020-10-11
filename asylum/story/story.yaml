@@ -1,11 +1,25 @@
 story:
   title: "'ESCAPE FROM BELL HILL!'"
   cname: asylum # internal reference
-  intro: This is the introduction
+  startRoomDefault: lobby
 
-  # for debugging jump to this room on load
-  startRoom: lobby
-  # startRoom: cell
+  # fuzzy matching on channel names
+  startRooms:
+    - channels: how-to
+      room: how-to
+    - channels: lobby
+      room: lobby
+    - channels: play|game|team
+      room: lobby
+    - channels: asylum-dev
+      room: cell
+    - channels: localdev
+      room: cell
+    - channels: cell
+      room: cell
+
+  # for other channels
+  # startRoom: lobby
   # startRoom: epilogue1
 
   tasks:
@@ -18,14 +32,13 @@ story:
 
   help:
     basic: "
-      \n`l` Look around
-      \n`x item` eXamine things in the room
-      \n`i` to see your inventory
-      \n`get item` to pick things up
-      \n`use thing1 on thing2` try combining items
-      \n`notes` for what to do next
-      \n_There are many other things you can say, but these are the basics!_
-      "
+      \n` L ` Look around
+      \n` I ` to see your Inventory
+      \n` T ` for your next Task
+      \n` X item ` eXamine things in the room
+      \n` get (itemname)` to pick up items
+      \n` use item1 on item2 ` try combining items
+      \n_There are many other things you can say, but these are the basics!_"
 
       # \n`. ` in front of your message to chat to other players
       # \n> `hint` for game hints if you're stuck!

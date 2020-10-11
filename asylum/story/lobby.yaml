@@ -4,39 +4,53 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/640/title.jpg
-        long: You're in the lobby!
+
+        long: "
+            **ESCAPE FROM BELL HILL ASYLUM!** \n
+            An interactive fiction thriller\n
+            Authored by John Knauss & David Collier \n
+            © 2020
+          Type `start` when you're ready!
+        "
+        buttons:
+          - start|start|🏁
 
     actions:
-      - match: ^intro$
+      - match: start|🏁
         always:
-          imageUrl: asylum/shots/slice/title.jpg
-          reply: "_Thanks for helping test this game!_
+          # imageUrl: asylum/shots/slice/title.jpg
+          reply: "
             \n
+            \nYou can type commands or click emoji to interact with the game
+            \nYou are playing as a team. Anyone can enter a command, so if it gets too hectic, you might want to select one person to do the inputting.
+            \nType `help` to learn the basic commands
             \n
-            Please jot down any notes about what you liked, what was confusing as you play!
+            \nTo chat with your group, type a period and a space before your message:
+            \n> `. Like this!`
             \n
-            \n
-            Once we begin, you'll enter text commands to move the story along.
-            Whatever you type will be considered a command by the game.
-            To chat only with your group, type a period and a space before your message.
-            \n
-            `. Like this!`
-            \n
-            Also, any entry of 6 or more words will be ignored by the game.
-            Anyone can enter a command, so if it gets too hectic, you might want to select one person to do the inputting.
-
-            You can type `help` to learn the basic commands
-            _Enjoy!_
+            \nWhen you're ready type `play` or hit the ▶️ button!
+            \n_Enjoy!_\n
             "
-          hint: ":information_source: type `help` for a list of commands"
+          # hint: ":information_source: type `help` for a list of commands"
+          buttons:
+            - help|help|❓
+            - play|play|▶️
+            - info|info|ℹ️
+            - voice|voice|🎤
+
+      - match: voice|🎤
+        always:
+          reply: "Join a voice channel here https://discord.gg/HZeTnGq"
+
+      - match: info|ℹ️
+        always:
+          reply: "
+            Join the main [TEN|Total Escape Network] server to chat with the developers here\n
+            https://discord.gg/Qgup6qU"
 
       - match: ^drinks|bar|order drink$
         always:
-          goto: bar
-
-      - match: ^start$
-        then:
-          goto: intro
+          reply: Here's a beer for you!
 
       - match: ^hi$
         always:
@@ -44,39 +58,35 @@ rooms:
 
       - match: ^vers
         always:
-          reply: v0.2.1
+          reply: v0.4.1
 
-      - match: help
+      - match: help|❓
         then:
           reply: "When the game starts, these are the basic commands:
-      \n> `Look` to look around the room
-      \n> `look at [thing]` or `x [thing]` to examine an item
+      \n> `L` to look around the room
+      \n> `X [thing]` to examine an item
       \n> `INVentory` for what you're carrying
-      \n> `Notes` to remember what to do next
-      \n> `Say [something] to [person]`
+      \n> `tasks` to see what to do next
+      \n> `Say [something] to [person]` talk to in-game characters
       \n> `use [thing] with [thing]` try combining items
-      \n> `hint` for ideas what to do next
       \n> put a `.` in front of a message to chat to other players
-      \n> (shortcuts above are in CAPS)
       \n> There are many other things you can try, but these are the basics!
       "
+          buttons:
+            - help|help|❓
+            - info|info|ℹ️
+            - play|play|▶️
 
       # ignore everything else
       # - match: .*
-
-  # -------- home --------------
-  - name: bar
-    states:
-      - name: default
-        long: The barman is polishing some glasses.
-        buttons:
-          - Ask for a drink|order
-
-    actions:
-      - match: order
+      - match: order|drink
         then:
           reply: sorry, we're out of drinks atm
+      # - match: ^start$
+      #   then:
+      #     goto: intro
 
-      - match: ^start$
-        then:
+      - match: play|▶️
+        always:
+          reply: OK! Let's begin
           goto: intro
