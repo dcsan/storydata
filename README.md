@@ -1,12 +1,17 @@
 # Storydata
 
-This is a repo to contain game scripts for the TEN ganebot scripting engine.
+This is a repo to contain game scripts for the TEN GameBot scripting engine.
+This allows you to play adventure games and escape room games right inside Discord with your friends.
+
+Join our server here to try some games!
+https://discord.gg/HwpBPwR
 
 
 - [Storydata](#storydata)
 - [Basic Authoring](#basic-authoring)
   - [Rooms](#rooms)
   - [Items](#items)
+  - [Actors](#actors)
   - [Actions](#actions)
   - [Conditions](#conditions)
   - [Match Syntax](#match-syntax)
@@ -17,11 +22,11 @@ This is a repo to contain game scripts for the TEN ganebot scripting engine.
 
 # Basic Authoring
 
-- Each game sits in it's own folder. Let's take the 'office' game as an example
+Each game sits in it's own folder. Let's take the 'office' game as an example
 
-- The game scripts live in 'yaml' files inside `GAMENAME/story`
+The game scripts live in 'yaml' files inside `GAMENAME/story`
 
-- A top level file called [story.yaml](office/story/story.yaml)
+A top level file called [story.yaml](office/story/story.yaml)
 
 This sets things like the overall intro to the story, custom help
 
@@ -30,11 +35,12 @@ A story is broken up into rooms.
 eg for office story we have [lobby](office/story/lobby.yaml), [attic](office/story/attic.yaml) and a room called [office](office/story/office.yaml)
 
 Inside the room files there are two main blocks
-- [actions](#actions)
-- [items](#items)
 
-And some other engine features:
-- [conditions](#conditions)
+Rooms have:
+- [items](#items)
+- [actors](#actors)
+- [actions](#actions)
+  - [conditions](#conditions)
 
 
 ## Items
@@ -56,15 +62,20 @@ You can change the state inside other actions so you could have a switch action 
 
 When the `canTake` flag allows a user to `get` something they can pick it up and add to inventory.
 
-## Actions
-Are how you interact with things in the room.
-When the user types something under the `match` then do the things underneath. Check the
 
-Comments are prefixed with `#`
+## Actors
+Actors are a special type of item that you can have a conversation with. More later on this!
+
+
+## Actions
+Are how players interact with things in the room.
+When the user types something that is a `match` then do the things underneath.
+
+(Comments are prefixed with `#` )
 
 
 ```yaml
-      # user says this
+      # user says this:
       - match: use matches (on|with) lamp
         then:
           # reply and set property on the 'lamp' object
