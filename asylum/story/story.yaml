@@ -5,9 +5,9 @@ story:
 
   # fuzzy matching on channel names
   startRooms:
-    - channels: how-to
-      room: how-to
-    - channels: lobby
+    - channels: tutorial
+      room: lobby
+    - channels: lobby|🚀-lobby
       room: lobby
     - channels: play|game|team
       room: lobby
@@ -36,9 +36,10 @@ story:
       \n` I ` to see your Inventory
       \n` T ` for your next Task
       \n` X item ` eXamine things in the room
-      \n` get (itemname)` to pick up items
+      \n` get (item name)` to pick up items by name
       \n` use item1 on item2 ` try combining items
-      \n_There are many other things you can say, but these are the basics!_"
+      \n_There are many other things you can say, but these are the basics!_
+      \nIf you get stuck you can ping @AsylumStaff for hints!"
 
       # \n`. ` in front of your message to chat to other players
       # \n> `hint` for game hints if you're stuck!

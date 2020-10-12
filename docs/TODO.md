@@ -47,7 +47,25 @@
 - [ ] door opens - animation?
 - [ ] star splash
 - [ ] ah thats why that message kept showing up - combination - check tasks first
+- [ ] Hang robe in window
+- [ ] A panel slides open on the door revealing a combination lock. > link
+- [ ] add a pipe item (no pipe)
+- [ ] help -
+- [ ] check handle before other washing
+- [ ] add 'task' step to tutorial
+- [ ] lights: wrong on task4?
 
+          - name: task4
+            short: 💡💡💡💡
+              all of the lights are lit up. It seems you've completed the steps required.
+
+- [ ] 19 1 14 5 - dor alphabet
+- [ ] 1010 - door based on clock time
+- [ ] ENTER COMBO 9 1 0 2 - other combos 'wrong'
+- [ ]  2 5 11 11 would be "BELL"
+
+## parser
+- [ ] filter emoji out
 
 ## On boarding
 - [ ] team roles add automatically

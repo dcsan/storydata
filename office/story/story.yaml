@@ -1,6 +1,12 @@
 story:
   title: The Office
   cname: office
-  startRoom: lobby
+  startRoomDefault: lobby
+
+  # fuzzy matching on channel names
+  startRooms:
+    - channels: tutorial
+      room: lobby
+
   intro: You wake up in a strange room. The door is locked.
     You don't remember how you got in here but just know you have to get out!

@@ -6,10 +6,17 @@ rooms:
     states:
       # should enter as task1 state. no navbar to show the 'eye'
       - name: default
-        short: "You are in what appears to be an inmate’s bedroom. \n"
+        short:
+          "You are in what appears to be an inmate’s bedroom.
+          \nThere's a desk in front of you.  ⌨️ Type
+          \n
+          \n> `L desk`
+          \n
+          \nto Look at the desk
+          \n"
         imageUrl: asylum/rooms/cell.jpg
-        buttons:
-          - look around | task1|👁
+        # buttons:
+        #   - look around | task1|👁
 
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
@@ -79,7 +86,7 @@ rooms:
 
       - match: ask Leo
         then:
-          reply: Which Leo could they mean? You'd better take a `look` around the cell...
+          reply: Which Leo could they mean? You'd better take a `Look` around the cell...
 
       - match: ask michael
         then:
@@ -303,14 +310,17 @@ rooms:
           # setProps:
           #   - desk.state = open
 
-      - match: get note|read note
+      - match: get note|read note|take note
         then:
-          reply: ":star: You pick up the note"
+          reply: ":star: You pick up the note.
+            \n_(⌨️ Type `item` to see what you're carrying)_"
           imageUrl: asylum/shots/320/note-detail.jpg
           take:
             - note
           setProps:
             - desk.state = shut_none
+          after:
+            - task1
 
       - match: close desk
         always:
@@ -387,7 +397,7 @@ rooms:
           reply: get the handle from where? (make a full sentence)
 
       # need to add code to alllow multiple ifs / branches
-      - match: get robe|wear robe
+      - match: get robe|wear robe|take clothes
         if:
           all:
             - wardrobe.open = yes
@@ -459,6 +469,8 @@ rooms:
             \n
             \n> _“To proceed to breakfast, please follow your morning routine.
             \n> Remember, every good boy dresses sharply.”_
+            \n
+            \nbasic game commands:
             "
           navbar: full
           # hint: ":pencil2:  you can type  `tasks` for the last instructions"
@@ -488,7 +500,7 @@ rooms:
       - match: task3
         then:
           reply: "💡💡 … …\n
-          The second in the column of four green lightbulbs lights up and theinvisible speaker crackles.
+          The second in the column of four green lightbulbs lights up and the invisible speaker crackles.
             \n> _“Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”_
             "
           navbar: full
@@ -556,7 +568,7 @@ rooms:
             "
 
       # task 4 win
-      - match: use sandals on window|use robe on window|use sandals with window|use robe with window|cover window with robe
+      - match: use robe on window|use sandals on window|use sandals with window|use robe with window|cover window with robe|use robe and sandals on window|hang robe on window
         if:
           all:
             - tasklist.state = task4
@@ -620,7 +632,7 @@ rooms:
           reply: That's not the kind of exercise we do here! Ask Leo.
 
       # has to come before next one since that matches just 'jacks'
-      - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24
+      - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24|jacks 24
         if:
           all:
             - tasklist.state = task2
@@ -641,7 +653,7 @@ rooms:
 
       - match: "(jump|jumping|jumping jacks|jacks) \\d{1}"
         then:
-          reply: Jumping jacks are what we do. But that is too few. Did you count all the legs in the room?
+          reply: Jumping jacks are what we do. But that is too many or too few. Did you count *all* the legs in the room?
 
       - match: "(jump|jumping|jumping jacks|jacks) \\d{2}"
         then:
@@ -653,7 +665,7 @@ rooms:
 
       - match: jump|jumping jacks|jacks
         then:
-          reply: You'll have to say how many times
+          reply: You'll have to say how many times _(make a full sentence)_
 
       - match: look pillow
         if:
@@ -684,6 +696,10 @@ rooms:
         else:
           reply: what soap?
 
+      - match: get soap from michael
+        then:
+          reply: "you can't take the soap from a poster, silly!"
+
       - match: get soap
         if:
           all:
@@ -707,7 +723,7 @@ rooms:
           drop:
             - soap
 
-      - match: look under bed
+      - match: look under bed|l under bed|x under bed
         if:
           all:
             - sandals.has = yes
@@ -748,9 +764,9 @@ rooms:
         else:
           reply: You can't turn the broken faucet.
 
-      - match: jog|running|sit ups|walking
+      - match: jog|running|sit ups|walking|pushups
         then:
-          reply: It must be some other type of exercise.
+          reply: We do another type of exercise here. Ask Leo.
 
       - match: get item
         then:
@@ -854,7 +870,13 @@ rooms:
         states:
           - name: default
             imageUrl: asylum/shots/320/desk-shut-note.jpg
-            short: There's a note on the desk
+            short: "An old wooden desk and chair. There's a note on the desk. ⌨️ Type
+            \n
+            \n> `get note`
+            \n
+            \nto pick up the note
+            "
+
           - name: shut_note
             imageUrl: asylum/shots/320/desk-shut-note.jpg
             short: There's a note
@@ -998,7 +1020,8 @@ rooms:
             imageUrl: asylum/shots/320/bed.jpg
             short: A narrow metal bed is here with a soiled old pillow.
 
-      - name: sheets
+      - name: sheet
+        called: sheets|blanket|sheet
         states:
           - name: default
             short: These sheets have seen better days. They're tighly fitted to the bed.
@@ -1028,8 +1051,8 @@ rooms:
             short: 💡💡💡 …
               three of the four lights are lit
           - name: task4
-            short: 💡💡💡💡
-              all of the lights are lit up. It seems you've completed the steps required.
+            short: 💡💡💡 …
+              More lights are lighting up, it seems you're making progress
 
       - name: wall
         called: wall|pictures|above bed|over bed|gallery
@@ -1040,7 +1063,7 @@ rooms:
             imageUrl: asylum/shots/320/poster-wall.jpg
 
       - name: drawing
-        called: man poster|vitruvian|davinci|da vinci|drawing|leonardo|vitruvian man
+        called: man poster|vitruvian|davinci|da vinci|drawing|leonardo|vitruvian man|diagram
         hidden: true
         canTake: true
         states:

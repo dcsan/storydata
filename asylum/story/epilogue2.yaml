@@ -12,7 +12,7 @@ rooms:
 
       - match: hint
         then:
-          reply: How do you tell them you’ve had enough?
+          reply: How do you tell them you’ve had enough? Every Escape Room has a safe word.
 
       - match: macaroni
         then:

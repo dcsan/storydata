@@ -3,7 +3,7 @@ rooms:
     state: intro
     states:
       - name: intro
-        # imageUrl: asylum/shots/slice/title.jpg
+        imageUrl: asylum/shots/slice/title.jpg
 
         long: "
           \n As you struggle, you hear the host call out:
@@ -12,4 +12,8 @@ rooms:
           \n*TO BE CONTINUED*
           \n
           \nThank you for playing The introduction to **Escape From Bell Hill!**
+          \n
+          \nPlease let us know if you liked the game and learn about more games
+          \n
+          \nhttps://forms.gle/uvrBDfqngs1rszxQ6
           "

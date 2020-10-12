@@ -1,8 +1,8 @@
 - base: look
-  syns: [examine, x, look at, look at the, inspect, read]
+  syns: [examine, x, l, look at, look at the, inspect, read]
 
 - base: take
-  syns: [t, take, get, wear, grab]
+  syns: [t, take, get, wear, grab, pick up]
 
 - base: goto
   syns: [gt]

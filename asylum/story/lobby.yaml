@@ -3,8 +3,6 @@ rooms:
   - name: lobby
     states:
       - name: default
-        imageUrl: asylum/shots/640/title.jpg
-
         long: "
             **ESCAPE FROM BELL HILL ASYLUM!** \n
             An interactive fiction thriller\n
@@ -13,22 +11,18 @@ rooms:
           Type `start` when you're ready!
         "
         buttons:
-          - start|start|🏁
+          - start|start|🚀
 
     actions:
-      - match: start|🏁
+      - match: start|🚀
         always:
-          # imageUrl: asylum/shots/slice/title.jpg
+          # imageUrl: marcom/intro-short/asylum-intro-pong.gif
+          imageUrl: marcom/intro-short/asylum-low.mp4
           reply: "
             \n
-            \nYou can type commands or click emoji to interact with the game
-            \nYou are playing as a team. Anyone can enter a command, so if it gets too hectic, you might want to select one person to do the inputting.
             \nType `help` to learn the basic commands
             \n
-            \nTo chat with your group, type a period and a space before your message:
-            \n> `. Like this!`
-            \n
-            \nWhen you're ready type `play` or hit the ▶️ button!
+            \nType `play` or hit the ▶️ button!
             \n_Enjoy!_\n
             "
           # hint: ":information_source: type `help` for a list of commands"
@@ -62,7 +56,15 @@ rooms:
 
       - match: help|❓
         then:
-          reply: "When the game starts, these are the basic commands:
+          reply: "
+
+        \nYou can type commands or click emoji to interact with the game
+        \nYou are playing as a team. Anyone can enter a command, so if it gets too hectic, you might want to select one person to do the inputting.
+        \nTo chat with your group, type a period and a space before your message:
+        \n> `. Like this!`
+        \n
+
+          When the game starts, these are the basic commands:
       \n> `L` to look around the room
       \n> `X [thing]` to examine an item
       \n> `INVentory` for what you're carrying
