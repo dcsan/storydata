@@ -140,7 +140,7 @@ rooms:
           reply: ":mag:"
           # reply: $username looked at the poster
 
-      - match: get poster|turn poster over|look at back of poster|flip poster over
+      - match: get poster|turn poster over|look at back of poster|flip poster
         always:
           reply: "You turn the poster over to see the following scrawled in black Sharpie: \n
             \n> Four good boys in turns did wash
@@ -627,7 +627,7 @@ rooms:
         then:
           reply: What kind of exercise? Maybe Leo would know.
 
-      - match: pushups|push ups|squat
+      - match: pushups|push ups|squat|burpees
         then:
           reply: That's not the kind of exercise we do here! Ask Leo.
 
@@ -650,6 +650,10 @@ rooms:
           buttons:
             - tasks|task|📕
           # hint: ":pencil2: check your `tasks` for what to do next"
+
+      - match: ^(\\d{4+})$
+        then:
+          reply: cute.
 
       - match: "(jump|jumping|jumping jacks|jacks) \\d{1}"
         then:
@@ -818,6 +822,10 @@ rooms:
       - match: macaroni
         then:
           reply: You say the 'safe word' but noone is around to hear.
+
+      - match: cover window$
+        then:
+          reply: cover window with what?
 
     items:
       - name: door

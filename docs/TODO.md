@@ -1,9 +1,10 @@
 ## TOP
+- [ ] splash web page with install button and video
+- [ ] video capture
 - [ ] hint system
 - [ ] scoring?
 - [ ] install permissions
 - [ ] new banner image
-- [ ] splash page
 - [ ] web editor?
 
 ## MarCom
@@ -62,7 +63,11 @@
 - [ ] 19 1 14 5 - dor alphabet
 - [ ] 1010 - door based on clock time
 - [ ] ENTER COMBO 9 1 0 2 - other combos 'wrong'
-- [ ]  2 5 11 11 would be "BELL"
+- [ ] 2 5 11 11 would be "BELL"
+- [ ] pillowCASE
+- [ ] add speaker
+- [ ] ENTER COMBO DESZ - other combos are wrong
+
 
 ## parser
 - [ ] filter emoji out
