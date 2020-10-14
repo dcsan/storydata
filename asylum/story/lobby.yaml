@@ -17,7 +17,7 @@ rooms:
       - match: start|🚀
         always:
           # imageUrl: marcom/intro-short/asylum-intro-pong.gif
-          imageUrl: marcom/intro-short/asylum-low.mp4
+          imageUrl: asylum/marcom/asylum-low.mp4
           reply: "
             \n
             \nType `help` to learn the basic commands
@@ -35,6 +35,14 @@ rooms:
       - match: voice|🎤
         always:
           reply: "Join a voice channel here https://discord.gg/HZeTnGq"
+
+      - match: teams
+        always:
+          reply: "
+            we have three team channels you can play in.\n
+            If a friend invited you, join their channel\n
+            or choose one of these to start a new game:\n
+            \\#team-1  |  #team-2  |  #team-3"
 
       - match: info|ℹ️
         always:

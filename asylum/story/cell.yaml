@@ -244,13 +244,9 @@ rooms:
           after:
             - washalert
 
-      - match: wash (hanz|nick|piers|fez)
+      - match: wash (hans|nick|piers|fez)
         then:
           reply: wash what? Is that a body part?
-
-      - match: (hanz|nick|piers|fez)
-        then:
-          reply: Maybe you should wash... ? Hanz and Nick?
 
       - match: scrub|clean|wash|shower
         then:
@@ -590,7 +586,23 @@ rooms:
           after:
             - task6
 
-      - match: "d{4}"
+      - match: "3262"
+        then:
+          reply: "The lock seems like it's going to open but then it doesn't... the combination is close..."
+
+      # longer emoji
+      - match: "\\d{6}"
+        then:
+          reply: "What does that mean?"
+
+      # - match: "\\d{4}"
+      #   then:
+      #     reply: It seems to be the wrong combination
+
+      - match: "\\d{4}"
+        if:
+          all:
+            tasklist.state = task5
         then:
           reply: "You dial in the four numbers but the lock doesn't open. It seems like the wrong combination"
 
@@ -811,10 +823,6 @@ rooms:
         then:
           reply: You look up but there's nothing special.
 
-      - match: "\\d{4}"
-        then:
-          reply: It seems to be the wrong combination
-
       - match: break window
         then:
           reply: You crash against the glass but the metal bars stop you from doing any damage.
@@ -826,6 +834,44 @@ rooms:
       - match: cover window$
         then:
           reply: cover window with what?
+
+      # clues when nothing else matches
+      - match: ^fez$
+        then:
+          reply: "_Fez?_ || I can't palm that any more ... https://www.rhymezone.com/r/rhyme.cgi?typeofrhyme=perfect&loc=thesql&Word=fez ||"
+
+      # clues when nothing else matches
+      - match: ^piers$
+        then:
+          reply: "_Piers?_ || I'm listening for an idea ... https://www.rhymezone.com/r/rhyme.cgi?Word=piers&typeofrhyme=perfect&org1=syl&org2=l&org3=y ||"
+
+      - match: (hans|nick|piers|fez)
+        then:
+          reply: Maybe you should wash... ? Hans, Nick and the others?
+
+      # clues when nothing else matches
+      - match: ^green$
+        then:
+          reply: "green could mean... || :green_square: = :blue_square: + :yellow_square: ||"
+
+      # clues when nothing else matches
+      - match: ^dress$
+        if:
+          all:
+            - tasklist.state = task1
+            - sandals.has = no
+        then:
+          reply: "Your feet are cold"
+
+      # clues when nothing else matches
+      - match: ^dress$
+        if:
+          all:
+            tasklist.state = task1
+            shoes.has = yes
+            robe.has = no
+        then:
+          reply: "You're butt naked except for the blue sandals. You were told to get dressed!"
 
     items:
       - name: door

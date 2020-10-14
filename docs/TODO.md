@@ -3,6 +3,7 @@
 - [ ] video capture
 - [ ] hint system
 - [ ] scoring?
+- [ ] redo IF block to cascade => switch
 - [ ] install permissions
 - [ ] new banner image
 - [ ] web editor?
@@ -34,7 +35,8 @@
 - [ ] look back of poster cmd
 - [ ] save/restore game state to DB?
 - [ ] switch / elif
-
+- [ ] complete role => inmate
+- [ ] delete messages that are admin commands
 
 ## corridor
 - [ ] 'run' in corridor!
