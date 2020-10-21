@@ -17,6 +17,8 @@ story:
       room: cell
     - channels: cell
       room: cell
+    - channels: qaroom
+      room: qaroom
 
   # for other channels
   # startRoom: lobby

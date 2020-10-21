@@ -1,0 +1,41 @@
+rooms:
+  - name: qaroom
+    state: intro
+    states:
+      - name: intro
+        long: "Welcome to the QA room"
+
+    actions:
+      - match: ^(sup)$
+        then:
+          reply: Whats up you
+
+      - match: ^(on)$
+        then:
+          reply: turn the lamp on
+          setProps:
+            - lamp.state = on
+
+      - match: ^(off)$
+        then:
+          reply: turn the lamp off
+          setProps:
+            - lamp.state = off
+
+    items:
+      - name: lamp
+        called: light|lights
+        state: "on"
+        canTake: false
+        states:
+          - name: "on"
+            short: Its casting light
+          - name: "off"
+            short: the lamp is off
+
+      - name: matches
+        called: lighter
+        canTake: true
+        states:
+          - name: default
+            short: maybe useful for lighting something

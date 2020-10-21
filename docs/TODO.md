@@ -1,18 +1,28 @@
 ## TOP
-- [ ] splash web page with install button and video
-- [ ] video capture
-- [ ] hint system
-- [ ] scoring?
 - [ ] redo IF block to cascade => switch
-- [ ] install permissions
+- [ ] debug robe/ etc.
+- [ ] hint system
+
+## TOP
+- [x] splash web page with install button and video
+- [x] video capture
+- [ ] scoring?
+- [ ] install permissions fix
 - [ ] new banner image
 - [ ] web editor?
+
+- [ ] next game / production tools
+- [ ] engine fixes
+- [ ] marketing tune up
+- [ ] install on your own server page
+- [ ] tutorial page
+- [ ] recruit someone to spam other servers
 
 ## MarCom
 - [ ] admin only tasks - gt etc.
 - [ ] simple site / page for bot
 - [ ] add bot to various bot sites
-- [ ] make GIF anims
+- [X] make GIF anims
 - [ ] spam some other admins
 
 - [ ] get item response

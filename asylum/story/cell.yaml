@@ -564,7 +564,7 @@ rooms:
             "
 
       # task 4 win
-      - match: use robe on window|use sandals on window|use sandals with window|use robe with window|cover window with robe|use robe and sandals on window|hang robe on window
+      - match: (use|hang|put|use) (robe|sandals) (on|with) window|cover window with (robe|bathrobe)|use (robe|bathrobe) and sandals on window|hang robe on window
         if:
           all:
             - tasklist.state = task4
@@ -602,7 +602,7 @@ rooms:
       - match: "\\d{4}"
         if:
           all:
-            tasklist.state = task5
+            - tasklist.state = task5
         then:
           reply: "You dial in the four numbers but the lock doesn't open. It seems like the wrong combination"
 
@@ -867,12 +867,18 @@ rooms:
       - match: ^dress$
         if:
           all:
-            tasklist.state = task1
-            shoes.has = yes
-            robe.has = no
+            - tasklist.state = task1
+            - shoes.has = yes
+            - robe.has = no
         then:
           reply: "You're butt naked except for the blue sandals. You were told to get dressed!"
 
+      # clues when nothing else matches
+      - match: put robe on lights
+        then:
+          reply: The lights are a dark green, and the room just gets darker. Not what you had planned.
+
+#-------------------------- items -----------------------------------
     items:
       - name: door
         state: locked
@@ -1008,7 +1014,7 @@ rooms:
         called: gown|robe|dressing gown|bathrobe
         canTake: true
         onTake: you put on the robe
-        hidden: true
+        # hidden: true
         states:
           - name: default
             short: It's a cheap, blue cotton bathrobe.
