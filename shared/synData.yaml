@@ -1,20 +1,29 @@
 - base: look
-  syns: [examine, x, l, look at, look at the, inspect, read]
+  alias: [examine, x, l, look at, look at the, inspect, read]
 
-- base: take
-  syns: [t, take, get, wear, grab, pick up]
+- base: lookRoom
+  alias: [look room, x room, l room, look at room]
+
+- base: get
+  alias: [take, get, wear, grab, pick up, pick]
 
 - base: goto
-  syns: [gt]
+  alias: [gt]
 
 - base: shut
-  syns: [close]
+  alias: [close]
 
 - base: ask
-  syns: [say, say to, tell, speak, shout at]
+  alias: [say, say to, tell, speak, shout at]
 
 - base: with
-  syns: [on, against, into, to, above, into, inside, onto]
+  alias: [on, against, into, to, above, into, inside, onto]
 
 - base: use
-  syns: [use, attach, add, turn on, put, turn, push]
+  alias: [use, attach, add, turn on, put, turn, push]
+
+- base: task
+  alias: [t]
+
+- base: status
+  alias: [st]

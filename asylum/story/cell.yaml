@@ -8,12 +8,9 @@ rooms:
       - name: default
         short:
           "You are in what appears to be an inmate’s bedroom.
-          \nThere's a desk in front of you.  ⌨️ Type
-          \n
-          \n> `L desk`
-          \n
-          \nto Look at the desk
-          \n"
+          \nThere's a desk in front of you.
+          \n⌨️ _to Look at the desk type:_
+          \n> `L desk` "
         imageUrl: asylum/rooms/cell.jpg
         # buttons:
         #   - look around | task1|👁
@@ -309,7 +306,7 @@ rooms:
       - match: get note|read note|take note
         then:
           reply: ":star: You pick up the note.
-            \n_(⌨️ Type `item` to see what you're carrying)_"
+            \n_⌨️ type `item` to see what you're carrying_"
           imageUrl: asylum/shots/320/note-detail.jpg
           take:
             - note
@@ -393,7 +390,7 @@ rooms:
           reply: get the handle from where? (make a full sentence)
 
       # need to add code to alllow multiple ifs / branches
-      - match: get robe|wear robe|take clothes
+      - match: get robe
         if:
           all:
             - wardrobe.open = yes
@@ -684,15 +681,16 @@ rooms:
           reply: You'll have to say how many times _(make a full sentence)_
 
       - match: look pillow
-        if:
-          all:
+        switch:
+          - case:
             - soap.has = yes
-        then:
-          reply: A soiled pillow case. Nothing inside.
-        else:
-          reply: ":star: there's a bar of soap inside the pillowcase"
-          setProps:
-            - soap.seen = yes
+            then:
+              reply: A soiled pillow case. Nothing inside.
+          - case:
+            then:
+              reply: ":star: there's a bar of soap inside the pillowcase"
+              setProps:
+                - soap.seen = yes
 
       # soap
       # still has the problem when you have the soap
@@ -717,19 +715,24 @@ rooms:
           reply: "you can't take the soap from a poster, silly!"
 
       - match: get soap
-        if:
-          all:
+        switch:
+          - case:
+            - soap.has = yes
+            then:
+              reply: you already have the soap
+          - case:
             - soap.has = no
             - soap.seen = yes
-        then:
-          reply: ":star: You take the soap out of the pillowcase"
-          take:
-            - soap
-          setProps:
-            - pillow.state = noSoap
-        else:
-          reply: "Get soap from where? \n
-            :pencil2: _You might have to search around_"
+            then:
+              reply: ":star: You take the soap out of the pillowcase"
+              take:
+                - soap
+              setProps:
+                - pillow.state = noSoap
+          - case: # default
+            then:
+              reply: "Get soap from where? \n
+                :pencil2: _You might have to search around_"
 
       - match: drop soap
         always:
@@ -930,11 +933,9 @@ rooms:
         states:
           - name: default
             imageUrl: asylum/shots/320/desk-shut-note.jpg
-            short: "An old wooden desk and chair. There's a note on the desk. ⌨️ Type
-            \n
+            short: "An old wooden desk and chair. There's a note on the desk.
+            \n⌨️ To pick up the note type
             \n> `get note`
-            \n
-            \nto pick up the note
             "
 
           - name: shut_note
@@ -1011,7 +1012,7 @@ rooms:
             short: The wardrobe is empty.
 
       - name: robe
-        called: gown|robe|dressing gown|bathrobe
+        called: robe|gown|dressing gown|bathrobe|bath robe
         canTake: true
         onTake: you put on the robe
         # hidden: true
@@ -1020,8 +1021,10 @@ rooms:
             short: It's a cheap, blue cotton bathrobe.
             imageUrl: asylum/items/240/robe.png
 
+      # special to list current tasks
+      # has to be called tasklist
       - name: tasklist
-        called: book|tasks|task|📕
+        called: notebook|tasks|📕
         canTake: true
         state: start
         states:
