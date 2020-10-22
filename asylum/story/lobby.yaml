@@ -61,6 +61,14 @@ rooms:
       - match: ^vers
         always:
           reply: v0.4.1
+          emoji:
+            - 🌟
+            # - '❓'
+            # - '⭐️'
+            # - ✴️
+            # - ✨
+            # - 🌠
+            # - ':question:'
 
       - match: help|❓
         then:

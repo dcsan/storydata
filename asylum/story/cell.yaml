@@ -68,6 +68,10 @@ rooms:
           buttons:
             - "tasks|task|📕"
 
+      - match: ^(rank|🌟)$
+        then:
+          reply: This icon shows you are making progress!
+
       # TODO - context sensitive hints
       # - match: hint
       #   then:
@@ -266,12 +270,13 @@ rooms:
             - handle.has = yes
         then:
           imageUrl: asylum/shots/320/sink-handle.jpg
-          reply: ":star: You attach the handle to the faucet.
+          reply: "You attach the handle to the faucet.
             \nThe Tannoy blasts out:
             \n> _We always wash the same four parts of our body, Jack.
             \n> And Michael knows the order._
             \n
             \n(Type wash _____, _____, _____, _____ in the correct order)"
+          emoji: [🌟]
           setProps:
             - sink.handle = yes
             - sink.state = handle
@@ -305,8 +310,9 @@ rooms:
 
       - match: get note|read note|take note
         then:
-          reply: ":star: You pick up the note.
+          reply: "You pick up the note.
             \n_⌨️ type `item` to see what you're carrying_"
+          emoji: [🌟]
           imageUrl: asylum/shots/320/note-detail.jpg
           take:
             - note
@@ -353,7 +359,7 @@ rooms:
             - x wardrobe
 
       # close and retain state based on if youer wearing clothes
-      - match: close wardrobe
+      - match: shut wardrobe
         always:
           reply: The doors creak as you close them.
         if:
@@ -396,7 +402,8 @@ rooms:
             - wardrobe.open = yes
             - robe.has = no
         then:
-          reply: ":star: You put on the blue robe."
+          reply: "You put on the blue robe."
+          emoji: [🌟]
           navbar: none
           # imageUrl: shared/anims/blue-hand-50.gif
           take:
@@ -409,9 +416,10 @@ rooms:
         else:
           reply: You can't see a robe. # could be either shut/has
 
-      - match: get sandals|wear sandals
+      - match: get sandals
         then:
-          reply: ":star: You slip on the blue sandals"
+          reply: "You slip on the blue sandals"
+          emoji: [🌟]
           take:
             - sandals
           setProps:
@@ -440,6 +448,7 @@ rooms:
             - sandals.has = yes
         then:
           reply: You're fully dressed now.
+          emoji: [🌟]
           imageUrl: shared/anims/blue-hand-50.gif
           setProps:
             - player.dressed = yes
@@ -649,6 +658,7 @@ rooms:
           imageUrl: shared/anims/blue-hand-50.gif
           reply: You slip out of your blue sandals and perform 24 jumping jacks in your socks.
             You can’t remember doing these since childhood. It’s rather fun, actually.
+          emoji: [🌟]
           after:
             - task3
         else:
@@ -688,7 +698,8 @@ rooms:
               reply: A soiled pillow case. Nothing inside.
           - case:
             then:
-              reply: ":star: there's a bar of soap inside the pillowcase"
+              reply: "There's a bar of soap inside the pillowcase"
+              emoji: [🌟]
               setProps:
                 - soap.seen = yes
 
@@ -702,7 +713,8 @@ rooms:
           all:
             - soap.has = no
         then:
-          reply: ":star: You take the soap out of the pillowcase"
+          reply: "You take the soap out of the pillowcase"
+          emoji: [🌟]
           take:
             - soap
           setProps:
@@ -724,7 +736,8 @@ rooms:
             - soap.has = no
             - soap.seen = yes
             then:
-              reply: ":star: You take the soap out of the pillowcase"
+              reply: "You take the soap out of the pillowcase"
+              emoji: [🌟]
               take:
                 - soap
               setProps:
@@ -769,7 +782,10 @@ rooms:
             - sink.handle = yes
             - sink.state = handle
             - handle.state = sink
-          reply: ":star: You attach the handle to the sink faucet. It seems to fit perfectly."
+          reply: "You attach the handle to the sink faucet. It seems to fit perfectly."
+          emoji:
+            - 🌟
+
           # imageUrl: shared/anims/blue-hand-50.gif
         else:
           reply: You don't have a handle.
@@ -783,7 +799,7 @@ rooms:
         else:
           reply: You can't turn the broken faucet.
 
-      - match: jog|running|sit ups|walking|pushups
+      - match: jog|running|sit ups|walking|pushups|push ups
         then:
           reply: We do another type of exercise here. Ask Leo.
 
@@ -806,21 +822,27 @@ rooms:
             - door.state = unlocked
         then:
           reply: You step from your cell and into a dark hallway.
+          emoji: [🌟]
           goto: epilogue1
         else:
           reply: The door won't open.
 
       - match: use yellow
         then:
-          reply: you don't have anything yellow. you might have some blue things though?
+          reply: You don't have anything yellow. you might have some blue things though?
 
       - match: use .* on light
         then:
           reply: The lights are green. This doesn't affec the color in the room very much.
 
       - match: put on robe
+        if:
+          all:
+            - robe.has = yes
         then:
-          reply: you wear the robe.
+          reply: you wear the robe
+        else:
+          reply: You don't have the robe
 
       - match: look ceiling
         then:
@@ -991,7 +1013,7 @@ rooms:
 
       #-------- wardrobe
       - name: wardrobe
-        called: wardrobe|cupboard|closet|wr
+        called: cupboard|closet|wr
         state: closed
         canTake: false
         states:
@@ -1044,7 +1066,7 @@ rooms:
             short: "`[Task 2/5]` The voice said
               _“That’s a good boy, Jack. Now remember, exercise makes the man.
               Just as many times as there are legs in the room”_
-              \n\n
+              \n
               Remember what exercise is best, Jack? If you don’t know yourself, ask Leo
               "
             navbar: none
