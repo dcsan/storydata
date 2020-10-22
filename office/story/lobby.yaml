@@ -32,7 +32,7 @@ rooms:
             - wardrobe.state = closed
 
       # dont use 'get' as that doesn't get replaced
-      - match: take clothes
+      - match: get clothes
         if:
           all:
             - wardrobe.state = openFull
