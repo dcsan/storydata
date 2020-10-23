@@ -1,9 +1,9 @@
 ## TOP
-- [ ] redo IF block to cascade => switch
-- [ ] debug robe/ etc.
+- [x] redo IF block to cascade => switch
+- [x] debug robe/ etc.
 - [ ] hint system
 - [ ] give item to other NPC
-- [ ] check NPC chats?
+- [ ] check talking to an NPC. ask xxx about YYYY
 
 ## TOP
 - [x] splash web page with install button and video

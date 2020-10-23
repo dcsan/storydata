@@ -382,6 +382,7 @@ rooms:
             - handle.has = no
         then:
           reply: You remove the odd looking handle from the wardrobe.
+          emoji: [🌟]
           imageUrl: shared/anims/blue-hand-50.gif
           take:
             - handle
@@ -529,6 +530,7 @@ rooms:
       - match: task5
         then:
           reply: "A panel slides open on the door revealing a combination lock."
+          emoji: [🌟]
           setProps:
             - panel.state = locked
             - lock.state = locked
@@ -578,6 +580,7 @@ rooms:
           reply: "💡💡💡💡\n
             You cover the window and the blue material is transformed to green by the yellow light.
             The fourth and final green lightbulb above the sink blinks on."
+          emoji: [🌟]
           imageUrl: shared/anims/blue-hand-50.gif
           after:
             - task5
@@ -588,6 +591,7 @@ rooms:
         then:
           reply: "You dial in the numbers 3,1,6,2 on the panel combination lock. \n
             You input the code correctly and hear the lock open"
+          emoji: [🌟]
           imageUrl: asylum/shots/320/panel-code.jpg
           after:
             - task6
