@@ -1,0 +1,110 @@
+rooms:
+  # -------- start --------------
+  - name: lobby
+    states:
+      - name: default
+        long: "
+            **ESCAPE FROM BELL HILL ASYLUM!** \n
+            An interactive fiction thriller\n
+            Authored by John Knauss & David Collier \n
+            © 2020
+          Type `start` when you're ready!
+        "
+        buttons:
+          - start|start|🚀
+
+    actions:
+      - match: start|🚀
+        always:
+          # imageUrl: marcom/intro-short/asylum-intro-pong.gif
+          imageUrl: asylum/marcom/asylum-low.mp4
+          reply: "
+            \n
+            \nType `help` to learn the basic commands
+            \n
+            \nType `play` or hit the ▶️ button!
+            \n_Enjoy!_\n
+            "
+          # hint: ":information_source: type `help` for a list of commands"
+          buttons:
+            - help|help|❓
+            - play|play|▶️
+            - info|info|ℹ️
+            - voice|voice|🎤
+
+      - match: voice|🎤
+        always:
+          reply: "Join a voice channel here https://discord.gg/HZeTnGq"
+
+      - match: teams
+        always:
+          reply: "
+            we have three team channels you can play in.\n
+            If a friend invited you, join their channel\n
+            or choose one of these to start a new game:\n
+            \\#team-1  |  #team-2  |  #team-3"
+
+      - match: info|ℹ️
+        always:
+          reply: "
+            Join the main [TEN|Total Escape Network] server to chat with the developers here\n
+            https://discord.gg/Qgup6qU"
+
+      - match: ^drinks|bar|order drink$
+        always:
+          reply: Here's a beer for you!
+
+      - match: ^hi$
+        always:
+          reply: Hello there!
+
+      - match: ^vers
+        always:
+          reply: v0.4.1
+          emoji:
+            - 🌟
+            # - '❓'
+            # - '⭐️'
+            # - ✴️
+            # - ✨
+            # - 🌠
+            # - ':question:'
+
+      - match: help|❓
+        then:
+          reply: "
+
+        \nYou can type commands or click emoji to interact with the game
+        \nYou are playing as a team. Anyone can enter a command, so if it gets too hectic, you might want to select one person to do the inputting.
+        \nTo chat with your group, type a period and a space before your message:
+        \n> `. Like this!`
+        \n
+
+          When the game starts, these are the basic commands:
+      \n> `L` to look around the room
+      \n> `X [thing]` to examine an item
+      \n> `INVentory` for what you're carrying
+      \n> `tasks` to see what to do next
+      \n> `Say [something] to [person]` talk to in-game characters
+      \n> `use [thing] with [thing]` try combining items
+      \n> put a `.` in front of a message to chat to other players
+      \n> There are many other things you can try, but these are the basics!
+      "
+          buttons:
+            - help|help|❓
+            - info|info|ℹ️
+            - play|play|▶️
+
+      # ignore everything else
+      # - match: .*
+      - match: order|drink
+        then:
+          reply: sorry, we're out of drinks atm
+      # - match: ^start$
+      #   then:
+      #     goto: intro
+
+      - match: play|▶️
+        always:
+          reply: OK! Let's begin
+          goto: intro

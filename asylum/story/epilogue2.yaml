@@ -1,0 +1,25 @@
+rooms:
+  - name: epilogue2
+    state: intro
+    states:
+      - name: intro
+        long: How do you tell them you’ve had enough?
+
+    actions:
+      - match: look
+        then:
+          reply: "You see the host in the lab coat who welcomed you taking furious notes on a clipboard at the end of the hallway."
+
+      - match: hint
+        then:
+          reply: How do you tell them you’ve had enough? Every Escape Room has a safe word.
+
+      - match: macaroni
+        then:
+          imageUrl: asylum/shots/slice/hallway-three.jpg
+          reply: "
+            The host scribbles more notes. \n
+            \n> _Subject is suffering from delusions of being in an Italian restaurant. Electroshock therapy in the tower is recommended._
+            \n
+            \n The orderlies drag you away, further into the depths of the asylum.\n"
+          goto: ending

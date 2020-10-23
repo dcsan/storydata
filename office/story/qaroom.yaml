@@ -1,0 +1,91 @@
+rooms:
+  - name: qaroom
+    state: intro
+    states:
+      - name: intro
+        long: "Welcome to the QA room"
+
+    actions:
+      - match: ^(sup)$
+        then:
+          reply: Whats up you
+
+      - match: ^(on)$
+        then:
+          reply: turn the hatch on
+          setProps:
+            - hatch.state = on
+
+      - match: ^(closed)$
+        then:
+          reply: turn the hatch closed
+          setProps:
+            - hatch.state = closed
+
+      - match: tog
+        always:
+          reply: you toggle
+        if:
+          all:
+            - hatch.state = on
+        then:
+          reply: was on
+          setProps:
+            - hatch.state = closed
+        else:
+          reply: was closed
+          setProps:
+            - hatch.state = on
+
+      - match: flip
+        switch:
+          - case:
+              - hatch.state = on
+              - lighter.has = yes
+            then:
+              reply: hatch on, lighter yes
+          - case:
+              - hatch.state = on
+              - lighter.has = no
+            then:
+              reply: hatch on, lighter yes
+          - case:
+              - hatch.state = closed
+              - lighter.has = no
+            then:
+              reply: hatch closed, lighter no
+          - default:
+            then:
+              reply: fallthrough
+
+    items:
+      - name: hatch
+        called: trapdoor
+        state: closed
+        canTake: false
+        hidden: false
+        states:
+          - name: closed
+            short: the hatch is closed
+          - name: open
+            short: hatch is open
+          - name: maybe
+            short: the hatch maybe open or closed
+
+      - name: redcard
+        called: red key card|key card|red key
+        states:
+          - name: default
+            short: maybe useful for opening something
+
+      - name: cloth
+        called: rag|dirty rag|old cloth
+        canTake: true
+        states:
+          - name: default
+            short: clean something?
+
+      - name: tasklist
+        states:
+          - name: default
+            short: turn the hatch on

@@ -1,32 +1,25 @@
 rooms:
   # -------- start --------------
-  - name: start
+  - name: intro
     states:
       - name: default
-        imageUrl: asylum/shots/title.jpg
-        long: "'ESCAPE FROM BELL HILL!' An interactive fiction thriller designed for Slack  \n
-        Authored by John Knauss & David Collier \n
-        copyright 2020, all rights reserved \n"
+        # imageUrl: asylum/shots/slice/title.jpg
+        imageUrl: asylum/shots/slice/fb-ad.jpg
+        long: "You accept an invitation to playtest a new physical escape room. The setting of the game is a mental asylum called 'Bell Hill'.
+          Having signed the game’s standard NDA, you climb into bed early Friday night, full of anticipation.
+          \n> After all, you _*love*_ escape rooms."
         buttons:
-          - BEGIN|home
-    actions:
-      - match: ^(begin|home|cont|ok) # .* match anything
-        then:
-          goto: home
+          - "get some sleep|sleep|💤"
 
-  # -------- home --------------
-  - name: home
-    states:
-      - name: default
-        imageUrl: asylum/shots/fb-ad.jpg
-        long:
-          "You accept an invitation to playtest a new physical escape room. The setting of the game is a mental asylum called 'Bell Hill'.
-          Having signed the game’s standard NDA, you climb into bed early Friday night, full of anticipation. \n
-          After all, you _*love*_ escape rooms."
-        buttons:
-          - sleep|sleep
+    # actions:
+    #   - match: ^(begin|ok|🆗) # .* match anything
+    #     then:
+    #       goto: home
+
+    # -------- home --------------
+
     actions:
-      - match: ^(sleep|rest|tired|ok)$
+      - match: ^(sleep|rest|tired|💤)$
         then:
           reply: You get a good night’s rest.
           goto: entrance
@@ -39,27 +32,31 @@ rooms:
   # -------- entrance --------------
   - name: entrance
     states:
-    - name: default
-      imageUrl: asylum/shots/ext-woman.jpg
-      long: "
-        Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat.
-        After placing your belongings in a locker, you are led down a long hallway to a simple bedroom.
-        In the game, you will play the role of a male inmate of Bell Hill. \n
-        Your goal is to escape the asylum."
-      buttons:
-        - ask host about game | ask
+      - name: default
+        imageUrl: asylum/shots/slice/ext-woman.jpg
+        long: "
+          Saturday morning, you arrive at the venue and are greeted by a female host wearing a white lab coat.
+          After placing your belongings in a locker, you are led down a long hallway to a simple bedroom.
+          In the game, you will play the role of a male inmate of Bell Hill.
+
+          \n Your goal is to escape the asylum."
+        buttons:
+          - ask host about game | ask |👩🏼‍⚕️
 
     actions:
       # ask is a special command that gets converted to say
-      - match: ^(ask|say)
+      - match: ask|about game|👩🏼‍⚕️
         then:
-          imageUrl: asylum/shots/cell-woman.jpg
-          reply: The host informs you the game will last one hour, followed by a short debrief. If you are ever stuck or want to leave, just say the safe word `macaroni`.
-            She wishes you good luck and exits through the door by which you came. It closes seamlessly, becoming part of a blank wall of the room.
+          imageUrl: asylum/shots/slice/cell-woman.jpg
+          reply: "The host informs you the game will last one hour, followed by a short debrief.
+            \nIf you are ever stuck or want to leave, just say the safe word:
+            \n> _macaroni_
+            \nShe wishes you good luck and exits through the door by which you came.
+            \n It closes seamlessly, becoming part of a blank wall of the room."
           buttons:
-            - look room | cont
+            - look around | cont|🔎
 
-      - match: cont
+      - match: look around|cont|🔎
         then:
           reply: You have just begun to examine your surroundings when the *real* door of the room opens, and two burly men dressed as what you take to be orderlies enter.
           goto: orderlies
@@ -68,21 +65,21 @@ rooms:
         then:
           reply: You haven't started yet!
           buttons:
-            - Continue | cont
+            - Continue | cont | ▶️
 
   # -------- orderlies --------------
   - name: orderlies
     states:
       - name: default
-        imageUrl: asylum/shots/orderlies.jpg
+        imageUrl: asylum/shots/slice/orderlies.jpg
         long: Before you can speak, one of the orderlies locks you in bear-like grip while the other strips your pants off your legs.
           Your shirt is torn off next, leaving you only in your underwear and socks.
         buttons:
-          - ask orderlies about clothes | cont
+          - ask orderlies about your clothes | cont|👨‍⚕️
 
     actions:
       # catch both inputs here anyway
-      - match: (tell|cont|stop)
+      - match: (👨‍⚕️|tell|cont|stop|ask|▶️)
         then:
           reply: "
             \n_“Is this part of the game?!”_ you stammer angrily.
@@ -102,5 +99,3 @@ rooms:
       - match: cell|look|look around
         then:
           goto: cell
-
-

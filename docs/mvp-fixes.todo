@@ -1,0 +1,91 @@
+Final fixes:
+
+☐ GM commands /task x to jump around
+
+☐ need to get notebook from somewhere. its too complex to have it on the desk with all the states
+  can someone give it to you? make it more explicit?
+  It could be like the first page of the notebook
+  but that would mean the notes images would need to be more complicated or even need a way to turn the pages
+
+☐ now we have a 'note' have to rename 'notes' notebook. tasks? hint? rules?
+  ugh. NLP code also assumed note -> notebook
+
+✔ When player combines handle with sink the voice says @done(20-09-17 21:50)
+"We always wash the same four parts of our body, Jack. And Michael knows the order."
+(Type wash _____, _____, _____, _____ in the correct order.)
+
+☐ hard to lock the order
+if they get handle, add to sink can be done - before dress or exercise...
+
+2. When the player does the final color code, and hears the loud click from the door, instead of the door being unlocked, let's have a panel lift up with a 4-digit combo or symbol lock to solve to unlock the door. The solution will be in the notebook as a visual clue. I'll draw these pictures, including the two states of the door. This means we will need a "look door" command and response as well.
+
+3. Also in a note on the desk, or in the notebook will be an indication that in order to be released, you must prove your sanity through both following instructions + solving puzzles. A healthy society requires obedience and logic.
+Here are the images for the notebook and a paper on the desk in their different states. The paper includes the symbolic substitution cypher to use on the locked door combo lock
+
+Here are the images of the door before the combo lock slides open and after (when completing the color puzzle)
+Close up of lock before and after solving
+2 files
+Image from iOS
+
+Image from iOS
+
+✔ Can you solve it? @done(20-09-18 00:09)
+✔ If we really think someone in our western audience doesn’t know what Roman numerals are, we can add a clock on the wall @done(20-09-18 00:09)
+
+Also remember these icons I made for the inventory
+
+And I think we just drop the woman and the shooting at the end and instead just have the goons grab you
+
+You input the code correctly and hear the door lock click open.
+> exit room
+You step from your cell and into a dark hallway. The host stands at the far end, scribbling notes.
+> (no matter what you input the story advances)
+"Take him to the tower," the host says, motioning to the orderlies. They advance on you.
+> TELL HOST THE HOUR IS UP
+"Oh, we’re not finished collecting our data on you yet," says the host, as the orderlies grab hold of you once again.
+> (player must input MACARONI here as before)
+"Sorry, what was that you said?" The host pauses, looking at you.
+> (MACARONI again)
+The host scribbles more notes. "Subject is suffering from delusions of being in an Italian restaurant. Electroshock therapy in the tower is recommended."
+Then orderlies drag you away, further into the depths of the asylum. As you struggle, you hear the host call out. (edited)
+"You should have read those terms and conditions more carefully, Jack. Welcome to Bell Hill!"
+
+> LOOK CLOCK
+✔ A clock without hands... I guess it’s not meant to tell time. @done(20-09-23 14:40)
+
+
+DC   AM
+is there something to stop the player from trying the door at the start?
+Dr. J   AM
+There's no combo until you complete the color puzzle
+see the panel closed?
+If they try OPEN DOOR it's locked
+
+☐ door and plate
+The door is locked. There is a small window facing out with a metal plate below it.
+LOOK WINDOW. It faces out onto a blank hallway wall.
+LOOK PLATE. It looks like it may be covering something. There are no ways to open it that you can see.
+LOOK COMBO LOCK/LOCK/PLATE (when opened) SHOW CLOSEUP
+
+DC   AM
+ok got it, just hide the combo
+Dr. J   AM
+and when open, under the image we can say "ENTER COMBO ___, ____, ____, ____
+ ENTER COMBO 3162
+ENTER COMBO 3,1,6,2
+something like that'
+DC   AM
+i can parse multiple answers so we can accept variations
+
+
+Features:
+☐ trigger events from look / status so we can set `task1` after entering.
+☐ tutorial to show how to use the buttons
+
+
+Questions > John:
+- > LOOK CLOCK
+☐ A clock without hands... I guess it’s not meant to tell time.
+but The clock does have hands?
+
+

@@ -1,0 +1,30 @@
+rooms:
+  - name: epilogue1
+    state: intro
+    states:
+      - name: intro
+        long: The host stands at the far end, scribbling notes
+        imageUrl: asylum/shots/640/hall-host.jpg
+        buttons:
+          - ask woman about game | askaboutgame|👩🏼‍⚕️
+
+    #   - name: intro
+    #     long: "\nA young woman who appears to be bleeding hobbles toward you.
+    #       \n
+    #       \n _“Don’t let them fool you”_ she moans, as two orderlies approach.
+    #       \n
+    #       \n _“Okay,”_ you think to yourself _“Maybe this is a bit much for a Saturday morning…”_"
+    #
+
+    actions:
+      - match: ask|.*|👩🏼‍⚕️
+        then:
+          imageUrl: asylum/shots/640/hall-goons.jpg
+          reply: "
+            > _\"Take him to the tower\"_
+            \nthe woman says, motioning to the orderlies.
+            \nThey advance on you.
+            \n> _\"We’re not finished collecting our data on you yet\"_
+            \n she says, as the orderlies grab hold of you once again.
+          "
+          goto: epilogue2

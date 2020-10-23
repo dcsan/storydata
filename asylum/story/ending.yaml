@@ -1,0 +1,19 @@
+rooms:
+  - name: ending
+    state: intro
+    states:
+      - name: intro
+        imageUrl: asylum/shots/slice/title.jpg
+
+        long: "
+          \n As you struggle, you hear the host call out:
+          \n> \"_You should have read those terms and conditions more carefully, Jack._\"
+          \n
+          \n*TO BE CONTINUED*
+          \n
+          \nThank you for playing The introduction to **Escape From Bell Hill!**
+          \n
+          \nPlease let us know if you liked the game and learn about more games
+          \n
+          \nhttps://forms.gle/uvrBDfqngs1rszxQ6
+          "

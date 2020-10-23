@@ -1,0 +1,10 @@
+rooms:
+  # -------- start --------------
+  - name: tutorial
+    states:
+      - name: default
+        imageUrl: asylum/shots/640/title.jpg
+
+        long: "Escape Game Tutorial"
+        buttons:
+          - start|start|🏁

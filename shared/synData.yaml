@@ -1,0 +1,29 @@
+- base: look
+  alias: [examine, x, l, look at, look at the, inspect, read]
+
+- base: lookRoom
+  alias: [look room, x room, l room, look at room]
+
+- base: get
+  alias: [take, get, wear, grab, pick up, pick]
+
+- base: goto
+  alias: [gt]
+
+- base: shut
+  alias: [close]
+
+- base: ask
+  alias: [say, say to, tell, speak, shout at]
+
+- base: with
+  alias: [on, against, into, to, above, into, inside, onto]
+
+- base: use
+  alias: [use, attach, add, turn on, put, turn, push]
+
+- base: task
+  alias: [t]
+
+- base: status
+  alias: [st]

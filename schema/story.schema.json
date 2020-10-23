@@ -20,7 +20,22 @@
             "type": "string",
             "description": "full URL of an image"
           },
+          "webUrl": {
+            "type": "string",
+            "description": "web link"
+          },
+          "webLinkText": {
+            "type": "string",
+            "description": "visible text on link"
+          },
           "short": {
+            "type": "string"
+          },
+          "navbar": {
+            "type": "string",
+            "description": "show the basic buttons bar with look|item|task|help"
+          },
+          "hint": {
             "type": "string"
           },
           "long": {
@@ -43,10 +58,22 @@
         "reply": {
           "type": "string"
         },
+        "emoji": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hint": {
+          "type": "string"
+        },
+        "navbar": {
+          "type": "string"
+        },
         "goto": {
           "type": "string"
         },
-        "invoke": {
+        "callJS": {
           "type": "string"
         },
         "setProps": {
@@ -65,6 +92,12 @@
           }
         },
         "take": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "drop": {
           "type": "array",
           "items": {
             "type": "string"
@@ -108,9 +141,23 @@
           "type": "string",
           "description": "canonical computer readable name"
         },
-        "startRoom": {
+        "startRoomDefault": {
           "type": "string",
-          "description": "canonical computer readable name"
+          "description": "If a specific start room is not found"
+        },
+        "startRooms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "channels": {
+                "type": "string"
+              },
+              "room": {
+                "type": "string"
+              }
+            }
+          }
         },
         "tasks": {
           "type": "array",
@@ -189,6 +236,22 @@
                 },
                 "else": {
                   "$ref": "#/definitions/branch"
+                },
+                "switch": {
+                  "type": "array",
+                  "additionalProperties": false,
+                  "properties": {
+                    "case": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "then": {
+                      "additionalProperties": false,
+                      "$ref": "#/definitions/branch"
+                    }
+                  }
                 }
               }
             }
@@ -206,6 +269,12 @@
                 "name": {
                   "type": "string"
                 },
+                "props": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "called": {
                   "type": "string"
                 },
@@ -215,17 +284,20 @@
                 "state": {
                   "type": "string"
                 },
-                "states": {
-                  "$ref": "#/definitions/states"
-                },
                 "canTake": {
                   "type": "boolean"
+                },
+                "onTake": {
+                  "type": "string"
                 },
                 "hidden": {
                   "type": "boolean"
                 },
                 "unique": {
                   "type": "boolean"
+                },
+                "states": {
+                  "$ref": "#/definitions/states"
                 }
               }
             }
