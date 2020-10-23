@@ -17,7 +17,7 @@ rooms:
 
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
-        short: "`[Task 1/5]` You are in what appears to be an inmate’s bedroom. \n
+        short: "`[Task 1/6]` You are in what appears to be an inmate’s bedroom. \n
           You see a desk and some furniture. \n
           The door slams shut behind you. "
         navbar: full
@@ -26,7 +26,7 @@ rooms:
       - name: task2
         imageUrl: asylum/rooms/cell-1.jpg
         short: "💡 … … …\n
-          `[Task 2/5]` You are in what appears to be an inmate’s bedroom. \n
+          `[Task 2/6]` You are in what appears to be an inmate’s bedroom. \n
           You see a a desk, a sink, a window, a door, lights, and a wall covered with images.
           \n
           \nOne of the lights has come on.
@@ -36,14 +36,14 @@ rooms:
       - name: task3
         imageUrl: asylum/rooms/cell-2.jpg
         short: "💡💡 … …\n
-        `[Task 3/5]` 
+        `[Task 3/6]` 
           two of the lights are on"
         navbar: full
 
       - name: task4
         imageUrl: asylum/rooms/cell-dark.jpg
         short: "💡💡💡 …\n
-          `[Task 4/5]` 
+          `[Task 4/6]` 
           three of the lights are on, and a yellow light is coming in through the window."
         navbar: full
 
@@ -473,7 +473,7 @@ rooms:
             - tasklist.state = start
         then:
           imageUrl: asylum/items/120/tannoy.png
-          reply: "`[Task 1/5]` A voice crackles over a hidden speaker in the room.
+          reply: "`[Task 1/6]` A voice crackles over a hidden speaker in the room.
             \n
             \n> _“To proceed to breakfast, please follow your morning routine.
             Remember, undressed patients are never allowed in the common areas.”_
@@ -495,7 +495,7 @@ rooms:
       - match: task2
         then:
           reply: "💡 … … …\n
-            `[Task 2/5]` The bottom bulb in a column of four has come on, now glowing a bright green above the others.
+            `[Task 2/6]` The bottom bulb in a column of four has come on, now glowing a bright green above the others.
             The same voice crackles over the speaker.
             \n> _“Very good. Now remember, the body needs its morning warmup exercise. Just as many times as there are legs in the room.”_"
           navbar: full
@@ -508,7 +508,7 @@ rooms:
       - match: task3
         then:
           reply: "💡💡 … …\n
-            `[Task 3/5]` The second in the column of five green lightbulbs lights up and the invisible speaker crackles.
+            `[Task 3/6]` The second in the column of five green lightbulbs lights up and the invisible speaker crackles.
             \n> _“Well done. You’re fit as a fiddle. And now it’s time to scrub away those germs. Let’s not be careless, now. Follow proper procedure.”_
             "
           navbar: full
@@ -521,7 +521,7 @@ rooms:
       - match: task4
         then:
           reply: "💡💡💡 …\n
-            `[Task 4/5]` The third green light in the column above the sink turns on and the voice is encouraging this time.
+            `[Task 4/6]` The third green light in the column above the sink turns on and the voice is encouraging this time.
             \n> _“You're doing quite well.
             Limber and loose and clean as a goose. And all dressed for breakfast.”_"
           # imageUrl: xxx
@@ -535,7 +535,7 @@ rooms:
       # task #4 - color puzzle
       - match: task5
         then:
-          reply: "`[Task 5/5]` A panel slides open on the door revealing a combination lock."
+          reply: "`[Task 5/6]` A panel slides open on the door revealing a combination lock."
           emoji: [🌟]
           setProps:
             - panel.state = locked
@@ -1074,7 +1074,7 @@ rooms:
 
           # exercise
           - name: task2
-            short: "`[Task 2/5]` The voice had said:
+            short: "`[Task 2/6]` The voice had said:
               \n> _“Now remember, the body needs its morning warmup exercise. 
               To proceed to breakfast, please follow your morning routine.”_
               "
@@ -1082,13 +1082,13 @@ rooms:
 
             # wash
           - name: task3
-            short: "`[Task 3/5]` The voice had said
+            short: "`[Task 3/6]` The voice had said
               \n> _“And now it’s time to scrub away those germs.”_"
 
             # colors
           - name: task4
             navbar: none
-            short: "`[Task 4/5]`
+            short: "`[Task 4/6]`
               \n> _“I’mmm envioussss of youuu... Can you matchhhhh the collllllor of my envyyyy, Agent Dale?”_ "
 
           - name: task5
