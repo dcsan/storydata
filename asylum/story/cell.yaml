@@ -84,7 +84,7 @@ rooms:
         then:
           reply: "
             The voice crackles out.
-            \n> _'Follow proper procedure, Jack. Michael has told you how.'_
+            \n> _'Follow proper procedure, now. Michael has told you how.'_
             "
 
       - match: ^wash hands neck ears face (with soap|)$
@@ -272,7 +272,7 @@ rooms:
             - task2
         else:
           reply: "
-            \n> _'You're halfway there, Jack.'_
+            \n> _'You're halfway there.'_
             "
 
       # TRIGER 1 - get dressed
@@ -281,7 +281,7 @@ rooms:
           reply: "
             Before you can move, a voice crackles over a hidden speaker in the room.
             \n> _“To proceed to breakfast, please follow your morning routine.
-            Remember, every good boy dresses sharply.”_"
+            Remember, undressed patients are never allowed in the common areas.”_"
           setProps:
             - notes.state = task1
             - room.state = task1
@@ -291,7 +291,7 @@ rooms:
         then:
           reply: "The bottom bulb in a column of four has come on, now glowing a bright green above the others.
             The same voice crackles over the speaker.
-            \n> _“That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”_"
+            \n> _“Very good. Now remember, the body needs its morning warmup exercise. Just as many times as there are legs in the room.”_"
           setProps:
             - notes.state = task2
             - room.state = task2
@@ -300,7 +300,7 @@ rooms:
       - match: task3
         then:
           reply: "The second in the column of five green lightbulbs lights up and theinvisible speaker crackles.
-            \n> _“Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”_
+            \n> _“Well done. You’re fit as a fiddle. And now it’s time to scrub away those germs. Let’s not be careless, now. Follow proper procedure.”_
             "
           setProps:
             - notes.state = task3
@@ -310,8 +310,8 @@ rooms:
       - match: task4
         then:
           reply: "The third green light in the column above the sink turns on and the voice is encouraging this time.
-            \n> _“Jack, my boy, you’re a wonderful lad.
-            Limber and loose and clean as a goose. And dressed up so nicely to boot!”_"
+            \n> _“You're doing quite well.
+            Limber and loose and clean as a goose. And all dressed for breakfast.”_"
           # imageUrl: xxx
           buttons:
             - ask where my real clothes are | realclothes
@@ -331,7 +331,7 @@ rooms:
       - match: termsandconds|ask about terms
         then:
           reply: "
-            \n>_“Jackkkk…”_
+            \n>_“Onnne morrre to gooo nowww…”_
             The voice is faint and eerie, like a record being played at the wrong speed.
             "
           after:
@@ -341,7 +341,8 @@ rooms:
         then:
           reply: "
             \n>
-            _“I’mmm envioussss of youuu Jackkk. Can you matchhhhh the collllllor of my envyyyy, Jackkk?”_
+            _“I’mmm envioussss of youuu, Agent Dale. Can you matchhhhh the collllllor of my envyyyy?”_
+            What was that? The voice just said your real name--
             "
 
       # task 4 win
@@ -369,7 +370,7 @@ rooms:
             - robe.has = yes
             - door.state = open
         then:
-          reply: You step into the hallway, pleased with your accomplishment.
+          reply: You step into the hallway, unsure of what to expect.
           goto: epilogue
         else:
           reply: The door won't open.
@@ -422,12 +423,12 @@ rooms:
             - tasks.state = task2
         then:
           reply: You slip out of your blue sandals and perform 18 jumping jacks in your socks.
-            You can’t remember doing these since childhood. It’s rather fun, actually.
+            For an agent of your fitness, they are a breeze.
           after:
             - task3
         else:
           reply: "
-            \n>_“Let's not get ahead of ourselves, now, Jack. Follow instructions, lad.”_
+            \n>_“Let's not get ahead of ourselves, now. Follow instructions, please.”_
             "
 
       - match: ^(jump|jumping jacks|jacks)$
@@ -483,7 +484,7 @@ rooms:
           - name: locked
             short: The door is tightly locked.
           - name: open
-            short: The door has opened. Time to make your escape?
+            short: The door has opened. Time to go?
 
       - name: handle
         state: attached
@@ -502,7 +503,7 @@ rooms:
           - name: hasSoap
             short: There's a bar of soap inside the pillowcase.
           - name: noSoap
-            short: It's just an ordinary, head-stained pillow.
+            short: It's just an ordinary, (head-stained) pillow.
 
       - name: soap
         called: soap|bar of soap|soapbar
@@ -552,18 +553,18 @@ rooms:
             short: The notebook is blank. You can add notes here to remember things.
           - name: task1
             short: The voice had said _“To proceed to breakfast, please follow your morning routine.
-              Remember, every good boy dresses sharply.”_
+            Remember, undressed patients are never allowed in the common areas.”_
           - name: task2
             short: "The voice said
-              _“That’s a good boy, Jack. Now remember, exercise makes the man.
+              _“Very good. Now remember, the body needs its morning warmup exercise. 
               Just as many times as there are legs in the room”_
               "
           - name: task3
             short: "The voice had said
-              _“And now it’s time for all good boys to scrub away those mean, nasty germs.”_"
+              _“And now it’s time to scrub away those germs.”_"
           - name: task4
             short: "
-              _“I’mmm envioussss of youuu Jackkk. Can you matchhhhh the collllllor of my envyyyy, Jackkk?”_
+              _“I’mmm envioussss of youuu. Can you matchhhhh the collllllor of my envyyyy?”_
               "
 
       - name: sandals
@@ -630,7 +631,7 @@ rooms:
         states:
           - name: default
             imageUrl: asylum/items/drawing.jpg
-            long: It’s a reproduction of DaVinci’s classic drawing, “Vitruvian Man,” except the figure looks a lot like you at the moment.
+            long: It’s a reproduction of DaVinci’s classic drawing, “Vitruvian Man,” except the figure is dressed a lot like you at the moment.
 
       - name: photo
         called: face photo|high-school|photo|school photo
@@ -638,7 +639,7 @@ rooms:
         states:
           - name: default
             imageUrl: asylum/items/school-photo.jpg
-            long: It’s you, from your senior year in high school, complete with forehead acne and love goggles. How did they manage to make a copy of this? Unnerving.
+            long: It looks like someone's senior year high school photo. Odd.
 
       - name: poster
         called: jackson|high-school|photo|poster|album|album cover
