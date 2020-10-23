@@ -6,7 +6,7 @@ rooms:
     states:
       - name: default
         short: "
-          You are in what appears to be an inmate’s bedroom. \n
+          You are in what appears to be a patient’s bedroom. \n
           You see a bed, a wardrobe, a desk, a sink, a window, a door, lights, and a wall covered with images."
         imageUrl: asylum/rooms/cell.jpg
         buttons:
