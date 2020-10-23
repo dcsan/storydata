@@ -1,18 +1,18 @@
 rooms:
   # -------- start --------------
-  - name: start
+  - name: intro
     states:
       - name: default
-        imageUrl: asylum/shots/bh-title.jpg
+        imageUrl: asylum/shots/640/bh-intro.jpg
         long: "THE BUREAU OF PROFOUND ODDITIES: Season 1 Episode 1 \n
         'ESCAPE FROM BELL HILL!' An interactive fiction thriller designed for Discord  \n
         Authored & Illustrated by John Knauss \n
         Programmed by David Collier \n
-        copyright 2020, all rights reserved \n"
+        ©2020 all rights reserved \n"
         buttons:
-          - BEGIN|home
+          - BEGIN|home|▶️
     actions:
-      - match: home
+      - match: home|▶️
         then:
           goto: home
 
@@ -20,7 +20,7 @@ rooms:
   - name: home
     states:
       - name: default
-        imageUrl: asylum/shots/bpo-chief-office.jpg
+        imageUrl: asylum/shots/640/bpo-chief-office.jpg
         long:
           "_*PROLOGUE.*_ \n
           Thursday, 12.10pm EST \n \n
@@ -37,50 +37,44 @@ rooms:
         then:
           reply: “_"Three days ago we had a spike of psychic energy upstate."_ \n \n
                   The Chief places an old black & white photograph in front of you.
-                  
-                  imageUrl: asylum/shots/bh-asylum-photo.jpg
-                  
-                  _“An abandoned mental asylum called Bell Hill. Recently renovated and converted into a themed escape room game. 
+
+          imageUrl: asylum/shots/640/bh-asylum-photo.jpg
+
+                  _“An abandoned mental asylum called Bell Hill. Recently renovated and converted into a themed escape room game.
                   You know what an escape room is, Agent Dale?”_ \n \n
                   You nod. \n \n
                   _“Can you guess what the theme is?”_ \n \n
                   _“…Escape the mental asylum?”_ \n \n
                   _“You’re a sharp one, Dale. I like that.”_ \n \n
-                  Murphy opens a case folder. _“We immediately dispatched one of our agents to investigate. 
-                  A recent recruit named Agent Lee.”_ \n \n 
+                  Murphy opens a case folder. _“We immediately dispatched one of our agents to investigate.
+                  A recent recruit named Agent Lee.”_ \n \n
 
-                  imageUrl: asylum/shots/bh-lee-photo.jpg
-                  
-                  _“But sixteen hours ago we lost all contact with her.”_ \n \n
-                  
+      - match: img2
+        then:
+          reply: _“But sixteen hours ago we lost all contact with her.”_ \n \n
+          imageUrl: asylum/shots/bh-lee-photo.jpg
+
   # -------- outro --------------
   - name: outro
     states:
-    - name: default
-    long: "The Chief gets up and moves toward the door. \n \n
-          _“You’ll be infiltrating Bell Hill asylum under the cover of a paying guest. 
-          You’ll first have to successfully win their themed escape room game to access the facility further. 
-          After that, you’ll need to discover the whereabouts of the missing Agent Lee, 
-          as well as locate the source of the psychic energy spike. Any questions?”_ \n \n
-          buttons:
-            - No, sir.|nosir
-            - Is Friday payday?|fridaypayday
-      actions:
-        - match: fridaypayday
-            then:
-              reply: "_"The Chief grunts."_"
-              goto: farewell
-              
-      actions:
-        - match: nosir
-            then:
-              goto: farewell
+      - name: default
+        long: "The Chief gets up and moves toward the door. \n \n
+          _“You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
+          You’ll first have to successfully win their themed escape room game to access the facility further.
+          After that, you’ll need to discover the whereabouts of the missing Agent Lee,
+          as well as locate the source of the psychic energy spike. Any questions?”_ \n \n"
+        buttons:
+          - No, sir.|nosir|⛔️
+          - Is Friday payday?|fridaypayday|💵
 
-  # -------- farewell --------------
-  - name: farewell
-    states:
-    - name: default
-      imageUrl: bh-case-file.png
-      long: "
-        _“Good luck, Agent Dale.”_"  
+    actions:
+      - match: fridaypayday|💵
+        then:
+          reply: "_The Chief grunts._"
+          goto: farewell
+
+      - match: nosir|⛔️
+        then:
+          imageUrl: asylum/shots/640/bh-case-file.png
+          reply: _“Good luck, Agent Dale.”_"
           goto: cell
