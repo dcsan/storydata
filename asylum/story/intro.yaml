@@ -11,6 +11,7 @@ rooms:
         ©2020 all rights reserved \n"
         buttons:
           - BEGIN|home|▶️
+
     actions:
       - match: home|▶️
         then:
