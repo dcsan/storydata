@@ -5,7 +5,7 @@ rooms:
       - name: default
         imageUrl: asylum/shots/640/bh-intro.jpg
         long: "THE BUREAU OF PROFOUND ODDITIES: SEASON 1 EPISODE 1 \n
-        _"ESCAPE FROM BELL HILL!"_ An interactive fiction thriller designed for Discord  \n
+        _ESCAPE FROM BELL HILL!_ An interactive fiction thriller designed for Discord
         Authored & Illustrated by John Knauss \n
         Programmed by David Collier \n
         ©2020 all rights reserved \n"
@@ -25,57 +25,43 @@ rooms:
         long:
           "_*PROLOGUE.*_ \n
           Thursday, 12.10pm EST \n \n
-          Division Chief Murphy sits behind his desk, his eyes beady and emotionless."
+          Division Chief Murphy sits behind his desk, his eyes beady and emotionless.
+          \n
+          \n
+          \n 🪑 have a seat
+          \n ⏩ skip the intro
+          \n
+          "
         buttons:
-          - have a seat|haveaseat
-          - skip the intro|skiptheintro
+          - seat|haveaseat|🪑
+          - skip|skiptheintro|⏩
+
     actions:
-      - match: skiptheintro
+      - match: skip|skiptheintro|⏩
         then:
           goto: outro
 
-      - match: haveaseat
+      - match: have|haveaseat|🪑
         then:
-          reply: “_"Three days ago we had a spike of psychic energy upstate."_ \n \n
+          imageUrl: asylum/shots/640/bh-asylum-photo.jpg
+          reply: "> _Three days ago we had a spike of psychic energy upstate._ \n
+
                   The Chief places an old black & white photograph in front of you.
 
-          imageUrl: asylum/shots/640/bh-asylum-photo.jpg
+                  \n> _“An abandoned mental asylum called Bell Hill. Recently renovated and converted into a themed escape room game.
+                  \n> You know what an escape room is, Agent Dale?”_
+                  \nYou nod.
+                  \n> _Can you guess what the theme is?_
+                  \n…Escape the mental asylum?
+                  \n> _“You’re a sharp one, Dale. I like that.”_
+                  \nMurphy opens a case folder.
+                  \n> _“We immediately dispatched one of our agents to investigate.
+                  \n> A recent recruit named Agent Lee.”_ "
+          buttons:
+            - lee|dale|🕵️‍♀️
 
-                  _“An abandoned mental asylum called Bell Hill. Recently renovated and converted into a themed escape room game.
-                  You know what an escape room is, Agent Dale?”_ \n \n
-                  You nod. \n \n
-                  _“Can you guess what the theme is?”_ \n \n
-                  _“…Escape the mental asylum?”_ \n \n
-                  _“You’re a sharp one, Dale. I like that.”_ \n \n
-                  Murphy opens a case folder. _“We immediately dispatched one of our agents to investigate.
-                  A recent recruit named Agent Lee.”_ \n \n
-
-      - match: img2
+      - match: img2|🕵️‍♀️
         then:
-          reply: _“But sixteen hours ago we lost all contact with her.”_ \n \n
-          imageUrl: asylum/shots/bh-lee-photo.jpg
-
-  # -------- outro --------------
-  - name: outro
-    states:
-      - name: default
-        long: "The Chief gets up and moves toward the door. \n \n
-          _“You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
-          You’ll first have to successfully win their themed escape room game to access the facility further.
-          After that, you’ll need to discover the whereabouts of the missing Agent Lee,
-          as well as locate the source of the psychic energy spike. Any questions?”_ \n \n"
-        buttons:
-          - No, sir.|nosir|⛔️
-          - Is Friday payday?|fridaypayday|💵
-
-    actions:
-      - match: fridaypayday|💵
-        then:
-          reply: "_The Chief grunts._"
-          goto: farewell
-
-      - match: nosir|⛔️
-        then:
-          imageUrl: asylum/shots/640/bh-case-file.png
-          reply: _“Good luck, Agent Dale.”_"
-          goto: cell
+          reply: "> _“But sixteen hours ago we lost all contact with her.”_"
+          imageUrl: asylum/shots/640/bh-lee-photo.jpg
+          goto: outro

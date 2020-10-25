@@ -1,38 +1,39 @@
 rooms:
   #--------------- cell --------------------
-  
-  # on initial entry, add:
-  # "THE BUREAU OF PROFOUND ODDITIES: "ESCAPE FROM BELL HILL!" \n
-  # Chapter One : The Room
-  
-  # initial descrition: "Stripped of your clothing and possessions before entering, 
-  # you stand in your underwear waiting for this mental asylum-themed escape room game to begin.
-  
-  # A voice calls out from an unseen speaker. "If you want to end the game for any reason, you
-  # can simpy say the safe word, 'macaroni'."
-  
-  # The door to the room locks with a firm click.
-  
-  # I guess the game has begun...
 
   - name: cell
-    state: default
+    state: intro
     states:
       # should enter as task1 state. no navbar to show the 'eye'
-      - name: default
-        short:
-          "You are in what appears to be a mental patient’s bedroom. \n
-          \nThere's a desk in front of you.
-          \n⌨️ _to Look at the desk type:_
-          \n> `L desk` "
+      - name: intro
+        short: "
+        THE BUREAU OF PROFOUND ODDITIES: 'ESCAPE FROM BELL HILL!' \n
+        Chapter One : The Room
+
+        Stripped of your clothing and possessions before entering,
+        you stand in your underwear waiting for this mental asylum-themed escape room game to begin.
+        A voice calls out from an unseen speaker:
+        \n> _If you want to end the game for any reason, you can simpy say the safe word, **macaroni**._
+
+        \n The door to the room locks with a firm click.
+
+        \nI guess the game has begun...
+
+        \n You are in what appears to be a mental patient’s bedroom. \n
+        \nThere's a desk in front of you.
+        \n⌨️ _to Look at the desk type:_
+        \n> `L desk` "
+        buttons:
+          - look1|look1|👁
+
         imageUrl: asylum/rooms/cell.jpg
         # buttons:
-        #   - look around | task1|👁
+        #   - look around | task1|
 
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
         short: "`[Task 1/6]` You are in what appears to be a mental patient’s bedroom. \n
-          You see a desk and some furniture. \n
+          You see a desk and some furniture. \n"
         navbar: full
 
       # repeat room description
@@ -49,14 +50,14 @@ rooms:
       - name: task3
         imageUrl: asylum/rooms/cell-2.jpg
         short: "💡💡 … …\n
-        `[Task 3/6]` 
+        `[Task 3/6]`
           Two of the lights are on"
         navbar: full
 
       - name: task4
         imageUrl: asylum/rooms/cell-dark.jpg
         short: "💡💡💡 …\n
-          `[Task 4/6]` 
+          `[Task 4/6]`
           Three of the lights are on, and a yellow light seeps through the window."
         navbar: full
 
@@ -1088,7 +1089,7 @@ rooms:
           # exercise
           - name: task2
             short: "`[Task 2/6]` The voice had said:
-              \n> _“Now remember, the body needs its morning warmup exercise. 
+              \n> _“Now remember, the body needs its morning warmup exercise.
               To proceed to breakfast, please follow your morning routine.”_
               "
             navbar: none
@@ -1186,7 +1187,7 @@ rooms:
         states:
           - name: default
             imageUrl: asylum/items/600/school-photo.jpg
-            long: It's what looks to be an awkward high school yearbook photo, complete with forehead acne and love goggles. 
+            long: It's what looks to be an awkward high school yearbook photo, complete with forehead acne and love goggles.
 
       - name: poster
         called: jackson|high-school|photo|poster|album|album cover|jackson photo

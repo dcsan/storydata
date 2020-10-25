@@ -1,0 +1,16 @@
+rooms:
+  - name: outro
+    states:
+      - name: default
+        short: "the outro"
+    actions:
+      - match: nosir|⛔️
+        then:
+          imageUrl: asylum/shots/640/bh-case-file.png
+          reply: _“Good luck, Agent Dale.”_"
+          goto: cell
+
+      - match: fridaypayday|💵
+        then:
+          reply: "_The Chief grunts._"
+          goto: cell

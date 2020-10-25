@@ -1,0 +1,28 @@
+rooms:
+  # -------- start --------------
+  - name: outro
+    states:
+      - name: default
+        short: "The Chief gets up and moves toward the door. \n \n
+          _“You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
+          You’ll first have to successfully win their themed escape room game to access the facility further.
+          After that, you’ll need to discover the whereabouts of the missing Agent Lee,
+          as well as locate the source of the psychic energy spike. Any questions?”_
+          \n
+          You think about asking if Friday is Payday..."
+
+        buttons:
+          - Nope|nosir|🌀
+          - payday?|fridaypayday|💵
+
+    actions:
+      - match: nosir|🌀
+        then:
+          imageUrl: asylum/shots/640/bh-case-file.png
+          reply: _“Good luck, Agent Dale.”_"
+          goto: cell
+
+      - match: fridaypayday|💵
+        then:
+          reply: "_The Chief grunts._"
+          goto: cell
