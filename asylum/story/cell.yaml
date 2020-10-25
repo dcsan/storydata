@@ -1,5 +1,19 @@
 rooms:
   #--------------- cell --------------------
+  
+  # on initial entry, add:
+  # "THE BUREAU OF PROFOUND ODDITIES: "ESCAPE FROM BELL HILL!" \n
+  # Chapter One : The Room
+  
+  # initial descrition: "Stripped of your clothing and possessions before entering, 
+  # you stand in your underwear waiting for this mental asylum-themed escape room game to begin.
+  
+  # A voice calls out from an unseen speaker. "If you want to end the game for any reason, you
+  # can simpy say the safe word, 'macaroni'."
+  
+  # The door to the room locks with a firm click.
+  
+  # I guess the game has begun...
 
   - name: cell
     state: default
@@ -7,7 +21,7 @@ rooms:
       # should enter as task1 state. no navbar to show the 'eye'
       - name: default
         short:
-          "You are in what appears to be a patient’s bedroom. \n
+          "You are in what appears to be a mental patient’s bedroom. \n
           \nThere's a desk in front of you.
           \n⌨️ _to Look at the desk type:_
           \n> `L desk` "
@@ -17,16 +31,15 @@ rooms:
 
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
-        short: "`[Task 1/6]` You are in what appears to be a patient’s bedroom. \n
+        short: "`[Task 1/6]` You are in what appears to be a mental patient’s bedroom. \n
           You see a desk and some furniture. \n
-          The door slams shut behind you. "
         navbar: full
 
       # repeat room description
       - name: task2
         imageUrl: asylum/rooms/cell-1.jpg
         short: "💡 … … …\n
-          `[Task 2/6]` You are in what appears to be a patient’s bedroom. \n
+          `[Task 2/6]` You are in what appears to be a mental patient’s bedroom. \n
           You see a a desk, a sink, a window, a door, lights, and a wall covered with images.
           \n
           \nOne of the lights has come on.
