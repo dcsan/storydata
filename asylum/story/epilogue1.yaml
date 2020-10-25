@@ -24,7 +24,7 @@ rooms:
             > _\"Take him to the tower\"_
             \nthe doctor says, motioning to two burly guards.
             \n\"Yes, Doctor Abbot.\" They advance on you.
-            \n> _\"We have a few questions to ask you... Agent Dale.\"_
+            \n> _\"We have a few questions to ask you.\"_
             \n he says, as the guards grab hold of you.
           "
           goto: epilogue2
