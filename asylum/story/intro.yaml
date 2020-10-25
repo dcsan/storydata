@@ -4,8 +4,8 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/640/bh-intro.jpg
-        long: "THE BUREAU OF PROFOUND ODDITIES: Season 1 Episode 1 \n
-        'ESCAPE FROM BELL HILL!' An interactive fiction thriller designed for Discord  \n
+        long: "THE BUREAU OF PROFOUND ODDITIES: SEASON 1 EPISODE 1 \n
+        _"ESCAPE FROM BELL HILL!"_ An interactive fiction thriller designed for Discord  \n
         Authored & Illustrated by John Knauss \n
         Programmed by David Collier \n
         ©2020 all rights reserved \n"
