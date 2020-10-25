@@ -3,10 +3,10 @@ rooms:
     state: intro
     states:
       - name: intro
-        long: The host stands at the far end, scribbling notes
+        long: A doctor (or actor?) stands at the foot of a curving staircase, scribbling notes.
         imageUrl: asylum/shots/640/hall-host.jpg
         buttons:
-          - ask woman about game | askaboutgame|👩🏼‍⚕️
+          - ask doctor about game | askaboutgame|👩🏼‍⚕️
 
     #   - name: intro
     #     long: "\nA young woman who appears to be bleeding hobbles toward you.
@@ -22,9 +22,9 @@ rooms:
           imageUrl: asylum/shots/640/hall-goons.jpg
           reply: "
             > _\"Take him to the tower\"_
-            \nthe woman says, motioning to the orderlies.
-            \nThey advance on you.
-            \n> _\"We’re not finished collecting our data on you yet\"_
-            \n she says, as the orderlies grab hold of you once again.
+            \nthe doctor says, motioning to two burly guards.
+            \n\"Yes, Doctor Abbot.\" They advance on you.
+            \n> _\"We have a few questions to ask you... Agent Dale.\"_
+            \n he says, as the guards grab hold of you.
           "
           goto: epilogue2
