@@ -8,18 +8,18 @@ rooms:
     actions:
       - match: look
         then:
-          reply: "You see the host in the lab coat who welcomed you taking furious notes on a clipboard at the end of the hallway."
+          reply: "You see the doctor taking furious notes on a clipboard."
 
       - match: hint
         then:
-          reply: How do you tell them you’ve had enough? Every Escape Room has a safe word.
+          reply: "How do you tell them you’ve had enough? Every escape room has a safe word."
 
       - match: macaroni
         then:
           imageUrl: asylum/shots/slice/hallway-three.jpg
           reply: "
-            The host scribbles more notes. \n
+            The doctor scribbles more notes. \n
             \n> _Subject is suffering from delusions of being in an Italian restaurant. Electroshock therapy in the tower is recommended._
             \n
-            \n The orderlies drag you away, further into the depths of the asylum.\n"
+            \n The guards drag you away, further into the depths of the asylum.\n"
           goto: ending
