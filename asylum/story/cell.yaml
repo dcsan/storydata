@@ -17,7 +17,7 @@ rooms:
 
       - name: task1
         imageUrl: asylum/rooms/cell.jpg
-        short: "`[Task 1/6]` You are in what appears to be an inmate’s bedroom. \n
+        short: "`[Task 1/6]` You are in what appears to be a patient’s bedroom. \n
           You see a desk and some furniture. \n
           The door slams shut behind you. "
         navbar: full
@@ -26,7 +26,7 @@ rooms:
       - name: task2
         imageUrl: asylum/rooms/cell-1.jpg
         short: "💡 … … …\n
-          `[Task 2/6]` You are in what appears to be an inmate’s bedroom. \n
+          `[Task 2/6]` You are in what appears to be a patient’s bedroom. \n
           You see a a desk, a sink, a window, a door, lights, and a wall covered with images.
           \n
           \nOne of the lights has come on.
@@ -37,20 +37,20 @@ rooms:
         imageUrl: asylum/rooms/cell-2.jpg
         short: "💡💡 … …\n
         `[Task 3/6]` 
-          two of the lights are on"
+          Two of the lights are on"
         navbar: full
 
       - name: task4
         imageUrl: asylum/rooms/cell-dark.jpg
         short: "💡💡💡 …\n
           `[Task 4/6]` 
-          three of the lights are on, and a yellow light is coming in through the window."
+          Three of the lights are on, and a yellow light seeps through the window."
         navbar: full
 
       - name: task5
         imageUrl: asylum/rooms/cell-4.jpg
         short: "💡💡💡💡\n
-          all of the lights are on"
+          All of the lights are on"
 
     actions:
 
@@ -102,15 +102,15 @@ rooms:
 
       - match: make bed
         then:
-          reply: You tidy up the bed. Little things matter.
+          reply: You tidy up the bed. Little things matter, you know.
 
       - match: repair sink
         then:
-          reply: You can't magically fix the missing faucet
+          reply: How specifically can you do that?
 
       - match: spit on soap
         then:
-          reply: Better find way to turn the broken faucet
+          reply: Fixing the broken faucet would be a better way.
 
       - match: move pillow
         then:
@@ -118,11 +118,11 @@ rooms:
 
       - match: eat soap
         then:
-          reply: You take a bite but quickly decide better of it.
+          reply: You consider taking a bite but quickly think better of it.
 
       - match: look mattress
         then:
-          reply: There's nothing special about it, and nothing is hidden underneath.
+          reply: The pillow itself is uninteresting. You find nothing underneath it.
 
       - match: use lights|turn lights on|turn on lights
         then:
@@ -159,9 +159,9 @@ rooms:
           all:
             - player.dressed = yes
         then:
-          reply: You're looking smart
+          reply: You're perhaps the best-dressed patient in the asylum!
         else:
-          reply: Sharpen up Jack!
+          reply: You could sharpen up a bit.
 
       # this has to be first or can get into a loop on 'wash'
       - match: washalert
@@ -171,7 +171,7 @@ rooms:
         then:
           reply: "
             The voice crackles out:
-            \n> _We always wash the same four parts of our body, Jack.
+            \n> _We always wash the same four parts of our body.
             \n> And Michael knows the order._
             \n
             \n :pencil2: (Type `wash _____, _____, _____, _____` in the correct order)
@@ -208,7 +208,7 @@ rooms:
           after:
             - washalert
         else:
-          reply: you don't have any soap
+          reply: You don't have any soap.
 
       - match: ^use soap$
         if:
@@ -217,16 +217,16 @@ rooms:
         then:
           reply: Use soap to do what?
         else:
-          reply: you don't have any soap
+          reply: You don't have any soap.
 
       - match: ^(wash face|wash face with soap|wash hands with soap)$
         if:
           all:
             - soap.has = yes
         then:
-          reply: closer, but we wash all four parts of our body
+          reply: Closer, but we wash all four parts of our body.
         else:
-          reply: you don't have any soap
+          reply: You don't have any soap.
 
       - match: ^use soap on sink$
         if:
@@ -251,7 +251,7 @@ rooms:
         then:
           reply: "
             The voice crackles out.
-            \n> _'Follow proper procedure, now. Michael has told you how.'_
+            \n> _'Follow proper procedure. Michael has told you how.'_
             "
 
       - match: scrub|clean|wash|shower
@@ -277,7 +277,7 @@ rooms:
           imageUrl: asylum/shots/320/sink-handle.jpg
           reply: "You attach the handle to the faucet.
             \nThe Tannoy blasts out:
-            \n> _We always wash the same four parts of our body, Jack.
+            \n> _We always wash the same four parts of our body.
             \n> And Michael knows the order._
             \n
             \n(Type wash _____, _____, _____, _____ in the correct order)"
@@ -300,7 +300,7 @@ rooms:
 
       - match: enter wardrobe
         then:
-          reply: This is not a C.S. Lewis novel...
+          reply: This isn't a C.S. Lewis novel...
 
       - match: open window|look out window
         then:
@@ -308,7 +308,7 @@ rooms:
 
       - match: open desk
         always:
-          reply: the drawer is locked.
+          reply: The drawer is locked.
           # reply: You look in the desk drawer and find a tasklist.
           # setProps:
           #   - desk.state = open
@@ -336,7 +336,7 @@ rooms:
 
       - match: search desk|look under desk
         always:
-          reply: You don't find anything interesting around the desk
+          reply: You don't find anything interesting around the desk.
           setProps:
             - desk.state = open
           after:
@@ -399,7 +399,7 @@ rooms:
 
       - match: ^(get handle)$
         always:
-          reply: get the handle from where? (make a full sentence)
+          reply: Where will you get the handle? (make a full sentence)
 
       # need to add code to alllow multiple ifs / branches
       - match: get robe
@@ -424,7 +424,7 @@ rooms:
 
       - match: get sandals
         then:
-          reply: "You slip on the blue sandals"
+          reply: "You slip on the blue sandals."
           emoji: [🌟]
           take:
             - sandals
@@ -463,7 +463,7 @@ rooms:
         else:
           imageUrl: asylum/items/120/tannoy.png
           reply: "The tannoy blurts out\n
-            \n> _You're halfway there, Jack._
+            \n> _You're halfway there._
             "
 
       # task 1 - get dressed - triggered in room
@@ -597,7 +597,7 @@ rooms:
       - match: COMBO 3162|3162|3 1 6 2
         then:
           reply: "You dial in the numbers 3,1,6,2 on the panel combination lock. \n
-            You input the code correctly and hear the lock open"
+            You input the code correctly and hear the lock open."
           emoji: [🌟]
           imageUrl: asylum/shots/320/panel-code.jpg
           after:
@@ -622,7 +622,7 @@ rooms:
           all:
             - tasklist.state = task5
         else:
-          reply: "You dial in the four numbers but the lock doesn't open. It seems like the wrong combination"
+          reply: "You dial in the four numbers but the lock doesn't open. It seems like the wrong combination."
 
       # door
       - match: open sesame
@@ -726,18 +726,18 @@ rooms:
           all:
             - soap.has = no
         then:
-          reply: "You take the soap out of the pillowcase"
+          reply: "You take the soap out of the pillowcase."
           emoji: [🌟]
           take:
             - soap
           setProps:
             - pillow.state = noSoap
         else:
-          reply: what soap?
+          reply: What soap?
 
       - match: get soap from michael
         then:
-          reply: "you can't take the soap from a poster, silly!"
+          reply: "You can't take the soap from a poster..."
 
       - match: get soap
         switch:
@@ -749,7 +749,7 @@ rooms:
             - soap.has = no
             - soap.seen = yes
             then:
-              reply: "You take the soap out of the pillowcase"
+              reply: "You take the soap out of the pillowcase."
               emoji: [🌟]
               take:
                 - soap
@@ -757,7 +757,7 @@ rooms:
                 - pillow.state = noSoap
           - case: # default
             then:
-              reply: "Get soap from where? \n
+              reply: "Where will you get the soap? \n
                 :pencil2: _You might have to search around_"
 
       - match: drop soap
@@ -795,7 +795,7 @@ rooms:
             - sink.handle = yes
             - sink.state = handle
             - handle.state = sink
-          reply: "You attach the handle to the sink faucet. It seems to fit perfectly."
+          reply: "You attach the handle to the sink faucet. It fits perfectly."
           emoji: ['🌟']
         else:
           reply: You don't have a handle.
@@ -815,7 +815,7 @@ rooms:
 
       - match: get item
         then:
-          reply: Get what item? You have to be more specific
+          reply: Get what item? You have to be more specific.
 
       - match: look item
         then:
@@ -823,7 +823,7 @@ rooms:
 
       - match: get desk
         then:
-          reply: The desk is too heavy. But maybe you can look at it
+          reply: The desk is too heavy. But maybe you can look at it.
 
       # task #5
       - match: ^(exit room|walk out|open door|escape|use door|go out|go through door|exit|leave|run)$
@@ -839,20 +839,20 @@ rooms:
 
       - match: use yellow
         then:
-          reply: You don't have anything yellow. you might have some blue things though?
+          reply: You don't have anything yellow. Do you have anything of another color?
 
       - match: use .* on light
         then:
-          reply: The lights are green. This doesn't affec the color in the room very much.
+          reply: The lights are green. This doesn't affect the color in the room very much.
 
       - match: put on robe
         if:
           all:
             - robe.has = yes
         then:
-          reply: you wear the robe
+          reply: You wear the robe.
         else:
-          reply: You don't have the robe
+          reply: You don't have the robe.
 
       - match: look ceiling
         then:
@@ -860,11 +860,11 @@ rooms:
 
       - match: break window
         then:
-          reply: You crash against the glass but the metal bars stop you from doing any damage.
+          reply: You beat against the glass but the metal bars stop you from doing any damage.
 
       - match: macaroni
         then:
-          reply: You say the 'safe word' but noone is around to hear.
+          reply: You say the 'safe word' but no one is around to hear.
 
       - match: cover window$
         then:
@@ -887,7 +887,7 @@ rooms:
       # clues when nothing else matches
       - match: ^green$
         then:
-          reply: "green could mean... || :green_square: = :blue_square: + :yellow_square: ||"
+          reply: "Green could mean... || :green_square: = :blue_square: + :yellow_square: ||"
 
       # clues when nothing else matches
       - match: ^dress$
@@ -896,7 +896,7 @@ rooms:
             - tasklist.state = task1
             - sandals.has = no
         then:
-          reply: "Your feet are cold"
+          reply: "Your feet are a bit cold."
 
       # clues when nothing else matches
       - match: ^dress$
@@ -906,7 +906,7 @@ rooms:
             - shoes.has = yes
             - robe.has = no
         then:
-          reply: "You're butt naked except for the blue sandals. You were told to get dressed!"
+          reply: "You're bare naked except for the blue sandals. You were told to get dressed."
 
       # clues when nothing else matches
       - match: put robe on lights
@@ -923,7 +923,7 @@ rooms:
             short: The door is locked. There is a small window facing out with a metal panel below it.
             imageUrl: asylum/shots/320/celldoor-no-panel.jpg
           - name: panel
-            short: The panel on the door has slid open revealing a combination lock
+            short: The panel on the door has slid open revealing a combination lock.
             imageUrl: asylum/shots/320/celldoor-panel.jpg
           - name: unlocked
             short: The door is unlocked. Time to make your escape?
@@ -933,7 +933,7 @@ rooms:
         states:
           - name: default
             # short: A clock without hands... I guess it’s not meant to tell time.
-            short: A roman numeral clock... how old fashioned.
+            short: A roman numeral clock... how old-fashioned.
             imageUrl: asylum/shots/320/clock.png
 
       - name: panel
@@ -942,22 +942,22 @@ rooms:
         state: default
         states:
           - name: default
-            short: It looks like the panel may be covering something. There are no ways to open it that you can see.
+            short: It looks like the panel may be covering something. There's no way to open it that you can see.
           - name: locked
             short: "The panel has slid open revealing a combination lock. A message says: \n
               `ENTER COMBO _ _ _ _`"
             imageUrl: asylum/shots/320/panel-zeros.jpg
           - name: unlocked
-            short: The lock has been opened
+            short: The lock is now accessible.
 
       - name: note
         called: memo
         canTake: true
-        onTake: You read the note
+        onTake: You read the note.
         hidden: false
         states:
           - name: default
-            short: Instructions with a cryptic message
+            short: Instructions with a cryptic message.
             imageUrl: asylum/shots/640/note-detail.jpg
 
       - name: desk
@@ -972,13 +972,13 @@ rooms:
 
           - name: shut_note
             imageUrl: asylum/shots/320/desk-shut-note.jpg
-            short: There's a note
+            short: There's a note.
           - name: shut_none
             imageUrl: asylum/shots/320/desk-shut-none.jpg
-            short: An old squat desk
+            short: An old squat desk.
           - name: open_note
             imageUrl: asylum/shots/320/desk-open-note.jpg
-            short: An old squat desk
+            short: An old squat desk.
 
       - name: chair
         states:
@@ -997,7 +997,7 @@ rooms:
             short: One of the handles is missing from the wardrobe door.
             imageUrl: asylum/items/120/handle.png
           - name: sink
-            short: The handle fits perfectly on the sink
+            short: The handle fits perfectly on the sink faucet.
 
       - name: pillow
         called: pillowcase|pillow case
@@ -1034,7 +1034,7 @@ rooms:
               It has two narrow doors with rounded handles that look like flower petals.
           - name: closedOneHandle
             imageUrl: asylum/items/slice/wardrobe-onehandle.jpg
-            short: A free-standing wooden wardrobe is against one wall. One handle is missing
+            short: A free-standing wooden wardrobe is against one wall. One handle is missing.
           # depends on clothes.has which state to show
           - name: openRobe
             imageUrl: asylum/items/slice/wardrobe-robe.jpg
@@ -1046,7 +1046,7 @@ rooms:
       - name: robe
         called: robe|gown|dressing gown|bathrobe|bath robe
         canTake: true
-        onTake: you put on the robe
+        onTake: you put on the robe.
         # hidden: true
         states:
           - name: default
@@ -1068,7 +1068,7 @@ rooms:
 
           # dress
           - name: task1
-            short: "The voice had said
+            short: "The voice had said:
             \n> _“To proceed to breakfast, please follow your morning routine.
             Remember, undressed patients are never allowed in the common areas.”_"
 
@@ -1082,7 +1082,7 @@ rooms:
 
             # wash
           - name: task3
-            short: "`[Task 3/6]` The voice had said
+            short: "`[Task 3/6]` The voice had said:
               \n> _“And now it’s time to scrub away those germs.”_"
 
             # colors
@@ -1097,7 +1097,7 @@ rooms:
 
       - name: sandals
         called: sandals|shoes|slippers
-        onTake: You slip on the blue sandals
+        onTake: You slip on the blue sandals.
         hidden: true
         canTake: true
         states:
@@ -1119,7 +1119,7 @@ rooms:
         called: sheets|blanket|sheet
         states:
           - name: default
-            short: These sheets have seen better days. They're tighly fitted to the bed.
+            short: These sheets have seen better days.
 
       - name: sink
         called: faucet
@@ -1135,19 +1135,19 @@ rooms:
         called: wall lights|lightbulbs|lamps
         states:
           - name: default
-            short: A vertical row of small lightbulbs is built into the wall above the sink
+            short: A vertical row of small green lightbulbs is built into the wall above the sink.
           - name: task1
             short: 💡 … … …
-              one of the lights has come on
+              one of the lights has come on.
           - name: task2
             short: 💡💡 … …
-              two of the lights are lit up
+              two of the lights are lit up.
           - name: task3
             short: 💡💡💡 …
-              three of the four lights are lit
+              three of the four lights are lit.
           - name: task4
             short: 💡💡💡 …
-              More lights are lighting up, it seems you're making progress
+              More lights are lighting up, it seems you're making progress.
 
       - name: wall
         called: wall|pictures|above bed|over bed|gallery
@@ -1173,7 +1173,7 @@ rooms:
         states:
           - name: default
             imageUrl: asylum/items/600/school-photo.jpg
-            long: It’s you, from your senior year in high school, complete with forehead acne and love goggles. How did they manage to make a copy of this? Unnerving.
+            long: It's what looks to be an awkward high school yearbook photo, complete with forehead acne and love goggles. 
 
       - name: poster
         called: jackson|high-school|photo|poster|album|album cover|jackson photo
