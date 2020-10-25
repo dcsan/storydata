@@ -4,10 +4,11 @@ rooms:
     states:
       - name: default
         long: "
-            **ESCAPE FROM BELL HILL ASYLUM!** \n
-            An interactive fiction thriller\n
-            Authored by John Knauss & David Collier \n
-            © 2020
+          THE BUREAU OF PROFOUND ODDITIES: SEASON 1 EPISODE 1 \n
+          _"ESCAPE FROM BELL HILL!"_ An interactive fiction thriller designed for Discord  \n
+          Authored & Illustrated by John Knauss \n
+          Programmed by David Collier \n
+          ©2020 all rights reserved
           Type `start` when you're ready!
         "
         buttons:
