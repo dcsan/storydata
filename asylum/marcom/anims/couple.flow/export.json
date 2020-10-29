@@ -1,0 +1,20 @@
+{
+  "externalTemplates" : [
+
+  ],
+  "includedTemplates" : [
+    "8327F24B-C91E-4843-838E-E04599D57CA1",
+    "521B2FA9-B678-4DE4-B823-05D2E74663A1",
+    "FFEEEC80-099F-44F4-9A74-54F5146BCA35",
+    "FAC3FBDD-DBD5-4322-A6A1-49D50B4E2552",
+    "6A1544CB-9BDF-42BC-9D3B-50F13E13EF3C",
+    "ADACD58E-433E-4D79-823D-F52C157AF16A"
+  ],
+  "includedTimelines" : [
+    "43581B4F-D144-46C9-B7B9-2BCAE1E2283B"
+  ],
+  "liveExport" : false,
+  "templatesArguments" : [
+
+  ]
+}
