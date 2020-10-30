@@ -23,18 +23,17 @@ rooms:
       - name: default
         imageUrl: asylum/shots/640/bpo-chief-office.jpg
         long:
-          "_*PROLOGUE.*_ \n
-          Thursday, 12.10pm EST \n \n
-          Division Chief Murphy sits behind his desk, his eyes beady and emotionless.
+          "_*PROLOGUE.*_
+          \nThursday, 12.10pm EST
           \n
+          \nDivision Chief Murphy sits behind his desk, his eyes beady and emotionless.
           \n
-          \n 🪑 have a seat
-          \n ⏩ skip the intro
-          \n
+          \nhave a 🪑 seat
+          \nskip ⏩  the intro
           "
         buttons:
-          - seat|haveaseat|🪑
-          - skip|skiptheintro|⏩
+          - 'seat|haveaseat|🪑'
+          - 'skip|skiptheintro|⏩'
 
     actions:
       - match: skip|skiptheintro|⏩
