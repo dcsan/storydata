@@ -3,10 +3,10 @@ imageUrl: bureaa/ch1/500/
 
 short: "The Chief gets up and moves toward the door. \n \n
   _“You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
-  You’ll first have to successfully win their themed escape room game to access the facility further.
+  First, you'll have to successfully win their themed escape room game to access the facility further.
   After that, you’ll need to discover the whereabouts of the missing Agent Lee,
   as well as locate the source of the psychic energy spike. Any questions?”_ \n \n"
 buttons:
-  - No, sir.|nosir|⛔️
-  - Is Friday payday?|fridaypayday|💵
+  - "No, sir."|nosir|⛔️
+  - "Is Friday payday?"|fridaypayday|💵
 
