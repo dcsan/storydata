@@ -61,6 +61,6 @@ rooms:
 
       - match: img2|🕵️‍♀️
         then:
-          reply: "\n> _“But sixteen hours ago we lost all contact with her.”_"
+          reply: "\n> _“But sixteen hours ago we lost all contact with her.”_\n"
           imageUrl: asylum/shots/640/bh-lee-photo.jpg
           goto: outro
