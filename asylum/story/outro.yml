@@ -13,5 +13,6 @@ rooms:
 
       - match: fridaypayday|💵
         then:
-          reply: "\n_The Chief grunts._\n"
+          reply: "\n_"Is Friday payday, sir?"\n
+          \n_The Chief grunts. _"Just get back in one piece with Agent Lee, alright? You well-dressed leech..."_\n"
           goto: cell
