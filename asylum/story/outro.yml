@@ -7,10 +7,10 @@ rooms:
       - match: nosir|⛔️
         then:
           imageUrl: asylum/shots/640/bh-case-file.png
-          reply: _“Good luck, Agent Dale.”_"
+          reply: "\n_“Good luck, Agent Dale.”_\n"
           goto: cell
 
       - match: fridaypayday|💵
         then:
-          reply: "_The Chief grunts._"
+          reply: "\n_The Chief grunts._\n"
           goto: cell
