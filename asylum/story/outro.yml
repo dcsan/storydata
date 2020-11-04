@@ -7,7 +7,8 @@ rooms:
       - match: nosir|⛔️
         then:
           imageUrl: asylum/shots/640/bh-case-file.png
-          reply: "\n_“Good luck, Agent Dale.”_\n"
+          reply: "\n_"No questions, chief."\n
+          \n_“Good. Best of luck, Agent Dale.”_\n"
           goto: cell
 
       - match: fridaypayday|💵
