@@ -4,8 +4,8 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/640/bh-intro.jpg
-        long: "THE BUREAU OF PROFOUND ODDITIES: SEASON 1 EPISODE 1 \n
-        _ESCAPE FROM BELL HILL!_ An interactive fiction thriller designed for Discord
+        long: "THE BUREAU OF PROFOUND ODDITIES: _ESCAPE FROM BELL HILL!_  \n
+        An interactive fiction thriller designed for Discord \n 
         Authored & Illustrated by John Knauss \n
         Programmed by David Collier \n
         ©2020 all rights reserved \n"
@@ -43,24 +43,24 @@ rooms:
       - match: have|haveaseat|🪑
         then:
           imageUrl: asylum/shots/640/bh-asylum-photo.jpg
-          reply: "> _Three days ago we had a spike of psychic energy upstate._ \n
+          reply: "\n> _Three days ago we had a spike of psychic energy upstate._ \n
 
                   The Chief places an old black & white photograph in front of you.
 
                   \n> _“An abandoned mental asylum called Bell Hill. Recently renovated and converted into a themed escape room game.
-                  \n> You know what an escape room is, Agent Dale?”_
-                  \nYou nod.
-                  \n> _Can you guess what the theme is?_
-                  \n…Escape the mental asylum?
-                  \n> _“You’re a sharp one, Dale. I like that.”_
-                  \nMurphy opens a case folder.
-                  \n> _“We immediately dispatched one of our agents to investigate.
-                  \n> A recent recruit named Agent Lee.”_ "
+                  \n \n> You know what an escape room is, Agent Dale?”_
+                  \n \nYou nod.
+                  \n \n> _Can you guess what the theme is?_
+                  \n \n…Escape the mental asylum?
+                  \n \n> _“You’re a sharp one, Dale. I like that.”_
+                  \n \nMurphy opens a case folder.
+                  \n \n> _“We immediately dispatched one of our agents to investigate.
+                  \n \n> A recent recruit named Agent Lee.”_ "
           buttons:
             - lee|dale|🕵️‍♀️
 
       - match: img2|🕵️‍♀️
         then:
-          reply: "> _“But sixteen hours ago we lost all contact with her.”_"
+          reply: "\n> _“But sixteen hours ago we lost all contact with her.”_"
           imageUrl: asylum/shots/640/bh-lee-photo.jpg
           goto: outro
