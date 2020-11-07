@@ -12,19 +12,19 @@ rooms:
           Your mind jumps to the upcoming weekend."
 
         buttons:
-          - "Is Friday payday?"|fridaypayday|💵
-          - "No questions."|nosir|🌀
+          - "Is Friday payday?|fridaypayday|💵"
+          - "No questions.|nosir|🌀"
 
     actions:
       - match: nosir|🌀
         then:
           imageUrl: asylum/shots/640/bh-case-file.png
-          reply: "\n_"No questions, chief."\n
+          reply: "\n_“No questions, chief.”\n
           \n_“Good. Best of luck, Agent Dale.”_\n"
           goto: cell
 
       - match: fridaypayday|💵
         then:
-          reply: "\n_"Is Friday payday, sir?"\n
-          \n_The Chief grunts. _"Just get back in one piece with Agent Lee, alright? You well-dressed leech..."_\n"
+          reply: "\n_'Is Friday payday, sir?'\n
+          \n_The Chief grunts. _'Just get back in one piece with Agent Lee, alright? You well-dressed leech...'_\n"
           goto: cell
