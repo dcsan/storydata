@@ -10,7 +10,7 @@ rooms:
         Programmed by David Collier \n
         ©2020 all rights reserved \n"
         buttons:
-          - BEGIN|home|▶️
+          - TAP to begin|home|▶️
 
     actions:
       - match: home|▶️

@@ -87,7 +87,7 @@ rooms:
 
       - match: ^(rank|🌟)$
         then:
-          reply: This icon shows you are making progress!
+          reply: The 🌟 icon shows you are making progress!
 
       # TODO - context sensitive hints
       # - match: hint
@@ -584,6 +584,7 @@ rooms:
         then:
           reply: "
             \n> _“Onnne morrre to gooo nowww…”_
+            \n
             \nThe voice is faint and eerie, like a record being played at the wrong speed.
             "
           after:
@@ -593,7 +594,8 @@ rooms:
         then:
           reply: "
             \n> _“I’mmm envioussss of youuu, Agent Dale. Can you matchhhhh the collllllor of my envyyyy?”_
-            \nWhat was that? The voice just said your real name--
+            \n
+            \nWhat was that? The voice just said your real name...?
             "
 
       # task 4 win
@@ -681,7 +683,7 @@ rooms:
           reply: That's not the kind of exercise we do here! Ask Leo.
 
       # has to come before next one since that matches just 'jacks'
-      - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24|jacks 24
+      - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24|jacks 24|24 jumps
         if:
           all:
             - tasklist.state = task2

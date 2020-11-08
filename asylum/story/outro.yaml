@@ -4,16 +4,16 @@ rooms:
     states:
       - name: default
         short: "\nThe Chief gets up and moves toward the door. \n \n
-          _“You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
+          \n> _'You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
           First, you'll have to successfully win their themed escape room game to access the facility further.
           After that, you’ll need to discover the whereabouts of the missing Agent Lee,
-          as well as locate the source of the psychic energy spike. Any questions?”_
+          as well as locate the source of the psychic energy spike. Any questions?'_
           \n
-          Your mind jumps to the upcoming weekend."
+          \nYour mind jumps to the upcoming weekend."
 
         buttons:
-          - "Is Friday payday?|fridaypayday|💵"
-          - "No questions.|nosir|🌀"
+          - "Is Friday 💵 payday?|fridaypayday|💵"
+          - "No 🌀 questions.|nosir|🌀"
 
     actions:
       - match: nosir|🌀
@@ -26,5 +26,7 @@ rooms:
       - match: fridaypayday|💵
         then:
           reply: "\n_'Is Friday payday, sir?'\n
-          \n_The Chief grunts. _'Just get back in one piece with Agent Lee, alright? You well-dressed leech...'_\n"
+          \n_The Chief grunts.
+          \n> _'Just get back in one piece with Agent Lee, alright? You well-dressed leech...'_
+          \n"
           goto: cell
