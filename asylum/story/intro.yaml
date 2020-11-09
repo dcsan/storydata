@@ -54,14 +54,14 @@ rooms:
                   Recently renovated and converted into a themed escape room game. You know what an escape room is, Agent Dale?'_
                   \n \nYou nod.
                   \n \n> _Can you guess what the theme of the Bell Hill escape room is?_
-                  \n \n…Ummm. Could it possibly be... escape the mental asylum?
+                  \n \n> _…Ummm. Could it possibly be... escape the mental asylum?_
                   \n \nMurphy grunts and opens a case folder.
                   \n \n> _'We dispatched one of our agents to investigate. A recent recruit named Agent Lee.'_
                   "
           buttons:
-            - Look at agent lee's picture.|dale|🕵️‍♀️
+            - Look at Agent Lee's picture.|dale|🕵️‍♀️
 
-      - match: img2|🕵️‍♀️
+      - match: dale|🕵️‍♀️
         then:
           reply: "_'But sixteen hours ago we lost all contact with her.'_"
           imageUrl: asylum/shots/640/bh-lee-photo.jpg
