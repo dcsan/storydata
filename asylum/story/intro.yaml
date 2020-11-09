@@ -29,12 +29,17 @@ rooms:
           \n
           \nDivision Chief Murphy sits behind his desk, his eyes beady and emotionless.
           \n
-          \nSit down. 🪑
-          \nSkip the prologue. ⏩  
+          ```
+          Sit down 🪑
+          \nSkip the prologue. ⏩
+          ```
           "
-        buttons:
-          - 'Sit|haveaseat|🪑'
-          - 'Skip|skiptheintro|⏩'
+        emoji:
+          - 🪑
+          - ⏩
+        # buttons:
+        #   - 'Sit|haveaseat|🪑'
+        #   - 'Skip|skiptheintro|⏩'
 
     actions:
       - match: Skip|skiptheintro|⏩
@@ -45,7 +50,7 @@ rooms:
         then:
           imageUrl: asylum/shots/640/bh-asylum-photo.jpg
           reply: "The Chief places an old black & white photograph in front of you.
-                  \n\n> _Three days ago we registered an oddity upstate. It occurred at abandoned mental asylum called Bell Hill. 
+                  \n\n> _Three days ago we registered an oddity upstate. It occurred at abandoned mental asylum called Bell Hill.
                   Recently renovated and converted into a themed escape room game. You know what an escape room is, Agent Dale?'_
                   \n \nYou nod.
                   \n \n> _Can you guess what the theme of the Bell Hill escape room is?_

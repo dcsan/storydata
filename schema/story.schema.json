@@ -46,6 +46,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "emoji": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

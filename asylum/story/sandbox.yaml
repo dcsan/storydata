@@ -1,11 +1,21 @@
 rooms:
-  - name: tutorial
+  - name: sandbox
 
     states:
       - name: default
         imageUrl: asylum/shots/640/title.jpg
+        short: "
+          \nDivision Chief Murphy sits behind his desk, his eyes beady and emotionless.
+          \n
+          \nSit down. 🪑
+          \nSkip the prologue. ⏩
+          "
 
-        long: "Escape Game Tutorial"
+        emoji:
+          - 🏁
+          - 🪑
+          - ⏩
+        long: "Sandbox"
         buttons:
           - start|start|🏁
 
@@ -14,4 +24,6 @@ rooms:
         then:
           reply: menu here.
           emoji:
-            - ":chair:"
+            - 🏁
+            - 🪑
+            - ⏩
