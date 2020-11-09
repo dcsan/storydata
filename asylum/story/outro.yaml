@@ -20,11 +20,22 @@ rooms:
       - match: nosir|🌀
         then:      
           reply: "\n_“Good. Best of luck, Agent Dale.”_\n"
-          goto: cell
+          goto: transition
 
       - match: fridaypayday|💵
         then:
           reply: "\n_The Chief grunts.
           \n> _'Just get back in one piece with Agent Lee, alright? You well-dressed leech...'_
           \n"
+          goto: transition
+          
+  # -------- transition --------------
+  - name: transition
+          
+        buttons:
+          - TAP to continue|cell|▶️
+
+    actions:
+      - match: cell|▶️
+        then:
           goto: cell
