@@ -3,8 +3,9 @@ rooms:
     state: intro
     states:
       - name: intro
-        long: A bald doctor (or actor?) with a thick beard stands at the foot of a curving staircase, scribbling notes.
-        Two burly gurds stand at the ready.
+        long:
+          A bald doctor (or actor?) with a thick beard stands at the foot of a curving staircase, scribbling notes.
+          Two burly guards stand at the ready.
         imageUrl: bureau/ch1/750/stairs.jpg
         buttons:
           - Ask if you've won. | askaboutgame|👩🏼‍⚕️
@@ -22,7 +23,7 @@ rooms:
         then:
           reply: "
             \nThe doctor appears to ignore you, motioning to the guards instead.
-            
+
             \n\n> _Take this one to the tower._
 
             \n\n> Yes, Doctor Abbot._
