@@ -48,7 +48,7 @@ rooms:
       - match: Sit|haveaseat|🪑
         then:
           imageUrl: asylum/shots/640/bh-asylum-photo.jpg
-          reply: "The Chief places an old black & white photograph in front of you.
+          reply: "The Chief opens a new case folder and points to old black & white photograph of a building.
                   \n\n> _Three days ago we registered an oddity upstate. It occurred at abandoned mental asylum called Bell Hill.
                   Recently renovated and converted into a themed escape room game. You know what an escape room is, Agent Dale?_
                   \n \nYou nod.
