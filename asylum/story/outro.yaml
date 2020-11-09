@@ -4,29 +4,29 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/640/bh-case-file.png
-        short: "> _'Yes, that's her. But sixteen hours ago we lost all contact.'_"
+        short: "> _Yes, that's her. But sixteen hours ago we lost all contact._"
           \n\nThe Chief gets up and moves toward the door.
-          \n\n> _'You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
+          \n\n> _You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
           First, you'll have to successfully win their themed escape room game to access the facility further.
           After that, you’ll need to discover the whereabouts of the missing Agent Lee,
-          as well as locate the source of the psychic energy spike. Any questions?'_
+          as well as locate the source of the psychic energy spike. Any questions?_
           \n
           \nYour mind jumps to the upcoming weekend."
 
         buttons:
-          - "Is Friday payday, sir? 💵 |fridaypayday|💵"
-          - "No questions, chief. 🌀 |nosir|🌀"
+          - Is Friday payday, sir? 💵 |fridaypayday|💵"
+          - No questions, chief. 🌀 |nosir|🌀"
 
     actions:
       - match: nosir|🌀
         then:
-          reply: "\n_“Good. Best of luck, Agent Dale.”_\n"
+          reply: "\n> _Good. Best of luck, Agent Dale._”
           goto: transition
 
       - match: fridaypayday|💵
         then:
-          reply: "\n_The Chief grunts.
-          \n> _'Just get back in one piece with Agent Lee, alright? You well-dressed leech...'_
+          reply: "\nThe Chief grunts.
+          \n> _Just get back in one piece with Agent Lee, alright? You well-dressed leech..._
           \n"
           goto: transition
 
