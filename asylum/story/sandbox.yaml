@@ -4,26 +4,69 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/640/title.jpg
-        short: "
-          \nDivision Chief Murphy sits behind his desk, his eyes beady and emotionless.
-          \n
-          \nSit down. 🪑
-          \nSkip the prologue. ⏩
-          "
+        short: "```fix\n
+          🪑 Sit down.
+          \n⏩ Skip the prologue.
+          ```"
 
         emoji:
           - 🏁
           - 🪑
           - ⏩
-        long: "Sandbox"
-        buttons:
-          - start|start|🏁
+
+        # buttons:
+        #   - start|start|🏁
 
     actions:
-      - match: menu
+      - match: m0
         then:
           reply: menu here.
           emoji:
             - 🏁
             - 🪑
             - ⏩
+
+      - match: m1
+        then:
+          reply: "```fix\n
+🪑 Sit down.\n
+⏩ Skip the prologue.
+          ```"
+          emoji:
+            - 🪑
+            - ⏩
+
+      - match: m2
+        then:
+          reply: "```ini\n
+🪑 [ Sit down ]\n
+⏩ [ Skip the prologue ]
+          ```"
+          emoji:
+            - 🪑
+            - ⏩
+
+
+      - match: m3
+        then:
+          reply: "```ini\n
+1 [Sit down]\n
+2 [Skip the prologue]
+          ```"
+          emoji:
+            - 1️⃣
+            - 2️⃣
+
+
+
+      - match: m4
+        then:
+          reply: "
+          Chief Murphy opens a case folder and points to an old black & white photograph.
+          ```ini\n
+[Sit down]\n
+[Skip the prologue]
+          ```"
+          emoji:
+            - 1️⃣
+            - 2️⃣
