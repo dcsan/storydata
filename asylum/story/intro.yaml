@@ -59,10 +59,10 @@ rooms:
                   \n \n> _'We dispatched one of our agents to investigate. A recent recruit named Agent Lee.'_
                   "
           buttons:
-            - Look at Agent Lee's picture.|dale|🕵️‍♀️
+            - Is this Agent Lee in the photo?|dale|🕵️‍♀️
 
       - match: dale|🕵️‍♀️
         then:
-          reply: "_'But sixteen hours ago we lost all contact with her.'_"
+          reply: "> _'Yes, that's her. But sixteen hours ago we lost all contact.'_"
           
           goto: outro
