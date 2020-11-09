@@ -11,11 +11,19 @@ rooms:
           After that, you’ll need to discover the whereabouts of the missing Agent Lee,
           as well as locate the source of the oddity. Any questions?_
           \n
-          \nYour mind jumps to the upcoming weekend."
+          \nYour mind jumps to the upcoming weekend.
 
-        buttons:
-          - Is Friday payday, sir? 💵 |fridaypayday|💵"
-          - No questions, chief. 🌀 |nosir|🌀"
+          ```fix\n💵 Is Friday payday, sir?
+\n🌀 No questions, chief.
+          ```
+          "
+        emoji:
+          - 💵
+          - 🌀
+
+        # buttons:
+        #   - Is Friday payday, sir? 💵 |fridaypayday|💵"
+        #   - No questions, chief. 🌀 |nosir|🌀"
 
     actions:
       - match: nosir|🌀
