@@ -6,7 +6,7 @@ rooms:
     states:
       # should enter as task1 state. no navbar to show the 'eye'
       - name: intro
-        imageUrl: bureau/ch1/500/bh-ch1-1-light.jpg
+        imageUrl: bureau/ch1/500/bh-ch1-no-lights.jpg
         short: "
         CHAPTER ONE
         \nAn Inmate's Room
@@ -30,7 +30,7 @@ rooms:
       - name: task1
         imageUrl: bureau/ch1/500/bh-ch1-1-light.jpg
         short: "`[Task 1/6]` You are in what appears to be a mental patient’s bedroom. \n
-          You see a desk and some furniture. \n"
+          You see a desk, a sink, a window, a door, lights, and a wall covered with images. \n"
         navbar: full
 
       # repeat room description
@@ -38,7 +38,7 @@ rooms:
         imageUrl: bureau/ch1/500/bh-ch1-1-light.jpg
         short: "💡 … … …\n
           `[Task 2/6]` You are in what appears to be a mental patient’s bedroom. \n
-          You see a a desk, a sink, a window, a door, lights, and a wall covered with images.
+          You see a desk, a sink, a window, a door, lights, and a wall covered with images.
           \n
           \nOne of the lights has come on.
           "
