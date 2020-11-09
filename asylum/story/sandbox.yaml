@@ -1,0 +1,17 @@
+rooms:
+  - name: tutorial
+
+    states:
+      - name: default
+        imageUrl: asylum/shots/640/title.jpg
+
+        long: "Escape Game Tutorial"
+        buttons:
+          - start|start|🏁
+
+    actions:
+      - match: menu
+        then:
+          reply: menu here.
+          emoji:
+            - ":chair:"
