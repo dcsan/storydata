@@ -51,12 +51,12 @@ rooms:
           imageUrl: asylum/shots/640/bh-asylum-photo.jpg
           reply: "The Chief places an old black & white photograph in front of you.
                   \n\n> _Three days ago we registered an oddity upstate. It occurred at abandoned mental asylum called Bell Hill.
-                  Recently renovated and converted into a themed escape room game. You know what an escape room is, Agent Dale?'_
+                  Recently renovated and converted into a themed escape room game. You know what an escape room is, Agent Dale?_
                   \n \nYou nod.
                   \n \n> _Can you guess what the theme of the Bell Hill escape room is?_
                   \n \n> _…Ummm. Could it possibly be... escape the mental asylum?_
                   \n \nMurphy grunts and opens a case folder.
-                  \n \n> _'We dispatched one of our agents to investigate. A recent recruit named Agent Lee.'_
+                  \n \n> _We dispatched one of our agents to investigate. A recent recruit named Agent Lee._
                   "
           buttons:
             - Is this Agent Lee in the photo?|dale|🕵️‍♀️
