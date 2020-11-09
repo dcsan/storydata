@@ -28,9 +28,8 @@ rooms:
           \n12:10pm EST
           \n
           \nDivision Chief Murphy sits behind his desk, his eyes beady and emotionless.
-          ```fix
-          🪑 Sit down.
-          \n⏩ Skip the prologue.
+          ```fix\n🪑 Sit down.
+\n⏩ Skip the prologue.
           ```
           "
         emoji:
