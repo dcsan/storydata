@@ -9,13 +9,16 @@ rooms:
         imageUrl: bureau/ch1/500/bh-ch1-1-light.jpg
         short: "
         THE BUREAU OF PROFOUND ODDITIES: \n
-        _'ESCAPE FROM BELL HILL!'_
-        Chapter One : The Room \n\n
-
+        _ESCAPE FROM BELL HILL!_\n
+        Chapter One : The Room
+        \n
+        \n
         Stripped of your clothing and possessions before entering,
         you stand in your underwear waiting for this mental asylum-themed escape room game to begin.
-        \n\nA voice calls out from an unseen speaker:
-        \n\n> _If you want to end the game for any reason, you can simpy say the safe word, **macaroni**._
+        \n
+        \nA voice calls out from an unseen speaker:
+        \n
+        \n> _If you want to end the game for any reason, you can simpy say the safe word, **macaroni**._
 
         \n The door to the room locks with a firm click.
 
@@ -23,8 +26,7 @@ rooms:
 
         \n You are in what appears to be a mental patient’s bedroom. There's a desk in front of you.
 
-        \n
-        \n⌨️ _to **L**ook at the desk type:_
+        \n⌨️ _to `Look` at the desk type:_
         \n> `L desk`"
         # buttons:
         #   - look1|look1|👁
