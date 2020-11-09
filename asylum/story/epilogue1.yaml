@@ -4,7 +4,7 @@ rooms:
     states:
       - name: intro
         long: A doctor (or actor?) stands at the foot of a curving staircase, scribbling notes.
-        imageUrl: asylum/shots/640/hall-host.jpg
+        imageUrl: bureau/ch1/750/stairs.jpg
         buttons:
           - ask doctor about game | askaboutgame|👩🏼‍⚕️
 
@@ -19,12 +19,17 @@ rooms:
     actions:
       - match: ask|.*|👩🏼‍⚕️
         then:
-          imageUrl: asylum/shots/640/hall-goons.jpg
           reply: "
-            > _\"Take him to the tower\"_
+            \n> _'Take him to the tower'_
+
             \nthe doctor says, motioning to two burly guards.
-            \n\"Yes, Doctor Abbot.\" They advance on you.
-            \n> _\"We have a few questions to ask you.\"_
-            \n he says, as the guards grab hold of you.
+
+            \n> _'Yes, Doctor Abbot.'_
+
+            \nThey advance on you.
+
+            \n> _'We have a few questions to ask you.'_
+
+            \nhe says, as the guards grab hold of you.
           "
           goto: epilogue2
