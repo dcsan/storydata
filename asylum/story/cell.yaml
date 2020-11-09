@@ -28,7 +28,7 @@ rooms:
         \n```fix\nL desk```"
 
       - name: task1
-        imageUrl: bureau/ch1/500/bh-ch1-1-light.jpg
+        imageUrl: bureau/ch1/500/bh-ch1-no-lights.jpg
         short: "`[Task 1/6]` You are in what appears to be a mental patient’s bedroom. \n
           You see a desk, a sink, a window, a door, lights, and a wall covered with images. \n"
         navbar: full
@@ -40,7 +40,7 @@ rooms:
           `[Task 2/6]` You are in what appears to be a mental patient’s bedroom. \n
           You see a desk, a sink, a window, a door, lights, and a wall covered with images.
           \n
-          \nOne of the lights has come on.
+          \nOne of the green lights has come on.
           "
         navbar: full
 
@@ -48,7 +48,7 @@ rooms:
         imageUrl: bureau/ch1/500/bh-ch1-2-lights.jpg
         short: "💡💡 … …\n
         `[Task 3/6]`
-          Two of the lights are on"
+          Two of the green lights are on."
         navbar: full
 
       - name: task4
@@ -57,13 +57,13 @@ rooms:
         imageUrl: bureau/ch1/500/bh-ch1-4-lights-dark.jpg
         short: "💡💡💡 …\n
           `[Task 4/6]`
-          The lights are on, and a yellow light seeps through the window."
+          Three of the green lights are on, and a yellow light seeps through the window."
         navbar: full
 
       - name: task5
         imageUrl: asylum/rooms/cell-4.jpg
         short: "💡💡💡💡\n
-          All of the lights are on"
+          All four of the green lights are on."
 
     actions:
 
@@ -102,11 +102,11 @@ rooms:
 
       - match: ask Leo
         then:
-          reply: Which Leo could they mean? You'd better take a `Look` around the cell...
+          reply: Which Leo could they mean? You'd better take a `look` around the cell...
 
       - match: ask michael
         then:
-          reply: Which Michael could they mean? You look around the cell...
+          reply: Which Michael could they mean? You'd better take a `look` around the cell...
 
       # general things
       - match: sleep
@@ -172,7 +172,7 @@ rooms:
           all:
             - player.dressed = yes
         then:
-          reply: You're perhaps the best-dressed patient in the asylum!
+          reply: You're perhaps the best-dressed patient in this asylum!
         else:
           reply: You could sharpen up a bit.
 
@@ -184,7 +184,7 @@ rooms:
         then:
           reply: "
             The voice crackles out:
-            \n> _We always wash the same four parts of our body.
+            \n\n> _We always wash the same four parts of our body.
             \n> And Michael knows the order._
             \n
             \n :pencil2: (Type `wash _____, _____, _____, _____` in the correct order)
@@ -264,7 +264,7 @@ rooms:
         then:
           reply: "
             The voice crackles out.
-            \n> _'Follow proper procedure. Michael has told you how.'_
+            \n\n> _Follow proper procedure. Michael has told you how._
             "
 
       - match: scrub|clean|wash|shower
@@ -278,7 +278,7 @@ rooms:
             - handle.has = yes
             - sink.state = handle
         then:
-          reply: Use the handle where? (make a full sentence)
+          reply: Use the handle where? (type a full sentence)
         else:
           reply: You aren't holding a handle.
 
@@ -290,8 +290,8 @@ rooms:
           # imageUrl: asylum/shots/320/sink-handle.jpg
           imageUrl: bureau/ch1/500/bh-ch1-sink-with-handle.jpg
           reply: "You attach the handle to the faucet.
-            \nThe Tannoy blasts out:
-            \n> _We always wash the same four parts of our body.
+            \\nnThe Tannoy blasts out:
+            \n\n> _We always wash the same four parts of our body.
             \n> And Michael knows the order._
             \n
             \n(Type wash _____, _____, _____, _____ in the correct order)"
@@ -330,7 +330,7 @@ rooms:
       - match: get note|read note|take note
         then:
           reply: "You pick up the note.
-            \n_⌨️ type `item` to see what you're carrying_"
+            \n\nn_⌨️ type `item` to see what you're carrying_"
           emoji: [🌟]
           imageUrl: bureau/ch1/500/bh-ch1-note.jpg
           # imageUrl: asylum/shots/320/note-detail.jpg
@@ -401,7 +401,7 @@ rooms:
           all:
             - handle.has = no
         then:
-          reply: You remove the odd looking handle from the wardrobe.
+          reply: You remove the odd-looking handle from the wardrobe.
           emoji: [🌟]
           imageUrl: shared/anims/blue-hand-50.gif
           take:
@@ -410,11 +410,11 @@ rooms:
             - handle.has = yes
             - wardrobe.state = closedOneHandle
         else:
-          reply: You already have the handle
+          reply: You already have the handle.
 
       - match: ^(get handle)$
         always:
-          reply: Where will you get the handle? (make a full sentence)
+          reply: Where will you get the handle? (type a full sentence)
 
       # need to add code to alllow multiple ifs / branches
       - match: get robe
@@ -490,8 +490,8 @@ rooms:
           imageUrl: asylum/items/120/tannoy.png
           reply: "`[Task 1/6]` A voice crackles over a hidden speaker in the room.
             \n
-            \n> _“To proceed to breakfast, please follow your morning routine.
-            Remember, undressed patients are never allowed in the common areas.”_
+            \n> _To proceed to breakfast, please follow your morning routine.
+            Remember, undressed patients are never allowed in the common areas._
             \n
             \nbasic game commands:
             "
@@ -502,7 +502,7 @@ rooms:
             - room.state = task1
             - lights.state = task1
         else:
-          reply: You're still in the cell
+          reply: You're still in the cell.
           navbar: full
           # hint: ":pencil2:  you can type  `tasks` for the last instructions or `hint` if you're stuck"
 
@@ -511,8 +511,8 @@ rooms:
         then:
           reply: "💡 … … …\n
             `[Task 2/6]` The bottom bulb in a column of four has come on, now glowing a bright green above the others.
-            The same voice crackles over the speaker.
-            \n> _“Very good. Now remember, the body needs its morning warmup exercise. Just as many times as there are legs in the room.”_"
+            \n\nThe same voice crackles over the speaker.
+            \n\n> _Very good. Now remember, the body needs its morning warmup exercise. Just as many times as there are legs in the room._"
           navbar: full
           setProps:
             - tasklist.state = task2
@@ -524,7 +524,7 @@ rooms:
         then:
           reply: "💡💡 … …\n
             `[Task 3/6]` The second in the column of five green lightbulbs lights up and the invisible speaker crackles.
-            \n> _“Well done. You’re fit as a fiddle. And now it’s time to scrub away those germs. Let’s not be careless, now. Follow proper procedure.”_
+            \n\n> _Well done. You’re fit as a fiddle. And now it’s time to scrub away those germs. Let’s not be careless, now. Follow proper procedure._
             "
           navbar: full
           setProps:
@@ -537,8 +537,8 @@ rooms:
         then:
           reply: "💡💡💡 …\n
             `[Task 4/6]` The third green light in the column above the sink turns on and the voice is encouraging this time.
-            \n> _“You're doing quite well.
-            Limber and loose and clean as a goose. And all dressed for breakfast.”_"
+            \n\n> _You're doing quite well.
+            Limber and loose and clean as a goose. And all dressed for breakfast._"
           # imageUrl: xxx
           buttons:
             - ask where my real clothes are | realclothes | 👕
@@ -581,7 +581,7 @@ rooms:
       - match: termsandconds|ask about [.*|] terms|ask about terms|📄
         then:
           reply: "
-            \n> _“Onnne morrre to gooo nowww…”_
+            \n> _Onnne morrre to gooo nowww…_
             \n
             \nThe voice is faint and eerie, like a record being played at the wrong speed.
             "
@@ -591,9 +591,7 @@ rooms:
       - match: greenMessage
         then:
           reply: "
-            \n> _“I’mmm envioussss of youuu, Agent Dale. Can you matchhhhh the collllllor of my envyyyy?”_
-            \n
-            \nWhat was that? The voice just said your real name...?
+            \n> _I’mmm envioussss of howw clevvver youuu arrrre. Can you matchhhhh the collllllor of my envyyyy?_
             "
 
       # task 4 win
@@ -604,7 +602,7 @@ rooms:
         then:
           reply: "💡💡💡💡\n
             You cover the window and the blue material is transformed to green by the yellow light.
-            The fourth and final green lightbulb above the sink blinks on."
+            The fourth and final green lightbulb above the sink winks on."
           emoji: [🌟]
           imageUrl: shared/anims/blue-hand-50.gif
           after:
@@ -614,8 +612,7 @@ rooms:
 
       - match: COMBO 3162|3162|3 1 6 2
         then:
-          reply: "You dial in the numbers 3,1,6,2 on the panel combination lock. \n
-            You input the code correctly and hear the lock open."
+          reply: "You input the numbers on the panel and hear the lock open with a satisfying click."
           emoji: [🌟]
           # imageUrl: asylum/shots/640/panel-code.jpg
           imageUrl: bureau/ch1/500/bh-ch1-3162-lock.jpg
@@ -624,7 +621,7 @@ rooms:
 
       - match: "3262"
         then:
-          reply: "The lock seems like it's going to open but then it doesn't... the combination is close..."
+          reply: "You sense the lock is close to opening... but one number must be off. "
 
       # longer emoji
       - match: "\\d{6}"
@@ -641,7 +638,7 @@ rooms:
           all:
             - tasklist.state = task5
         else:
-          reply: "You dial in the four numbers but the lock doesn't open. It seems like the wrong combination."
+          reply: "You dial in the four numbers but the lock doesn't open. It must be the wrong combination."
 
       # door
       - match: open sesame
@@ -653,7 +650,7 @@ rooms:
 
       - match: find soap
         then:
-          reply: Hmm, where did  you put the soap? A fairy might know.
+          reply: Hmm, where did they put the soap? Maybe a fairy would know.
 
       - match: fairy
         then:
@@ -678,7 +675,7 @@ rooms:
 
       - match: pushups|push ups|squat|burpees
         then:
-          reply: That's not the kind of exercise we do here! Ask Leo.
+          reply: That's not the kind of exercise done here! Ask Leo.
 
       # has to come before next one since that matches just 'jacks'
       - match: 24 jumping jacks|24 jacks|24 jumping jacks|jump 24 times|jump 24|jacks 24|24 jumps
@@ -688,15 +685,15 @@ rooms:
         then:
           imageUrl: shared/anims/blue-hand-50.gif
           reply: You slip out of your blue sandals and perform 18 jumping jacks in your socks.
-            For an agent of your fitness, they are a breeze.
+            For an agent of your fitness, they're a breeze.
           emoji:
             - '🌟'
           after:
             - task3
         else:
           reply: "
-            \n> _Let's not get ahead of ourselves, now Agent Dale.
-            \n> Follow instructions, Agent._
+            \n> _Let's not get ahead of ourselves, now.
+            \n> Follow instructions._
             "
           buttons:
             - tasks|task|📕
@@ -708,19 +705,19 @@ rooms:
 
       - match: "(jump|jumping|jumping jacks|jacks) \\d{1}"
         then:
-          reply: Jumping jacks are what we do. But that is too many or too few. Did you count *all* the legs in the room?
+          reply: Jumping jacks seem right. But that's too many or too few. Did you count *all* the legs in the room?
 
       - match: "(jump|jumping|jumping jacks|jacks) \\d{2}"
         then:
-          reply: Jumping jacks are what we do. But how many legs are in the room? Did you check with Leo?
+          reply: Jumping jacks seem right. But how many legs are in the room? Did you check with Leo?
 
       - match: "\\d+ (jump|jumping|jumping jacks|jacks)"
         then:
-          reply: Jumping jacks are what we do. But how many legs are in the room? Did you check with Leo?
+          reply: Jumping jacks seem right. But how many legs are in the room? Did you check with Leo?
 
       - match: jump|jumping jacks|jacks
         then:
-          reply: You'll have to say how many times _(make a full sentence)_
+          reply: You'll have to say how many times _(type a full sentence)_
 
       - match: look pillow
         switch:
@@ -730,7 +727,7 @@ rooms:
               reply: A soiled pillow case. Nothing inside.
           - case:
             then:
-              reply: "There's a bar of soap inside the pillowcase"
+              reply: "There's a bar of soap inside the pillowcase."
               emoji: [🌟]
               setProps:
                 - soap.seen = yes
@@ -763,7 +760,7 @@ rooms:
           - case:
             - soap.has = yes
             then:
-              reply: you already have the soap
+              reply: You already have the soap.
           - case:
             - soap.has = no
             - soap.seen = yes
@@ -777,7 +774,7 @@ rooms:
           - case: # default
             then:
               reply: "Where will you get the soap? \n
-                :pencil2: _You might have to search around_"
+                :pencil2: _You might have to search around._"
 
       - match: drop soap
         always:
@@ -803,7 +800,7 @@ rooms:
         then:
           reply: Water begins trickling out. Now might be a good time to wash up...
         else:
-          reply: The handle looks out of place on the wardrobe.
+          reply: That handle looks out of place on the wardrobe.
 
       - match: use handle on sink|attach handle to sink|use handle with sink
         if:
@@ -830,7 +827,7 @@ rooms:
 
       - match: jog|running|sit ups|walking|pushups|push ups
         then:
-          reply: We do another type of exercise here. Ask Leo.
+          reply: It must be another kind of exercise. Ask Leo.
 
       - match: get item
         then:
@@ -954,7 +951,7 @@ rooms:
         states:
           - name: default
             # short: A clock without hands... I guess it’s not meant to tell time.
-            short: A roman numeral clock... how old-fashioned.
+            short: A clock with roman numerals... how old-fashioned.
             imageUrl: bureau/ch1/500/bh-ch1-clock.jpg
             # imageUrl: asylum/shots/320/clock.png
 
@@ -966,7 +963,7 @@ rooms:
           - name: default
             short: It looks like the panel may be covering something. There's no way to open it that you can see.
           - name: locked
-            short: "The panel has slid open revealing a combination lock. A message says: \n
+            short: "The panel has slid open revealing a combination lock. To unlock, use the format: \n
               `ENTER COMBO _ _ _ _`"
             imageUrl: asylum/shots/320/panel-zeros.jpg
           - name: unlocked
@@ -1110,13 +1107,13 @@ rooms:
             # wash
           - name: task3
             short: "`[Task 3/6]` The voice had said:
-              \n> _“And now it’s time to scrub away those germs.”_"
+              \n\nn> _And now it’s time to scrub away those germs._"
 
             # colors
           - name: task4
             navbar: none
             short: "`[Task 4/6]`
-              \n> _“I’mmm envioussss of youuu... Can you matchhhhh the collllllor of my envyyyy, Agent Dale?”_ "
+              \n\n> _I’mmm envioussss of youuu... Can you matchhhhh the collllllor of my envyyyy, Agent Dale?_ "
 
           - name: task5
             navbar: none
@@ -1166,16 +1163,16 @@ rooms:
             short: A vertical row of small green lightbulbs is built into the wall above the sink.
           - name: task1
             short: 💡 … … …
-              one of the lights has come on.
+              One of the green lights has come on.
           - name: task2
             short: 💡💡 … …
-              two of the lights are lit up.
+              Two of the green lights are lit up.
           - name: task3
             short: 💡💡💡 …
-              three of the four lights are lit.
+              Three of the green lights are lit.
           - name: task4
             short: 💡💡💡 …
-              More lights are lighting up, it seems you're making progress.
+              More green lights are lighting up; it seems you're making progress.
 
       - name: wall
         called: wall|pictures|above bed|over bed|gallery
