@@ -4,7 +4,7 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/640/bh-case-file.png
-        short: "> _Yes, that's her. But sixteen hours ago we lost all contact._"
+        short: "> _Yes, that's her. But sixteen hours ago we lost all contact._
           \n\nThe Chief gets up and moves toward the door.
           \n\n> _You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
           First, you'll have to successfully win their themed escape room game to access the facility further.
@@ -20,7 +20,7 @@ rooms:
     actions:
       - match: nosir|🌀
         then:
-          reply: "\n> _Good. Best of luck, Agent Dale._”
+          reply: "\n> _Good. Best of luck, Agent Dale._"
           goto: transition
 
       - match: fridaypayday|💵
