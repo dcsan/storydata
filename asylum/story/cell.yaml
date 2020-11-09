@@ -329,8 +329,8 @@ rooms:
 
       - match: get note|read note|take note
         then:
-          reply: "You pick up the note.
-            \n\nn_⌨️ type `item` to see what you're carrying_"
+          reply: "You pick up the note."
+            # \n\nn_⌨️ type `item` to see what you're carrying_"
           emoji: [🌟]
           imageUrl: bureau/ch1/500/bh-ch1-note.jpg
           # imageUrl: asylum/shots/320/note-detail.jpg
