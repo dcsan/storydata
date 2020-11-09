@@ -3,10 +3,11 @@ rooms:
     state: intro
     states:
       - name: intro
-        long: A doctor (or actor?) stands at the foot of a curving staircase, scribbling notes.
+        long: A bald doctor (or actor?) with a thick beard stands at the foot of a curving staircase, scribbling notes.
+        Two burly gurds stand at the ready.
         imageUrl: bureau/ch1/750/stairs.jpg
         buttons:
-          - ask doctor about game | askaboutgame|👩🏼‍⚕️
+          - Ask if you've won. | askaboutgame|👩🏼‍⚕️
 
     #   - name: intro
     #     long: "\nA young woman who appears to be bleeding hobbles toward you.
@@ -20,16 +21,16 @@ rooms:
       - match: ask|.*|👩🏼‍⚕️
         then:
           reply: "
-            \n> _'Take him to the tower'_
+            \nThe doctor appears to ignore you, motioning to the guards instead.
+            
+            \n\n> _Take this one to the tower._
 
-            \nthe doctor says, motioning to two burly guards.
+            \n\n> Yes, Doctor Abbot._
 
-            \n> _'Yes, Doctor Abbot.'_
+            \n\nThe guards advance on you.
 
-            \nThey advance on you.
+            \n\n> _Indeed... you've certainly won. And now it's time to have a closer look into that winning brain of yours._
 
-            \n> _'We have a few questions to ask you.'_
-
-            \nhe says, as the guards grab hold of you.
+            \n\nThe guards grab hold of you.
           "
           goto: epilogue2
