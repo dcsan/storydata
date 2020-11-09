@@ -26,7 +26,7 @@ rooms:
         \nYou are in what appears to be a mental patient’s bedroom. There's a desk in front of you.
 
         \n⌨️ _to `Look` at the desk type:_
-        \n> `L desk`"
+        \n```fix\nL desk```"
         # buttons:
         #   - look1|look1|👁
         # buttons:
@@ -995,8 +995,8 @@ rooms:
             # imageUrl: asylum/shots/320/desk-shut-note.jpg
             imageUrl: bureau/ch1/500/bh-ch1-desk-closed-note-top.jpg
             short: "An old wooden desk and chair. There's a note on the desk.
-            \n⌨️ To pick up the note type
-            \n> `get note`
+            \n⌨️ _To pick up the note type_
+            \n```fix\nget note```
             "
 
           - name: shut_note
