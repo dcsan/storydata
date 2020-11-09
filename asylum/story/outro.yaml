@@ -18,7 +18,7 @@ rooms:
 
     actions:
       - match: nosir|🌀
-        then:      
+        then:
           reply: "\n_“Good. Best of luck, Agent Dale.”_\n"
           goto: transition
 
@@ -28,10 +28,11 @@ rooms:
           \n> _'Just get back in one piece with Agent Lee, alright? You well-dressed leech...'_
           \n"
           goto: transition
-          
+
   # -------- transition --------------
   - name: transition
-          
+    states:
+      - name: default
         buttons:
           - TAP to continue|cell|▶️
 
