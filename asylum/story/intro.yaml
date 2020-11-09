@@ -23,41 +23,41 @@ rooms:
       - name: default
         imageUrl: asylum/shots/640/bpo-chief-office.jpg
         long:
-          "\n\n _*PROLOGUE*_
+          "\n\n PROLOGUE
           \nChief Murphy's Office
           \n12:10pm EST
           \n
           \nDivision Chief Murphy sits behind his desk, his eyes beady and emotionless.
           \n
-          \nsit down 🪑
-          \nskip the prologue ⏩  
+          \nSit down. 🪑
+          \nSkip the prologue. ⏩  
           "
         buttons:
-          - 'sit|haveaseat|🪑'
-          - 'skip|skiptheintro|⏩'
+          - 'Sit|haveaseat|🪑'
+          - 'Skip|skiptheintro|⏩'
 
     actions:
-      - match: skip|skiptheintro|⏩
+      - match: Skip|skiptheintro|⏩
         then:
           goto: outro
 
-      - match: have|haveaseat|🪑
+      - match: Sit|haveaseat|🪑
         then:
           imageUrl: asylum/shots/640/bh-asylum-photo.jpg
-          reply: "\n\n The Chief places an old black & white photograph in front of you.
-                  \n\n> _Three days ago we registered an oddity upstate. An abandoned mental asylum called Bell Hill. 
+          reply: "The Chief places an old black & white photograph in front of you.
+                  \n\n> _Three days ago we registered an oddity upstate. It occurred at abandoned mental asylum called Bell Hill. 
                   Recently renovated and converted into a themed escape room game. You know what an escape room is, Agent Dale?'_
                   \n \nYou nod.
-                  \n \n> _Can you guess what the theme is?_
-                  \n \n…Escape the mental asylum?
+                  \n \n> _Can you guess what the theme of the Bell Hill escape room is?_
+                  \n \n…Ummm. Could it possibly be... escape the mental asylum?
                   \n \nMurphy grunts and opens a case folder.
                   \n \n> _'We dispatched one of our agents to investigate. A recent recruit named Agent Lee.'_
                   "
           buttons:
-            - agent lee|dale|🕵️‍♀️
+            - Look at agent lee's picture.|dale|🕵️‍♀️
 
       - match: img2|🕵️‍♀️
         then:
-          reply: "\n>\n _'But sixteen hours ago we lost all contact with her.'_"
+          reply: "_'But sixteen hours ago we lost all contact with her.'_"
           imageUrl: asylum/shots/640/bh-lee-photo.jpg
           goto: outro
