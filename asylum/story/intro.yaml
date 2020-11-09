@@ -63,6 +63,4 @@ rooms:
 
       - match: dale|🕵️‍♀️
         then:
-          reply: "> _'Yes, that's her. But sixteen hours ago we lost all contact.'_"
-          
           goto: outro
