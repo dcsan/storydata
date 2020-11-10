@@ -11,7 +11,7 @@ rooms:
           After that, you’ll need to discover the whereabouts of the missing Agent Lee,
           as well as locate the source of the oddity. Any questions?_
           \n
-          \nYour mind jumps to the upcoming weekend.
+          \nYour mind jumps to the upcoming weekend.\n\n
 
           ```fix\n💵 Is Friday payday, sir?
 \n🌀 No questions, chief.
@@ -28,13 +28,13 @@ rooms:
     actions:
       - match: nosir|🌀
         then:
-          reply: "\n> _Good. Best of luck, Agent Dale._"
+          reply: "\n\n> _Good. Best of luck, Agent Dale._"
           goto: transition
 
       - match: fridaypayday|💵
         then:
-          reply: "\nThe Chief grunts.
-          \n> _Just get back in one piece with Agent Lee, alright? You well-dressed leech..._
+          reply: "\n\nThe Chief grunts.
+          \n\n> _Just get back in one piece with Agent Lee, alright? You well-dressed leech..._
           \n"
           goto: transition
 
