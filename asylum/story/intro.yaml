@@ -8,7 +8,7 @@ rooms:
         An interactive fiction thriller designed for Discord \n
         Authored & Illustrated by John Knauss \n
         Programmed by David Collier \n
-        ©2020 all rights reserved \n\n
+        ©2020 all rights reserved \n
         
         _oddity [ od-i-tee ]_ an unusual event indicating the presence of supernatural or
         interdimensional entities intent on shaping the course of human history.\n\n
@@ -31,7 +31,7 @@ rooms:
           \nChief Murphy's Office
           \n12:10pm EST
           \n
-          \nDivision Chief Murphy sits behind his desk, his eyes beady and emotionless.\n\n
+          \nDivision Chief Murphy sits behind his desk, his eyes beady and emotionless.\n
           ```fix\n🪑 Sit down.
 \n⏩ Skip the prologue.
           ```
@@ -59,7 +59,8 @@ rooms:
                   \n \n> _Can you guess what the theme of the Bell Hill escape room is?_
                   \n \n> _…Ummm. Could it possibly be... escape the mental asylum?_
                   \n \nMurphy grunts and opens a case folder.
-                  \n \n> _We dispatched one of our agents to investigate. A recent recruit named Agent Lee._\n\n
+                  \n \n> _We dispatched one of our agents to investigate. A recent recruit named Agent Lee._
+                  \n
                   "
           buttons:
             - Is this Agent Lee in the photo?|dale|🕵️‍♀️
