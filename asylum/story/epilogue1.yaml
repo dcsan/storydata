@@ -8,7 +8,7 @@ rooms:
           Two burly guards stand at the ready.
         imageUrl: bureau/ch1/750/stairs.jpg
         buttons:
-          - Ask if you've won. | askaboutgame|👩🏼‍⚕️
+          - Ask if you've won the game. | askaboutgame|👩🏼‍⚕️
 
     #   - name: intro
     #     long: "\nA young woman who appears to be bleeding hobbles toward you.
