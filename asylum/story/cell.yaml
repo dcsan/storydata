@@ -61,7 +61,7 @@ rooms:
         navbar: full
 
       - name: task5
-        imageUrl: asylum/rooms/cell-4.jpg
+        imageUrl: bureau/ch1/500/bh-ch1-4-lights.jpg
         short: "💡💡💡💡\n
           All four of the green lights are on."
 
@@ -278,7 +278,7 @@ rooms:
             - handle.has = yes
             - sink.state = handle
         then:
-          reply: Use the handle where? (type a full sentence)
+          reply: Use the handle where? _(type a full sentence)_
         else:
           reply: You aren't holding a handle.
 
@@ -396,7 +396,7 @@ rooms:
           after:
             - x wardrobe
 
-      - match: (get|take) handle from (wardrobe|closet|dresser)|(get|take) wardrobe handle|(get|take) handle wardrobe
+      - match: get handle (.*) wardrobe|get wardrobe handle
         if:
           all:
             - handle.has = no
@@ -414,7 +414,7 @@ rooms:
 
       - match: ^(get handle)$
         always:
-          reply: Where will you get the handle? (type a full sentence)
+          reply: Get the handle from where? _(type a full sentence)_
 
       # need to add code to alllow multiple ifs / branches
       - match: get robe
@@ -555,6 +555,7 @@ rooms:
           setProps:
             - panel.state = locked
             - lock.state = locked
+            - door.state = panel
             - room.state = task5
             - tasklist.state = task5
 
@@ -937,11 +938,9 @@ rooms:
         states:
           - name: locked
             short: The door is locked. There is a small window facing out with a metal panel below it.
-            # imageUrl: asylum/shots/320/celldoor-no-panel.jpg
             imageUrl: bureau/ch1/500/bh-ch1-door-no-lock.jpg
           - name: panel
             short: The panel on the door has slid open revealing a combination lock.
-            # imageUrl: asylum/shots/320/celldoor-panel.jpg
             imageUrl: bureau/ch1/500/bh-ch1-door-with-lock.jpg
           - name: unlocked
             short: The door is unlocked. Time to make your escape?
@@ -963,9 +962,8 @@ rooms:
           - name: default
             short: It looks like the panel may be covering something. There's no way to open it that you can see.
           - name: locked
-            short: "The panel has slid open revealing a combination lock. To unlock, use the format: \n
-              `ENTER COMBO _ _ _ _`"
-            imageUrl: asylum/shots/320/panel-zeros.jpg
+            short: "The panel has slid open revealing a combination lock. To unlock you need to type in a four digit code \n"
+            imageUrl: bureau/ch1/500/bh-ch1-000-lock.jpg
           - name: unlocked
             short: The lock is now accessible.
 
@@ -1055,7 +1053,7 @@ rooms:
             long: The wardrobe is cheaper than the one you remember from your college dorm.
               It has two narrow doors with rounded handles that look like flower petals.
           - name: closedOneHandle
-            # imageUrl: asylum/items/slice/wardrobe-onehandle.jpg
+            imageUrl: bureau/ch1/500/wardrobe-no-handle.jpg
             short: A free-standing wooden wardrobe is against one wall. One handle is missing.
           # depends on clothes.has which state to show
           - name: openRobe
@@ -1180,7 +1178,7 @@ rooms:
           - name: default
             short: Some posters are on the wall.
             long: You see a *drawing*, a *poster* of an album cover, and a *photo*.
-            imageUrl: asylum/shots/320/poster-wall.jpg
+            imageUrl: bureau/ch1/500/bh-ch1-3-posters.jpg
 
       - name: drawing
         called: man poster|vitruvian|davinci|da vinci|drawing|leonardo|vitruvian man|diagram
@@ -1201,7 +1199,7 @@ rooms:
             long: It's what looks to be an awkward high school yearbook photo, complete with forehead acne and love goggles.
 
       - name: poster
-        called: jackson|high-school|photo|poster|album|album cover|jackson photo
+        called: jackson|high-school|poster|album|album cover
         hidden: true
         canTake: true
         states:
@@ -1215,7 +1213,7 @@ rooms:
       - name: window
         states:
           - name: default
-            imageUrl: bureau/ch1/500/bh-ch1-mj-window.jpg
+            imageUrl: bureau/ch1/500/bh-ch1-window.jpg
             short: A rectangular window with bars is recessed into the far wall. A door leads out.
             long: The window is frosted and protected by metal bars from your side.
               Upon closer inspection, you notice that the unnatural yellow light from without is pulsing slightly, with the faint electrical buzz of artificial lighting.

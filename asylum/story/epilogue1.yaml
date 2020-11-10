@@ -23,15 +23,15 @@ rooms:
         then:
           reply: "
             \nThe doctor appears to ignore you, motioning to the guards instead.
-
-            \n\n> _Take this one to the tower._
-
-            \n\n> Yes, Doctor Abbot._
-
-            \n\nThe guards advance on you.
-
-            \n\n> _Indeed... you've certainly won. And now it's time to have a closer look into that winning brain of yours._
-
-            \n\nThe guards grab hold of you.
+            \n
+            \n> _Take this one to the tower._
+            \n
+            \n> _Yes, Doctor Abbot._
+            \n
+            \nThe guards advance on you.
+            \n
+            \n> _Indeed... you've certainly won. And now it's time to have a closer look into that winning brain of yours._
+            \n
+            \nThe guards grab hold of you.
           "
           goto: epilogue2
