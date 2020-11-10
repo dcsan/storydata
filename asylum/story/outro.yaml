@@ -4,9 +4,9 @@ rooms:
     states:
       - name: default
         imageUrl: asylum/shots/640/bh-case-file.png
-        short: "> _Yes, that's her. But sixteen hours ago we lost all contact._
-          \n\nThe Chief gets up and moves toward the door.
-          \n\n> _You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
+        short: "> _Chief Murphy nods. Sixteen hours ago we lost all contact with Agent Lee._
+          \n\nHe gets up and moves toward the door.
+          \n\n> _You’ll be infiltrating Bell Hill Asylum under the cover of a paying guest.
           First, you'll have to successfully win their themed escape room game to access the facility further.
           After that, you’ll need to discover the whereabouts of the missing Agent Lee,
           as well as locate the source of the oddity. Any questions?_
