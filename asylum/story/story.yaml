@@ -7,10 +7,10 @@ story:
   startRooms:
     - channels: tutorial
       room: lobby
-    - channels: lobby|🚀-lobby
+    - channels: lobby
       room: lobby
-    - channels: play|game|team
-      room: lobby
+    - channels: play|game|team|bopo-team
+      room: intro
     - channels: asylum-dev
       room: cell
     - channels: localdev
@@ -21,6 +21,8 @@ story:
       room: qaroom
     - channels: sandbox
       room: sandbox
+    - channels: welcome
+      room: welcome
 
   # for other channels
   # startRoom: lobby

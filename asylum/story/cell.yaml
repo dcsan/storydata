@@ -1160,16 +1160,19 @@ rooms:
           - name: default
             short: A vertical row of small green lightbulbs is built into the wall above the sink.
           - name: task1
+            short: … … … …
+              None of the lights are lit up.
+          - name: task2
             short: 💡 … … …
               One of the green lights has come on.
-          - name: task2
+          - name: task3
             short: 💡💡 … …
               Two of the green lights are lit up.
-          - name: task3
-            short: 💡💡💡 …
-              Three of the green lights are lit.
           - name: task4
             short: 💡💡💡 …
+              Three of the green lights are lit.
+          - name: task5
+            short: 💡💡💡💡
               More green lights are lighting up; it seems you're making progress.
 
       - name: wall

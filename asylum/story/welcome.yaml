@@ -1,0 +1,31 @@
+rooms:
+
+  # also check in .env
+  # MUTED_CHANNELS=about,starboard,general,start-here,announcements
+
+  # -------- start --------------
+  - name: welcome
+    states:
+      - name: default
+        imageUrl: bureau/marcom/public/bpo-creature-promo.gif
+        long: "
+          Play
+          \nTHE BUREAU OF PROFOUND ODDITIES:
+          \n_ESCAPE FROM BELL HILL!_
+          \nAn interactive fiction thriller designed for Discord
+        "
+
+    actions:
+      - match: rs
+        then:
+          imageUrl: bureau/marcom/public/bpo-creature-promo.gif
+          reply: "
+          Play
+          \nTHE BUREAU OF PROFOUND ODDITIES:
+          \n_ESCAPE FROM BELL HILL!_
+          \nAn interactive fiction thriller designed for Discord
+          "
+
+      - match: joined
+        then:
+          reply: "Head over to the <#763196760956076043> to play!"

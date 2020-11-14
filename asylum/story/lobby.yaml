@@ -3,14 +3,51 @@ rooms:
   - name: lobby
     states:
       - name: default
-        long: "Type `start` when you're ready!"
+        long: "
+          \nTHE BUREAU OF PROFOUND ODDITIES:
+          \n_ESCAPE FROM BELL HILL!_
+          \nAn interactive fiction thriller designed for Discord
+          \nAuthored & Illustrated by John Knauss
+          \nProgrammed by David Collier
+          \n©2020 all rights reserved
+
+          \n_oddity [ od-i-tee ]_ an unusual event indicating the presence of supernatural or
+          interdimensional entities intent on shaping the course of human history.
+          \n
+          \nInvite your friends to join you, it's more fun to solve the game together! To start type:
+          \n
+          \n `help` or tap ❓ if you're stuck at any point.
+          \n `play` or tap 🚀 when you're ready!
+          \n `teams` to see open team games to join
+          \n `invite` to get an invitation link
+          "
+        imageUrl: bureau/marcom/public/bpo-creature-promo.gif
         buttons:
-          - start|start|🚀
+          - play|play|🚀
+          # - "team|team|✋"
+          - "help|help|❓"
+          - "invite|invite|🍰"
 
     actions:
-      - match: start|🚀
-        then:
-          goto: intro
+      # - match: start|🚀
+      #   always:
+      #     reply: "Please start the game in one of the open team channels"
+
+      - match: start|team|✋|🚀
+        always:
+          reply: "
+            look on the left channels bar to find open teams:
+            \n- <#777226252762873896>
+            \n- <#777226320777314304>
+            \n- <#777226347994939412>
+            \n- <#777226370278752315>
+            "
+
+      - match: invite|🍰
+        always:
+          reply: you should be able to use normal invite buttons!
+        # then:
+        #   goto: intro
     #     always:
     #       # imageUrl: marcom/intro-short/asylum-intro-pong.gif
     #       imageUrl: asylum/marcom/asylum-low.mp4
