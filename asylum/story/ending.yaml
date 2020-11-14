@@ -3,19 +3,19 @@ rooms:
     state: intro
     states:
       - name: intro
-        imageUrl: asylum/shots/slice/title.jpg
+        imageUrl: bureau/ch1/750/gates.jpg
 
         long: "
           \nAs you struggle, you hear the doctor call out:
           \n> _This is no game, believe me. And whomever you think you are, we will soon correct that.
-          You see... we had another guest, just like you arrive a few days ago. Suffering from delusions of being... 
+          You see... we had another guest, just like you arrive a few days ago. Suffering from delusions of being...
           some kind of government agent, was it? But we soon sorted that out. And we'll sort you out, too._
           \n
           \nA chill races down your spine as you are dragged forcibly into the further recesses of Bell Hill...
           \n
           \n*TO BE CONTINUED*
           \n
-          \nThank you for playing Chapter One of: 
+          \nThank you for playing Chapter One of:
           \n**THE BUREAU OF PROFOUND ODDITIES:
           \nESCAPE FROM BELL HILL!**
           \n
