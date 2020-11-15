@@ -29,23 +29,27 @@ function resize {
   # imageSize="500:-1"
 
   widths=( "500" "750" )
+  fileTypes=( "png" "jpg" )
 
   for width in "${widths[@]}"
   do
-    FILES="${sourceDir}/*jpg"
-    for input in $FILES
+    for ext in "${fileTypes[@]}"
     do
-      output="${input/raw/${width}}"
-      # echo "$input -> $output"
-      echo "$output"
-      ffmpeg \
-        -hide_banner -loglevel error \
-        -y \
-        -i $input \
-        -q:v 3 \
-        -map_metadata -1 \
-        -vf  "scale=${width}:-1" \
-        $output
+      FILES="${sourceDir}/*.${ext}"
+      for input in $FILES
+      do
+        output="${input/raw/${width}}"
+        # echo "$input -> $output"
+        echo "$output"
+        ffmpeg \
+          -hide_banner -loglevel error \
+          -n \
+          -i $input \
+          -q:v 2 \
+          -map_metadata -1 \
+          -vf  "scale=${width}:-1" \
+          $output
+      done
     done
   done
 

@@ -6,7 +6,7 @@ rooms:
     states:
       # should enter as task1 state. no navbar to show the 'eye'
       - name: intro
-        imageUrl: bureau/ch1/500/bh-ch1-no-lights.jpg
+        imageUrl: bureau/ch1/750/bh-ch1-no-lights.jpg
         short: "
         CHAPTER ONE
         \nAn Inmate's Room
@@ -28,14 +28,14 @@ rooms:
         \n```fix\nL desk```"
 
       - name: task1
-        imageUrl: bureau/ch1/500/bh-ch1-no-lights.jpg
+        imageUrl: bureau/ch1/750/bh-ch1-no-lights.jpg
         short: "`[Task 1/6]` You are in what appears to be a mental patient’s bedroom. \n
           You see a desk, a sink, a window, a door, lights, and a wall covered with images. \n"
         navbar: full
 
       # repeat room description
       - name: task2
-        imageUrl: bureau/ch1/500/bh-ch1-1-light.jpg
+        imageUrl: bureau/ch1/750/bh-ch1-1-light.jpg
         short: "💡 … … …\n
           `[Task 2/6]` You are in what appears to be a mental patient’s bedroom. \n
           You see a desk, a sink, a window, a door, lights, and a wall covered with images.
@@ -45,7 +45,7 @@ rooms:
         navbar: full
 
       - name: task3
-        imageUrl: bureau/ch1/500/bh-ch1-2-lights.jpg
+        imageUrl: bureau/ch1/750/bh-ch1-2-lights.jpg
         short: "💡💡 … …\n
         `[Task 3/6]`
           Two of the green lights are on."
@@ -53,15 +53,15 @@ rooms:
 
       - name: task4
         # imageUrl: asylum/rooms/cell-dark.jpg
-        # imageUrl: bureau/ch1/500/bh-ch1-4-lights-dark.jpg
-        imageUrl: bureau/ch1/500/bh-ch1-3-lights-dark.jpg
+        # imageUrl: bureau/ch1/750/bh-ch1-4-lights-dark.jpg
+        imageUrl: bureau/ch1/750/bh-ch1-3-lights-dark.jpg
         short: "💡💡💡 …\n
           `[Task 4/6]`
           Three of the green lights are on, and a yellow light seeps through the window."
         navbar: full
 
       - name: task5
-        imageUrl: bureau/ch1/500/bh-ch1-4-lights.jpg
+        imageUrl: bureau/ch1/750/bh-ch1-4-lights.jpg
         short: "💡💡💡💡\n
           All four of the green lights are on."
 
@@ -288,7 +288,7 @@ rooms:
             - handle.has = yes
         then:
           # imageUrl: asylum/shots/320/sink-handle.jpg
-          imageUrl: bureau/ch1/500/bh-ch1-sink-with-handle.jpg
+          imageUrl: bureau/ch1/750/bh-ch1-sink-with-handle.jpg
           reply: "You attach the handle to the faucet.
             \\nnThe Tannoy blasts out:
             \n\n> _We always wash the same four parts of our body.
@@ -332,7 +332,7 @@ rooms:
           reply: "You pick up the note."
             # \n\nn_⌨️ type `item` to see what you're carrying_"
           emoji: [🌟]
-          imageUrl: bureau/ch1/500/bh-ch1-note.jpg
+          imageUrl: bureau/ch1/750/bh-ch1-note.jpg
           # imageUrl: asylum/shots/320/note-detail.jpg
           take:
             - note
@@ -572,7 +572,7 @@ rooms:
       - match: ask where my real clothes are|real clothes|cracked|realclothes|ask about clothes|ask clothes|ask where|👕
         then:
           # imageUrl: asylum/rooms/cell-dark.jpg
-          imageUrl: bureau/ch1/500/bh-ch1-4-lights-dark.jpg
+          imageUrl: bureau/ch1/750/bh-ch1-4-lights-dark.jpg
           reply: Suddenly, there is a deep crack, and all the lights drop out in the facility.
             All that remains is the artificial yellow glow from outside your window
             and the three illuminated green lightbulbs above the sink.
@@ -616,7 +616,7 @@ rooms:
           reply: "You input the numbers on the panel and hear the lock open with a satisfying click."
           emoji: [🌟]
           # imageUrl: asylum/shots/640/panel-code.jpg
-          imageUrl: bureau/ch1/500/bh-ch1-3162-lock.jpg
+          imageUrl: bureau/ch1/750/bh-ch1-3162-lock.jpg
           after:
             - task6
 
@@ -938,10 +938,10 @@ rooms:
         states:
           - name: locked
             short: The door is locked. There is a small window facing out with a metal panel below it.
-            imageUrl: bureau/ch1/500/bh-ch1-door-no-lock.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-door-no-lock.jpg
           - name: panel
             short: The panel on the door has slid open revealing a combination lock.
-            imageUrl: bureau/ch1/500/bh-ch1-door-with-lock.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-door-with-lock.jpg
           - name: unlocked
             short: The door is unlocked. Time to make your escape?
 
@@ -951,7 +951,7 @@ rooms:
           - name: default
             # short: A clock without hands... I guess it’s not meant to tell time.
             short: A clock with roman numerals... how old-fashioned.
-            imageUrl: bureau/ch1/500/bh-ch1-clock.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-clock.jpg
             # imageUrl: asylum/shots/320/clock.png
 
       - name: panel
@@ -963,7 +963,7 @@ rooms:
             short: It looks like the panel may be covering something. There's no way to open it that you can see.
           - name: locked
             short: "The panel has slid open revealing a combination lock. To unlock you need to type in a four digit code \n"
-            imageUrl: bureau/ch1/500/bh-ch1-000-lock.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-000-lock.jpg
           - name: unlocked
             short: The lock is now accessible.
 
@@ -976,27 +976,27 @@ rooms:
           - name: default
             short: Instructions with a cryptic message.
             # imageUrl: asylum/shots/640/note-detail.jpg
-            imageUrl: bureau/ch1/500/bh-ch1-note.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-note.jpg
 
       - name: desk
         called: drawer|desk|squat desk|table
         states:
           - name: default
             # imageUrl: asylum/shots/320/desk-shut-note.jpg
-            imageUrl: bureau/ch1/500/bh-ch1-desk-closed-note-top.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-desk-closed-note-top.jpg
             short: "An old wooden desk and chair. There's a note on the desk.
             \n⌨️ _To pick up the note type_
             \n```fix\nget note```
             "
 
           - name: shut_note
-            imageUrl: bureau/ch1/500/bh-ch1-desk-closed-note-top.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-desk-closed-note-top.jpg
             short: There's a note.
           - name: shut_none
-            imageUrl: bureau/ch1/500/bh-ch1-desk-closed.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-desk-closed.jpg
             short: An old squat desk.
           - name: open_note
-            imageUrl: bureau/ch1/500/bh-ch1-desk-open-note-top.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-desk-open-note-top.jpg
             short: An old squat desk.
 
       - name: chair
@@ -1048,20 +1048,20 @@ rooms:
         states:
           - name: closed
             # imageUrl: asylum/items/slice/wardrobe-shut.jpg
-            imageUrl: bureau/ch1/500/bh-ch1-wardrobe-closed.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-wardrobe-closed.jpg
             short: A free-standing wooden wardrobe is against one wall.
             long: The wardrobe is cheaper than the one you remember from your college dorm.
               It has two narrow doors with rounded handles that look like flower petals.
           - name: closedOneHandle
-            imageUrl: bureau/ch1/500/wardrobe-no-handle.jpg
+            imageUrl: bureau/ch1/750/wardrobe-no-handle.jpg
             short: A free-standing wooden wardrobe is against one wall. One handle is missing.
           # depends on clothes.has which state to show
           - name: openRobe
             # imageUrl: asylum/items/slice/wardrobe-robe.jpg
-            imageUrl: bureau/ch1/500/bh-ch1-wardrobe-open-robe.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-wardrobe-open-robe.jpg
             short: You see a bathrobe hanging inside.
           - name: openEmpty
-            imageUrl: bureau/ch1/500/bh-ch1-wardrobe-open-empty.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-wardrobe-open-empty.jpg
             # imageUrl: asylum/items/slice/wardrobe-empty.jpg
             short: The wardrobe is empty.
 
@@ -1132,10 +1132,10 @@ rooms:
         states:
           - name: default
             # imageUrl: asylum/shots/slice/bed-slippers.jpg
-            imageUrl: bureau/ch1/500/bh-ch1-bed-with-sandals.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-bed-with-sandals.jpg
             short: A narrow metal bed is here with a soiled old pillow.
           - name: nosandals
-            imageUrl: bureau/ch1/500/bh-ch1-bed-no-sandals.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-bed-no-sandals.jpg
             short: A narrow metal bed is here with a soiled old pillow.
 
       - name: sheet
@@ -1148,10 +1148,10 @@ rooms:
         called: faucet
         states:
           - name: default
-            imageUrl: bureau/ch1/500/bh-ch1-sink-no-handle.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-sink-no-handle.jpg
             short: The handle is missing.
           - name: handle
-            imageUrl: bureau/ch1/500/bh-ch1-sink-with-handle.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-sink-with-handle.jpg
             short: The sink looks better with that handle you found.
 
       - name: lights
@@ -1181,7 +1181,7 @@ rooms:
           - name: default
             short: Some posters are on the wall.
             long: You see a *drawing*, a *poster* of an album cover, and a *photo*.
-            imageUrl: bureau/ch1/500/bh-ch1-3-posters.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-3-posters.jpg
 
       - name: drawing
         called: man poster|vitruvian|davinci|da vinci|drawing|leonardo|vitruvian man|diagram
@@ -1189,7 +1189,7 @@ rooms:
         canTake: true
         states:
           - name: default
-            imageUrl: bureau/ch1/500/bh-ch1-vm-poster.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-vm-poster.jpg
             long: It’s a reproduction of DaVinci’s classic drawing, “Vitruvian Man,” except the figure is dressed a lot like you at the moment.
 
       - name: photo
@@ -1198,7 +1198,7 @@ rooms:
         hidden: true
         states:
           - name: default
-            imageUrl: bureau/ch1/500/bh-ch1-hs-photo.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-hs-photo.jpg
             long: It's what looks to be an awkward high school yearbook photo, complete with forehead acne and love goggles.
 
       - name: poster
@@ -1207,7 +1207,7 @@ rooms:
         canTake: true
         states:
           - name: default
-            imageUrl: bureau/ch1/500/bh-ch1-mj-poster.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-mj-poster.jpg
             webUrl: /items/album
             webLinkText: "click to view poster"
             long: You remember this album cover from childhood.
@@ -1216,7 +1216,7 @@ rooms:
       - name: window
         states:
           - name: default
-            imageUrl: bureau/ch1/500/bh-ch1-window.jpg
+            imageUrl: bureau/ch1/750/bh-ch1-window.jpg
             short: A rectangular window with bars is recessed into the far wall. A door leads out.
             long: The window is frosted and protected by metal bars from your side.
               Upon closer inspection, you notice that the unnatural yellow light from without is pulsing slightly, with the faint electrical buzz of artificial lighting.
