@@ -1,5 +1,5 @@
 
-set -x
+# set -x
 
 
 # before using create a folder of 1000
@@ -19,23 +19,34 @@ set -x
 # 960:540
 # 1280:720
 
+# run quietly
+# -q:v 1 quality 1-31
 
 function resize {
 
-  sourceDir='./960w'
+  sourceDir='./raw'
 
-  # crop based on 1000 width
-  imageSize="960:540"
+  # imageSize="500:-1"
 
-  offsetx=56  # offx=(1000-888)/2
-  echo $offx
+  widths=( "500" "750" )
 
-  FILES="./${sourceDir}/*jpg"
-  for input in $FILES
+  for width in "${widths[@]}"
   do
-    output="${input/1000/wide}"
-    echo "$input -> $output"
-    ffmpeg -y -i $input -vf  "crop=${imageSize}" $output
+    FILES="${sourceDir}/*jpg"
+    for input in $FILES
+    do
+      output="${input/raw/${width}}"
+      # echo "$input -> $output"
+      echo "$output"
+      ffmpeg \
+        -hide_banner -loglevel error \
+        -y \
+        -i $input \
+        -q:v 3 \
+        -map_metadata -1 \
+        -vf  "scale=${width}:-1" \
+        $output
+    done
   done
 
 }
@@ -60,7 +71,12 @@ function makeGif() {
   ffmpeg -y -i banner.mp4 -vf "fps=10,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 2 banner-480.gif
 }
 
-# resize
-makeMov
-makeGif
+function showDirSizes() {
+  du -sh *
+}
 
+resize
+# makeMov
+# makeGif
+
+showDirSizes
