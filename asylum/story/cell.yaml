@@ -53,8 +53,8 @@ rooms:
 
       - name: task4
         # imageUrl: asylum/rooms/cell-dark.jpg
-        # imageUrl: bureau/ch1/500/bh-ch1-3-lights.jpg
-        imageUrl: bureau/ch1/500/bh-ch1-4-lights-dark.jpg
+        # imageUrl: bureau/ch1/500/bh-ch1-4-lights-dark.jpg
+        imageUrl: bureau/ch1/500/bh-ch1-3-lights-dark.jpg
         short: "💡💡💡 …\n
           `[Task 4/6]`
           Three of the green lights are on, and a yellow light seeps through the window."
