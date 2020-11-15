@@ -3,8 +3,6 @@ rooms:
     state: intro
     states:
       - name: intro
-        imageUrl: bureau/ch1/750/gates.jpg
-
         long: "
           \nAs you struggle, you hear the doctor call out:
           \n> _This is no game, believe me. And whomever you think you are, we will soon correct that.
@@ -24,6 +22,7 @@ rooms:
     actions:
       - match: cont|🚑
         then:
+          imageUrl: bureau/ch1/750/gates.jpg
           reply: "
   Want to learn about more games? \n
   Would you like to add this game on your own server?\n
