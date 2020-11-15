@@ -16,7 +16,6 @@ rooms:
 
       - match: macaroni
         then:
-          imageUrl: asylum/shots/slice/hallway-three.jpg
           reply: "
             The doctor scribbles more notes. \n
             \n> _Subject is suffering from delusions of being in an Italian restaurant. Treatment 'C' in the tower is recommended._

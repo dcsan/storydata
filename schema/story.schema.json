@@ -20,6 +20,9 @@
             "type": "string",
             "description": "full URL of an image"
           },
+          "showChannels": {
+            "type": "string"
+          },
           "webUrl": {
             "type": "string",
             "description": "web link"
@@ -89,6 +92,12 @@
           }
         },
         "imageUrl": {
+          "type": "string"
+        },
+        "showChannels": {
+          "type": "string"
+        },
+        "showInvite": {
           "type": "string"
         },
         "buttons": {

@@ -9,11 +9,13 @@ rooms:
       - name: default
         imageUrl: bureau/marcom/public/bpo-creature-promo.gif
         long: "
-          Play
           \nTHE BUREAU OF PROFOUND ODDITIES:
           \n_ESCAPE FROM BELL HILL!_
           \nAn interactive fiction thriller designed for Discord
+          \n
+          \nHead to the lobby to find or join a team:
         "
+        showChannels: bopo-lobby
 
     actions:
       - match: rs
@@ -28,4 +30,12 @@ rooms:
 
       - match: joined
         then:
-          reply: "Head over to the <#763196760956076043> to play!"
+          reply: "Head over to the Lobby to play!"
+          showChannels: bopo-lobby
+
+      - match: invite
+        then:
+          showInvite: Invite your friends!
+
+      - match: .*
+      # dont send a ?

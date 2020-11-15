@@ -13,13 +13,22 @@ rooms:
           \n
           \nA chill races down your spine as you are dragged forcibly into the further recesses of Bell Hill...
           \n
-          \n*TO BE CONTINUED*
-          \n
           \nThank you for playing Chapter One of:
           \n**THE BUREAU OF PROFOUND ODDITIES:
           \nESCAPE FROM BELL HILL!**
           \n
-          \nPlease let us know if you liked the game, and learn about more games at
-          \n
-          \nhttps://forms.gle/uvrBDfqngs1rszxQ6
           "
+        buttons:
+          - TO BE CONTINUED|cont|🚑
+
+    actions:
+      - match: cont|🚑
+        then:
+          reply: "
+  Want to learn about more games? \n
+  Would you like to add this game on your own server?\n
+  Please click here and let us know!\n
+  https://forms.gle/uvrBDfqngs1rszxQ6
+
+  And don't forget to tell your friend about this server!
+  "

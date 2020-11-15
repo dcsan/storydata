@@ -29,11 +29,12 @@ rooms:
           - "invite|invite|🍰"
 
     actions:
-      # - match: start|🚀
-      #   always:
-      #     reply: "Please start the game in one of the open team channels"
+      - match: play|🚀
+        always:
+          reply: "Please check the channel list and play the game in one of the open team channels"
+          showChannels: ^bopo-team|^team-|^✅-|^asylum-
 
-      - match: start|team|✋|🚀
+      - match: team|✋
         always:
           reply: "
             look on the left channels bar to find open teams:

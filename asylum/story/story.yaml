@@ -5,9 +5,9 @@ story:
 
   # fuzzy matching on channel names
   startRooms:
-    - channels: tutorial
-      room: lobby
-    - channels: lobby
+    - channels: welcome
+      room: welcome
+    - channels: tutorial|lobby
       room: lobby
     - channels: play|game|team|bopo-team
       room: intro
@@ -21,8 +21,8 @@ story:
       room: qaroom
     - channels: sandbox
       room: sandbox
-    - channels: welcome
-      room: welcome
+    - channels: ending
+      room: ending
 
   # for other channels
   # startRoom: lobby

@@ -21,6 +21,7 @@ rooms:
     actions:
       - match: ask|.*|👩🏼‍⚕️
         then:
+          imageUrl: bureau/ch1/500/grabbed.gif
           reply: "
             \nThe doctor appears to ignore you, motioning to the guards instead.
             \n
