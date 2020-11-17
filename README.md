@@ -4,7 +4,7 @@ This is a repo to contain game scripts for the TEN GameBot scripting engine.
 This allows you to play adventure games and escape room games right inside Discord with your friends.
 
 Join our server here to try some games!
-https://discord.gg/HwpBPwR
+https://discord.gg/dUeQbB5rEC
 
 
 - [Storydata](#storydata)
