@@ -27,12 +27,13 @@ rooms:
           # - "team|team|✋"
           - "help|help|❓"
           - "invite|invite|🍰"
+        showChannels: ^ch1-team|^✅-|^asylum-|✔-game
 
     actions:
       - match: play|🚀
         always:
           reply: "Please check the channel list and play the game in one of the open team channels"
-          showChannels: ^bopo-team|^team-|^✅-|^asylum-
+          showChannels: ^ch1-team|^✅-|^asylum-|✔-game
 
       - match: team|✋
         always:

@@ -7,7 +7,7 @@ story:
   startRooms:
     - channels: welcome
       room: welcome
-    - channels: tutorial|lobby
+    - channels: tutorial|lobby|ch1-lobby
       room: lobby
     - channels: play|game|team|bopo-team
       room: intro

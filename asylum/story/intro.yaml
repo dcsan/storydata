@@ -8,12 +8,14 @@ rooms:
           PROLOGUE
           \nChief Murphy's Office
           \n12:10pm EST
+          \n
+          \n⬇︎ TAP or type `start`
         "
-        buttons:
-          - TAP to begin|home|▶️
+        emoji:
+          - ▶️
 
     actions:
-      - match: home|▶️
+      - match: start|▶️
         then:
           goto: home
 
