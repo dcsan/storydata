@@ -1,14 +1,50 @@
 ## TOP
-- [x] redo IF block to cascade => switch
-- [x] debug robe/ etc.
 - [ ] hint system
-- [ ] give item to other NPC
-- [ ] check talking to an NPC. ask xxx about YYYY
+- [ ] hints using case/switch?
 
-## TOP
-- [x] splash web page with install button and video
-- [x] video capture
+## scripts
+Take michael jackson poster off wall
+put blue robe on window
+look behind
+x posters = wall
+Look pipe
+X above wardrobe
+x on top of ...
+X handles => the two handles
+turn handle
+Use soap on hands
+flip poster
+turn poster over
+read back of poster
+
+(wrong order handling)
+Wash hands, neck, eyes, face
+
+l pockets
+fix sink
+
+look under bed
+
+tasks = task
+18 vs 24
+
+end game
+
+check "3262|31?2|3161" etc.
+
+piers... ?
+
+
+ending loop
+talk to doctor - needs some type of clue
+
+
+
+## story
+- [ ] new vidcap and animation
+- [ ] web site fixes / updates
 - [ ] scoring?
+- [ ] record game times?
 - [ ] install permissions fix
 - [ ] new banner image
 - [ ] web editor?
@@ -26,6 +62,8 @@
 - [ ] add bot to various bot sites
 - [X] make GIF anims
 - [ ] spam some other admins
+- [ ] give item to other NPC
+- [ ] check talking to an NPC. ask xxx about YYYY
 
 - [ ] get item response
 - [ ] add navbar on help
@@ -39,9 +77,6 @@
 - [ ] add survey at end
 
 ## TODO:
-- [x] prevent wash before clothes
-- [x] lock handle on closet until seen
-- [x] panel unlock
 - [ ] hanz, fez, nick etc. hint
 - [ ] washing - check handle before order
 - [ ] look back of poster cmd

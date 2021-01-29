@@ -24,7 +24,7 @@ rooms:
 
         \n A sturdy looking desk is the first thing to catch your eye.
 
-        \n⌨️ _to `Look` at the desk type:_
+        \n⌨️ to **_Look_** at the desk type:
         \n```fix\nL desk```"
 
       - name: task1
@@ -620,7 +620,7 @@ rooms:
           after:
             - task6
 
-      - match: "3262"
+      - match: "3262|31?2"
         then:
           reply: "You sense the lock is close to opening... but one number must be off. "
 
@@ -685,7 +685,7 @@ rooms:
             - tasklist.state = task2
         then:
           imageUrl: shared/anims/blue-hand-50.gif
-          reply: You slip out of your blue sandals and perform 18 jumping jacks in your socks.
+          reply: You slip out of your blue sandals and perform 24 jumping jacks in your socks.
             For an agent of your fitness, they're a breeze.
           emoji:
             - '🌟'
@@ -1105,7 +1105,7 @@ rooms:
             # wash
           - name: task3
             short: "`[Task 3/6]` The voice had said:
-              \n\nn> _And now it’s time to scrub away those germs._"
+              \n\n> _And now it’s time to scrub away those germs._"
 
             # colors
           - name: task4
