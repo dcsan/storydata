@@ -169,8 +169,22 @@ This engine is also actually connected to an NLP parser using word vectors for a
 
 ## Tips and Tricks
 
-`goto` is used to goto another room
-`after` allows you to trigger another match block after the current one. should be an array type so you can trigger a bunch of things:
+- `goto`
+Is used to goto another room. the room is named at it's top block.
+On entering a room the `states.default` will get shown. It's good to add a prompt for what the user should say/do.
+
+```
+rooms:
+  - name: goals
+    states:
+      - name: default
+        long: "Let's talk about goals.
+          \nType start when you're ready to begin."
+```
+
+-  `after`
+Allows you to trigger another match block after the current one.
+This Should be an array type so you can trigger a bunch of things:
 
 ```yaml
       - match: start|ok|🚀
