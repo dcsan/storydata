@@ -302,6 +302,10 @@
                 "canTake": {
                   "type": "boolean"
                 },
+                "silent": {
+                  "type": "boolean",
+                  "description": "doesn't show messages when taken"
+                },
                 "onTake": {
                   "type": "string"
                 },

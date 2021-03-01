@@ -1,0 +1,69 @@
+rooms:
+  # Bot: “What else can you do?”
+  # User: “Hmmm.. I suppose I could look at competitive web sites to get an idea of how much product story they use and how they present it.”
+  # Bot: “Okay, so you are going to look at competitive web sites for ideas. How many web sites do you think you should look at to get a good idea?”
+  # User: “Three or four.”
+  # Bot:  “okay, so you are going to look at three or four competitive web sites. When will you do that?”
+  # User:  “Hmm, I am busy on Wednesday and Thursday.  Maybe I can do it over the weekend.”
+  # Bot:  “Okay you’ve set a new goal.  By this weekend, you will look at three or four competitive web sites to get ideas for product story. How will you know when you have completed that task?”
+  # User: “I will write something down. I will make notes of what I find.”
+  # Bot: “Okay, so here’s your new goal. By Sunday night you will have completed writing down notes about product story from three or four competitive web sites.  Can you commit to that?”
+  # User: “Yes” or “No” or “not sure”. (Let’s go with Yes for now. If the user answers no or not sure, then the bot will continue to ask more questions to get to a better goal. If the user still cannot commit to the goal, then the bot will
+
+  - name: what_else
+    states:
+      - name: default
+        long: What else can you do?
+
+    actions:
+      - match: hi|timeout
+        always:
+          reply: What else can you do?
+
+      - match: look at|review|research\b|competition
+        always:
+          reply: Okay, so you are going to look at competitive web sites for ideas.
+            How many web sites do you think you should look at to get a good idea?
+
+      - match: one
+        always:
+          reply: Is just one good enough? Try again.
+
+      - match: a few|two|three|four|some|lots|many
+        always:
+          reply: okay, so you are going to look at three or four competitive web sites.
+            When will you do that?
+
+      - match: weekend
+        always:
+          reply: OK so by this weekend you will review a number of competitive websites.
+          after:
+            - prompt-when
+
+      # prefilter strips out 'a'
+      - match: prompt-when
+        always:
+          reply: When can you Look at these websites?
+
+      - match: ^(soon|not sure|sometime)
+        always:
+          reply: Can you be more specific? Today, tomorrow?
+
+      - match: ^(today|tomorrow|now)
+        always:
+          reply: "Okay you've set a new goal to research competitive websites"
+          after:
+            - take ResearchSites
+          goto: end_session
+
+    items:
+      - name: ResearchSites
+        state: default
+        canTake: true
+        hidden: true
+        silent: true
+        onTake: adding this goal.
+        states:
+          - name: default
+            short: Review four competitive sites
+            long: You will look at three or four competitive web sites to get ideas for your product story

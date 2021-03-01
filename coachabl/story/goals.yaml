@@ -1,0 +1,90 @@
+rooms:
+  # -------- start --------------
+  - name: goals
+    states:
+      - name: default
+        long: "Let's talk about goals.
+          \nType start when you're ready to begin."
+
+    actions:
+      - match: ^(hi|hello)
+        always:
+          reply: Hello from Coachabl!
+
+      - match: ^(ss|start|🚀)
+        always:
+          reply: "Okay, now tell me how you did with your goals.
+            \nLast week you set three goals around product marketing:"
+          after:
+            - take CopyWriting
+            - take profiles
+            - take contacts
+            - goals
+            - followup
+
+      - match: followup
+        always:
+          reply: How did you do with these goals?
+
+      - match: all|every
+        always:
+          reply: "Fantastic well done!"
+
+      - match: so so|not so good|just ok|average|not as good as I hoped|I guess|ok|mediocre|just so so
+        always:
+          reply: Hmm, can you be more specific? Which ones did you complete?
+
+      - match: good|great
+        always:
+          reply: Sounds good! But can you be more specific? Which ones did you complete?
+
+      - match: bad|not great|awful
+        always:
+          reply: Cheer up! Did you get anything done?
+
+      - match: ^(none|not any|not a single)
+        always:
+          reply: That's not very good. [END] # todo - add more
+          goto: end_session
+
+      - match: ^(1|first|marketing copy)
+        always:
+          reply: The web site copy.
+          goto: call_friend
+
+      - match: ^(2|second|profiles)
+        always:
+          reply: OK so you worked on the social media profiles.
+          goto: call_friend
+
+      - match: ^(3|third|contact)
+        always:
+          reply: So you worked on making contact with customers.
+          goto: call_friend
+
+      # this will match any sentence with 'one' if not matched above
+      - match: ^(some|one|two)
+        always:
+          reply: Which goal did you complete?
+
+    items:
+      - name: CopyWriting
+        canTake: true
+        silent: true
+        states:
+          - name: default
+            short: Finish the web site marketing copy for your product
+
+      - name: profiles
+        canTake: true
+        silent: true
+        states:
+          - name: default
+            short: Write social media profiles
+
+      - name: contacts
+        canTake: true
+        silent: true
+        states:
+          - name: default
+            short: Make contact with three customers

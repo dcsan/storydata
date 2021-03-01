@@ -2,6 +2,23 @@
 - [ ] hint system
 - [ ] hints using case/switch?
 
+- make editing more interactive
+  - web based editor
+  - store player state so we can keep editing
+
+- Inventory system - move to a new module
+- stack navigation - allow to 'gosub' and come back
+- remove the 'always' requirement
+- authoring via google sheets? for basic room actions scripts
+- match | reply | goto | after
+
+- split language parser?
+- bring back NLP parser
+
+- set variables and tasks so we can have more flexible task chunking
+-
+
+
 ## scripts
 Take michael jackson poster off wall
 put blue robe on window

@@ -18,6 +18,7 @@ https://discord.gg/dUeQbB5rEC
     - [Called](#called)
     - [RegEx](#regex)
     - [NLP](#nlp)
+  - [Tips and Tricks](#tips-and-tricks)
 - [Editing story files](#editing-story-files)
 
 # Basic Authoring
@@ -165,6 +166,19 @@ Then later `use lamp` and `use light` should both work.
 ### NLP
 This engine is also actually connected to an NLP parser using word vectors for approximation of semantic meaning, and also we do spelling correction. So `turn light on` should match `turn lamp on` with ~70% confidence. That's a little outside this basic tutorial though.
 
+
+## Tips and Tricks
+
+`goto` is used to goto another room
+`after` allows you to trigger another match block after the current one. should be an array type so you can trigger a bunch of things:
+
+```yaml
+      - match: start|ok|🚀
+        always:
+          reply: Okay, now tell me how you did with your goals
+          after:
+            - goals
+```
 
 # Editing story files
 
