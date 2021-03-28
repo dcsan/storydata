@@ -27,13 +27,13 @@ rooms:
           # - "team|team|✋"
           - "help|help|❓"
           - "invite|invite|🍰"
-        showChannels: ^ch1-team|^✅-|^asylum-|✔-game
+        showChannels: ^team-|^✅-|^asylum-|✔-game
 
     actions:
       - match: play|🚀
         always:
           reply: "Please check the channel list and play the game in one of the open team channels"
-          showChannels: ^ch1-team|^✅-|^asylum-|✔-game
+          showChannels: ^team-|^✅-|^asylum-|✔-game
 
       - match: team|✋
         always:
@@ -47,7 +47,7 @@ rooms:
 
       - match: invite|🍰
         always:
-          reply: you should be able to use normal invite buttons!
+          reply: Use the discord invite feature to add people to your game!
         # then:
         #   goto: intro
     #     always:
