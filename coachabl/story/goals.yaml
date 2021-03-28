@@ -9,7 +9,7 @@ rooms:
     actions:
       - match: ^(hi|hello)
         always:
-          reply: Hello from Coachabl!
+          reply: Hello from Coachabl! Type start to begin a new session.
 
       - match: ^(ss|start|🚀)
         always:
