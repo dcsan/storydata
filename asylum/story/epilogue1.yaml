@@ -3,10 +3,12 @@ rooms:
     state: intro
     states:
       - name: intro
-        long: The host stands at the far end, scribbling notes
-        imageUrl: asylum/shots/640/hall-host.jpg
+        long:
+          A bald doctor (or actor?) with a thick beard stands at the foot of a curving staircase, scribbling notes.
+          Two burly guards stand at the ready.
+        imageUrl: bureau/ch1/750/stairs.jpg
         buttons:
-          - ask woman about game | askaboutgame|👩🏼‍⚕️
+          - Ask if you've won the game. | askaboutgame|👩🏼‍⚕️
 
     #   - name: intro
     #     long: "\nA young woman who appears to be bleeding hobbles toward you.
@@ -19,12 +21,18 @@ rooms:
     actions:
       - match: ask|.*|👩🏼‍⚕️
         then:
-          imageUrl: asylum/shots/640/hall-goons.jpg
+          imageUrl: bureau/ch1/500/grabbed.gif
           reply: "
-            > _\"Take him to the tower\"_
-            \nthe woman says, motioning to the orderlies.
-            \nThey advance on you.
-            \n> _\"We’re not finished collecting our data on you yet\"_
-            \n she says, as the orderlies grab hold of you once again.
+            \nThe doctor appears to ignore you, motioning to the guards instead.
+            \n
+            \n> _Take this one to the tower._
+            \n
+            \n> _Yes, Doctor Abbot._
+            \n
+            \nThe guards advance on you.
+            \n
+            \n> _Indeed... you've certainly won. And now it's time to have a closer look into that winning brain of yours._
+            \n
+            \nThe guards grab hold of you.
           "
           goto: epilogue2

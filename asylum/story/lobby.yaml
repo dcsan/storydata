@@ -4,99 +4,142 @@ rooms:
     states:
       - name: default
         long: "
-            **ESCAPE FROM BELL HILL ASYLUM!** \n
-            An interactive fiction thriller\n
-            Authored by John Knauss & David Collier \n
-            © 2020
-          Type `start` when you're ready!
-        "
+          \nTHE BUREAU OF PROFOUND ODDITIES:
+          \n_ESCAPE FROM BELL HILL!_
+          \nAn interactive fiction thriller designed for Discord
+          \nAuthored & Illustrated by John Knauss
+          \nProgrammed by David Collier
+          \n©2020 all rights reserved
+
+          \n_oddity [ od-i-tee ]_ an unusual event indicating the presence of supernatural or
+          interdimensional entities intent on shaping the course of human history.
+          \n
+          \nInvite your friends to join you, it's more fun to solve the game together! To start type:
+          \n
+          \n `help` or tap ❓ if you're stuck at any point.
+          \n `play` or tap 🚀 when you're ready!
+          \n `teams` to see open team games to join
+          \n `invite` to get an invitation link
+          "
+        imageUrl: bureau/marcom/public/bpo-creature-promo.gif
         buttons:
-          - start|start|🚀
+          - play|play|🚀
+          # - "team|team|✋"
+          - "help|help|❓"
+          - "invite|invite|🍰"
+        showChannels: ^team-|^✅-|^asylum-|✔-game
 
     actions:
-      - match: start|🚀
+      - match: play|🚀
         always:
-          # imageUrl: marcom/intro-short/asylum-intro-pong.gif
-          imageUrl: asylum/marcom/asylum-low.mp4
+          reply: "Please check the channel list and play the game in one of the open team channels"
+          showChannels: ^team-|^✅-|^asylum-|✔-game
+
+      - match: team|✋
+        always:
           reply: "
-            \n
-            \nType `help` to learn the basic commands
-            \n
-            \nType `play` or hit the ▶️ button!
-            \n_Enjoy!_\n
+            look on the left channels bar to find open teams:
+            \n- <#777226252762873896>
+            \n- <#777226320777314304>
+            \n- <#777226347994939412>
+            \n- <#777226370278752315>
             "
-          # hint: ":information_source: type `help` for a list of commands"
-          buttons:
-            - help|help|❓
-            - play|play|▶️
-            - info|info|ℹ️
-            - voice|voice|🎤
 
-      - match: voice|🎤
+      - match: invite|🍰
         always:
-          reply: "Join a voice channel here https://discord.gg/HZeTnGq"
+          reply: Use the discord invite feature to add people to your game!
+        # then:
+        #   goto: intro
+    #     always:
+    #       # imageUrl: marcom/intro-short/asylum-intro-pong.gif
+    #       imageUrl: asylum/marcom/asylum-low.mp4
+    #       reply: "
+    #         \n
+    #         \nType `help` to learn the basic commands
+    #         \n
+    #         \nType `play` or hit the ▶️ button!
+    #         \n_Enjoy!_\n
+    #         "
+    #       # hint: ":information_source: type `help` for a list of commands"
+    #       buttons:
+    #         - help|help|❓
+    #         - play|play|▶️
+    #         - info|info|ℹ️
+    #         - voice|voice|🎤
 
-      - match: teams
-        always:
-          reply: "
-            we have three team channels you can play in.\n
-            If a friend invited you, join their channel\n
-            or choose one of these to start a new game:\n
-            \\#team-1  |  #team-2  |  #team-3"
+    #   - match: voice|🎤
+    #     always:
+    #       reply: "Join a voice channel here https://discord.gg/HZeTnGq"
 
-      - match: info|ℹ️
-        always:
-          reply: "
-            Join the main [TEN|Total Escape Network] server to chat with the developers here\n
-            https://discord.gg/Qgup6qU"
+    #   - match: teams
+    #     always:
+    #       reply: "
+    #         we have three team channels you can play in.\n
+    #         If a friend invited you, join their channel\n
+    #         or choose one of these to start a new game:\n
+    #         \\#team-1  |  #team-2  |  #team-3"
 
-      - match: ^drinks|bar|order drink$
-        always:
-          reply: Here's a beer for you!
+    #   - match: info|ℹ️
+    #     always:
+    #       reply: "
+    #         Join the main [TEN|Total Escape Network] server to chat with the developers here\n
+    #         https://discord.gg/Qgup6qU"
 
-      - match: ^hi$
-        always:
-          reply: Hello there!
+    #   - match: ^drinks|bar|order drink$
+    #     always:
+    #       reply: Here's a beer for you!
 
-      - match: ^vers
-        always:
-          reply: v0.4.1
+    #   - match: ^hi$
+    #     always:
+    #       reply: Hello there!
 
-      - match: help|❓
-        then:
-          reply: "
+    #   - match: ^vers
+    #     always:
+    #       reply: v0.4.1
+    #       emoji:
+    #         - 🌟
+    #         # - '❓'
+    #         # - '⭐️'
+    #         # - ✴️
+    #         # - ✨
+    #         # - 🌠
+    #         # - ':question:'
 
-        \nYou can type commands or click emoji to interact with the game
-        \nYou are playing as a team. Anyone can enter a command, so if it gets too hectic, you might want to select one person to do the inputting.
-        \nTo chat with your group, type a period and a space before your message:
-        \n> `. Like this!`
-        \n
+    #   - match: help|❓
+    #     then:
+    #       reply: "
 
-          When the game starts, these are the basic commands:
-      \n> `L` to look around the room
-      \n> `X [thing]` to examine an item
-      \n> `INVentory` for what you're carrying
-      \n> `tasks` to see what to do next
-      \n> `Say [something] to [person]` talk to in-game characters
-      \n> `use [thing] with [thing]` try combining items
-      \n> put a `.` in front of a message to chat to other players
-      \n> There are many other things you can try, but these are the basics!
-      "
-          buttons:
-            - help|help|❓
-            - info|info|ℹ️
-            - play|play|▶️
+    #     \nYou can type commands or click emoji to interact with the game
+    #     \nYou are playing as a team. Anyone can enter a command, so if it gets too hectic, you might want to select one person to do the inputting.
+    #     \nTo chat with your group, type a period and a space before your message:
+    #     \n> `. Like this!`
+    #     \n
 
-      # ignore everything else
-      # - match: .*
-      - match: order|drink
-        then:
-          reply: sorry, we're out of drinks atm
-      # - match: ^start$
-      #   then:
-      #     goto: intro
+    #       When the game starts, these are the basic commands:
+    #   \n> `L` to look around the room
+    #   \n> `X [thing]` to examine an item
+    #   \n> `INVentory` for what you're carrying
+    #   \n> `tasks` to see what to do next
+    #   \n> `Say [something] to [person]` talk to in-game characters
+    #   \n> `use [thing] with [thing]` try combining items
+    #   \n> put a `.` in front of a message to chat to other players
+    #   \n> There are many other things you can try, but these are the basics!
+    #   "
+    #       buttons:
+    #         - help|help|❓
+    #         - info|info|ℹ️
+    #         - play|play|▶️
 
-      - match: play|▶️
-        always:
-          reply: OK! Let's begin
-          goto: intro
+    #   # ignore everything else
+    #   # - match: .*
+    #   - match: order|drink
+    #     then:
+    #       reply: sorry, we're out of drinks atm
+    #   # - match: ^start$
+    #   #   then:
+    #   #     goto: intro
+
+    #   - match: play|▶️
+    #     always:
+    #       reply: OK! Let's begin
+    #       goto: intro

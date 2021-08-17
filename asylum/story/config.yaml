@@ -1,0 +1,5 @@
+config:
+  teams:
+    - team-a
+    - team-b
+    - team-c

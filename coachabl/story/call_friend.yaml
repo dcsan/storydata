@@ -1,0 +1,46 @@
+rooms:
+  # -------- start --------------
+  - name: call_friend
+    states:
+      - name: default
+        long: How did it go, are you satisfied?
+
+    actions:
+      - match: "yes"
+        always:
+          reply: That's good news. Seems like you're on top of everything.
+          goto: end_session
+
+      - match: somewhat|I guess|maybe|a little
+        always:
+          reply: So you're somewhat satisfied. Tell me more about that.
+
+      - match: basic
+        always:
+          reply: So you have the basics working?
+          after:
+            - prompt
+
+      - match: prompt|not sure|don't know|not really|no
+        always:
+          reply: So you are unsure about your work.
+            What can you do to find out if it needs more work?
+
+      # prefilter strips out 'a'
+      - match: ^ask|ask friend|call friend
+        always:
+          reply: When can you ask your friend?
+
+      - match: ^(soon|not sure|sometime|soonish)
+        always:
+          reply: Can you be more specific? Today, tomorrow?
+
+      - match: today|tomorrow|now
+        always:
+          reply: "Okay you've set a new imminent goal to call your friend."
+          goto: commit
+
+      - match: ^(next week)
+        always:
+          reply: "Okay you've set a new goal to call your friend next week."
+          goto: commit

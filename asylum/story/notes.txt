@@ -1,0 +1,33 @@
+imageUrl: bureaa/ch1/500/
+
+
+short: "The Chief gets up and moves toward the door. \n \n
+  _“You’ll be infiltrating Bell Hill asylum under the cover of a paying guest.
+  First, you'll have to successfully win their themed escape room game to access the facility further.
+  After that, you’ll need to discover the whereabouts of the missing Agent Lee,
+  as well as locate the source of the psychic energy spike. Any questions?”_ \n \n
+  Your mind jumps to the upcoming weekend."
+buttons:
+  - "No, sir."|nosir|⛔️
+  - "Is Friday payday?"|fridaypayday|💵
+
+
+
+# rooms:
+#   - name: outro
+#     states:
+#       - name: default
+#         short: "the outro"
+#     actions:
+#       - match: nosir|⛔️
+#         then:
+#           imageUrl: asylum/shots/640/bh-case-file.png
+#           reply: "\n_"No questions, chief."\n
+#           \n_“Good. Best of luck, Agent Dale.”_\n"
+#           goto: cell
+
+#       - match: fridaypayday|💵
+#         then:
+#           reply: "\n_"Is Friday payday, sir?"\n
+#           \n_The Chief grunts. _"Just get back in one piece with Agent Lee, alright? You well-dressed leech..."_\n"
+#           goto: cell

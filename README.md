@@ -4,7 +4,7 @@ This is a repo to contain game scripts for the TEN GameBot scripting engine.
 This allows you to play adventure games and escape room games right inside Discord with your friends.
 
 Join our server here to try some games!
-https://discord.gg/HwpBPwR
+https://discord.gg/dUeQbB5rEC
 
 
 - [Storydata](#storydata)
@@ -18,6 +18,7 @@ https://discord.gg/HwpBPwR
     - [Called](#called)
     - [RegEx](#regex)
     - [NLP](#nlp)
+  - [Tips and Tricks](#tips-and-tricks)
 - [Editing story files](#editing-story-files)
 
 # Basic Authoring
@@ -165,6 +166,33 @@ Then later `use lamp` and `use light` should both work.
 ### NLP
 This engine is also actually connected to an NLP parser using word vectors for approximation of semantic meaning, and also we do spelling correction. So `turn light on` should match `turn lamp on` with ~70% confidence. That's a little outside this basic tutorial though.
 
+
+## Tips and Tricks
+
+- `goto`
+Is used to goto another room. the room is named at it's top block.
+On entering a room the `states.default` will get shown. It's good to add a prompt for what the user should say/do.
+
+```
+rooms:
+  - name: goals
+    states:
+      - name: default
+        long: "Let's talk about goals.
+          \nType start when you're ready to begin."
+```
+
+-  `after`
+Allows you to trigger another match block after the current one.
+This Should be an array type so you can trigger a bunch of things:
+
+```yaml
+      - match: start|ok|🚀
+        always:
+          reply: Okay, now tell me how you did with your goals
+          after:
+            - goals
+```
 
 # Editing story files
 

@@ -1,22 +1,28 @@
 story:
-  title: "'ESCAPE FROM BELL HILL!'"
+  title: "THE BUREAU OF PROFOUND ODDITIES: _ESCAPE FROM BELL HILL!_"
   cname: asylum # internal reference
   startRoomDefault: lobby
 
   # fuzzy matching on channel names
   startRooms:
-    - channels: tutorial
+    - channels: welcome
+      room: welcome
+    - channels: tutorial|lobby|ch1-lobby
       room: lobby
-    - channels: lobby|🚀-lobby
-      room: lobby
-    - channels: play|game|team
-      room: lobby
+    - channels: play|game|team|bopo-team
+      room: intro
     - channels: asylum-dev
       room: cell
     - channels: localdev
       room: cell
     - channels: cell
       room: cell
+    - channels: qaroom
+      room: qaroom
+    - channels: sandbox
+      room: sandbox
+    - channels: ending
+      room: ending
 
   # for other channels
   # startRoom: lobby
@@ -24,11 +30,11 @@ story:
 
   tasks:
     - name: dress
-      hint: A voice crackles over a hidden speaker in the room. “To proceed to breakfast, please follow your morning routine. Remember, every good boy dresses sharply.”
+      hint: A voice crackles over a hidden speaker in the room. “To proceed to breakfast, please follow your morning routine. Remember, undressed patients are not permitted in the common areas.”
     - name: exercise
-      hint: The same voice crackles over the speaker. “That’s a good boy, Jack. Now remember, exercise makes the man. Just as many times as there are legs in the room.”
+      hint: The same voice crackles over the speaker. “Excellent. Now remember, exercise makes the man. Just as many times as there are legs in the room.”
     - name: wash
-      hint: The invisible speaker crackles. “Well done, young Jack. You’re fit as a fiddle. And now it’s time for all good boys to scrub away those mean, nasty germs. Let’s not be careless, now. Follow proper procedure.”
+      hint: The invisible speaker crackles. “Well done. You’re fit as a fiddle. And now it’s time to scrub away those germs. Let’s not be careless, now. Follow proper procedure.”
 
   help:
     basic: "

@@ -7,6 +7,8 @@ story:
   startRooms:
     - channels: tutorial
       room: lobby
+    - channels: qaroom
+      room: qaroom
 
   intro: You wake up in a strange room. The door is locked.
     You don't remember how you got in here but just know you have to get out!

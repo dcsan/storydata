@@ -1,0 +1,32 @@
+rooms:
+  # -------- start --------------
+  - name: commit
+    states:
+      - name: default
+        long: Can you commit to that goal?
+
+    actions:
+      - match: "yes"
+        always:
+          before:
+            - take AskFriend
+          reply: "Great, I've added that goal to your list.
+            \nYou can type `[goals]` to review."
+          goto: what_else
+
+      - match: "no"
+        always:
+          reply: Maybe we should break down the goal in more detail next session.
+          goto: end_session
+
+    items:
+      - name: AskFriend
+        state: default
+        canTake: true
+        hidden: true
+        silent: true
+        onTake: Let's add this as a goal for next week. You can type `check goals` at any time.
+        states:
+          - name: default
+            short: Ask your friend about your your goal
+            long: Ask a friend by a specific date for their opinion on some work you have done.

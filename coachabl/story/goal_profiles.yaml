@@ -1,0 +1,11 @@
+rooms:
+  # -------- start --------------
+  - name: goal_profiles
+    states:
+      - name: default
+        long: The social media profiles.
+
+    actions:
+      - match: hi
+        always:
+          reply: Hello from Coachabl!

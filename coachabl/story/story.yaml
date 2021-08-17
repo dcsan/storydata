@@ -1,0 +1,35 @@
+story:
+  title: Goal setting
+  cname: goals # internal reference
+  startRoomDefault: goals
+
+  # fuzzy matching on channel names
+  startRooms:
+    - channels: coach|goals
+      room: goals
+
+  help:
+    basic: "
+      \n` L ` Look around
+      \n` I ` to see your Inventory
+      \n` T ` for your next Task
+      \n` X item ` eXamine things in the room
+      \n` get (item name)` to pick up items by name
+      \n` use item1 on item2 ` try combining items
+      \n_There are many other things you can say, but these are the basics!_
+      \nIf you get stuck you can ping @AsylumStaff for hints!"
+
+    debug: "
+      \n> `STatus` of the game
+      \n> `ReStart` the game
+      \n> `cheat` to see what actions you can do
+      \n> `gt [room]` go to a specific room (teleport)
+      \n> `log` to get a full chatlog - useful to debug later
+    "
+
+    more: Things also respond to special verbs like `eat fruit` or `open chest`.
+      Try different actions on things you find!
+      You can use the single letter versions like `L` for `Look`
+      You can `Look at note` to look at items
+      If you're stuck, try a `hint`!
+

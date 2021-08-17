@@ -1,0 +1,21 @@
+rooms:
+  # -------- start --------------
+  - name: end_session
+    states:
+      - name: default
+        long: "That ends the session for today.
+          \nType `goals` to see your current goals or restart"
+
+    actions:
+      - match: restart
+        always:
+          goto: goals
+
+      - match: status
+        always:
+          reply: "
+            You can type
+            \n- `goals` - see what your current goals are.
+            \n- `details <Goal>`  to see more information on each one.
+            \n- `restart` to restart the session
+            "

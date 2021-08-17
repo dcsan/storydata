@@ -1,19 +1,86 @@
 ## TOP
-- [ ] splash web page with install button and video
-- [ ] video capture
 - [ ] hint system
+- [ ] hints using case/switch?
+
+- make editing more interactive
+  - web based editor
+  - store player state so we can keep editing
+
+- Inventory system - move to a new module
+- stack navigation - allow to 'gosub' and come back
+- remove the 'always' requirement
+- authoring via google sheets? for basic room actions scripts
+- match | reply | goto | after
+
+- split language parser?
+- bring back NLP parser
+
+- set variables and tasks so we can have more flexible task chunking
+-
+
+
+## scripts
+Take michael jackson poster off wall
+put blue robe on window
+look behind
+x posters = wall
+Look pipe
+X above wardrobe
+x on top of ...
+X handles => the two handles
+turn handle
+Use soap on hands
+flip poster
+turn poster over
+read back of poster
+
+(wrong order handling)
+Wash hands, neck, eyes, face
+
+l pockets
+fix sink
+
+look under bed
+
+tasks = task
+18 vs 24
+
+end game
+
+check "3262|31?2|3161" etc.
+
+piers... ?
+
+
+ending loop
+talk to doctor - needs some type of clue
+
+
+
+## story
+- [ ] new vidcap and animation
+- [ ] web site fixes / updates
 - [ ] scoring?
-- [ ] redo IF block to cascade => switch
-- [ ] install permissions
+- [ ] record game times?
+- [ ] install permissions fix
 - [ ] new banner image
 - [ ] web editor?
+
+- [ ] next game / production tools
+- [ ] engine fixes
+- [ ] marketing tune up
+- [ ] install on your own server page
+- [ ] tutorial page
+- [ ] recruit someone to spam other servers
 
 ## MarCom
 - [ ] admin only tasks - gt etc.
 - [ ] simple site / page for bot
 - [ ] add bot to various bot sites
-- [ ] make GIF anims
+- [X] make GIF anims
 - [ ] spam some other admins
+- [ ] give item to other NPC
+- [ ] check talking to an NPC. ask xxx about YYYY
 
 - [ ] get item response
 - [ ] add navbar on help
@@ -27,9 +94,6 @@
 - [ ] add survey at end
 
 ## TODO:
-- [x] prevent wash before clothes
-- [x] lock handle on closet until seen
-- [x] panel unlock
 - [ ] hanz, fez, nick etc. hint
 - [ ] washing - check handle before order
 - [ ] look back of poster cmd

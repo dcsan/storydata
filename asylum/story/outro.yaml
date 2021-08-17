@@ -1,0 +1,51 @@
+rooms:
+  # -------- start --------------
+  - name: outro
+    states:
+      - name: default
+        imageUrl: asylum/shots/640/bh-case-file.png
+        short: "> _Chief Murphy nods. Sixteen hours ago we lost all contact with Agent Lee._
+          \n\nHe gets up and moves toward the door.
+          \n\n> _You’ll be infiltrating Bell Hill Asylum under the cover of a paying guest.
+          First, you'll have to successfully win their themed escape room game to access the facility further.
+          After that, you’ll need to discover the whereabouts of the missing Agent Lee,
+          as well as locate the source of the oddity. Any questions?_
+          \n
+          \nYour mind jumps to the upcoming weekend.\n
+
+          ```fix\n💵 Is Friday payday, sir?
+\n🌀 No questions, chief.
+          ```
+          "
+        emoji:
+          - 💵
+          - 🌀
+
+        # buttons:
+        #   - Is Friday payday, sir? 💵 |fridaypayday|💵"
+        #   - No questions, chief. 🌀 |nosir|🌀"
+
+    actions:
+      - match: nosir|🌀
+        then:
+          reply: "\n\n> _Good. Best of luck, Agent Dale._"
+          goto: transition
+
+      - match: fridaypayday|💵
+        then:
+          reply: "\n\nThe Chief grunts.
+          \n\n> _Just get back in one piece with Agent Lee, alright? You well-dressed leech..._
+          \n"
+          goto: transition
+
+  # -------- transition --------------
+  - name: transition
+    states:
+      - name: default
+        buttons:
+          - TAP to continue|cell|▶️
+
+    actions:
+      - match: cell|▶️
+        then:
+          goto: cell

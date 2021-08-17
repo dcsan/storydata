@@ -20,6 +20,9 @@
             "type": "string",
             "description": "full URL of an image"
           },
+          "showChannels": {
+            "type": "string"
+          },
           "webUrl": {
             "type": "string",
             "description": "web link"
@@ -46,6 +49,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "emoji": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
@@ -57,6 +66,12 @@
       "properties": {
         "reply": {
           "type": "string"
+        },
+        "emoji": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "hint": {
           "type": "string"
@@ -77,6 +92,12 @@
           }
         },
         "imageUrl": {
+          "type": "string"
+        },
+        "showChannels": {
+          "type": "string"
+        },
+        "showInvite": {
           "type": "string"
         },
         "buttons": {
@@ -230,6 +251,22 @@
                 },
                 "else": {
                   "$ref": "#/definitions/branch"
+                },
+                "switch": {
+                  "type": "array",
+                  "additionalProperties": false,
+                  "properties": {
+                    "case": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "then": {
+                      "additionalProperties": false,
+                      "$ref": "#/definitions/branch"
+                    }
+                  }
                 }
               }
             }
@@ -264,6 +301,10 @@
                 },
                 "canTake": {
                   "type": "boolean"
+                },
+                "silent": {
+                  "type": "boolean",
+                  "description": "doesn't show messages when taken"
                 },
                 "onTake": {
                   "type": "string"
