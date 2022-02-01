@@ -38,11 +38,40 @@ eg for office story we have [lobby](office/story/lobby.yaml), [attic](office/sto
 Inside the room files there are two main blocks
 
 Rooms have:
+- [states](#states)  # various descriptions for different states
 - [items](#items)
 - [actors](#actors)
 - [actions](#actions)
   - [conditions](#conditions)
 
+example:
+
+```yaml
+rooms:
+  - name: office
+
+    states:
+      - name: default
+        long: A boring looking tech company's office. Seems like you've been here before, but it just looks the same as any other one.
+        short: A large empty room with a corner `desk`
+        imageUrl: office/rooms/office-chest-closed.jpg
+
+    actions:
+      - match: smell
+        always:
+          reply: A musty smell of industrial carpet and cigarette smoke fills the room.
+      - match: atov/i
+        always:
+          reply: You say ATOV to noone in particular. Maybe you need to look for something else?
+          # goto without any conditions
+      - match: teleport attic
+        always:
+          reply: you click your heels and find yourself in the attic
+          goto: attic
+```
+
+## States
+An item can have various states, controlled by actions or other objects
 
 ## Items
 An item can have a number of states. When a user types `look ITEM` or `X item` then the corresponding state is show.
